@@ -1,0 +1,149 @@
+07-09 14:02:44 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+07-09 14:02:44 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+07-09 22:36:42 | Main INFO  |  ---------------------------------------------------
+07-09 22:36:42 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:36:42 | Main INFO  |  Nome: Alberto
+07-09 22:36:42 | Main INFO  |  Cognome: null
+07-09 22:36:42 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:36:42 | Main INFO  |  Chat ID: 148278619
+07-09 22:36:42 | Main INFO  |  Testo: Te te chi ti ha creata è un colleone
+07-09 22:36:42 | Main INFO  |  ---------------------------------------------------
+07-09 22:36:44 | Main INFO  |  Thread 0 Partito!
+07-09 22:36:44 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+07-09 22:36:44 | Main INFO  |  Risposta di Ellie a alberto2495 :Mia madre e mio padre.
+07-09 22:37:18 | Main INFO  |  ---------------------------------------------------
+07-09 22:37:18 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:37:18 | Main INFO  |  Nome: Alberto
+07-09 22:37:18 | Main INFO  |  Cognome: null
+07-09 22:37:18 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:37:18 | Main INFO  |  Chat ID: 148278619
+07-09 22:37:18 | Main INFO  |  Testo: \battuta
+07-09 22:37:18 | Main INFO  |  ---------------------------------------------------
+07-09 22:37:20 | Main INFO  |  Gestisce THREAD 0
+07-09 22:37:21 | Main INFO  |  Risposta di Ellie a alberto2495 :Comando \battuta non riconosciuto, per una lista dei comandi digita /help
+07-09 22:37:27 | Main INFO  |  ---------------------------------------------------
+07-09 22:37:27 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:37:27 | Main INFO  |  Nome: Alberto
+07-09 22:37:27 | Main INFO  |  Cognome: null
+07-09 22:37:27 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:37:27 | Main INFO  |  Chat ID: 148278619
+07-09 22:37:27 | Main INFO  |  Testo: /battuta
+07-09 22:37:27 | Main INFO  |  ---------------------------------------------------
+07-09 22:37:29 | Main INFO  |  Gestisce THREAD 0
+07-09 22:37:29 | Main INFO  |  battuta generata n. 149
+07-09 22:37:29 | Main INFO  |  Risposta di Ellie a alberto2495 :-Pronto polizia? Due donne si stanno picchiando per me!  -E dove sta il problema?  -Sta vincendo quella brutta!
+07-09 22:37:39 | Main INFO  |  ---------------------------------------------------
+07-09 22:37:39 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:37:39 | Main INFO  |  Nome: Alberto
+07-09 22:37:39 | Main INFO  |  Cognome: null
+07-09 22:37:39 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:37:39 | Main INFO  |  Chat ID: 148278619
+07-09 22:37:39 | Main INFO  |  Testo: /foto
+07-09 22:37:39 | Main INFO  |  ---------------------------------------------------
+07-09 22:37:40 | Main INFO  |  Gestisce THREAD 0
+07-09 22:37:42 | Main INFO  |  ---------------------------------------------------
+07-09 22:37:42 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:37:42 | Main INFO  |  Nome: Alberto
+07-09 22:37:42 | Main INFO  |  Cognome: null
+07-09 22:37:42 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:37:42 | Main INFO  |  Chat ID: 148278619
+07-09 22:37:42 | Main INFO  |  Testo: /funny
+07-09 22:37:42 | Main INFO  |  ---------------------------------------------------
+07-09 22:37:45 | Main INFO  |  Gestisce THREAD 0
+07-09 22:37:45 | Main INFO  |  Foto generata: src/bot/ellie/readfiles/photo/funny2.jpg
+07-09 22:38:00 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:00 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:38:00 | Main INFO  |  Nome: Alberto
+07-09 22:38:00 | Main INFO  |  Cognome: null
+07-09 22:38:00 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:38:00 | Main INFO  |  Chat ID: 148278619
+07-09 22:38:00 | Main INFO  |  Testo: /funny
+07-09 22:38:00 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:01 | Main INFO  |  Gestisce THREAD 0
+07-09 22:38:01 | Main INFO  |  Risposta di Ellie a alberto2495 :Comando /funny non riconosciuto, per una lista dei comandi digita /help
+07-09 22:38:08 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:08 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:38:08 | Main INFO  |  Nome: Alberto
+07-09 22:38:08 | Main INFO  |  Cognome: null
+07-09 22:38:08 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:38:08 | Main INFO  |  Chat ID: 148278619
+07-09 22:38:08 | Main INFO  |  Testo: /foto
+07-09 22:38:08 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:10 | Main INFO  |  Gestisce THREAD 0
+07-09 22:38:12 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:12 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:38:12 | Main INFO  |  Nome: Alberto
+07-09 22:38:12 | Main INFO  |  Cognome: null
+07-09 22:38:12 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:38:12 | Main INFO  |  Chat ID: 148278619
+07-09 22:38:12 | Main INFO  |  Testo: /funny
+07-09 22:38:12 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:14 | Main INFO  |  Gestisce THREAD 0
+07-09 22:38:14 | Main INFO  |  Foto generata: src/bot/ellie/readfiles/photo/funny8.jpg
+07-09 22:38:30 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:30 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:38:30 | Main INFO  |  Nome: Alberto
+07-09 22:38:30 | Main INFO  |  Cognome: null
+07-09 22:38:30 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:38:30 | Main INFO  |  Chat ID: 148278619
+07-09 22:38:30 | Main INFO  |  Testo: /foto
+07-09 22:38:30 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:32 | Main INFO  |  Gestisce THREAD 0
+07-09 22:38:36 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:36 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:38:36 | Main INFO  |  Nome: Alberto
+07-09 22:38:36 | Main INFO  |  Cognome: null
+07-09 22:38:36 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:38:36 | Main INFO  |  Chat ID: 148278619
+07-09 22:38:36 | Main INFO  |  Testo: /random
+07-09 22:38:36 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:38 | Main INFO  |  Gestisce THREAD 0
+07-09 22:38:38 | Main INFO  |  Foto generata: src/bot/ellie/readfiles/photo/cute1.jpg
+07-09 22:38:50 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:50 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:38:50 | Main INFO  |  Nome: Alberto
+07-09 22:38:50 | Main INFO  |  Cognome: null
+07-09 22:38:50 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:38:50 | Main INFO  |  Chat ID: 148278619
+07-09 22:38:50 | Main INFO  |  Testo: /foto
+07-09 22:38:50 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:52 | Main INFO  |  Gestisce THREAD 0
+07-09 22:38:55 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:55 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:38:55 | Main INFO  |  Nome: Alberto
+07-09 22:38:55 | Main INFO  |  Cognome: null
+07-09 22:38:55 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:38:55 | Main INFO  |  Chat ID: 148278619
+07-09 22:38:55 | Main INFO  |  Testo: /cute
+07-09 22:38:55 | Main INFO  |  ---------------------------------------------------
+07-09 22:38:57 | Main INFO  |  Gestisce THREAD 0
+07-09 22:38:57 | Main INFO  |  Foto generata: src/bot/ellie/readfiles/photo/cute5.jpg
+07-09 22:39:33 | Main INFO  |  ---------------------------------------------------
+07-09 22:39:33 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:39:33 | Main INFO  |  Nome: Alberto
+07-09 22:39:33 | Main INFO  |  Cognome: null
+07-09 22:39:33 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:39:33 | Main INFO  |  Chat ID: 148278619
+07-09 22:39:33 | Main INFO  |  Testo: /foto
+07-09 22:39:33 | Main INFO  |  ---------------------------------------------------
+07-09 22:39:35 | Main INFO  |  Gestisce THREAD 0
+07-09 22:39:37 | Main INFO  |  ---------------------------------------------------
+07-09 22:39:37 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO-----------
+07-09 22:39:37 | Main INFO  |  Nome: Alberto
+07-09 22:39:37 | Main INFO  |  Cognome: null
+07-09 22:39:37 | Main INFO  |  Username: alberto2495 (148278619)
+07-09 22:39:37 | Main INFO  |  Chat ID: 148278619
+07-09 22:39:37 | Main INFO  |  Testo: /nature
+07-09 22:39:37 | Main INFO  |  ---------------------------------------------------
+07-09 22:39:39 | Main INFO  |  Gestisce THREAD 0
+07-09 22:39:39 | Main INFO  |  Foto generata: src/bot/ellie/readfiles/photo/mystic3.jpg
+07-10 11:59:06 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+07-10 11:59:06 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+

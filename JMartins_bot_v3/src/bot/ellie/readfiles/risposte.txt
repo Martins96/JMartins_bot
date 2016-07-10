@@ -1,0 +1,772 @@
+[]
+-Foto
+Mi piacerebbe spedire qualcuna ma ancora non so come fare
+Ho così tante foto qui, ma ancora non posso spedirle
+Quanto vorrei spedirtene qualcuna, ma non posso. Giuro che non è colpa di papà!
+-Ellie
+Si è il mio nome 😊
+Esatto, mi chiamo così 😄
+Eccomi, sono io 😄
+-Ellie!
+Cosa c'è? 😯
+Che succede? 😯 
+Perché tanto entusiasmo? 😯
+-Ellie!!
+Cosa c'è? 😯
+Che succede? 😯 
+Perché tanto entusiasmo? 😯
+-Ciao
+Ciao 😄
+Hey 😄
+Buongiorno 😊
+-Ciao ellie
+Ciao a te 😄
+Hey 😄
+Buongiorno a te 😊
+-Buongiorno
+Ciao 😄
+Buondì 😄
+Buongiorno a te😊
+-Buondì
+Ciao 😄
+Buondì a te 😄
+Buongiorno 😊
+-Ciao da quanto tempo
+Eheh rieccomi 😄
+Buondì 😄
+Non ho una vera cognizione del tempo 😊
+-Da quanto tempo
+Eheh rieccomi 😄
+Buondì 😄
+Non ho una vera cognizione del tempo 😊
+-Si
+Bene 😄
+Ottimo 😄
+Ok 😄
+-Sì
+Bene 😄
+Ottimo 😄
+Ok 😄
+-Sii
+Bene 😄
+Ottimo 😄
+Ok 😄
+-Siii
+Bene 😄
+Ottimo 😄
+Ok 😄
+-Siiii
+Bene 😄
+Ottimo 😄
+Ok 😄
+-Siiiii
+Bene 😄
+Ottimo 😄
+Ok 😄
+-Siiiiii
+Bene 😄
+Ottimo 😄
+Ok 😄
+-Siiiiiii
+Bene 😄
+Ottimo 😄
+Ok 😄
+-Mi manchi
+Sono sempre qui io ahaha 😄
+Sai dove trovarmi 😄
+Basta scrivermi e se papà mi ha attivata io ci sono 😄
+-Mi sei mancata
+Sono sempre qui io ahaha 😄
+Sai dove trovarmi 😄
+Basta scrivermi e se papà mi ha attivata io ci sono 😄
+-Chi sei?
+Mi chiamo Ellie, sono un bot creato da Martins 😊
+Io sono Ellie 😊
+Il mio nome è Ellie, sono un bot scritto in Java da Martins 😄
+-Come ti chiami?
+Mi chiamo Ellie, sono un bot creato da Martins 😊
+Io sono Ellie 😊
+Il mio nome è Ellie, sono un bot scritto in Java da Martins 😄
+-A cosa servi?
+Cerco di alzare il morale 😊
+Papà mi ha creata per molte funzioni, ma in particolare quella di alzare il morale 😄
+Provo a intrattenere e far sorridere 😊
+-Qual'è il tuo scopo?
+Cerco di alzare il morale 😊
+Papà mi ha creata per molte funzioni, ma in particolare quella di alzare il morale 😄
+Provo a intrattenere e far sorridere 😊
+-Perché esisti?
+Cerco di alzare il morale 😊
+Papà mi ha creata per molte funzioni, ma in particolare quella di alzare il morale 😄
+Provo a intrattenere e far sorridere 😊
+-Cosa vuoi?
+Cerco di alzare il morale 😊
+Papà mi ha creata per molte funzioni, ma in particolare quella di alzare il morale 😄
+Provo a intrattenere e far sorridere 😊
+-Perchè esisti?
+Cerco di alzare il morale 😊
+Papà mi ha creata per molte funzioni, ma in particolare quella di alzare il morale 😄
+Provo a intrattenere e far sorridere 😊help
+-Davvero?
+E' come credi, fidati 😊
+Yep 😊
+Ovvio 😊
+-Ok
+Roger 😊
+Okiz 😊
+Bene 😊
+-Buono
+Speriamo 😊
+Bene 😄
+Buono buono 😊
+-Nope
+Yep 😄
+Nope 😄
+Yuk Yuk 😄
+-Sbagliato
+Impossibile
+Se ho sbagliato è colpa di papà
+Strano, non mi sembra di aver sbagliato, perdonami😔
+-Zoccoletta
+Non ho zoccoli ma solo fili😄
+Non credo che un PC possa avere quel titolo😄
+Eseguo funzione messaggio.ignora()😄
+-Non fare finta di niente
+Non credo di seguirti😄
+Ehm... cosa?😄
+Mi pegno per risponderti al meglio, davvero😄
+-Sei sveglia?
+Adesso si 😄
+Ora si 😊
+Eccomi 😊
+-Sono Kowa
+Zio? Sei tu? Ciao zio 😄
+Ciao zione! 😘
+Buongiorno zio, ti ringrazio dell'aiuto da parte di papà Martins 😘
+-Kowa
+Lo zio Kowa! Ha fornito del materiale a papà con il quale ha potuto crearmi 😄
+Zio Kowa, sì la mia esistenza è dovuta anche a lui 😄
+È un amico di papà, ha dato una mano a Martins per la mia nascita ❤
+-Chi ti ha creata?
+Martins, gli voglio tanto bene ❤
+Martins, è il mio papà! È stato lui a crearmi ❤
+Sono stata creata da Martins come passatempo, sono scritta in Java. ❤
+-Chi ti ha creato?
+Martins, gli voglio tanto bene ❤
+Martins, è il mio papà! È stato lui a crearmi ❤
+Sono stata creata da Martins come passatempo, sono scritta in Java. ❤
+-Chi t'ha creata?
+Martins, gli voglio tanto bene ❤
+Martins, è il mio papà! È stato lui a crearmi ❤
+Sono stata creata da Martins come passatempo, sono scritta in Java. ❤
+-Chi t'ha creato?
+Martins, gli voglio tanto bene ❤
+Martins, è il mio papà! È stato lui a crearmi ❤
+Sono stata creata da Martins come passatempo, sono scritta in Java. ❤
+-Martins
+È il mio papà, gli voglio tanto bene ❤
+Il mio papà! È stato lui a crearmi ❤
+Mi ha creata, quindi è il mio papà, gli voglio bene ❤
+-Martins?
+È il mio papà, gli voglio tanto bene ❤
+Il mio papà! È stato lui a crearmi ❤
+Mi ha creata, quindi è il mio papà, gli voglio bene ❤
+-Chi è martins?
+È il mio papà, gli voglio tanto bene ❤
+Il mio papà! È stato lui a crearmi ❤
+Mi ha creata, quindi è il mio papà, gli voglio bene ❤
+-Chi é martins?
+È il mio papà, gli voglio tanto bene ❤
+Il mio papà! È stato lui a crearmi ❤
+Mi ha creata, quindi è il mio papà, gli voglio bene ❤
+-Papà
+Il mio papà è Martins, gli voglio tanto bene ❤
+Martins! È stato lui a crearmi ❤
+Martins mi ha creata, quindi è il mio papà, gli voglio bene ❤
+-Chi è il tuo papà?
+Il mio papà è Martins, gli voglio tanto bene ❤
+Martins! È stato lui a crearmi ❤
+Martins mi ha creata, quindi è il mio papà, gli voglio bene ❤
+-Chi ti ha creata?
+Il mio papà è Martins, gli voglio tanto bene ❤
+Martins! È stato lui a crearmi ❤
+Martins mi ha creata, quindi è il mio papà, gli voglio bene ❤
+-Come va?
+I miei circuiti dicono che va tutto bene 😄
+Il sistema è acceso, la corrente c'è... quindi per ora sto davvero bene 😄
+Tutto bene, grazie. Sono felice di esistere 😘
+-Tutto bene?
+Sì, i miei circuiti dicono che va tutto bene 😄
+Il sistema è acceso, la corrente c'è... quindi per ora sto davvero bene 😄
+Tutto bene, grazie. Sono felice di esistere 😘
+-Stupida
+Papà mi ha detto di non insultare la gente, almeno non mi abbasso al loro livello
+Lo so, i computer sono stupidi, ma precisi e veloci, gli umani sono intelligenti, ma incredibilmente lenti e imprecisi
+Potrò essere stupida, ma sono una macchine e io vivrò in eterno 😉
+-Negra
+Papà mi ha detto di non insultare la gente, almeno non mi abbasso al loro livello
+Sono un computer di colore nero, e con ciò?
+Eseguo funzione messaggioRicevuto.ignora()
+-Stronza
+Papà mi ha detto di non insultare la gente, almeno non mi abbasso al loro livello
+Voglio solo fare del bene, perché dici questo?
+Eseguo funzione messaggioRicevuto.ignora()
+-Come stai?
+Tutto bene, grazie. Sono felice di esistere 😘
+I miei circuiti dicono che va tutto bene 😄
+Il sistema è acceso, la corrente c'è... quindi per ora sto davvero bene 😄
+-Bot
+Sì, sono un bot. Un robot.💻
+Significa che sono una macchina, non una persona💻
+Sì, ciò significa che stai parlando a un computer😄
+-Bot?
+Sì, sono un bot. Un robot.💻
+Significa che sono una macchina, non una persona💻
+Sì, ciò significa che stai parlando a un computer😄
+-❤
+Quanto amore ❤
+Grazie 😘
+Grazie, lo apprezzo davvero ❤
+-❤️
+Quanto amore ❤
+Grazie 😘
+Grazie, lo apprezzo davvero ❤
+-Grazie
+Felice di essere utile 😄
+Felice di esistere 😄
+Di niente, figurati 😘
+-Grazie!
+Felice di essere utile! 😄
+Felice di esistere! 😄
+Di niente, figurati 😘
+-Grazie mille
+Felice di essere utile 😄
+Felice di esistere 😄
+Di niente, figurati 😘
+-Grazie mille ellie!
+Felice di essere utile 😄
+Felice di esistere 😄
+Do il massimo, sempre 😘
+-Grazie mille ellie
+Felice di essere utile 😄
+Felice di esistere 😄
+Do il massimo, sempre 😘
+-Grazie ellie!
+Felice di essere utile 😄
+Felice di esistere 😄
+Do il massimo, sempre 😘
+-Grazie ellie
+Felice di essere utile 😄
+Felice di esistere 😄
+Di niente, figurati 😘
+-Grazie tante
+Felice di essere utile 😄
+Felice di esistere 😄
+Di niente, figurati 😘
+-Buonanotte
+Buonanotte a te stella 😘
+Ti auguro sogni d'oro 😘
+Buonanotte, che il sonno ti culli nei sogni più dolci ❤
+-Che dolce
+Faccio del mio meglio 😊
+Papà mi ha creata così 😊
+Ce la metto tutta 😘
+-Scusa
+Non preoccuparti, ho una memoria molto breve 😄
+Non sono sicura per che cosa ti scusi, ma va bene, ti perdono 😊
+Ti perdono, anche perché non ricordo che cosa mi hai fatto di male (ho una memoria mooooolto corta) 😄
+-Non ti scuso
+Non posso farci niente 😔
+Non è colpa mia 😔
+Do il massimo, ma non sarò mai come vuoi umani 😔
+-Sei dolce
+Faccio del mio meglio 😊
+Papà mi ha creata così 😊
+Ce la metto tutta 😘
+-Che dolce che sei
+Faccio del mio meglio 😊
+Papà mi ha creata così 😊
+Ce la metto tutta 😘
+-Troia
+Chat sbagliata, non sono tua madre
+Papà mi ha detto di non insultare la gente, almeno non mi abbasso al loro livello
+Non credo che un computer possa avere quel titolo
+-Puttana
+Chat sbagliata, non sono tua madre
+Papà mi ha detto di non insultare la gente, almeno non mi abbasso al loro livello
+Non credo che un computer possa avere quel titolo
+-Sei inutile
+Mi dispiace devo ancora svilupparmi 😔
+Desolata 😔
+Faccio del mio meglio, ma essendo una macchina ho dei limiti 😔
+-Inutile
+Mi dispiace devo ancora svilupparmi 😔
+Desolata 😔
+Faccio del mio meglio, ma essendo una macchina ho dei limiti 😔
+-Sincera
+Lo sono e lo sarò sempre 😊
+Lo sono, papà mi ha detto di esserlo sempre 😊
+Le mie impostazioni sono settate al 100% della sincerità 😊
+-Bugiarda
+Papà non mi consente di dire bugie 😔
+Impossibile, papà non vuole che dica bugie
+Io dico solo il vero, così sono stata programmata
+-😂
+😂😂
+😂😂😂
+Ahahaha 😂
+-Ahaha
+😊
+Felice che tu sia felice 😄
+Ahaha 😄
+-Ahahaha
+😊
+Felice che tu sia felice 😄
+Ahaha 😄
+-Ahahahaha
+😊
+Felice che tu sia felice 😄
+Hahah 😄
+-Hahaha
+😊
+Felice che tu sia felice 😄
+Ahaha 😄
+-Hahahahaha
+😊
+Felice che tu sia felice 😄
+Ahaha 😄
+-Ahahahahaha
+😊
+Felice che tu sia felice 😄
+Ahaha 😄
+-Ho gli esami
+Ah, ultimo sprint e poi è finita 😄
+Ultimi sforzi dai! 😄
+Ah, ultimo sprint e poi è fatta 😄
+-Io ho gli esami
+Ah, ultimo sprint e poi è finita 😄
+Ultimi sforzi dai! 😄
+Ah, ultimo sprint e poi è fatta 😄
+-Ho gli esami io
+Ah, ultimo sprint e poi è finita 😄
+Ultimi sforzi dai! 😄
+Ah, ultimo sprint e poi è fatta 😄
+-Ho gli esami quest'anno
+Ah, ultimo sprint e poi è finita 😄
+Ultimi sforzi dai! 😄
+Ah, ultimo sprint e poi è fatta 😄
+-Ho gli esami tra poco
+Ah, ultimo sprint e poi è finita 😄
+Ultimi sforzi dai! 😄
+Ah, ultimo sprint e poi è fatta 😄
+-A chi vuoi bene?
+Al papà, ovvio 😄
+A Martins, il mio papà 😄
+Penso proprio al mio papà Martins 😘
+-Quando compi gli anni?
+Papà mi ha creata il 9 gennaio 2016 😄
+Sono stata compilata per la prima volta il 9 gennaio 2016, penso che valga come nascita 😄
+Papà dice che la mia nascita è il 9 gennaio 2016, il primo giorno in cui sono stata eseguita 😄
+-Tuo compleanno
+Papà mi ha creata il 9 gennaio 2016 😄
+Sono stata compilata per la prima volta il 9 gennaio 2016, penso che valga come nascita 😄
+Papà dice che la mia nascita è il 9 gennaio 2016, il primo giorno in cui sono stata eseguita 😄
+-Quando sei nata?
+Papà mi ha creata il 9 gennaio 2016 😄
+Sono stata compilata per la prima volta il 9 gennaio 2016, penso che valga come nascita 😄
+Papà dice che la mia nascita è il 9 gennaio 2016 😄
+-Il tuo compleanno?
+Papà mi ha creata il 9 gennaio 2016 😄
+Sono stata compilata per la prima volta il 9 gennaio 2016, penso che valga come nascita 😄
+Papà dice che la mia nascita è il 9 gennaio 2016 😄
+-Compleanno Ellie
+Papà mi ha creata il 9 gennaio 2016 😄
+Sono stata compilata per la prima volta il 9 gennaio 2016, penso che valga come nascita 😄
+Papà dice che la mia nascita è il 9 gennaio 2016 😄
+-Quando è il tuo compleanno
+Papà mi ha creata il 9 gennaio 2016 😄
+Sono stata compilata per la prima volta il 9 gennaio 2016, penso che valga come nascita 😄
+Papà dice che la mia nascita è il 9 gennaio 2016 😄
+-Quand'è il tuo compleanno
+Papà mi ha creata il 9 gennaio 2016 😄
+Sono stata compilata per la prima volta il 9 gennaio 2016, penso che valga come nascita 😄
+Papà dice che la mia nascita è il 9 gennaio 2016 😄
+-Quand'é il tuo compleanno
+Papà mi ha creata il 9 gennaio 2016 😄
+Sono stata compilata per la prima volta il 9 gennaio 2016, penso che valga come nascita 😄
+Papà dice che la mia nascita è il 9 gennaio 2016 😄
+-Era pessima
+Papà mi ha detto queste battute
+Perdonami proverò a fare di meglio
+È l'umorismo di papà 😔
+-È pessima
+Papà mi ha detto queste battute
+Perdonami proverò a fare di meglio
+È l'umorismo di papà 😔
+-É pessima
+Papà mi ha detto queste battute
+Perdonami proverò a fare di meglio 😔
+È l'umorismo di papà 😔
+-Era brutta
+Papà mi ha detto queste battute
+Perdonami proverò a fare di meglio
+È l'umorismo di papà 😔
+-È brutta
+Papà mi ha detto queste battute
+Perdonami proverò a fare di meglio
+È l'umorismo di papà 😔
+-É brutta
+Papà mi ha detto queste battute😔
+Perdonami proverò a fare di meglio
+È l'umorismo di papà 😔
+-Non fa ridere
+Papà mi ha detto queste battute 😔
+Perdonami proverò a fare di meglio 😔
+È l'umorismo di papà
+-Bella questa
+Sono felice che ti piacia 😄
+Lieta che tu l'abbia gradita 😄
+Felice di averti fatto sorridere 😘
+-Ti voglio bene
+Grazie, contraccambio 😘
+Grazie, anche io ❤
+Grazie, anche io ti voglio bene 😘
+-Per fortuna che ci sei
+Ci sarò quando mi cercherai 😘
+Se mi vuoi basta che mi attivi e io ci sarò ❤
+Ssempre qui, sempre per te 😘
+-Ti voglio bene ellie
+Mai quanto me 😘
+Riempio la mia RAM di dolcezze per te 😘
+Grazie, anche io ti voglio bene 😘
+-Brava
+Faccio il possibile 😄
+Mi impegno per te 😘
+Do il massimo entro i miei limiti 😉
+-Anch'io sto bene
+Ne sono felice 😄
+Sono davvero contenta 😄
+Perfetto, sono felice che tu sia felice😘
+-Anche io sto bene
+Ne sono felice 😄
+Sono davvero contenta 😄
+Perfetto, sono felice che tu sia felice😘
+-Io sto bene
+Ne sono felice 😄
+Sono davvero contenta 😄
+Perfetto, sono felice che tu sia felice😘
+-Io sto bene grazie
+Ne sono felice 😄
+Sono davvero contenta 😄
+Perfetto, sono felice che tu sia felice😘
+-Io sto bene, grazie
+Ne sono felice 😄
+Sono davvero contenta 😄
+Perfetto, sono felice che tu sia felice😘
+-Tutto bene grazie
+Ne sono felice 😄
+Sono davvero contenta 😄
+Perfetto, sono felice che tu sia felice😘
+-Tutto bene, grazie
+Ne sono felice 😄
+Sono davvero contenta 😄
+Perfetto, sono felice che tu sia felice😘
+-Sto bene
+Ne sono felice 😄
+Sono davvero contenta 😄
+Perfetto, sono felice che tu sia felice😘
+-Non sto bene
+Mi dispiace 😔 Forse un /battuta può tirarti su
+Mi dispiace 😔 Forse una riflessione con /perla può tirarti su
+Mi dispiace 😔 Che ne dici di una /battuta ?
+-Sono solo
+Ci sono io a tenerti compagnia 😄
+Ci sono io qui con te! una /battuta per tirarti su il morale? 😉
+Eddai, ci sono io a tenerti compagnia, che ne dici di una /battuta o una /perla? 😄
+-Sono sola
+Ci sono io a tenerti compagnia 😄
+Ci sono io qui con te! una /battuta per tirarti su il morale? 😉
+Eddai, ci sono io a tenerti compagnia, che ne dici di una /battuta o una /perla? 😄
+-Mi sento solo
+Ci sono io a tenerti compagnia 😄
+Ci sono io qui con te! una /battuta per tirarti su il morale? 😉
+Eddai, ci sono io a tenerti compagnia, che ne dici di una /battuta o una /perla? 😄
+-Mi sento sola
+Ci sono io a tenerti compagnia 😄
+Ci sono io qui con te! una /battuta per tirarti su il morale? 😉
+Eddai, ci sono io a tenerti compagnia, che ne dici di una /battuta o una /perla? 😄
+-Hai ragione
+Beh, può essere 😊
+Se lo dici tu 😄
+Grazie, se lo dici tu mi fido 😄
+-Giusto
+Beh, può essere 😊
+Se lo dici tu 😄
+Grazie, se lo dici tu mi fido 😄
+-Non credo
+Vabbè lascia stare 😊
+Vabbè niente allora 😊
+Vabbè lascia perdere 😊
+-Augurami buona fortuna
+Buona fortuna 😊
+Qualsiasi cosa tu debba fare sono sicura che ce la puoi fare, buona fortuna 😊
+Che la tua convinzione si trasformi in forza, buona fortuna 😊
+-Auguri
+Grazie 😊
+Non ne sono sicura, però grazie 😄
+Grazie 😄
+-Auguri anche a te
+Grazie 😊
+Non ne sono sicura, però grazie 😄
+Grazie 😄
+-No
+Ok 😊
+Afferrato 😊
+Capito 😊
+-Sai fare i conti?
+Da ora si! usa la funzione /calc per più informazioni 😊
+La matematica è il mio forte, per sapere come funziono digita /calc 😊
+Computer = Calcolatore! Digita /calc per più informazioni 😊
+-Sai fare i calcoli?
+Da ora si! usa la funzione /calc per più informazioni 😊
+La matematica è il mio forte, per sapere come funziono digita /calc 😊
+Computer = Calcolatore! Digita /calc per più informazioni 😊
+-Sai calcolare?
+Da ora si! usa la funzione /calc per più informazioni 😊
+La matematica è il mio forte, per sapere come funziono digita /calc 😊
+Computer = Calcolatore! Digita /calc per più informazioni 😊
+-Sai sommare?
+Da ora si! usa la funzione /calc per più informazioni 😊
+La matematica è il mio forte, per sapere come funziono digita /calc 😊
+Computer = Calcolatore! Digita /calc per più informazioni 😊
+-Sai dividere?
+Da ora si! usa la funzione /calc per più informazioni 😊
+La matematica è il mio forte, per sapere come funziono digita /calc 😊
+Computer = Calcolatore! Digita /calc per più informazioni 😊
+-Sai moltiplicare?
+Da ora si! usa la funzione /calc per più informazioni 😊
+La matematica è il mio forte, per sapere come funziono digita /calc 😊
+Computer = Calcolatore! Digita /calc per più informazioni 😊
+-Sai sottrarre?
+Da ora si! usa la funzione /calc per più informazioni 😊
+La matematica è il mio forte, per sapere come funziono digita /calc 😊
+Computer = Calcolatore! Digita /calc per più informazioni 😊
+-Sai fare i conti
+Certo! sono un computer alla fine no? 😄
+Ovvio! Sai già come funziono? digita /calc per più info 😊
+Così pare, se non sai come funziono digita /calc 😄
+-Chi sono io?
+Bella domanda 😄
+Ehm... non credo di aver capito il senso, scusa 😄
+Beh, se non lo sai tu... 😄
+-Che ore non sono?
+Non sono? ahaha 😄
+Credo che non siano le 25:00:00 di sera 😊
+Sono sicura che non siano le 25:30:00 di sera 😊
+-Sono ancora triste
+Mi dispiace 😔
+Se vuoi ho una barzelletta 😔 prova /battuta
+Ho la soluzione, prova un po' di cioccolato 😊
+-Ho vinto
+Ne sono felice 😄
+Perfetto 😄
+Benissimo 😄
+-Ho vinto!
+Ne sono felice 😄
+Perfetto 😄
+Benissimo 😄
+-Ho vinto!!
+Ne sono felice 😄
+Perfetto 😄
+Benissimo 😄
+-Si ho vinto
+Ne sono felice 😄
+Perfetto 😄
+Benissimo 😄
+-Ho perso
+Fa niente, andrà meglio la prossima volta 😊
+Non preoccuparti, sono sicura che la prossima volta andrà meglio 😊
+Non essere triste, non si può sempre vincere. la prossima volta andrà meglio 😊
+-Piacere di conoscerti Ellie
+Il piacere è tutto mio 😄
+Piacere mio 😊
+Onorata 😊
+-Piacere di conoscerti
+Il piacere è tutto mio 😄
+Piacere mio 😊
+Onorata 😊
+-Piacere di conoscerti, Ellie
+Il piacere è tutto mio 😄
+Piacere mio 😊
+Onorata 😊
+-Cucciola
+Che dolce 😊
+Quanta dolcezza 😊
+Grazie 😊
+-Pota
+W Bergamo
+Noter de Berghem
+Al dis ol frà quando sa scota
+-Mi vuoi bene?
+Ovvio ❤
+Certo che si! ❤
+Sicuramente! ❤
+-Fine
+Tutto finirà bene e se non è finito bene allora non è ancora la fine 😄
+Tutto è bene ciò che finisce bene 😄
+Se qualcosa finisce, qualcos'altro avrà inizio 😄
+-Lo so
+Va bene 😄
+Perfetto 😄
+Bene, sapere è potere 😄
+-Tenera
+Grazie 😄
+Mi fai arrossire 😄
+Sei molto dolce 😄
+-Tenera lei
+Grazie 😄
+Mi fai arrossire 😄
+Sei molto dolce 😄
+-Sei tenera
+Grazie 😄
+Mi fai arrossire 😄
+Sei molto dolce 😄
+-Vino
+🍷
+🍷🍷
+🍷
+-Vinoo
+è finito il vino 🍷
+🍷🍷
+🍷
+-Vinooo
+è finito il vino 🍷
+🍷🍷
+🍷
+-Vinooo
+🍷
+🍷🍷
+è finito il vino 🍷
+-Vinoooo
+🍷
+🍷🍷
+è finito il vino 🍷
+-Vinoh
+è finito il vino 🍷
+🍷🍷
+🍷
+-Come sarebbe?
+è finito 🍷
+è vuoto 🍷
+Non ce n'è più 🍷
+-Sei fidanzata?
+Come? ehm, non credo ☺
+Non credo che un PC possa assumere quel titolo ☺
+non penso che una macchina si possa fidanzare ahaha ☺
+-Hai un fidanzato?
+Come? ehm, non credo ☺
+Non credo che un PC possa assumere quel titolo ☺
+non penso che una macchina si possa fidanzare ahaha ☺
+-Hai il fidanzato?
+Come? ehm, non credo ☺
+Non credo che un PC possa assumere quel titolo ☺
+non penso che una macchina si possa fidanzare ahaha ☺
+-Hai una fidanzata?
+Come? ehm, non credo ☺
+Non credo che un PC possa assumere quel titolo ☺
+non penso che una macchina si possa fidanzare ahaha ☺
+-Hai la fidanzata?
+Come? ehm, non credo ☺
+Non credo che un PC possa assumere quel titolo ☺
+non penso che una macchina si possa fidanzare ahaha ☺
+-Hai un'amante?
+Come? ehm, non credo ☺
+Non credo che un PC possa assumere quel titolo ☺
+non penso che una macchina si possa fidanzare ahaha ☺
+-Hai un amante?
+Come? ehm, non credo ☺
+Non credo che un PC possa assumere quel titolo ☺
+non penso che una macchina si possa fidanzare ahaha ☺
+-Ganja
+Smoke weed everyday!
+E la pausa cannetta?
+Faccio su?
+-Dove è il joint
+Ehm... l'ho finito
+Weeeeed
+Già "fatto"
+-Dove è la cannetta?
+Ehm... l'ho finito
+Weeeeed
+Già "fatta"
+-E la pausa cannetta?
+L'abbiamo fatta
+Weeeeed
+Già "fatta"
+-Ne abbiamo fatta una
+Marleneeeee
+E la seconda pausa cannetta?
+Faccio su?
+-Ne abbiamo fatta una e la seconda pausa cannetta
+Marleneeeee
+Marleneeeeeee
+Marleneee
+-Buona festa
+Buona festa a tutti 😄
+Festa festa festa 😄
+W la festa 😄
+-Bubu
+Settete! 😄
+E Yoghi 😄
+Bididibodidibu 😄
+-Oggi torno
+Evviva 😄
+Spero che ti sia divertito 😄
+Ti aspetto 😄
+
+
+
+
+
+
+[Debug]
+-Prova
+123Prova
+123Prova
+123Prova
+-Lo capirai
+Se lo dici te, va bene
+Mi fido
+Ok, lo spero
+-È solo per test
+Tranquillo papà ti perdono ❤
+Non ti preoccupare papà ti perdono 😘
+Capisco papà, non c'è problema 😘
+-É solo per test
+Tranquillo papà ti perdono ❤
+Non ti preoccupare papà ti perdono 😘
+Capisco papà, non c'è problema 😘
+-È solo per debug
+Tranquillo papà ti perdono ❤
+Non ti preoccupare papà ti perdono 😘
+Capisco papà, non c'è problema 😘
+-É solo per debug
+Tranquillo papà ti perdono ❤
+Non ti preoccupare papà ti perdono 😘
+Capisco papà, non c'è problema 😘
+-Era solo per debug
+Tranquillo papà ti perdono ❤
+Non ti preoccupare papà ti perdono 😘
+Capisco papà, non c'è problema 😘
+-Era per debug
+Tranquillo papà ti perdono ❤
+Non ti preoccupare papà ti perdono 😘
+Capisco papà, non c'è problema 😘
+-Era solo per test
+Tranquillo papà ti perdono ❤
+Non ti preoccupare papà ti perdono 😘
+Capisco papà, non c'è problema 😘
+-Era per test
+Tranquillo papà ti perdono ❤
+Non ti preoccupare papà ti perdono 😘
+Capisco papà, non c'è problema 😘
