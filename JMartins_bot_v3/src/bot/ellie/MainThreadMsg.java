@@ -1,7 +1,5 @@
 package bot.ellie;
 
-import java.io.IOException;
-
 import me.shib.java.lib.jtelebot.models.updates.Message;
 import me.shib.java.lib.jtelebot.models.updates.Update;
 
@@ -38,6 +36,7 @@ public class MainThreadMsg extends Thread {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+				ErrorReporter.sendError("Errore ricezone mex " + e.getMessage());
 				Main.log.error(e);
 			}
 		}

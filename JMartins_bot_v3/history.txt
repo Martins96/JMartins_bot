@@ -4,3 +4,4 @@
 3.0.0.3:Bug /foto sistemato (estensione file errata) - migliorato output foto HF
 3.0.0.4:Aggiunta funzionalità Meteo
 3.0.1.0:Aggiunto invio a bot host in caso di risposta non trovata
+3.0.1.1:Gestione errori - ErrorReporter.java

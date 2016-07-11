@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
+import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
 import me.shib.java.lib.jtelebot.models.types.ChatId;
 import me.shib.java.lib.jtelebot.models.types.InputFile;
@@ -65,6 +66,7 @@ public class Photo {
 			}
 		} catch (IOException e) {
 			Main.log.error("Errore nel caricamento della foto nella classe Photo.java");
+			ErrorReporter.sendError("Errore nel caricamento della foto nella classe Photo.java", e);
 			e.printStackTrace();
 			return null;
 		}

@@ -54,7 +54,7 @@ public class Risposta {
 	 */
 	public String generaRisposta(Message messaggio)
 	{
-		//se il messaggio in arrivo è un messaggio non di testo
+		//se il messaggio in arrivo Ã¨ un messaggio non di testo
 		if(messaggio.getText() == null) {
 			return ANNULLA_SPEDIZIONE_MESSAGGIO;
 		}
@@ -72,6 +72,7 @@ public class Risposta {
 		catch(IndexOutOfBoundsException e)
 		{
 			Main.log.error("Index out of Bound: " + e.getStackTrace());
+			ErrorReporter.sendError("Index out of Bound: " + e.getMessage());
 		}
 		//------------------------------------------------------------------
 				{
@@ -127,7 +128,8 @@ public class Risposta {
 						risposta = bot1session.think(testoMessaggio);
 					} catch (Exception e) {
 						Main.log.error("Errore Cleverbot - ", e);
-						risposta = "Scusami, il mio dizionario di risposte è limitato. Sono stata sviluppata per eseguire diverse e specifiche funzioni, dai un'occhiata a /help per vedere quali puoi usare. Per comodità evita le faccine per favore";
+						ErrorReporter.sendError("Errore Cleverbot - " + e.getMessage());
+						risposta = "Scusami, il mio dizionario di risposte Ã¨ limitato. Sono stata sviluppata per eseguire diverse e specifiche funzioni, dai un'occhiata a /help per vedere quali puoi usare. Per comoditÃ  evita le faccine per favore";
 					}
 				}
 			}
@@ -138,7 +140,7 @@ public class Risposta {
 					risposta = rispondiFileRisposta(n);
 				} catch (IOException ex) {
 					ex.printStackTrace();
-					risposta = "Scusami, il mio dizionario di risposte è limitato. Sono stata sviluppata per eseguire diverse e specifiche funzioni, dai un'occhiata a /help per vedere quali puoi usare. Per comodità evita le faccine per favore";
+					risposta = "Scusami, il mio dizionario di risposte Ã¨ limitato. Sono stata sviluppata per eseguire diverse e specifiche funzioni, dai un'occhiata a /help per vedere quali puoi usare. Per comoditÃ  evita le faccine per favore";
 				}
 			}
 		}
@@ -157,37 +159,37 @@ public class Risposta {
 					if(messaggio.getText().substring(i, i+1).equals(" "))
 					{
 						if(!nome.equals(""))
-							return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie 😄";
+							return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie ðŸ˜„";
 						else
-							return "Beh, è una cosa strana chiamarsi da soli, comunque io sono Ellie 😄";
+							return "Beh, Ã¨ una cosa strana chiamarsi da soli, comunque io sono Ellie ðŸ˜„";
 					}
 					nome = nome + messaggio.getText().substring(i, i+1);
 				}
 				if(!nome.equals(""))
-					return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie 😄";
+					return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie ðŸ˜„";
 				else
-					return "Beh, è una cosa strana chiamarsi da soli, comunque io sono Ellie 😄";
+					return "Beh, Ã¨ una cosa strana chiamarsi da soli, comunque io sono Ellie ðŸ˜„";
 			}
 		}
 		if(messaggio.getText().length() > 13)
 		{
-			if(messaggio.getText().substring(0, 13).equals("Il mio nome è"))
+			if(messaggio.getText().substring(0, 13).equals("Il mio nome Ã¨"))
 			{
 				String nome = new String("");
 				for(int i = 14; messaggio.getText().length() > i; i++)
 				{
 					if(messaggio.getText().substring(i, i+1).equals(" "))
 						if(!nome.equals(""))
-							return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie 😄";
+							return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie ðŸ˜„";
 						else
-							return "Il tuo nome è o non è 😄";
+							return "Il tuo nome Ã¨ o non Ã¨ ðŸ˜„";
 					else
 						nome = nome + messaggio.getText().substring(i, i+1);
 				}
 				if(!nome.equals(""))
-					return "Ciao " + nome + ", io sono Ellie 😄";
+					return "Ciao " + nome + ", io sono Ellie ðŸ˜„";
 				else
-					return "Il tuo nome è o non è 😄";
+					return "Il tuo nome Ã¨ o non Ã¨ ðŸ˜„";
 			}
 		}
 		if(messaggio.getText().length() > 7)
@@ -199,16 +201,16 @@ public class Risposta {
 				{
 					if(messaggio.getText().substring(i, i+1).equals(" "))
 						if(!nome.equals(""))
-							return "Ciao " + nome + ", io sono Ellie 😄";
+							return "Ciao " + nome + ", io sono Ellie ðŸ˜„";
 						else
-							return "Tu sei, Egli è 😄";
+							return "Tu sei, Egli Ã¨ ðŸ˜„";
 					else
 						nome = nome + messaggio.getText().substring(i, i+1);
 				}
 				if(!nome.equals(""))
 					return "Ciao " + nome + ", io sono Ellie";
 				else
-					return "Tu sei, Egli è 😄";
+					return "Tu sei, Egli Ã¨ ðŸ˜„";
 			}
 		}
 		
@@ -292,7 +294,7 @@ public class Risposta {
 		{
 		//funzioni standard
 			case("/start"):
-				return "Sono sveglia 😄";
+				return "Sono sveglia ðŸ˜„";
 		//------------------------------------------------------------------------------------------------------
 			case("/personalinfo"):
 				return "Informazioni personali chat: \n "
@@ -450,13 +452,13 @@ public class Risposta {
 		//------------------------------------------------------------------------------------------------------------------
 			//funzioni da USER
 			case("/user"):
-				String text = new String("Qualcosa è andato storto...");
+				String text = new String("Qualcosa Ã¨ andato storto...");
 				try {
 					Message message = null;
 					if(controllaUser() != null)
 					{
 						Main.log.warn(messaggio.getFrom().getUsername() + "(" + messaggio.getFrom().getId() + ") ha tentato nuovamente l'accesso user.");
-						text = "Scusami, ma sei già nella lista degli user, " + controllaUser();
+						text = "Scusami, ma sei giÃ  nella lista degli user, " + controllaUser();
 					}
 					else
 					{
@@ -476,7 +478,8 @@ public class Risposta {
 						}
 					}
 				} catch (IOException e) {
-					Main.log.error("Errore funzione user");
+					Main.log.error("Errore funzione user", e);
+					ErrorReporter.sendError("Errore funzione user " + e.getMessage());
 					e.printStackTrace();
 				}
 			return text;
@@ -512,13 +515,13 @@ public class Risposta {
 			//funzioni da ADMIN
 			
 			case("/admin"):
-				text = new String("Qualcosa è andato storto...");
+				text = new String("Qualcosa Ã¨ andato storto...");
 				try {
 					text = new String();
 					if(controllaAdmin())
 					{
 						Main.log.warn(messaggio.getFrom().getUsername() + "(" + messaggio.getFrom().getId() + ") ha tentato nuovamente l'accesso admin.");
-						text = "Scusami, ma sei già admin";
+						text = "Scusami, ma sei giÃ  admin";
 					}
 						else
 						{
@@ -530,8 +533,8 @@ public class Risposta {
 							if(accesso)
 							{
 								Main.log.warn("ACCESSO ADMIN CONSENTITO A: " + message.getFrom().getUsername() + " - id(" + message.getFrom().getId() + ")");
-								Main.ellie.sendMessage(new ChatId(message.getFrom().getId()), "Papà! ❤❤❤😘");
-								text = "Papà, ti ricordo che la lista dei tuoi comandi è \" /adminhelp \" 😘";
+								Main.ellie.sendMessage(new ChatId(message.getFrom().getId()), "PapÃ ! â�¤â�¤â�¤ðŸ˜˜");
+								text = "PapÃ , ti ricordo che la lista dei tuoi comandi Ã¨ \" /adminhelp \" ðŸ˜˜";
 								aggiungiAdmin();	
 							}
 							else
@@ -541,7 +544,8 @@ public class Risposta {
 							}
 						}
 				} catch (IOException e) {
-					Main.log.error("Errore funzione admin");
+					Main.log.error("Errore funzione admin", e);
+					ErrorReporter.sendError("Errore funzione admin" + e.getMessage());
 					e.printStackTrace();
 				}
 				return text;
@@ -578,19 +582,19 @@ public class Risposta {
 					if(controllaAdmin()) {
 						switch(new Random().nextInt(5)) { //risposta random
 						case(0):
-							s = "Ok papà, ma sei sempre il solito 😑";
+							s = "Ok papÃ , ma sei sempre il solito ðŸ˜‘";
 							break;
 						case(1):
-							s = "Uff... odio questa funzione 😑";
+							s = "Uff... odio questa funzione ðŸ˜‘";
 							break;
 						case(2):
-							s = "Non è carino sai? 😑";
+							s = "Non Ã¨ carino sai? ðŸ˜‘";
 							break;
 						case(3):
-							s = "Penso che sia moralmente scorretto, ma se va bene a te... 😑";
+							s = "Penso che sia moralmente scorretto, ma se va bene a te... ðŸ˜‘";
 							break;
 						default:
-							s = "Mmm... questa è carina. No, stavo scherzando, papì, cambierai mai? 😑";
+							s = "Mmm... questa Ã¨ carina. No, stavo scherzando, papÃ¬, cambierai mai? ðŸ˜‘";
 							break;
 						}
 						Main.ellie.sendPhoto(new ChatId(messaggio.getFrom().getId()), Photo.getAdminImage());
@@ -598,14 +602,15 @@ public class Risposta {
 					return s;
 				} catch(IOException e) {
 					Main.log.error("Erroe nell'invio dell'adminImage");
+					ErrorReporter.sendError("Erroe nell'invio dell'adminImage ", e);
 					e.printStackTrace();
-					return "Scusa papì, ma credo di avere qualche problema, puoi darmi un'occhio quando hai tempo?";
+					return "Scusa papÃ¬, ma credo di avere qualche problema, puoi darmi un'occhio quando hai tempo?";
 				}
 					
 		//---------------------------------------------------------------------------------------------------------------
 			case("/adminexit"):
 				rimuoviAdmin();
-				return "Privilegio da ADMIN rimosso, buona giornata papà ❤😘";
+				return "Privilegio da ADMIN rimosso, buona giornata papÃ  â�¤ðŸ˜˜";
 		//---------------------------------------------------------------------------------------------------------------
 			case("/postino"):
 			
@@ -692,6 +697,7 @@ public class Risposta {
 					}
 				} catch (IOException e) {
 					Main.log.error("Errore nel comando postino");
+					ErrorReporter.sendError("Errore nel comando postino ", e);
 					e.printStackTrace();
 				}
 				return esitopostino;
@@ -754,7 +760,7 @@ public class Risposta {
 			
 			case("/meteo"):
 				try {
-				Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "Seleziona una città dalla lista:\n"
+				Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "Seleziona una cittÃ  dalla lista:\n"
 						+ "/Bergamo\n"
 						+ "/Verona\n"
 						+ "/Milano\n"
@@ -766,7 +772,7 @@ public class Risposta {
 				message = attendiMessaggio();
 				String meteo = Meteo.getMeteo(message.getText());
 				if (meteo.equals("error")) {
-					return "Città non riconosciuta esco dalla funzione meteo. Utilizza /meteo per riprovate e seleziona una città dalla lista";
+					return "CittÃ  non riconosciuta esco dalla funzione meteo. Utilizza /meteo per riprovate e seleziona una cittÃ  dalla lista";
 				}
 				if (meteo.equals("uscita")) {
 					return "Funzione meteo annullata";
@@ -774,9 +780,10 @@ public class Risposta {
 				return meteo;
 				} catch (IOException e) {
 					e.printStackTrace();
+					ErrorReporter.sendError("Errore meteo ", e);
 					Main.log.error("Errore funzione meteo");
 				}
-				return "Ops... Scusami, qualcosa è andato storto... meglio chiamare papà";
+				return "Ops... Scusami, qualcosa Ã¨ andato storto... meglio chiamare papÃ ";
 			
 			//------------------------------------------------------------------------------------------------------
 			
@@ -801,7 +808,7 @@ public class Risposta {
 					Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "ISTRUZIONI:\n\n"
 											 + "Gioca all'impiccato con Ellie!\n"
 											 + "Ellie sceglie casualmente una parola e te devi indovinarla.\n"
-											 + "Puoi provare a dare una lettera, se la lettera è nella parola scelta allora comparirà a schermo, in caso contrario verrà aumentata la figura dell'impiccato, sbagliando 8 volte il gioco finirà in Game Over.\n"
+											 + "Puoi provare a dare una lettera, se la lettera Ã¨ nella parola scelta allora comparirÃ  a schermo, in caso contrario verrÃ  aumentata la figura dell'impiccato, sbagliando 8 volte il gioco finirÃ  in Game Over.\n"
 											 + "\nPer uscire dal gioco usa il comando /exit.\n"
 											 + "\nSe pensi di poter indovinare la parola usa il comando /parola 'parola da indovinare'\n\n"
 											 + "INIZIAMO!");
@@ -826,10 +833,10 @@ public class Risposta {
 								}
 							}
 							if(flag)
-								Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "La lettera " + lettera + " è presente nella parola 😄");
+								Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "La lettera " + lettera + " Ã¨ presente nella parola ðŸ˜„");
 							else
 							{
-								Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "La lettera " + lettera + " non è presente nella parola 😔 Il numero di errori è aumentato di uno");
+								Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "La lettera " + lettera + " non Ã¨ presente nella parola ðŸ˜” Il numero di errori Ã¨ aumentato di uno");
 								fail++;
 							}
 								flag = false;
@@ -852,11 +859,11 @@ public class Risposta {
 										soluzione = soluzione.toUpperCase();
 										if(soluzione.equals(parola))
 										{
-											return "COMPLIMENTI!!!\n\n Hai vinto!\n😄🎉🎉⭐💐😸";
+											return "COMPLIMENTI!!!\n\n Hai vinto!\nðŸ˜„ðŸŽ‰ðŸŽ‰â­�ðŸ’�ðŸ˜¸";
 										}
 										else
 										{
-											Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "Mi dispiace, non è la parola corretta 😔, devo aumentare di uno gli errori");
+											Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "Mi dispiace, non Ã¨ la parola corretta ðŸ˜”, devo aumentare di uno gli errori");
 											fail++;
 										}
 									}
@@ -868,6 +875,7 @@ public class Risposta {
 					}
 				} catch (IOException e) {
 					Main.log.error("Errore nel gioco dell'impiccato");
+					ErrorReporter.sendError("Errore nel gioco dell'impiccato", e);
 					e.printStackTrace();
 				}
 				
@@ -891,9 +899,9 @@ public class Risposta {
 					//---------------------------------------------------
 					Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "BLACKJACK DI ELLIE\n\n"
 							 + "Istruzioni:\n"
-							 + "Il blackjack di Ellie è un blackjack semplice, si gioca con le 52 carte francesi, i giocatori sono 2, te e il banco(Ellie), lo scopo del gioco è cercare di ottenere il punteggio più alto dell'avversario senza superare 21 punti.\n"
-							 + "I punti si calcolano in base al valore della carta: il 2 vale 2 punti, il 3 vale 3 punti, ecc... le figure K, Q, J valgono 10 punti, l'asso può valere o 11 punti o 1 in base alle esigenze."
-							 + "All'inizio Ellie darà due carte a se stessa (una visibile e una coperta) e due carte al giocatore, le iterazioni possibili sono:\n\n"
+							 + "Il blackjack di Ellie Ã¨ un blackjack semplice, si gioca con le 52 carte francesi, i giocatori sono 2, te e il banco(Ellie), lo scopo del gioco Ã¨ cercare di ottenere il punteggio piÃ¹ alto dell'avversario senza superare 21 punti.\n"
+							 + "I punti si calcolano in base al valore della carta: il 2 vale 2 punti, il 3 vale 3 punti, ecc... le figure K, Q, J valgono 10 punti, l'asso puÃ² valere o 11 punti o 1 in base alle esigenze."
+							 + "All'inizio Ellie darÃ  due carte a se stessa (una visibile e una coperta) e due carte al giocatore, le iterazioni possibili sono:\n\n"
 							 + "/carta per ottenere una carta\n"
 							 + "/stop per fermarsi e passare il turno al banco\n"
 							 + "/exit per uscire dal gioco\n\n"
@@ -977,13 +985,13 @@ public class Risposta {
 										temp = puntiBlackjack(carteellie, iellie);
 									}
 									if(temp>21)
-										return "Ellie ha superato i 21 punti, hai vinto!!!\n😄🎉🎉💐🎉🎉😄";
+										return "Ellie ha superato i 21 punti, hai vinto!!!\nðŸ˜„ðŸŽ‰ðŸŽ‰ðŸ’�ðŸŽ‰ðŸŽ‰ðŸ˜„";
 									else {
 										if(temp > puntiBlackjack(cartegiocatore, igiocatore))
 											return "Ellie ha vinto con " + temp + " punti\n i tuoi punti sono: " + puntiBlackjack(cartegiocatore, igiocatore);
 										else
 											if(temp < puntiBlackjack(cartegiocatore, igiocatore))
-												return "Hai superato i " + temp + " di Ellie, hai vinto!!!\n😄🎉🎉💐🎉🎉😄";
+												return "Hai superato i " + temp + " di Ellie, hai vinto!!!\nðŸ˜„ðŸŽ‰ðŸŽ‰ðŸ’�ðŸŽ‰ðŸŽ‰ðŸ˜„";
 											else
 												return "Pareggio, avete totalizzato entrambi " + temp + " punti";
 									}
@@ -1000,6 +1008,7 @@ public class Risposta {
 							}
 						} catch (IOException e) {
 							Main.log.error("Errore gioco blackjack");
+							ErrorReporter.sendError("Errore gioco blackjack", e);
 							e.printStackTrace();
 						}
 					return "Uscita eseguita, blackjack terminato";
@@ -1018,13 +1027,14 @@ public class Risposta {
 					message = attendiMessaggio();
 					InputFile photo = Photo.getImage(new ChatId(message.getFrom().getId()), message.getText());
 					if(photo == null)
-						return "Ops... qualcosa è andato storto, meglio chiamare papà :'(";
+						return "Ops... qualcosa Ã¨ andato storto, meglio chiamare papÃ  :'(";
 					else
 						Main.ellie.sendPhoto(new ChatId(messaggio.getFrom().getId()), photo);
 				} catch (IOException e) {
 					Main.log.error("Errore nell'invio della foto");
+					ErrorReporter.sendError("Errore nell'invio della foto", e);
 					e.printStackTrace();
-					return "Ops... qualcosa è andato storto, meglio chiamare papà :'(";
+					return "Ops... qualcosa Ã¨ andato storto, meglio chiamare papÃ  :'(";
 				}
 				return ANNULLA_SPEDIZIONE_MESSAGGIO;
 				
@@ -1035,8 +1045,9 @@ public class Risposta {
 					Main.ellie.sendAudio(new ChatId(messaggio.getFrom().getId()), Music.getAudio());
 				} catch(IOException e) {
 					Main.log.error("Errore invio del file audio");
+					ErrorReporter.sendError("Errore invio del file audio", e);
 					e.printStackTrace();
-					return "Ops... qualcosa è andato storto, meglio chiamare papà :'(";
+					return "Ops... qualcosa Ã¨ andato storto, meglio chiamare papÃ  :'(";
 				}
 				return ANNULLA_SPEDIZIONE_MESSAGGIO;
 			
@@ -1045,7 +1056,7 @@ public class Risposta {
 		}
 	}
 	//----------------------------------------------------------------------------------------------------------------
-	/**Controlla se nel file risposte.txt c'è il testo del messaggio in arrivo
+	/**Controlla se nel file risposte.txt c'Ã¨ il testo del messaggio in arrivo
 	 * 
 	 * @param messaggio in arrivo
 	 * @return numero riga del testo del messaggio in arrivo, oppure -1 in caso non ci sia
@@ -1240,7 +1251,7 @@ public class Risposta {
 	        }
 	
 			if(firsttime)
-				return "Non è stato possibile effettuare la somma.\n Per una guida su questa funzione digita /calc";
+				return "Non Ã¨ stato possibile effettuare la somma.\n Per una guida su questa funzione digita /calc";
 			else
 				return "Somma : " + somma;
 		} catch(IOException e) {
@@ -1301,11 +1312,12 @@ public class Risposta {
 			}
 			
 			if (firsttime)
-				return "Non è stato possibile eseguire la sottrazione, per informazioni sulla funzione /calc"; 
+				return "Non Ã¨ stato possibile eseguire la sottrazione, per informazioni sulla funzione /calc"; 
 			else
 				return "Differenza : " + dif;
 		} catch (IOException e) {
 			Main.log.error("Errore nel comando differenza");
+			ErrorReporter.sendError("Errore nel comando differenza", e);
 			e.printStackTrace();
 		}
 	return "Ehm... Scusami ma deve esserci stato qualche problemino nel calcolo, non sono riuscita a svolgere l'operazione";
@@ -1359,11 +1371,12 @@ public class Risposta {
 				break;
 			}
 			if (firsttime)
-				return "Non è stato possibile eseguire la moltiplicazione, per informazioni sulla funzione /calc"; 
+				return "Non Ã¨ stato possibile eseguire la moltiplicazione, per informazioni sulla funzione /calc"; 
 			else
 				return "Prodotto : " + prod;
 		} catch (IOException e) {
 			Main.log.error("Errore nel comando prodotto");
+			ErrorReporter.sendError("Errore nel comando prodotto", e);
 		}
 		return "Ehm... Scusami ma deve esserci stato qualche problemino nel calcolo, non sono riuscita a svolgere l'operazione";
 	}
@@ -1403,7 +1416,7 @@ public class Risposta {
 			if (n1string.equals("") || n2string.equals(""))
 				return "Errore nei dati inseriti";
 			if (n2string.equals("0"))
-				return "Impossibile dividere per 0.\nSolo Chuck Norris può dividere per zero, io no";
+				return "Impossibile dividere per 0.\nSolo Chuck Norris puÃ² dividere per zero, io no";
 			try
 			{
 				n1 = Double.parseDouble(n1string);
@@ -1424,6 +1437,7 @@ public class Risposta {
 			return "Quoziente: " + div;
 		} catch(IOException e) {
 			Main.log.info("Errore comando quoziente");
+			ErrorReporter.sendError("Errore comando quoziente", e);
 			e.printStackTrace();
 		}
 		return "Ehm... Scusami ma deve esserci stato qualche problemino nel calcolo, non sono riuscita a svolgere l'operazione";
@@ -1460,11 +1474,12 @@ public class Risposta {
             }
 			
 			if(firsttime)
-				return "Non è stato possibile eseguire la radice quadrata, per informazioni sulla funzione di calcolo digita /calc";
+				return "Non Ã¨ stato possibile eseguire la radice quadrata, per informazioni sulla funzione di calcolo digita /calc";
 			else
 				return "Radice: " + n1;
 		} catch(IOException e) {
 			Main.log.error("Errore nella funzione radice");
+			ErrorReporter.sendError("Errore nella funzione radice", e);
 			e.printStackTrace();
 		}
 		return "Ehm... Scusami ma deve esserci stato qualche problemino nel calcolo, non sono riuscita a svolgere l'operazione";
@@ -1485,7 +1500,7 @@ public class Risposta {
 				{
 					if (messaggio.getText().substring(j, j+1).equals(",") || messaggio.getText().substring(j, j+1).equals("."))
 					{
-						Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "Richiesto un numero senza decimali, userò il numero: " + n1string);
+						Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "Richiesto un numero senza decimali, userÃ² il numero: " + n1string);
 						break;
 					}
 					else
@@ -1507,6 +1522,7 @@ public class Risposta {
 			return "" + i1;
 		} catch(IOException e) {
 			Main.log.error("Errore funzione random");
+			ErrorReporter.sendError("Errore funzione random", e);
 			e.printStackTrace();
 		}
 		return "Ehm... Scusami ma deve esserci stato qualche problemino nel calcolo, non sono riuscita a svolgere l'operazione";
@@ -1555,11 +1571,12 @@ public class Risposta {
             }
 			
 			if (i == 0)
-				return "Non è stato possibile eseguire la media dei numeri";
+				return "Non Ã¨ stato possibile eseguire la media dei numeri";
 			Double media = somma / i;
 			return "Media: " + media;
 		} catch(IOException e) {
 			Main.log.error("Errore metodo media");
+			ErrorReporter.sendError("Errore metodo media", e);
 			e.printStackTrace();
 		}
 		return "Ehm... Scusami ma deve esserci stato qualche problemino nel calcolo, non sono riuscita a svolgere l'operazione";
@@ -1578,31 +1595,31 @@ public class Risposta {
 		{
 		case("Scoiattolo123"): //accesso Gaia
 			user = "Gaia";
-		    return "Hey, ciao Gaia, sono contenta di sentirti 😄 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+		    return "Hey, ciao Gaia, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		case("Alesnap123"): //accesso Ale
 			user = "Ale";
-			return "Hey, ciao Ale, sono contenta di sentirti 😄 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Ale, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		case("Ciaolol")://accesso Matte
 			user = "Matte";
-			return "Hey, ciao Matte, sono contenta di sentirti 😄 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Matte, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		case("Tumama69")://accesso Dinu
 			user = "Dinu";
-			return "Hey, ciao Alberto, sono contenta di sentirti 😄 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Alberto, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		
 		case("Jamal")://accesso Vale
 			user = "Vale";
-			return "Hey, ciao Vale, sono contenta di sentirti 😄 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Vale, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		
 		case("Spongebob32")://accesso Pol
 			user = "Pol";
-			return "Hey, ciao Pol, sono contenta di sentirti 😄 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Pol, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		case("Ginseng")://Accesso Andrea
 			user = "Andrea";
-			return "Hey, ciao Andrea! sono contenta di sentirti 😄 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Andrea! sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		}
 		return "Non credo di conoscerti, scusa";
 	}
-	/**controlla se l'id inserito è nella lista degli user
+	/**controlla se l'id inserito Ã¨ nella lista degli user
 	 * 
 	 * @param  id
 	 * @return nome utente dell'id inserito se trovato, altrimenti ritorna "null"
@@ -1617,9 +1634,9 @@ public class Risposta {
 		if(user != null) {
 			String s = user;
 			user = null;
-			return "Privilegio da USER rimosso, buona giornata " + s + " 😄";
+			return "Privilegio da USER rimosso, buona giornata " + s + " ðŸ˜„";
 		} else {
-		return "Il tuo ID non è stato trovato nella lista degli user";
+		return "Il tuo ID non Ã¨ stato trovato nella lista degli user";
 		}
 	}
 	
@@ -1646,7 +1663,7 @@ public class Risposta {
 		return accesso;
 	}
 	
-	/**Ritorna true se l'id inserito è nella lista degli admin, altrimenti false
+	/**Ritorna true se l'id inserito Ã¨ nella lista degli admin, altrimenti false
 	 * 
 	 * @param id da controllare
 	 * @return
@@ -1761,6 +1778,7 @@ public class Risposta {
 		catch(IOException e)
 		{
 			Main.log.error("\nERRORE: File per il gioco dell'impicato non trovato\n\n");
+			ErrorReporter.sendError("ERRORE: File per il gioco dell'impicato non trovato", e);
 			return "Errore durante il gioco dell'impiccato";
 		}
 	}
@@ -1792,6 +1810,7 @@ public class Risposta {
 		catch (IOException e)
 		{
 			Main.log.error("ERRORE: file impiccato1.txt non trovato");
+			ErrorReporter.sendError("ERRORE: file impiccato1.txt non trovato", e);
 			return "Errore nel gioco dell'impiccato";
 		}
 		return s;
@@ -1928,6 +1947,7 @@ public class Risposta {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					Main.log.error("Errore sync del Thread");
+					ErrorReporter.sendError("Errore sync del Thread", e);
 					e.printStackTrace();
 				}
 			}

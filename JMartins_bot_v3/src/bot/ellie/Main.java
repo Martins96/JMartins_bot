@@ -120,6 +120,7 @@ public class Main {
 						ellie.sendMessage(new ChatId(message.getFrom().getId()), s);
 					} catch (IOException e) {
 						log.error("Errore invio messaggio all'ID bloccato :(");
+						ErrorReporter.sendError("Errore invio messaggio all'ID bloccato :(" + e.getMessage());
 						e.printStackTrace();
 					}
 				} else { // id mittente accettato
@@ -176,6 +177,9 @@ public class Main {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+			ErrorReporter.sendError("Errore ricezione mex" + e.getMessage());
+			log.error("Errore ricezione mex");
+			log.error(e);
 		}
 		return message;
 		
@@ -260,6 +264,7 @@ public class Main {
 			lnr.close();
 		} catch (IOException e) {
 			log.error("Errore gestione eventi");
+			ErrorReporter.sendError("Errore gestione eventi" + e);
 			e.printStackTrace();
 		} 
 	}
@@ -303,6 +308,7 @@ public class Main {
 					    	return;
 					    }
 					}
+					lnr.close();
 				}
 			} else 
 				return;

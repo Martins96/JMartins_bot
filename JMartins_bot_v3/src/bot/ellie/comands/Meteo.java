@@ -1,13 +1,8 @@
 package bot.ellie.comands;
 
-import java.io.IOException;
-
 import com.github.dvdme.ForecastIOLib.FIOCurrently;
 import com.github.dvdme.ForecastIOLib.FIODaily;
 import com.github.dvdme.ForecastIOLib.ForecastIO;
-
-import bot.ellie.Main;
-import me.shib.java.lib.jtelebot.models.types.ChatId;
 
 public class Meteo {
 	

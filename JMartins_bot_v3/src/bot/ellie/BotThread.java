@@ -50,9 +50,11 @@ public class BotThread extends java.lang.Thread {
 			}
 		}	catch (InterruptedException e) {
 			Main.log.fatal("ERRORE FATALE! THREAD " + idThread + "  X-(");
+			ErrorReporter.sendError("ERRORE FATALE! THREAD " + idThread + "  X-(", e);
 			e.printStackTrace();
 		} catch (IOException e) {
 			Main.log.fatal("ERRORE FATALE! THREAD " + idThread + "  X-(");
+			ErrorReporter.sendError("ERRORE FATALE! THREAD " + idThread + "  X-(", e);
 			e.printStackTrace();
 		}
 		
