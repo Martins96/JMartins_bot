@@ -837,8 +837,8 @@ public class Risposta {
 								// Controllo se la parola da indovinare ha ancora "_"
 								boolean bool = true;
 								for(int j = 0; j<lunghezzaparola;j++) {
-									parolaavideo[j] = '_';
-									bool=false;
+									if(parolaavideo[j] == '_')
+											bool=false;
 								}
 								if(bool) {
 									return "COMPLIMENTI!!!\n\n Hai vinto!\nðŸ˜„ðŸŽ‰ðŸŽ‰â­�ðŸ’�ðŸ˜¸";
