@@ -76,7 +76,7 @@ public class Main {
 		System.out.println("    | Ellie, The telegram bot |");
 		System.out.println("    |        Version  3       |");
 		System.out.println("    \\_________________________/");
-		System.out.println("\nCreate by Martins(c)\n--build 3.0.1.0\n\n");
+		System.out.println("\nCreate by Martins(c)\n--build 3.0.1.2\n\n");
 		
 		log.info("\n|/-\\|/-\\|/-\\|/-\\|/-\\|/-\\|/-\\|/-\\|/-\\|/-\\|");
 		log.info("\n\n[  Ellie è attiva! :-)  ]\n");

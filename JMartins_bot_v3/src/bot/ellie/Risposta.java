@@ -330,7 +330,7 @@ public class Risposta {
 				return "/-----------------------------\\"
 						+ "\n| Ellie  - The Telegram Bot |\n"
 						+ "\\-----------------------------/"
-						+ "\n\nVersion : 3.0.1.0\n"
+						+ "\n\nVersion : 3.0.1.2\n"
 						+ "Create by Martins\n"
 						+ "\nEllie is a Telegram Bot programmed in Java for fun, the goal is to make you smile, have a nice day :)";
 				
@@ -832,8 +832,18 @@ public class Risposta {
 									flag=true;
 								}
 							}
-							if(flag)
+							if(flag) {
 								Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "La lettera " + lettera + " Ã¨ presente nella parola ðŸ˜„");
+								// Controllo se la parola da indovinare ha ancora "_"
+								boolean bool = true;
+								for(int j = 0; j<lunghezzaparola;j++) {
+									parolaavideo[j] = '_';
+									bool=false;
+								}
+								if(bool) {
+									return "COMPLIMENTI!!!\n\n Hai vinto!\nðŸ˜„ðŸŽ‰ðŸŽ‰â­�ðŸ’�ðŸ˜¸";
+								}
+							}
 							else
 							{
 								Main.ellie.sendMessage(new ChatId(messaggio.getFrom().getId()), "La lettera " + lettera + " non Ã¨ presente nella parola ðŸ˜” Il numero di errori Ã¨ aumentato di uno");
