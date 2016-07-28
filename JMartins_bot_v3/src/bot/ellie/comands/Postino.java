@@ -1,9 +1,6 @@
 package bot.ellie.comands;
 
-import java.io.IOException;
-
 import bot.ellie.Main;
-import me.shib.java.lib.jtelebot.models.types.ChatId;
 
 public class Postino {
 
@@ -65,11 +62,7 @@ public Postino() {
 		}
 		else
 		{
-			try {
-				Main.ellie.sendMessage(new ChatId(id), "Martins mi ha chiesto di scriverti questo 😊: \n" + testo);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			Main.sendMessage(id, "Martins mi ha chiesto di scriverti questo 😊: \n" + testo);
 			Main.log.info("Inviato messaggio in modalità ADMIN a: " + id);
 			risultato = "Ho inviato il messaggio all'id: " + id + " (" + destinatario + ") 😄";
 		}
@@ -123,11 +116,7 @@ public Postino() {
 		}
 		else
 		{
-			try {
-				Main.ellie.sendMessage(new ChatId(id), mittente +" mi ha chiesto di scriverti questo 😊: \n" + testo);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			Main.sendMessage(id, mittente +" mi ha chiesto di scriverti questo 😊: \n" + testo);
 			Main.log.info(mittente + " ha inviato messaggio in modalità USER a: " + id);
 			risultato = "Ho inviato il messaggio all'id: " + id + " (" + destinatario + ") 😄";
 		}
@@ -243,11 +232,7 @@ public Postino() {
 		}
 		else
 		{
-			try {
-				Main.ellie.sendMessage(new ChatId(id), testomex);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			Main.sendMessage(id, testomex);
 			Main.log.info("Inviato messaggio in modalità SYSTEM a: " + id);
 			risultato = "Ok papà! Ho inviato il messaggio pulito all'id: " + id + " (" + destinatario + ") 😄";
 		}

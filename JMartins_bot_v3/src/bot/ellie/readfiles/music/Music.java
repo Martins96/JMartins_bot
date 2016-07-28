@@ -3,8 +3,9 @@ package bot.ellie.readfiles.music;
 import java.io.File;
 import java.util.Random;
 
+import com.pengrad.telegrambot.model.request.InputFile;
+
 import bot.ellie.Main;
-import me.shib.java.lib.jtelebot.models.types.InputFile;
 
 public class Music {
 
@@ -13,9 +14,9 @@ public class Music {
 	public static InputFile getAudio() {
 		Random rand = new Random();
 		int nMusica = rand.nextInt(NUM_MUSICHE);
-		File musica = new File("src/bot/ellie/readfiles/music/music" + nMusica + ".mp3");
-		Main.log.info("Audio inviato - src/bot/ellie/readfiles/music/music" + nMusica + ".mp3");
-		return new InputFile(musica);
+		File musica = new File("./src/bot/ellie/readfiles/music/music" + nMusica + ".mp3");
+		Main.log.info("Audio inviato - music" + nMusica + ".mp3");
+		return new InputFile("mp3", musica);
 	}
 	
 }

@@ -1,9 +1,8 @@
 package bot.ellie;
 
-import java.io.IOException;
+import com.pengrad.telegrambot.model.Message;
 
-import me.shib.java.lib.jtelebot.models.types.ChatId;
-import me.shib.java.lib.jtelebot.models.updates.Message;
+
 
 public class BotThread extends java.lang.Thread {
 	
@@ -17,7 +16,7 @@ public class BotThread extends java.lang.Thread {
 	
 	public BotThread(short idthread, Message message) {
 		idThread = idthread;
-		idUserThread = message.getFrom().getId();
+		idUserThread = message.from().id();
 		this.message = message;
 		risposta = new Risposta(idThread);
 	}
@@ -39,8 +38,8 @@ public class BotThread extends java.lang.Thread {
 						//la richiesta del messaggio ha generato un tipo di risposta diverso da TESTO
 						
 					} else {
-						Main.log.info("Risposta di Ellie a " + msg.getFrom().getUsername() + " :" + testoRisposta);
-						Main.ellie.sendMessage(new ChatId(msg.getFrom().getId()), testoRisposta);
+						Main.log.info("Risposta di Ellie a " + msg.from().username() + " :" + testoRisposta);
+						Main.sendMessage(msg.from().id(), testoRisposta);
 					}
 					
 					
@@ -52,13 +51,7 @@ public class BotThread extends java.lang.Thread {
 			Main.log.fatal("ERRORE FATALE! THREAD " + idThread + "  X-(");
 			ErrorReporter.sendError("ERRORE FATALE! THREAD " + idThread + "  X-(", e);
 			e.printStackTrace();
-		} catch (IOException e) {
-			Main.log.fatal("ERRORE FATALE! THREAD " + idThread + "  X-(");
-			ErrorReporter.sendError("ERRORE FATALE! THREAD " + idThread + "  X-(", e);
-			e.printStackTrace();
 		}
-		
-		
 	}
 		
 }

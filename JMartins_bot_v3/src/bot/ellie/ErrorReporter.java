@@ -2,8 +2,8 @@ package bot.ellie;
 
 import java.io.IOException;
 
-import me.shib.java.lib.jtelebot.models.types.ChatId;
-import me.shib.java.lib.jtelebot.service.TelegramBot;
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.TelegramBotAdapter;
 
 public class ErrorReporter {
 	
@@ -16,12 +16,8 @@ public class ErrorReporter {
 	 * @param error
 	 */
 	public static void sendError(String error) {
-		EmergencyEllie = TelegramBot.getInstance(TOKEN);
-		try {
-			EmergencyEllie.sendMessage(new ChatId(115949778), "EMERGENCY ELLIE\n\nERRORE :'(\n" + error);
-		} catch (IOException e) {
-			Main.log.fatal("EMERGENCY ELLIE IN ERRORE");
-		}
+		EmergencyEllie = TelegramBotAdapter.buildDebug(TOKEN);
+			EmergencyEllie.sendMessage(115949778, "EMERGENCY ELLIE\n\nERRORE :'(\n" + error);
 	}
 	
 	public static void sendError(String error, Exception e) {

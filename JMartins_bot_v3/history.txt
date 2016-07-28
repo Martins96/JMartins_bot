@@ -6,3 +6,4 @@
 3.0.1.0:Aggiunto invio a bot host in caso di risposta non trovata
 3.0.1.1:Gestione errori - ErrorReporter.java
 3.0.1.2:Sistemato gioco dell'impiccato
+3.1.0.0:Cambio API del bot, adattamenti della ricezione e spedizione messaggi, adattamento immagini e files audio. Controlli su nome e sesso quando cerco risposta da bot host. Adattamenti minori, bug minori sistemati
