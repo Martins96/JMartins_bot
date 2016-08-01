@@ -8,8 +8,10 @@ public class BotThread extends java.lang.Thread {
 	
 	public Message message;
 	private Message msg;
+	public boolean flagThreadLife = true;
 	public short idThread;
 	public long idUserThread; // id dell'utente legato a questo thread
+	public String nameUserThread;
 	private Risposta risposta;
 	
 	public static final String ANNULLA_SPEDIZIONE_MESSAGGIO = "qwerty";
@@ -17,6 +19,7 @@ public class BotThread extends java.lang.Thread {
 	public BotThread(short idthread, Message message) {
 		idThread = idthread;
 		idUserThread = message.from().id();
+		nameUserThread = message.from().firstName() + " " + message.from().lastName() + "(" + message.from().username() + ")";
 		this.message = message;
 		risposta = new Risposta(idThread);
 	}
@@ -27,7 +30,7 @@ public class BotThread extends java.lang.Thread {
 			Message emptyMsg = new Message();
 			
 			synchronized (message) {
-				while (true) {
+				while (flagThreadLife) {
 					while (message.equals(emptyMsg)) {
 						sleep(1000);
 					}

@@ -19,6 +19,8 @@ import java.text.SimpleDateFormat;
 import bot.ellie.comands.*;
 import bot.ellie.readfiles.music.Music;
 import bot.ellie.readfiles.photo.Photo;
+import bot.ellie.utils.ControlliAutoRensponse;
+import bot.ellie.utils.ControlliMessaggiRicevuti;
 
 
 
@@ -62,7 +64,7 @@ public class Risposta {
 		try
 		{
 			String ioMiChiamo;
-			if(!(ioMiChiamo = ioMiChiamo(messaggio)).equals("")) {
+			if(!(ioMiChiamo = ControlliMessaggiRicevuti.ioMiChiamo(messaggio)).equals("")) {
 				return ioMiChiamo;
 			}
 		}
@@ -73,7 +75,7 @@ public class Risposta {
 		}
 		//------------------------------------------------------------------
 				{
-					String comandoDaFrase = setComandoDaFrase(messaggio);
+					String comandoDaFrase = ControlliMessaggiRicevuti.setComandoDaFrase(messaggio);
 					if(!comandoDaFrase.equals(""))
 					{
 						testoMessaggio = comandoDaFrase;
@@ -123,6 +125,7 @@ public class Risposta {
 						ChatterBotSession bot1session = bot1.createSession();
 						Main.log.info("Risposta non trovata, mando richiesta a bot host");
 						risposta = bot1session.think(testoMessaggio);
+						risposta = ControlliAutoRensponse.checkAutobotNome(risposta);
 					} catch (Exception e) {
 						Main.log.error("Errore Cleverbot - ", e);
 						ErrorReporter.sendError("Errore Cleverbot - " + e.getMessage());
@@ -142,176 +145,6 @@ public class Risposta {
 			}
 		}
 		return risposta;
-		}
-	private String ioMiChiamo(Message messaggio) throws ArrayIndexOutOfBoundsException {
-
-
-		if(messaggio.text().length() > 9)
-		{
-			if(messaggio.text().substring(0, 9).equals("Mi chiamo"))
-			{
-				String nome = new String("");
-				for(int i = 10; messaggio.text().length() > i; i++)
-				{
-					if(messaggio.text().substring(i, i+1).equals(" "))
-					{
-						if(!nome.equals(""))
-							return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie ðŸ˜„";
-						else
-							return "Beh, è una cosa strana chiamarsi da soli, comunque io sono Ellie ðŸ˜„";
-					}
-					nome = nome + messaggio.text().substring(i, i+1);
-				}
-				if(!nome.equals(""))
-					return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie ðŸ˜„";
-				else
-					return "Beh, è una cosa strana chiamarsi da soli, comunque io sono Ellie ðŸ˜„";
-			}
-		}
-		if(messaggio.text().length() > 13)
-		{
-			if(messaggio.text().substring(0, 13).equals("Il mio nome è"))
-			{
-				String nome = new String("");
-				for(int i = 14; messaggio.text().length() > i; i++)
-				{
-					if(messaggio.text().substring(i, i+1).equals(" "))
-						if(!nome.equals(""))
-							return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie ðŸ˜„";
-						else
-							return "Il tuo nome è o non è ðŸ˜„";
-					else
-						nome = nome + messaggio.text().substring(i, i+1);
-				}
-				if(!nome.equals(""))
-					return "Ciao " + nome + ", io sono Ellie ðŸ˜„";
-				else
-					return "Il tuo nome è o non è ðŸ˜„";
-			}
-		}
-		if(messaggio.text().length() > 7)
-		{
-			if(messaggio.text().substring(0, 7).equals("Io sono"))
-			{
-				String nome = new String("");
-				for(int i = 8; messaggio.text().length() > i; i++)
-				{
-					if(messaggio.text().substring(i, i+1).equals(" "))
-						if(!nome.equals(""))
-							return "Ciao " + nome + ", io sono Ellie ðŸ˜„";
-						else
-							return "Tu sei, Egli è ðŸ˜„";
-					else
-						nome = nome + messaggio.text().substring(i, i+1);
-				}
-				if(!nome.equals(""))
-					return "Ciao " + nome + ", io sono Ellie";
-				else
-					return "Tu sei, Egli è ðŸ˜„";
-			}
-		}
-		
-		return "";
-	
-	}
-	
-	/**controllo di non dire che mi chiamo in un modo diverso da Ellie
-	 * 
-	 * @param autoResponse da cleverbot
-	 * @return la stessa frase o una frase modificata con il nome Ellie
-	 */
-	private String checkAutobotNome(String autoResponse) {
-		if(autoResponse.length()>12) {
-			if(autoResponse.substring(0, 12).equalsIgnoreCase("io mi chiamo"))
-				return "Io mi chiamo Ellie";
-		}
-		if(autoResponse.length()>9) {
-			if(autoResponse.substring(0,9).equalsIgnoreCase("mi chiamo")) {
-				return "Mi chiamo Ellie";
-			}
-		}
-		if(autoResponse.length()>7) {
-			if(autoResponse.substring(0, 7).equalsIgnoreCase("io sono")) {
-				return "Io sono Ellie";
-			}
-		}
-		if(autoResponse.length()>11) {
-			if(autoResponse.substring(0, 11).equalsIgnoreCase("il mio nome")) {
-				return "Io sono Ellie";
-			}
-		}
-		
-		// check sesso
-		if(autoResponse.length()>9) {
-			if(autoResponse.substring(0, 10).equalsIgnoreCase("io maschio")) {
-				return "Io sono un PC";
-			}
-		}
-		if(autoResponse.length()>14) {
-			if(autoResponse.substring(0, 15).equalsIgnoreCase("io sono maschio")) {
-				return "Io sono un PC";
-			}
-		}
-		if(autoResponse.length()>9) {
-			if(autoResponse.substring(0, 10).equalsIgnoreCase("io ragazzo")) {
-				return "Io sono un PC";
-			}
-		}
-		if(autoResponse.length()>14) {
-			if(autoResponse.substring(0, 15).equalsIgnoreCase("io sono ragazzo")) {
-				return "Io sono un PC";
-			}
-		}
-		if(autoResponse.length()>22) {
-			if(autoResponse.substring(0, 23).equalsIgnoreCase("guarda che sono maschio")) {
-				return "Cerco di fare il meeglio che posso";
-			}
-		}
-		return autoResponse;
-	}
-	
-	private String setComandoDaFrase(Message messaggio) {
-		if(messaggio.text().equals("Sono triste"))
-		{
-			return "/battuta";
-		}
-		if(messaggio.text().equals("Che ore sono?"))
-		{
-			return "/ora";
-		}
-		if(messaggio.text().equals("Sai che ore sono?"))
-		{
-			return "/ora";
-		}
-		if(messaggio.text().equals("Mi puoi dire l'ora?"))
-		{
-			return "/ora";
-		}
-		if(messaggio.text().equals("Impiccato?"))
-		{
-			return "/impiccato";
-		}
-		if(messaggio.text().equals("Blackjack?"))
-		{
-			return "/blackjack";
-		}
-		if(messaggio.text().equals("Avvia l'impiccato"))
-		{
-			return "/impiccato";
-		}
-		if(messaggio.text().equals("Avvia impiccato"))
-		{
-			return "/impiccato";
-		}
-		if(messaggio.text().equals("Avvia blackjack"))
-		{
-			return "/blackjack";
-		}
-		if(messaggio.text().equals("Avvia il blackjack"))
-		{
-			return "/blackjack";
-		}
-		return "";
 	}
 	
 	/**
@@ -346,7 +179,7 @@ public class Risposta {
 		{
 		//funzioni standard
 			case("/start"):
-				return "Sono sveglia ðŸ˜„";
+				return "Sono sveglia ❤";
 		//------------------------------------------------------------------------------------------------------
 			case("/personalinfo"):
 				return "Informazioni personali chat: \n "
@@ -400,21 +233,13 @@ public class Risposta {
 		//-------------------------------------------------------------------------------------------------------
 			case("/battuta"):
 				
-				return comandoBattuta(messaggio);
+				return Battuta.comandoBattuta(messaggio);
 				
 				
 		//--------------------------------------------------------------------------------------------------------
 			case("/perla"):
-				String aforisma = new String();
-				Perla perla = new Perla();
-				int n = random.nextInt(55);
-				try {
-					aforisma = perla.generaPerla(n);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				Main.log.info("perla generata n. " + n);
-				return aforisma;
+				
+				return Perla.comandoPerla();
 				
 		//------------------------------------------------------------------------------------------------------------------
 			case("/ora"):
@@ -426,79 +251,52 @@ public class Risposta {
 		//----------------------------------------------------------------------------------------------------------------
 			//funzione CALC
 			case("/calc"):
-				return "Funzione di calcolo numerale:\n"
-						+ "Fai eseguire i tuoi conti a Ellie! Lei lo fa velocemente e non sbaglia!\n"
-						+ "Comandi:\n"
-						+ "/+ numero1 numero2 numero3 etc...\n"
-						+ "Esegue un addizione tra i numeri inseriti\n"
-						+ "\n/- numero1 numero2 etc...\n"
-						+ "Esegue una sottrazione tra i numeri inseriti\n"
-						+ "\n/x numero1 numero2 etc...\n"
-						+ "Esegue una moltiplicazione tra i numeri inseriti\n"
-						+ "\n/: numero1 numero2\n"
-						+ "Esegue una divisione tra i numeri inseriti (solo 2)\n"
-						+ "\n/media numero1 numero2 numero3 etc...\n"
-						+ "Esegue la media dei numeri inseriti\n"
-						+ "\n/sqrt numero\n"
-						+ "Esegue la radice quadtrata del numero inserito (solo 1)\n"
-						+ "\n/rand numero\n"
-						+ "Genero un numero casuale tra 0 (inclusivo) e il numero inserito (esclusivo)\n"
-						+ "\n/letterarand\n"
-						+ "Genera una lettera dell'alfabeto in modo casuale\n"
-						+ "\nEsempi:\n"
-						+ "/+ 37 84\n"
-						+ "/+ 1 2 3 4 5\n"
-						+ "/- 60 10 30 5\n"
-						+ "/rand 11\n"
-						+ "/media 6 8 9 7 5 10";
+				return Calc.help();
 			
 			//------------------------------------------------------------------------------//
 			
 			case("/+"):
-				return comandoSomma(messaggio);
+				return Calc.comandoSomma(messaggio);
 				
 			//----------------------------------------------------------------------------------//
 			
 			case("/-"):
-				return comandoDifferenza(messaggio);		
+				return Calc.comandoDifferenza(messaggio);		
 		
 			
 			//----------------------------------------------------------------------------------//
 			
 			case("/x"):
-				return comandoProdotto(messaggio);
+				return Calc.comandoProdotto(messaggio);
 				
 			//----------------------------------------------------------------------------------//
 			
 			case("/:"):
-				return comandoQuoziente(messaggio);
+				return Calc.comandoQuoziente(messaggio);
 				
 			//-------------------------------------------------------------------------------------//
 				
 			case("/sqrt"):
-				return comandoRadice(messaggio);
+				return Calc.comandoRadice(messaggio);
 					
 				
 			//-------------------------------------------------------------------------------------//
 			
 				case("/rand"):
-					return comandoRandom(messaggio);
+					return Calc.comandoRandom(messaggio);
 					
 				
 			//-------------------------------------------------------------------------------------//
 				
 				case("/media"):
-					return comandoMedia(messaggio);
+					return Calc.comandoMedia(messaggio);
 			//-------------------------------------------------------------------------------------//
 				
 				case("/letterarand"):
-					return letterarand();
+					return Calc.letterarand();
 			//-------------------------------------------------------------------------------------//
 				case("/moneta"):
-					boolean moneta = random.nextBoolean();
-					if (moneta)
-						return "Testa";
-					return "Croce";
+					return Calc.moneta();
 			//-------------------------------------------------------------------------------------//
 		//------------------------------------------------------------------------------------------------------------------
 			//funzioni da USER
@@ -599,22 +397,19 @@ public class Risposta {
 							+ "/postino\ninvio un messaggio ad un utente, sintassi da seguire:\n/postino 'id destinatario' 'testo del messaggio da inviare'\n"
 							+ "/system\ninvio un messaggio pulito a un utente\n"
 							+ "/adminimage\ninvio un'immagine delle tue...\n"
+							+ "/threadattivi\nvisualizzo i thread attivi\n"
+							+ "/shutdown\nspegnimento di Ellie\n"
 							+ "/adminexit\nesci dalla lista degli admin ";
 				}
 				return lista;
 		//---------------------------------------------------------------------------------------------------------------
 			case("/hddlist"):
-			String HDDRisp = new String("Perdonami, ma non posso accontentarti. Non hai i privilegio da admin per questo comando");
+			String aHDDRisp = new String("Perdonami, ma non posso accontentarti. Non hai i privilegio da admin per questo comando");
 			if (controllaAdmin())
 			{
-				HDDList HDDList = new HDDList();
-				try {
-					HDDRisp = HDDList.generaLista();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				aHDDRisp = HDDList.comandoHDDList();
 			}
-			return HDDRisp;
+			return aHDDRisp;
 		//---------------------------------------------------------------------------------------------------------------
 			case("/adminimage"): {
 				String s = new String("Perdonami, ma non posso accontentarti. Non hai i privilegio da admin per questo comando");
@@ -645,6 +440,20 @@ public class Risposta {
 			case("/adminexit"):
 				rimuoviAdmin();
 				return "Privilegio da ADMIN rimosso, buona giornata papà  😘❤";
+		//---------------------------------------------------------------------------------------------------------------
+			case("/shutdown"):
+				String shutdownRisp = "Scusami, ma non hai i privilegi necessari per questo comando";
+				if(controllaAdmin()) {
+					Main.ellie.sendMessage(messaggio.from().id(), "Papà, sei sicuro di volermi spegnere? 😟 \n/Yep \n\n/Nope");
+					Message m = attendiMessaggio();
+					shutdownRisp = "Ok resto attiva 😘";
+					if(m.text().equals("/Yep")) {
+						shutdownRisp = "Vado a nanna 😇 \n Bye Bye";
+						Shutdown.comandoShutdown();
+					}
+					
+				}
+				return shutdownRisp;
 		//---------------------------------------------------------------------------------------------------------------
 			case("/postino"):
 			
@@ -778,7 +587,7 @@ public class Risposta {
 				{
 					String s = new String("Gli ID legati ai thread sono: \n");
 					for (i = 0; i<Main.nThread; i++)
-						s = s + "Thread " + i + ": " + Main.botThread[i].idUserThread + "\n";
+						s = s + "Thread " + i + ": " + Main.botThread[i].idUserThread + "\n" + Main.botThread[i].nameUserThread + "\n";
 					return "I thread attivi sono: " + Main.nThread + "\n"
 							+ s;
 				}
@@ -1135,336 +944,7 @@ public class Risposta {
 		fr.close();
 		return line;
 	}
-	//-------------------------------------------------------------------------------------------------------------
-	private String comandoBattuta(Message messaggio) {
-		String battutastring = new String ("");
-		int b = 0;
-		Battuta battuta = new Battuta();
-		check = true;
-		String parametroBattuta = "";
-		if(check)
-		{
-			//sistemo parametro battuta
-			for (int j=0; messaggio.text().length() > j; j++)
-			{
-				if (messaggio.text().substring(j, j+1).equals(" "))
-				{
-					parametroBattuta = messaggio.text().substring(j+1).toLowerCase();
-					break;
-				}
-			}
-		}
-		switch (parametroBattuta)
-		{
-		case (""):
-			b = random.nextInt(173) + 1;
-			break;
-		case ("chuck norris"):
-			b = random.nextInt(54) + 50;
-			break;
-		case ("help"):
-			b = -1;
-			break;
-		case ("carabinieri"):
-			b = random.nextInt(17) + 110;
-			break;
-		case ("carabiniere"):
-			b = random.nextInt(17) + 110;
-			break;
-		default:
-				Main.sendMessage(messaggio.from().id(), "Parametro non riconosciuto, ti mando una battuta casuale");
-			b = random.nextInt(127) + 1;
-			break;
-		}
-		if(b == -1)
-		{
-			battutastring = "Help di /battuta:\n"
-					+ "\nGenera una battuta casuale, puoi utilizzare parametri per battute personalizzate, esempio:\n\n /battuta chuck norris \n\ni parametri disponibili sono: \nChuck norris\nCarabinieri\nhelp";
-		}
-		else
-		{
-			try {
-				battutastring = battuta.generaBattuta(b);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		Main.log.info("battuta generata n. " + b);
-		return battutastring;
-	}
-	//----------------------------------------------------------------------------------------------------------
-	//Metodi per /calc
-	private String comandoSomma(Message messaggio) {
-		String n1string = new String("");
-		boolean firsttime = true;
-		double n1 = 0;
-		double somma = 0;
-
-		// sistemo parametro battuta
-		for (int j = 3; messaggio.text().length() > j; j++) {
-			if (messaggio.text().substring(j, j + 1).equals(" ")) {
-				try {
-					n1 = Double.parseDouble(n1string);
-					if (firsttime) {
-						somma = n1;
-						firsttime = false;
-					} else
-						somma = n1 + somma;
-				} catch (NumberFormatException e) {
-					Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-				}
-				n1string = new String("");
-			} else {
-				if (messaggio.text().substring(j, j + 1).equals(","))
-					n1string = n1string + ".";
-				else
-					n1string = n1string + messaggio.text().substring(j, j + 1);
-			}
-		}
-		try {
-			n1 = Double.parseDouble(n1string);
-			somma = n1 + somma;
-		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-		}
-
-		if (firsttime)
-			return "Non è stato possibile effettuare la somma.\n Per una guida su questa funzione digita /calc";
-		else
-			return "Somma : " + somma;
-	}
-	//----------------------------------------------------------------------------------------------------------//
-	//user//
-	private String comandoDifferenza(Message messaggio) {
-		String n1string = new String("");
-		double n1 = 0;
-		double dif = 0;
-		boolean firsttime = true;
-		while (true) {
-			for (int j = 3; messaggio.text().length() > j; j++) {
-				if (messaggio.text().substring(j, j + 1).equals(" ")) {
-					try {
-						n1 = Double.parseDouble(n1string);
-						if (firsttime) {
-							dif = n1;
-							firsttime = false;
-						} else
-							dif = dif - n1;
-					} catch (NumberFormatException e) {
-						Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-					}
-					n1string = new String("");
-				} else {
-					if (messaggio.text().substring(j, j + 1).equals(","))
-						n1string = n1string + ".";
-					else
-						n1string = n1string + messaggio.text().substring(j, j + 1);
-				}
-			}
-			try {
-				n1 = Double.parseDouble(n1string);
-				dif = dif - n1;
-			} catch (NumberFormatException e) {
-				Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-			}
-			break;
-		}
-
-		if (firsttime)
-			return "Non è stato possibile eseguire la sottrazione, per informazioni sulla funzione /calc";
-		else
-			return "Differenza : " + dif;
-	}
 	
-	private String comandoProdotto(Message messaggio) {
-		String n1string = new String("");
-		double n1 = 0;
-		double prod = 1;
-		boolean firsttime = true;
-		while (true) {
-			for (int j = 3; messaggio.text().length() > j; j++) {
-				if (messaggio.text().substring(j, j + 1).equals(" ")) {
-					try {
-						n1 = Double.parseDouble(n1string);
-						if (firsttime) {
-							prod = n1;
-							firsttime = false;
-						} else
-							prod = prod * n1;
-					} catch (NumberFormatException e) {
-						Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-					}
-					n1string = new String("");
-				} else {
-					if (messaggio.text().substring(j, j + 1).equals(","))
-						n1string = n1string + ".";
-					else
-						n1string = n1string + messaggio.text().substring(j, j + 1);
-				}
-			}
-			try {
-				n1 = Double.parseDouble(n1string);
-				prod = prod * n1;
-			} catch (NumberFormatException e) {
-				Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-			}
-			break;
-		}
-		if (firsttime)
-			return "Non è stato possibile eseguire la moltiplicazione, per informazioni sulla funzione /calc";
-		else
-			return "Prodotto : " + prod;
-	}
-
-	private String comandoQuoziente(Message messaggio) {
-		String n1string = new String("");
-		String n2string = new String("");
-		double n2 = 0;
-		double n1 = 0;
-		double div = 1;
-
-		for (int j = 0; messaggio.text().length() > j; j++) {
-			if (messaggio.text().substring(j, j + 1).equals(" ")) {
-				j++;
-				while (messaggio.text().length() > j) {
-					if (messaggio.text().substring(j, j + 1).equals(" ")) {
-						j++;
-						while (messaggio.text().length() > j) {
-							if (messaggio.text().substring(j, j + 1).equals(" "))
-								break;
-							n2string = n2string + messaggio.text().substring(j, j + 1);
-							j++;
-						}
-						break;
-					}
-					n1string = n1string + messaggio.text().substring(j, j + 1);
-					j++;
-				}
-			}
-		}
-		// controlli vari...
-		if (n1string.equals("") || n2string.equals(""))
-			return "Errore nei dati inseriti";
-		if (n2string.equals("0"))
-			return "Impossibile dividere per 0.\nSolo Chuck Norris può dividere per zero, io no";
-		try {
-			n1 = Double.parseDouble(n1string);
-		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-		}
-		try {
-			n2 = Double.parseDouble(n2string);
-		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-		}
-		div = n1 / n2;
-		return "Quoziente: " + div;
-	}
-
-	private String comandoRadice(Message messaggio) {
-		String n1string = new String("");
-		double n1 = 0;
-		boolean firsttime = true;
-
-		for (int j = 6; messaggio.text().length() > j; j++) {
-			if (messaggio.text().substring(j, j + 1).equals(" "))
-				break;
-			else {
-				if (messaggio.text().substring(j, j + 1).equals(","))
-					n1string = n1string + ".";
-				else
-					n1string = n1string + messaggio.text().substring(j, j + 1);
-			}
-		}
-		try {
-			n1 = Double.parseDouble(n1string);
-			if (n1 < 0)
-				return "Impossibile calcolare la radice quadrata di un numero negativo";
-			n1 = Math.sqrt(n1);
-			firsttime = false;
-		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-		}
-
-		if (firsttime)
-			return "Non è stato possibile eseguire la radice quadrata, per informazioni sulla funzione di calcolo digita /calc";
-		else
-			return "Radice: " + n1;
-	}
-	
-	private String comandoRandom(Message messaggio) {
-			String n1string = new String("");
-			int i1 = 0;
-			
-			if (messaggio.text().length() == 6)
-				return "Richiesto numero per limite massimo (esclusivo)";
-			
-			for (int j=6; messaggio.text().length() > j; j++)
-			{
-				if (messaggio.text().substring(j, j+1).equals(" "))
-					break;
-				else
-				{
-					if (messaggio.text().substring(j, j+1).equals(",") || messaggio.text().substring(j, j+1).equals("."))
-					{
-						Main.sendMessage(messaggio.from().id(), "Richiesto un numero senza decimali, userò il numero: " + n1string);
-						break;
-					}
-					else
-						n1string = n1string + messaggio.text().substring(j, j+1);
-				}
-			}
-			
-			try
-			{	
-				i1 = Integer.parseInt(n1string);
-				if (i1 < 0)
-					return "Richiesto un numero senza decimali e positivo";
-				i1 = random.nextInt(i1);
-			}
-			catch(NumberFormatException e)
-			{
-				return "Non riesco a capire il numero: " + n1string;
-            }
-			return "" + i1;
-	}
-	
-	private String comandoMedia(Message messaggio) {
-		String n1string = new String("");
-		double somma = 0;
-		short i = 0;
-		double n1 = 0;
-
-		for (int j = 7; messaggio.text().length() > j; j++) {
-			if (messaggio.text().substring(j, j + 1).equals(" ")) {
-				try {
-					n1 = Double.parseDouble(n1string);
-					i++;
-					somma = n1 + somma;
-				} catch (NumberFormatException e) {
-					Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-				}
-				n1string = new String("");
-			} else {
-				if (messaggio.text().substring(j, j + 1).equals(","))
-					n1string = n1string + ".";
-				else
-					n1string = n1string + messaggio.text().substring(j, j + 1);
-			}
-		}
-		try {
-			n1 = Double.parseDouble(n1string);
-			i++;
-			somma = n1 + somma;
-		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
-		}
-
-		if (i == 0)
-			return "Non è stato possibile eseguire la media dei numeri";
-		Double media = somma / i;
-		return "Media: " + media;
-	}
 	//----------------------------------------------------------------------------------------------------------
 	// user
 	/**aggiunge l'id alla lista utenti in base alla password inserita
@@ -1479,27 +959,27 @@ public class Risposta {
 		{
 		case("Scoiattolo123"): //accesso Gaia
 			user = "Gaia";
-		    return "Hey, ciao Gaia, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+		    return "Hey, ciao Gaia, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		case("Alesnap123"): //accesso Ale
 			user = "Ale";
-			return "Hey, ciao Ale, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Ale, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		case("Ciaolol")://accesso Matte
 			user = "Matte";
-			return "Hey, ciao Matte, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Matte, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		case("Tumama69")://accesso Dinu
 			user = "Dinu";
-			return "Hey, ciao Alberto, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Alberto, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		
 		case("Jamal")://accesso Vale
 			user = "Vale";
-			return "Hey, ciao Vale, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Vale, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		
 		case("Spongebob32")://accesso Pol
 			user = "Pol";
-			return "Hey, ciao Pol, sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Pol, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		case("Ginseng")://Accesso Andrea
 			user = "Andrea";
-			return "Hey, ciao Andrea! sono contenta di sentirti ðŸ˜„ - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
+			return "Hey, ciao Andrea! sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		}
 		return "Non credo di conoscerti, scusa";
 	}
@@ -1518,7 +998,7 @@ public class Risposta {
 		if(user != null) {
 			String s = user;
 			user = null;
-			return "Privilegio da USER rimosso, buona giornata " + s + " ðŸ˜„";
+			return "Privilegio da USER rimosso, buona giornata " + s + " 😊";
 		} else {
 		return "Il tuo ID non è stato trovato nella lista degli user";
 		}
@@ -1547,9 +1027,8 @@ public class Risposta {
 		return accesso;
 	}
 	
-	/**Ritorna true se l'id inserito è nella lista degli admin, altrimenti false
+	/**Ritorna true se l'id è nella lista degli admin, altrimenti false
 	 * 
-	 * @param id da controllare
 	 * @return
 	 */
 	public boolean controllaAdmin()
@@ -1568,71 +1047,7 @@ public class Risposta {
 	{
 		adminid = false;
 	}
-	/**
-	 * Genera una lettera casuale.
-	 * Nessun parametro richiesto
-	 */
-	public String letterarand()
-	{
-		int i = random.nextInt(26);
-		switch(i)
-		{
-			case(0):
-				return "X";
-			case(1):
-				return "J";
-			case(2):
-				return "C";
-			case(3):
-				return "D";
-			case(4):
-				return "E";
-			case(5):
-				return "F";
-			case(6):
-				return "G";
-			case(7):
-				return "H";
-			case(8):
-				return "I";
-			case(9):
-				return "B";
-			case(10):
-				return "K";
-			case(11):
-				return "L";
-			case(12):
-				return "M";
-			case(13):
-				return "N";
-			case(14):
-				return "O";
-			case(15):
-				return "P";
-			case(16):
-				return "Q";
-			case(17):
-				return "R";
-			case(18):
-				return "S";
-			case(19):
-				return "T";
-			case(20):
-				return "U";
-			case(21):
-				return "V";
-			case(22):
-				return "W";
-			case(23):
-				return "A";
-			case(24):
-				return "Y";
-			case(25):
-				return "Z";
-			default:
-				return "A";
-		}
-	}
+	
 	
 	//------------------------------------------------------------------------------------------------------------
 	//IMPICCATO

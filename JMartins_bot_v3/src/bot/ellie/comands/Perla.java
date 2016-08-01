@@ -3,6 +3,9 @@ package bot.ellie.comands;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
+
+import bot.ellie.Main;
 
 public class Perla {
 
@@ -13,7 +16,7 @@ public class Perla {
 	 * 
 	 * @param numero della battuta da dire
 	 */
-	public String generaPerla(int i) throws IOException
+	private static String generaPerla(int i) throws IOException
 	{
 		String file = "src/bot/ellie/readfiles/perle.txt";
 		
@@ -30,6 +33,19 @@ public class Perla {
     	b.close();
     	f.close();
 		return t;
+	}
+	
+	public static String comandoPerla() {
+		Random random = new Random();
+		String aforisma = new String();
+		int n = random.nextInt(55);
+		try {
+			aforisma = generaPerla(n);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Main.log.info("perla generata n. " + n);
+		return aforisma;
 	}
 	
 }

@@ -4,13 +4,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import bot.ellie.ErrorReporter;
+
 public class HDDList {
 
 	public HDDList() {
 		
 	}
 	
-	public String generaLista() throws IOException
+	private static String generaLista() throws IOException
 	{
 		String s = "";
 		
@@ -28,5 +30,17 @@ public class HDDList {
 	    b.close();
 	    f.close();
 		return s;
+	}
+	
+	public static String comandoHDDList() {
+		
+		String aHDDRisp = "Scusami, qualcosa è andato storto...";
+		try {
+			aHDDRisp = generaLista();
+		} catch (IOException e) {
+			e.printStackTrace();
+			ErrorReporter.sendError("Errore comandoHDDList", e);
+		}
+		return aHDDRisp;
 	}
 }
