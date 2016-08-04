@@ -16,6 +16,7 @@ public class Help {
 			+ "\n/calc\napre menu di calcolatrice e generazione numeri casuali\n"
 			+ "\n/dado\nlancio un dado(ti dico un valore casuale tra 1 e 6)\n"
 			+ "\n/moneta\nlancio una moneta(ti dico testa o croce in maniera casuale)\n"
+			+ "\n/shared\naccedi ai files condivisi in cloud\n"
 			+ "\n/impiccato\ngioca al gioco dell'impiccato\n"
 			+ "\n/blackjack\ngioca a blackjack con Ellie\n"
 			+ "\n/personalinfo\nvisualizza informazioni personali\n"
@@ -38,6 +39,7 @@ public class Help {
 	
 	public static final String CLOUD_HELP = ">.::Help::.\n"
 			+ "get\n   download a file\n"
+			+ "getall\n   download all file in current dir\n"
 			+ "ls\n   list of files\n"
 			+ "mkdir\n   create a new folder\n"
 			+ "rename\n   rename a file or directory\n"

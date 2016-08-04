@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 
 import bot.ellie.comands.*;
 import bot.ellie.comands.clouding.Cloud;
+import bot.ellie.comands.clouding.Shared;
 import bot.ellie.utils.*;
 
 
@@ -429,16 +430,16 @@ public class Risposta {
 		//---------------------------------------------------------------------------------------------------------------	
 				
 			case("/cloud"):
-			if(controllaAdmin()){
+//			if(controllaAdmin()){
 				Main.sendMessage(messaggio.from().id(), "Avvio modalità clouding...");
 				Main.log.info(messaggio.from().firstName() + messaggio.from().lastName() + messaggio.from().username() + ""
 						+ "(" + messaggio.from().id() + ") ENTRA IN MODALITA' CLOUD");
 				
 				Cloud cloudModality = new Cloud(messaggio.from().id(), idthread);
 				cloudModality.startCloudModality();
-			} else {
-				return "Non hai i privilegi necessari per questa funzione, accedi tramite /user";
-			}
+//			} else {
+//				return "Non hai i privilegi necessari per questa funzione, accedi tramite /admin";
+//			}
 				return "Fine modalità clouding";
 				
 		//---------------------------------------------------------------------------------------------------------------
@@ -577,6 +578,17 @@ public class Risposta {
 				}
 				else
 					return "Non hai i privilegi necessari per questo comando";
+			//------------------------------------------------------------------------------------------------------
+			
+			case("/shared"):
+				Main.sendMessage(messaggio.from().id(), "Avvio modalità clouding...");
+				Main.log.info(messaggio.from().firstName() + messaggio.from().lastName() + messaggio.from().username() + ""
+						+ "(" + messaggio.from().id() + ") ENTRA IN MODALITA' CLOUD");
+				
+				Shared shared = new Shared(messaggio.from().id(), idthread);
+				return shared.startSharedFileMode();
+				
+			
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/meteo"):

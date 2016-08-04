@@ -8,11 +8,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.request.InputFile;
 import com.pengrad.telegrambot.request.GetFile;
 import com.pengrad.telegrambot.response.GetFileResponse;
+
+import static java.nio.file.StandardCopyOption.*;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
@@ -43,8 +47,17 @@ public class Cloud {
 			case("cd"):
 				cd();
 			break;
+			
+			case("cp"):
+				cp();
+			break;
+			
 			case("get"):
 				get();
+			break;
+			
+			case("getall"):
+				getall();
 			break;
 			
 			case("help"):
@@ -59,9 +72,14 @@ public class Cloud {
 				mkdir();
 			break;
 			
+			case("move"):
+				move();
+			break;
+			
 			case("rename"):
 				rename();
 			break;
+			
 			case("rm"):
 				rm();
 			break;
@@ -98,7 +116,7 @@ public class Cloud {
 		s = s + " \\                                         .'\n";
 		s = s + "   ~- ._ ,. ,....,.,......, ,....... -~   \n";
 		s = s + "              '               '         \n"
-				+ "_.::CLOUD READY::._\n__build 0.1\n\n Welcome Martins <3";
+				+ "_.::CLOUD READY::._\n__build 0.2\n\n Welcome Martins <3";
 		sendMessage(s);
 	}
 	
@@ -112,7 +130,7 @@ public class Cloud {
 		while(flag) {
 			while (Main.botThread[idthread].message.equals(emptyMessage)) {
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					Main.log.error("Errore sync del Thread");
 					ErrorReporter.sendError("Errore sync del Thread", e);
@@ -139,7 +157,7 @@ public class Cloud {
 		while(flag) {
 			while (Main.botThread[idthread].message.equals(emptyMessage)) {
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					Main.log.error("Errore sync del Thread");
 					ErrorReporter.sendError("Errore sync del Thread", e);
@@ -217,6 +235,43 @@ public class Cloud {
 		Main.sendMessage(idUser, text);
 	}
 	
+	private void cdback1() {
+		String[] splittedPath = PATH.split("/");
+		int indexRoot = 0;
+		for(int i = 0; i<splittedPath.length; i++) {
+			if(splittedPath[i].equalsIgnoreCase("root")) {
+				indexRoot = i;
+				continue;
+			}
+		}
+		if(indexRoot == splittedPath.length - 1) {
+			sendMessage("!! You're in root directory !!");
+		} else {
+			PATH = new String();
+			for(int i = 0; i<splittedPath.length-1; i++) {
+				PATH = PATH + splittedPath[i] + "/";
+			}
+		}
+	}
+	private void cdbackall() {
+		PATH = Main.PATH_INSTALLAZIONE + "/root/";
+	}
+	
+	private void rmdir(String[]entries, File file) {
+		for(String s: entries){
+		    File currentFile = new File(file.getPath(),s);
+		    if(currentFile.isDirectory())
+		    	if(currentFile.list().length != 0)
+		    		rmdir(currentFile.list(), currentFile);
+		    currentFile.delete();
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -232,7 +287,7 @@ public class Cloud {
 				if (listOfFiles[i].isFile()) {
 					lista = lista + listOfFiles[i].getName() + "\n";
 				} else if (listOfFiles[i].isDirectory()) {
-					lista = lista + "[Dir]" + listOfFiles[i].getName() + "\\\n";
+					lista = "[Dir]" + listOfFiles[i].getName() + "\\\n" + lista;
 				}
 			}
 			sendMessage(lista);
@@ -244,7 +299,7 @@ public class Cloud {
 	
 	private void mkdir() {
 		String folderName = attendiMessaggio(">Enter folder name...").text();
-		File folder = new File(PATH + "/" + folderName);
+		File folder = new File(PATH + folderName);
 		
 		folder.mkdir();
 		
@@ -253,7 +308,7 @@ public class Cloud {
 	
 	private void rm() {
 		String fileName = attendiMessaggio(">Enter file to delete...").text();
-		File file = new File(PATH + "/" + fileName);
+		File file = new File(PATH + fileName);
 		if(file.isDirectory()) { // è una cartella
 			String[]entries = file.list();
 			if(entries.length == 0) { // cartella vuota
@@ -273,15 +328,7 @@ public class Cloud {
 				file.delete();
 		}
 	}
-	private void rmdir(String[]entries, File file) {
-		for(String s: entries){
-		    File currentFile = new File(file.getPath(),s);
-		    if(currentFile.isDirectory())
-		    	if(currentFile.list().length != 0)
-		    		rmdir(currentFile.list(), currentFile);
-		    currentFile.delete();
-		}
-	}
+	
 	
 	private void send() {
 		
@@ -335,6 +382,8 @@ public class Cloud {
 		
 		if(newPath.equals("..")){
 			cdback1();
+		} else if(newPath.equalsIgnoreCase("./")) {
+			cdbackall();
 		} else {
 			File file = new File(PATH + newPath);
 			if(file.exists() && file.isDirectory()) {
@@ -344,26 +393,132 @@ public class Cloud {
 			}
 		}
 	}
-	private void cdback1() {
-		String[] splittedPath = PATH.split("/");
-		int indexRoot = 0;
-		for(int i = 0; i<splittedPath.length; i++) {
-			if(splittedPath[i].equalsIgnoreCase("root")) {
-				indexRoot = i;
-				continue;
+	
+	private void getall() {
+		File folder = new File(PATH);
+		File[] listOfFiles = folder.listFiles();
+		String lista = new String();
+		
+		if(listOfFiles.length > 0){
+			for (int i = 0; i < listOfFiles.length; i++) {
+				if (listOfFiles[i].isFile()) {
+					InputFile inputFile = new InputFile("", listOfFiles[i]);
+					Main.sendDocument(idUser, inputFile);
+				} else if (listOfFiles[i].isDirectory()) {
+					lista = lista + "[Dir]" + listOfFiles[i].getName() + "\\\n";
+				}
 			}
-		}
-		if(indexRoot == splittedPath.length - 1) {
-			sendMessage("!! You're in root directory !!");
+			if(!lista.equals(""))
+				sendMessage(lista);
 		} else {
-			PATH = new String();
-			for(int i = 0; i<splittedPath.length-1; i++) {
-				PATH = PATH + splittedPath[i] + "/";
-			}
+			sendMessage("!! No files or dirs found !!");
 		}
-		
-		
-		
 	}
+	
+	
+	private void move() {
+		String nameFile = attendiMessaggio(">Enter the file to move").text();
+		File file = new File(PATH + nameFile);
+		if(file.exists()) {
+			String destination = attendiMessaggio(">Ok, where I move it?").text();
+			if(destination.length()>0 && !destination.substring(0, 1).equals("/"))
+				destination = "/" + destination;
+			destination = Main.PATH_INSTALLAZIONE + "/root" + destination;
+			if(destination.length()>0 && !destination.substring(destination.length()-2, destination.length()-1).equals("/"))
+				destination = destination + "/";
+			File destinationPath = new File(destination);
+			if(destinationPath.exists() && destinationPath.isDirectory()) {
+				try {
+					if(new File(destinationPath + "/" + nameFile).exists()) {
+						if(attendiMessaggio(">The file in the target location alredy exists, Overwrite it? Y/N").text().equalsIgnoreCase("Y")) {
+							Files.move(Paths.get(file.getPath()), Paths.get(destinationPath + "/" + nameFile), REPLACE_EXISTING);
+						}
+						
+					} else {
+						Files.move(Paths.get(file.getPath()), Paths.get(destinationPath + "/" + nameFile));
+					}
+				} catch (IOException e) {
+					sendMessage("!! I have a problem with this operation !!");
+				}
+			} else {
+				String createPath = attendiMessaggio(" >!Destination folder not exist. \n You want create it? Y/N").text();
+				if(createPath.equals("Y")){
+					String[] splittedPath = destination.split("/");
+					String tempPath = new String();
+					for(int i = 0; splittedPath.length > i; i++) {
+						tempPath = tempPath + splittedPath[i] + "/";
+						File tempFile = new File(tempPath);
+						if(!tempFile.exists() || !tempFile.isDirectory()) {
+							tempFile.mkdir();
+						}
+					}
+					try {
+						Files.move(Paths.get(file.getPath()), Paths.get(destinationPath + "/" + nameFile));
+					} catch (IOException e) {
+						sendMessage("!! I have a problem with this operation !!");
+					}
+				} else {
+					sendMessage("Comand cancelled");
+				}
+			}
+			
+		} else {
+			sendMessage("!! 404 File not found !!");
+		}
+	}
+	
+	private void cp() {
+		String nameFile = attendiMessaggio(">Enter the file to copy").text();
+		File file = new File(PATH + nameFile);
+		if(file.exists()) {
+			String destination = attendiMessaggio(">Ok, where I copy it?").text();
+			if(destination.length()>0 && !destination.substring(0, 1).equals("/"))
+				destination = "/" + destination;
+			destination = Main.PATH_INSTALLAZIONE + "/root" + destination;
+			if(destination.length()>0 && !destination.substring(destination.length()-2, destination.length()-1).equals("/"))
+				destination = destination + "/";
+			File destinationPath = new File(destination);
+			if(destinationPath.exists() && destinationPath.isDirectory()) {
+				try {
+					if(new File(destinationPath + "/" + nameFile).exists()) {
+						if(attendiMessaggio(">The file in the target location alredy exists, Overwrite it? Y/N").text().equalsIgnoreCase("Y")) {
+							Files.copy(Paths.get(file.getPath()), Paths.get(destinationPath + "/" + nameFile), REPLACE_EXISTING);
+						}
+						
+					} else {
+						Files.copy(Paths.get(file.getPath()), Paths.get(destinationPath + "/" + nameFile));
+					}
+				} catch (IOException e) {
+					sendMessage("!! I have a problem with this operation !!");
+				}
+			} else {
+				String createPath = attendiMessaggio(" >!Destination folder not exist. \n You want create it? Y/N").text();
+				if(createPath.equals("Y")){
+					String[] splittedPath = destination.split("/");
+					String tempPath = new String();
+					for(int i = 0; splittedPath.length > i; i++) {
+						tempPath = tempPath + splittedPath[i] + "/";
+						File tempFile = new File(tempPath);
+						if(!tempFile.exists() || !tempFile.isDirectory()) {
+							tempFile.mkdir();
+						}
+					}
+					try {
+						Files.copy(Paths.get(file.getPath()), Paths.get(destinationPath + "/" + nameFile));
+					} catch (IOException e) {
+						sendMessage("!! I have a problem with this operation !!");
+					}
+				} else {
+					sendMessage("Comand cancelled");
+				}
+			}
+			
+		} else {
+			sendMessage("!! 404 File not found !!");
+		}
+	}
+	
+	
+	
 	
 }

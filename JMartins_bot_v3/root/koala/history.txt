@@ -9,4 +9,3 @@
 3.1.0.0:Cambio API del bot, adattamenti della ricezione e spedizione messaggi, adattamento immagini e files audio. Controlli su nome e sesso quando cerco risposta da bot host. Adattamenti minori, bug minori sistemati
 3.1.1.0:Aggiunto shutdown per admin, struttura per configurazione per installazione jar
 3.1.2.0:Scrittura immagine in arrivo come asciiart in console. Aggiunta modalità cloud per admin
-3.1.2.1:Aggiunte funzionalità a /cloud per admin, aggiunto /shared
