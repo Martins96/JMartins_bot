@@ -17,10 +17,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import bot.ellie.comands.*;
-import bot.ellie.readfiles.music.Music;
-import bot.ellie.readfiles.photo.Photo;
-import bot.ellie.utils.ControlliAutoRensponse;
-import bot.ellie.utils.ControlliMessaggiRicevuti;
+import bot.ellie.comands.clouding.Cloud;
+import bot.ellie.utils.*;
 
 
 
@@ -190,25 +188,7 @@ public class Risposta {
 						+ "\n\n\bUsername Utente\b\n" + messaggio.from().username();
 		//-------------------------------------------------------------------------------------------------------
 			case("/help"):
-				return "Lista d'aiuto:\n"
-						+ "------------------------------------"
-						+ "\n/admin\nlog in da admin\n"
-						+ "\n/user\nlog in da user\n"
-						+ "\n/battuta\ncerco di alzarti un po' il morale\nper ulteriori informazioni digita /battuta help\n"
-						+ "\n/perla\nscrivo una perla di saggezza\n"
-						+ "\n/meteo\nprevisioni del meteo di Ellie\n"
-						+ "\n/asciiart\ngenero un disegno in ASCII\n"
-						+ "\n/foto\ninvia una foto\n"
-						+ "\n/musica\ninvia una canzone\n"
-						+ "\n/ora\nti dico che ore sono\n"
-						+ "\n/calc\napre menu di calcolatrice e generazione numeri casuali\n"
-						+ "\n/dado\nlancio un dado(ti dico un valore casuale tra 1 e 6)\n"
-						+ "\n/moneta\nlancio una moneta(ti dico testa o croce in maniera casuale)\n"
-						+ "\n/impiccato\ngioca al gioco dell'impiccato\n"
-						+ "\n/blackjack\ngioca a blackjack con Ellie\n"
-						+ "\n/personalinfo\nvisualizza informazioni personali\n"
-						+ "\n/botinfo\nvisualizza informazioni del bot\n"
-						+ "------------------------------------";
+				return Help.HELP;
 		//------------------------------------------------------------------------------------------------------
 			case("/botinfo"):
 				return "/-----------------------------\\"
@@ -336,9 +316,7 @@ public class Risposta {
 				return "Scusami, ma non fai parte della lista degli user";
 			}
 			else
-				return "Lista dei comandi da utente:\n"
-					+ "\n/postino\nInvia un messaggio ad  un utente, sintassi da seguire:\n/postino 'id destinatario' 'testo del messaggio da inviare'\n"
-					+ "\n/userexit\nesci dalla lista degli utenti";
+				return Help.USER_HELP;
 		
 		case("/userexit"):
 			id = messaggio.from().id();
@@ -392,14 +370,7 @@ public class Risposta {
 				String lista = new String("Perdonami, ma non posso accontentarti. Non hai i privilegio da admin per questo comando");
 				if (controllaAdmin())
 				{
-					lista = "Lista:\n"
-							+ "/hddlist\nvisualizza lista degli HDD "
-							+ "/postino\ninvio un messaggio ad un utente, sintassi da seguire:\n/postino 'id destinatario' 'testo del messaggio da inviare'\n"
-							+ "/system\ninvio un messaggio pulito a un utente\n"
-							+ "/adminimage\ninvio un'immagine delle tue...\n"
-							+ "/threadattivi\nvisualizzo i thread attivi\n"
-							+ "/shutdown\nspegnimento di Ellie\n"
-							+ "/adminexit\nesci dalla lista degli admin ";
+					lista = Help.ADMIN_HELP;
 				}
 				return lista;
 		//---------------------------------------------------------------------------------------------------------------
@@ -431,7 +402,7 @@ public class Risposta {
 							s = "Mmm... questa è carina. No, stavo scherzando, papà, cambierai mai? 😑";
 							break;
 						}
-						Main.ellie.sendPhoto(messaggio.from().id(), Photo.getAdminImage(), null, 0, null);
+						Main.sendPhoto(messaggio.from().id(), Photo.getAdminImage());
 					}
 					return s;
 				}
@@ -444,7 +415,7 @@ public class Risposta {
 			case("/shutdown"):
 				String shutdownRisp = "Scusami, ma non hai i privilegi necessari per questo comando";
 				if(controllaAdmin()) {
-					Main.ellie.sendMessage(messaggio.from().id(), "Papà, sei sicuro di volermi spegnere? 😟 \n/Yep \n\n/Nope");
+					Main.sendMessage(messaggio.from().id(), "Papà, sei sicuro di volermi spegnere? 😟 \n/Yep \n\n/Nope");
 					Message m = attendiMessaggio();
 					shutdownRisp = "Ok resto attiva 😘";
 					if(m.text().equals("/Yep")) {
@@ -454,6 +425,22 @@ public class Risposta {
 					
 				}
 				return shutdownRisp;
+				
+		//---------------------------------------------------------------------------------------------------------------	
+				
+			case("/cloud"):
+			if(controllaAdmin()){
+				Main.sendMessage(messaggio.from().id(), "Avvio modalità clouding...");
+				Main.log.info(messaggio.from().firstName() + messaggio.from().lastName() + messaggio.from().username() + ""
+						+ "(" + messaggio.from().id() + ") ENTRA IN MODALITA' CLOUD");
+				
+				Cloud cloudModality = new Cloud(messaggio.from().id(), idthread);
+				cloudModality.startCloudModality();
+			} else {
+				return "Non hai i privilegi necessari per questa funzione, accedi tramite /user";
+			}
+				return "Fine modalità clouding";
+				
 		//---------------------------------------------------------------------------------------------------------------
 			case("/postino"):
 			
@@ -508,7 +495,7 @@ public class Risposta {
 								return "Comando annullato";
 						}
 						else if (destinatario.equals("help"))
-								if (mittente.equals("null"))
+								if (mittente == null)
 									esitopostino = postino.helpadmin();
 								else
 									esitopostino = postino.helpuser(); 
@@ -519,16 +506,13 @@ public class Risposta {
 							//messaggio in arrivo
 							if(message.text() != null)
 							{
-								if(message.from().id() == idthread)
-								{
-									testomex = message.text();
-								}
+								testomex = message.text();
 							}
 						}
 						if (testomex.equals("/exit"))
 							return "Comando annullato";
 						//----------------------------------------------------------------------------
-						if (mittente.equals("null"))
+						if (mittente == null)
 							esitopostino = postino.consegnaMessaggioMartins(destinatario, testomex);
 						else
 							esitopostino = postino.consegnaMessaggio(destinatario, testomex, mittente);
@@ -830,7 +814,7 @@ public class Risposta {
 				}
 			}
 			return "Uscita eseguita, blackjack terminato";
-				
+			
 			//------------------------------------------------------------------------------------------------------
 					
 			case("/foto"):
@@ -845,14 +829,14 @@ public class Risposta {
 				if (photo == null)
 					return "Ops... qualcosa è andato storto, meglio chiamare papà  :'(";
 				else
-					Main.ellie.sendPhoto(messaggio.from().id(), photo, null, 0, null);
+					Main.sendPhoto(messaggio.from().id(), photo);
 				return ANNULLA_SPEDIZIONE_MESSAGGIO;
 				
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/musica"):
 			synchronized (Main.ellie) {
-				Main.ellie.sendAudio(messaggio.from().id(), Music.getAudio(), 0, null, null, 0, null);	
+				Main.sendAudio(messaggio.from().id(), Music.getAudio());	
 			}
 				return ANNULLA_SPEDIZIONE_MESSAGGIO;
 			
@@ -860,6 +844,17 @@ public class Risposta {
 			default: return "Comando " + comando + " non riconosciuto, per una lista dei comandi digita /help";	
 		}
 	}
+	
+	
+	
+	
+	
+	
+	//XXX inizio funzioni
+	
+	
+	
+	
 	//----------------------------------------------------------------------------------------------------------------
 	/**Controlla se nel file risposte.txt c'è il testo del messaggio in arrivo
 	 * 
@@ -873,7 +868,7 @@ public class Risposta {
 		
 		String word = "-" + s;
 		int n = -1;
-	    	FileReader fr = new FileReader ("src/bot/ellie/readfiles/risposte.txt");
+	    	FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/risposte.txt");
 				LineNumberReader lnr = new LineNumberReader (fr);
 	
 				String line;
@@ -892,8 +887,7 @@ public class Risposta {
 	}
 	public String rispondiFileRisposta(int riga) throws IOException
 	{
-		FileReader fr = new FileReader ("src/bot/ellie/readfiles/risposte.txt");
-		@SuppressWarnings("resource")
+		FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/risposte.txt");
 		LineNumberReader lnr = new LineNumberReader (fr);
 
 		String line;
@@ -905,6 +899,7 @@ public class Risposta {
 		    	break;
 		    }
 		}
+		lnr.close();
 		return line;
 	}
 	public int leggiFileRispostaInfo(String s) throws IOException
@@ -913,7 +908,7 @@ public class Risposta {
 		
 		String word = "-" + s;
 		int n = -1;
-	    	FileReader fr = new FileReader ("./src/bot/ellie/readfiles/risposteinfo.txt");
+	    	FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/risposteinfo.txt");
 			LineNumberReader lnr = new LineNumberReader (fr);
 	
 			String line;
@@ -930,7 +925,7 @@ public class Risposta {
 	private String rispondiFileRispostaInfo(int riga) throws IOException 
 	{
 		
-		FileReader fr = new FileReader ("./src/bot/ellie/readfiles/risposteinfo.txt");
+		FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/risposteinfo.txt");
 		LineNumberReader lnr = new LineNumberReader (fr);
 
 		String line;
@@ -1058,7 +1053,7 @@ public class Risposta {
 		riga = random.nextInt(60);
 		try
 		{
-			FileReader fr = new FileReader ("src/bot/ellie/readfiles/impiccato.txt");
+			FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/impiccato.txt");
 			LineNumberReader lnr = new LineNumberReader (fr);
 
 			String line;
@@ -1087,7 +1082,7 @@ public class Risposta {
 		String s = new String("");
 		try
 		{
-			FileReader fr = new FileReader ("src/bot/ellie/readfiles/impiccato1.txt");
+			FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/impiccato1.txt");
 			LineNumberReader lnr = new LineNumberReader (fr);
 		    String t = new String("");
 		    int j = i*8+1;

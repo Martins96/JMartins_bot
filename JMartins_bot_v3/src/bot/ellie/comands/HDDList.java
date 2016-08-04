@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import bot.ellie.ErrorReporter;
+import bot.ellie.Main;
 
 public class HDDList {
 
@@ -17,7 +18,7 @@ public class HDDList {
 		String s = "";
 		
 		FileReader f;
-	    f=new FileReader("src/bot/ellie/readfiles/HDDList.txt");
+	    f=new FileReader(Main.PATH_INSTALLAZIONE + "/readfiles/HDDList.txt");
 	
 	    BufferedReader b;
 	    b=new BufferedReader(f);

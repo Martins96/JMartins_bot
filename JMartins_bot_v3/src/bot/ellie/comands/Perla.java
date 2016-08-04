@@ -18,7 +18,7 @@ public class Perla {
 	 */
 	private static String generaPerla(int i) throws IOException
 	{
-		String file = "src/bot/ellie/readfiles/perle.txt";
+		String file = Main.PATH_INSTALLAZIONE + "/readfiles/perle.txt";
 		
 		FileReader f;
 	    f=new FileReader(file);

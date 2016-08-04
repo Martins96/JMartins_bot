@@ -34,6 +34,21 @@ public class ControlliAutoRensponse {
 				return "Io sono un PC";
 			}
 		}
+		if(autoResponse.length()>11) {
+			if(autoResponse.substring(0, 12).equalsIgnoreCase("sono maschio")) {
+				return "Io sono un PC";
+			}
+		}
+		if(autoResponse.length()>6) {
+			if(autoResponse.substring(0, 7).equalsIgnoreCase("maschio")) {
+				return "Io sono un PC";
+			}
+		}
+		if(autoResponse.length()>6) {
+			if(autoResponse.substring(0, 7).equalsIgnoreCase("ragazzo")) {
+				return "Io sono un PC";
+			}
+		}
 		if(autoResponse.length()>14) {
 			if(autoResponse.substring(0, 15).equalsIgnoreCase("io sono maschio")) {
 				return "Io sono un PC";
@@ -52,6 +67,10 @@ public class ControlliAutoRensponse {
 		if(autoResponse.length()>22) {
 			if(autoResponse.substring(0, 23).equalsIgnoreCase("guarda che sono maschio")) {
 				return "Cerco di fare il meeglio che posso";
+			}
+		}if(autoResponse.length()>14) {
+			if(autoResponse.substring(0, 15).equalsIgnoreCase("Sono un maschio")) {
+				return "Sono un PC";
 			}
 		}
 		return autoResponse;

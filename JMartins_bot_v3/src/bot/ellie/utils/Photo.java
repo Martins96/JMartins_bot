@@ -1,4 +1,4 @@
-package bot.ellie.readfiles.photo;
+package bot.ellie.utils;
 
 import java.io.File;
 import java.util.Random;
@@ -64,13 +64,13 @@ public class Photo {
 			}
 		}
 
-		File photo = new File("./src/bot/ellie/readfiles/photo/" + categoria + ran.nextInt(NUM_IMMAGINI) + ".jpg");
+		File photo = new File(Main.PATH_INSTALLAZIONE + "/readfiles/photo/" + categoria + ran.nextInt(NUM_IMMAGINI) + ".jpg");
 		Main.log.info("Foto generata: " + photo.getPath());
 		return new InputFile("jpg", photo);
 	}
 	
 	public static InputFile getAdminImage() {
-		File foto = new File("./src/bot/ellie/readfiles/photo/admin/HF" + new Random().nextInt(NUM_ADMIN_IMMAGINI) + ".jpg");
+		File foto = new File(Main.PATH_INSTALLAZIONE + "/readfiles/photo/admin/HF" + new Random().nextInt(NUM_ADMIN_IMMAGINI) + ".jpg");
 		return new InputFile("jpg", foto);
 	}
 	

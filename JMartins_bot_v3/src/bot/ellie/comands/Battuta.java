@@ -19,7 +19,7 @@ public class Battuta {
 	 */
 	public String generaBattuta(int i) throws IOException
 	{
-		String file = "src/bot/ellie/readfiles/battute.txt";
+		String file = Main.PATH_INSTALLAZIONE + "/readfiles/battute.txt";
 		
 		FileReader f;
 	    f=new FileReader(file);

@@ -1,7 +1,5 @@
 package bot.ellie;
 
-import java.io.IOException;
-
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.TelegramBotAdapter;
 

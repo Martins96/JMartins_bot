@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import bot.ellie.Main;
+
 public class ASCIIart {
 	
 
@@ -22,7 +24,7 @@ public class ASCIIart {
 		String s = "", file = "ascii" + i;
 		
 		FileReader f;
-	    f=new FileReader("src/bot/ellie/readfiles/ASCII/" + file + ".txt");
+	    f=new FileReader(Main.PATH_INSTALLAZIONE + "/readfiles/ASCII/" + file + ".txt");
 
 	    BufferedReader b;
 	    b=new BufferedReader(f);

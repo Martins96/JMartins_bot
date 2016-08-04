@@ -1,4 +1,4 @@
-package bot.ellie.readfiles;
+package bot.ellie.utils;
 
 public class Bloccati {
 	
