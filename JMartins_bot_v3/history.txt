@@ -10,3 +10,4 @@
 3.1.1.0:Aggiunto shutdown per admin, struttura per configurazione per installazione jar
 3.1.2.0:Scrittura immagine in arrivo come asciiart in console. Aggiunta modalità cloud per admin
 3.1.2.1:Aggiunte funzionalità a /cloud per admin, aggiunto /shared
+3.1.2.2:Sistemato problema upload di file più grandi di 20 MB

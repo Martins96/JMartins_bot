@@ -54,7 +54,10 @@ public Postino() {
 				break;
 			case("andrea"):
 				id = 27585212;
-				break;
+			break;
+			case("parmraj"):
+				id = 164741728;
+			break;
 			default:
 				id = -1;
 				break; 
@@ -109,9 +112,6 @@ public Postino() {
 			case("vale"):
 				id = 104412734;
 				break;
-			case("andrea"):
-				id = 27585212;
-				break;
 			default:
 				id = -1;
 				break; 
@@ -149,7 +149,8 @@ public Postino() {
 				+ "'Dinu'       - 148278619\n"
 				+ "'Vale'       - 104412734\n"
 				+ "'Pol'        - 196422609\n"
-				+ "'Andrea'		- 27585212\n";
+				+ "'Andrea'		- 27585212\n"
+				+ "'Parmraj'    - 164741728\n";
 	}
 	
 	public String helpuser()
@@ -188,7 +189,8 @@ public Postino() {
 				+ "'Dinu'  	    - 148278619\n"
 				+ "'Vale'       - 104412734\n"
 				+ "'Pol'        - 196422609\n"
-				+ "'Andrea'		- 27585212\n";
+				+ "'Andrea'		- 27585212\n"
+				+ "'Parmraj'    - 164741728\n";
 	}
 	
 	public String sysMessaggio(String destinatario, String testomex)
@@ -230,7 +232,10 @@ public Postino() {
 				break;
 			case("andrea"):
 				id = 27585212;
-				break;
+			break;
+			case("parmraj"):
+				id = 164741728;
+			break;
 			default:
 				id = -1;
 				break; 
@@ -262,8 +267,8 @@ public Postino() {
  * Davide Colleoni  	- 71188575
  * Manara				- 125212616
  * Bruno 				- 75443863
- * Andrea 		- 27585212\n
- * 
+ * Andrea 	        	- 27585212
+ * Parmraj Singh        - 164741728
  * 
  */
 

@@ -66,7 +66,7 @@ public class Shared {
 		s = s + " \\                                         .'\n";
 		s = s + "   ~- ._ ,. ,....,.,......, ,....... -~   \n";
 		s = s + "              '               '         \n"
-				+ "_.::CLOUD READY::._\n__build 0.2\n\n Welcome visitor :-)\n\n"
+				+ "_.::CLOUD READY::._\n\n\n Welcome visitor :-)\n\n"
 				+ "Enter :quit or :exit for exit from this mode\n"
 				+ "Tap on the name of the file for download it, or digit the name with keyboard\n\n";
 		sendMessage(s);

@@ -430,16 +430,16 @@ public class Risposta {
 		//---------------------------------------------------------------------------------------------------------------	
 				
 			case("/cloud"):
-//			if(controllaAdmin()){
+			if(controllaAdmin()){
 				Main.sendMessage(messaggio.from().id(), "Avvio modalità clouding...");
 				Main.log.info(messaggio.from().firstName() + messaggio.from().lastName() + messaggio.from().username() + ""
 						+ "(" + messaggio.from().id() + ") ENTRA IN MODALITA' CLOUD");
 				
 				Cloud cloudModality = new Cloud(messaggio.from().id(), idthread);
 				cloudModality.startCloudModality();
-//			} else {
-//				return "Non hai i privilegi necessari per questa funzione, accedi tramite /admin";
-//			}
+			} else {
+				return "Non hai i privilegi necessari per questa funzione, accedi tramite /admin";
+			}
 				return "Fine modalità clouding";
 				
 		//---------------------------------------------------------------------------------------------------------------

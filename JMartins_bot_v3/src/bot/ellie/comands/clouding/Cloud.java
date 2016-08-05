@@ -116,7 +116,7 @@ public class Cloud {
 		s = s + " \\                                         .'\n";
 		s = s + "   ~- ._ ,. ,....,.,......, ,....... -~   \n";
 		s = s + "              '               '         \n"
-				+ "_.::CLOUD READY::._\n__build 0.2\n\n Welcome Martins <3";
+				+ "_.::CLOUD READY::._\n__build 0.3\n\n Welcome Martins <3";
 		sendMessage(s);
 	}
 	
@@ -184,7 +184,7 @@ public class Cloud {
 		while(flag) {
 			while (Main.botThread[idthread].message.equals(emptyMessage)) {
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					Main.log.error("Errore sync del Thread");
 					ErrorReporter.sendError("Errore sync del Thread", e);
@@ -200,32 +200,34 @@ public class Cloud {
 					sendMessage("!! INVALID INPUT !!\nMessage was ignored, send 'quit' to cancel the operation");
 				}
 			} else {
+				GetFileResponse response = null;
 				flag = false;
 				Message mex = Main.botThread[idthread].message;
 				if(mex.audio() != null) {
-					GetFileResponse response = Main.ellie.execute(new GetFile(mex.audio().fileId()));
-					return Main.ellie.getFullFilePath(response.file());
-					
+					response = Main.ellie.execute(new GetFile(mex.audio().fileId()));
 				}
 				if(mex.photo() != null) {
-					GetFileResponse response = Main.ellie.execute(new GetFile(mex.photo()[mex.photo().length-1].fileId()));
-					return Main.ellie.getFullFilePath(response.file());
+					response = Main.ellie.execute(new GetFile(mex.photo()[mex.photo().length-1].fileId()));
 				}
 				if(mex.document() != null) {
-					GetFileResponse response = Main.ellie.execute(new GetFile(mex.document().fileId()));
-					return Main.ellie.getFullFilePath(response.file());
+					response = Main.ellie.execute(new GetFile(mex.document().fileId()));
+					
 				}
 				if(mex.video() != null) {
-					GetFileResponse response = Main.ellie.execute(new GetFile(mex.video().fileId()));
-					return Main.ellie.getFullFilePath(response.file());
+					response = Main.ellie.execute(new GetFile(mex.video().fileId()));
 				}
 				if(mex.voice() != null) {
-					GetFileResponse response = Main.ellie.execute(new GetFile(mex.voice().fileId()));
-					return Main.ellie.getFullFilePath(response.file());
+					response = Main.ellie.execute(new GetFile(mex.voice().fileId()));
 				}
 				if(mex.sticker() != null) {
 					sendMessage("!! INVALID INPUT !!");
+					return null;
 				}
+				
+				if(isResponseCorrect(response))
+					return Main.ellie.getFullFilePath(response.file());
+				else
+					return null;
 			}
 		}
 		return null;
@@ -266,6 +268,25 @@ public class Cloud {
 		    currentFile.delete();
 		}
 	}
+	
+	public boolean isResponseCorrect(GetFileResponse response) {
+		if(response == null)
+			return false;
+		switch(response.errorCode()) {
+		case (400):
+			Main.log.info("File sended is too big");
+			sendMessage("!! File is too big! [MAX 20 MB] !!");
+			return false;
+
+		case(404):
+			sendMessage("!! File not found, I have same problem !!");
+			return false;
+
+		default:
+			return true;
+		}
+	}
+	
 	
 	
 	
