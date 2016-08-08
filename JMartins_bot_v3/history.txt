@@ -11,3 +11,4 @@
 3.1.2.0:Scrittura immagine in arrivo come asciiart in console. Aggiunta modalità cloud per admin
 3.1.2.1:Aggiunte funzionalità a /cloud per admin, aggiunto /shared
 3.1.2.2:Sistemato problema upload di file più grandi di 20 MB
+3.1.2.3:Aggiunto parametri nella funzionalità /cloud, sistemato bug in caso di immagine in input troppo grande per console. Aggiunto lancio delle eccezione con ErrorReporter nel main

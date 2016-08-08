@@ -41,19 +41,19 @@ public class Cloud {
 	 */
 	public void startCloudModality () {
 		startCloud();
-		Message message = attendiMessaggio();
-		while(!"exit".equalsIgnoreCase(message.text())) {
-			switch(message.text()) {
+		String[] message = attendiMessaggio();
+		while(!"exit".equalsIgnoreCase(message[0])) {
+			switch(message[0]) {
 			case("cd"):
-				cd();
+				cd(message);
 			break;
 			
 			case("cp"):
-				cp();
+				cp(message);
 			break;
 			
 			case("get"):
-				get();
+				get(message);
 			break;
 			
 			case("getall"):
@@ -69,19 +69,19 @@ public class Cloud {
 			break;
 			
 			case("mkdir"):
-				mkdir();
+				mkdir(message);
 			break;
 			
 			case("move"):
-				move();
+				move(message);
 			break;
 			
 			case("rename"):
-				rename();
+				rename(message);
 			break;
 			
 			case("rm"):
-				rm();
+				rm(message);
 			break;
 			
 			case("send"):
@@ -116,12 +116,13 @@ public class Cloud {
 		s = s + " \\                                         .'\n";
 		s = s + "   ~- ._ ,. ,....,.,......, ,....... -~   \n";
 		s = s + "              '               '         \n"
-				+ "_.::CLOUD READY::._\n__build 0.3\n\n Welcome Martins <3";
+				+ "_.::CLOUD READY::._\n__build 0.4\n\n Welcome Martins <3";
 		sendMessage(s);
 	}
 	
-	private Message attendiMessaggio() {
+	private String[] attendiMessaggio() {
 		boolean flag = true;
+		String[] s = null;
 		sendMessage(">" + PATH + "$ Enter comand...");
 		Message emptyMessage = new Message();
 		synchronized (Main.botThread[idthread].message) {
@@ -142,9 +143,14 @@ public class Cloud {
 				sendMessage( "!! INVALID INPUT !!\nMessage was ignored");
 			} else {
 				flag = false;
+				s = Main.botThread[idthread].message.text().split(" ");
+				if( !(s != null && s.length > 0 && (s[0] != null || !s[0].equals("")) ) ) {
+					sendMessage( "!! INVALID INPUT !!\nMessage was ignored");
+					flag = true;
+				}
 			}
 		}
-		return Main.botThread[idthread].message;
+		return s;
 	}
 	
 	private Message attendiMessaggio(String mex) {
@@ -318,8 +324,14 @@ public class Cloud {
 		
 	}
 	
-	private void mkdir() {
-		String folderName = attendiMessaggio(">Enter folder name...").text();
+	private void mkdir(String[] input) {
+		String folderName = null;
+		
+		if(input.length>1 && input[1] != null) 
+			folderName = input[1];
+		else
+			folderName = attendiMessaggio(">Enter folder name...").text();
+		
 		File folder = new File(PATH + folderName);
 		
 		folder.mkdir();
@@ -327,8 +339,14 @@ public class Cloud {
 		sendMessage("[info] The folder was created");
 	}
 	
-	private void rm() {
-		String fileName = attendiMessaggio(">Enter file to delete...").text();
+	private void rm(String[] param) {
+		String fileName = null;
+		
+		if(param.length>1 && param[1] != null) 
+			fileName = param[1];
+		else
+			fileName = attendiMessaggio(">Enter file to delete...").text();
+		
 		File file = new File(PATH + fileName);
 		if(file.isDirectory()) { // è una cartella
 			String[]entries = file.list();
@@ -374,8 +392,13 @@ public class Cloud {
 		}
 	}
 	
-	private void get() {
-		String fileName = attendiMessaggio(">Ok, which file?").text();
+	private void get(String[] param) {
+		String fileName;
+		if(param.length>1 && param[1] != null) 
+			fileName = param[1];
+		else
+			fileName = attendiMessaggio(">Ok, which file?").text();
+		
 		File file = new File(PATH + fileName);
 		if(file.exists() && !file.isDirectory()) {
 			InputFile inputFile = new InputFile("", file);
@@ -387,19 +410,35 @@ public class Cloud {
 		
 	}
 	
-	private void rename() {
-		String oldName = attendiMessaggio(">Enter the name of the file").text();
+	private void rename(String[] param) {
+		String oldName = null;
+		String newName = null;
+		if(param.length > 2 && param[1] != null && param[2] != null){
+			oldName = param[1];
+			newName = param[2];
+		} else {
+			if(param.length == 2 && param[1] != null) {
+				oldName = param[1];
+			}
+		}
+		if(oldName == null)
+			oldName = attendiMessaggio(">Enter the name of the file").text();
 		File file = new File(PATH + oldName);
 		if(file.exists()){
-			String newName = attendiMessaggio(">Ok, enter the new name for this file").text();
+			if(newName == null)
+				newName = attendiMessaggio(">Ok, enter the new name for this file").text();
 			file.renameTo(new File(PATH + newName));
 		} else {
 			sendMessage("!! 404 File not found !!");
 		}
 	}
 	
-	private void cd() {
-		String newPath = attendiMessaggio(">Enter the path").text();
+	private void cd(String[] param) {
+		String newPath;
+		if(param.length > 1 && param[1] != null)
+			newPath = param[1];
+		else
+			newPath = attendiMessaggio(">Enter the path").text();
 		
 		if(newPath.equals("..")){
 			cdback1();
@@ -437,11 +476,26 @@ public class Cloud {
 	}
 	
 	
-	private void move() {
-		String nameFile = attendiMessaggio(">Enter the file to move").text();
+	private void move(String[] param) {
+		String nameFile = null;
+		String destination = null;
+		
+		if(param.length > 2 && param[1] != null && param[2] != null){
+			nameFile = param[1];
+			destination = param[2];
+		} else {
+			if(param.length == 2 && param[1] != null) {
+				nameFile = param[1];
+			}
+		}
+		
+		if(nameFile == null)
+			nameFile = attendiMessaggio(">Enter the file to move").text();
 		File file = new File(PATH + nameFile);
 		if(file.exists()) {
-			String destination = attendiMessaggio(">Ok, where I move it?").text();
+			if(destination == null)
+				destination = attendiMessaggio(">Ok, where I move it?").text();
+			
 			if(destination.length()>0 && !destination.substring(0, 1).equals("/"))
 				destination = "/" + destination;
 			destination = Main.PATH_INSTALLAZIONE + "/root" + destination;
@@ -488,11 +542,26 @@ public class Cloud {
 		}
 	}
 	
-	private void cp() {
-		String nameFile = attendiMessaggio(">Enter the file to copy").text();
+	private void cp(String[] param) {
+		String nameFile = null;
+		String destination = null;
+		
+		if(param.length > 2 && param[1] != null && param[2] != null){
+			nameFile = param[1];
+			destination = param[2];
+		} else {
+			if(param.length == 2 && param[1] != null) {
+				nameFile = param[1];
+			}
+		}
+		
+		if(nameFile == null)
+			nameFile = attendiMessaggio(">Enter the file to copy").text();
+		
 		File file = new File(PATH + nameFile);
 		if(file.exists()) {
-			String destination = attendiMessaggio(">Ok, where I copy it?").text();
+			if(destination == null)
+				destination = attendiMessaggio(">Ok, where I copy it?").text();
 			if(destination.length()>0 && !destination.substring(0, 1).equals("/"))
 				destination = "/" + destination;
 			destination = Main.PATH_INSTALLAZIONE + "/root" + destination;
