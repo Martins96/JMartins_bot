@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import bot.ellie.comands.*;
 import bot.ellie.comands.clouding.Cloud;
 import bot.ellie.comands.clouding.Shared;
+import bot.ellie.security.Security;
 import bot.ellie.utils.*;
 
 
@@ -851,7 +852,11 @@ public class Risposta {
 				Main.sendAudio(messaggio.from().id(), Music.getAudio());	
 			}
 				return ANNULLA_SPEDIZIONE_MESSAGGIO;
-			
+			//------------------------------------------------------------------------------------------------------
+			case("/security"):
+				Security securityMode = new Security(messaggio.from().id(), idthread);
+				securityMode.startSecurityMode();
+				
 			//------------------------------------------------------------------------------------------------------
 			default: return "Comando " + comando + " non riconosciuto, per una lista dei comandi digita /help";	
 		}

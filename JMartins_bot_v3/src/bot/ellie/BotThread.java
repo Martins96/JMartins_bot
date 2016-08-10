@@ -32,7 +32,7 @@ public class BotThread extends java.lang.Thread {
 			synchronized (message) {
 				while (flagThreadLife) {
 					while (message.equals(emptyMsg)) {
-						sleep(1000);
+						sleep(100);
 					}
 					msg = message; // salvo messaggio in una variabile privata
 					//messaggio acqusito - pronti per elaborare

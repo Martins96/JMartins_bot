@@ -22,8 +22,19 @@ public class ControlliAutoRensponse {
 				return "Io sono Ellie";
 			}
 		}
+		if(autoResponse.length()>4) {
+			if(autoResponse.substring(0, 4).equalsIgnoreCase("sono")) {
+				return "Io sono Ellie";
+			}
+		}
 		if(autoResponse.length()>11) {
 			if(autoResponse.substring(0, 11).equalsIgnoreCase("il mio nome")) {
+				return "Io sono Ellie";
+			}
+		}
+		
+		if(autoResponse.length()>12) {
+			if(autoResponse.substring(0, 13).equalsIgnoreCase("il mio è nome")) {
 				return "Io sono Ellie";
 			}
 		}
@@ -72,6 +83,9 @@ public class ControlliAutoRensponse {
 			if(autoResponse.substring(0, 15).equalsIgnoreCase("Sono un maschio")) {
 				return "Sono un PC";
 			}
+		}if(autoResponse.length()>14) {
+			if(autoResponse.substring(0, 15).equalsIgnoreCase("si sono maschio"))
+				return "Sono un PC";
 		}
 		return autoResponse;
 	}

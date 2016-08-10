@@ -6,5 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Meteo"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Log4J"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/TelegramApi"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Security"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
