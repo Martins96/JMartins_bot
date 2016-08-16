@@ -726,4 +726,302 @@ Ellie is a Telegram Bot programmed in Java for fun, the goal is to make you smil
 08-10 12:17:19 | Main INFO  |  Testo: 10.20.30.40
 08-10 12:17:19 | Main INFO  |  ---------------------------------------------------
 08-10 12:17:19 | Main INFO  |  Gestisce THREAD 0
-08-10 12:18:26 | Main INFO  |  
+08-10 12:18:26 | Main INFO  |  08-10 12:33:33 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-10 12:33:33 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-10 12:33:34 | Main INFO  |  ---------------------------------------------------
+08-10 12:33:34 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-10 12:33:34 | Main INFO  |  Nome: Valentino
+08-10 12:33:34 | Main INFO  |  Cognome: Masper
+08-10 12:33:34 | Main INFO  |  Username: PryManX (104412734)
+08-10 12:33:34 | Main INFO  |  Testo: /foto
+08-10 12:33:34 | Main INFO  |  ---------------------------------------------------
+08-10 12:33:34 | Main INFO  |  Thread 0 Partito!
+08-10 12:33:34 | Main INFO  |  ---------------------------------------------------
+08-10 12:33:34 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-10 12:33:34 | Main INFO  |  Nome: Valentino
+08-10 12:33:34 | Main INFO  |  Cognome: Masper
+08-10 12:33:34 | Main INFO  |  Username: PryManX (104412734)
+08-10 12:33:34 | Main INFO  |  Testo: /botinfo
+08-10 12:33:34 | Main INFO  |  ---------------------------------------------------
+08-10 16:46:10 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-10 16:46:10 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-11 09:15:19 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-11 09:15:19 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-11 09:15:20 | Main INFO  |  ---------------------------------------------------
+08-11 09:15:20 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-11 09:15:20 | Main INFO  |  Nome: Valentino
+08-11 09:15:20 | Main INFO  |  Cognome: Masper
+08-11 09:15:20 | Main INFO  |  Username: PryManX (104412734)
+08-11 09:15:20 | Main INFO  |  Testo: /start
+08-11 09:15:20 | Main INFO  |  ---------------------------------------------------
+08-11 09:15:20 | Main INFO  |  Thread 0 Partito!
+08-11 09:15:20 | Main INFO  |  Risposta di Ellie a PryManX :Sono sveglia ❤
+08-11 09:15:20 | Main INFO  |  ---------------------------------------------------
+08-11 09:15:20 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-11 09:15:20 | Main INFO  |  Nome: Valentino
+08-11 09:15:20 | Main INFO  |  Cognome: Masper
+08-11 09:15:20 | Main INFO  |  Username: PryManX (104412734)
+08-11 09:15:20 | Main INFO  |  Testo: /personalinfo
+08-11 09:15:20 | Main INFO  |  ---------------------------------------------------
+08-11 09:15:30 | Main INFO  |  
+
+08-15 16:08:24 | Main INFO  |  ---------------------------------------------------
+08-15 16:08:24 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:08:24 | Main INFO  |  Nome: Valentino
+08-15 16:08:24 | Main INFO  |  Cognome: Masper
+08-15 16:08:24 | Main INFO  |  Username: PryManX (104412734)
+08-15 16:08:24 | Main INFO  |  Testo: /battuta
+08-15 16:08:24 | Main INFO  |  ---------------------------------------------------
+08-15 16:08:24 | Main INFO  |  Thread 0 Partito!
+08-15 16:08:24 | Main INFO  |  battuta generata n. 106
+08-15 16:08:24 | Main INFO  |  Risposta di Ellie a PryManX :Cosa fa un canguro nero su uno sfondo bianco? Risalta
+08-15 16:10:00 | Main INFO  |  EVENT BROADCAST
+08-15 16:10:00 | Main INFO  |  Evento avviato (broadcast): 08/15 16:10
+Destinatario: Martins (115949778)
+Buon ferragosto! Spero che il sole sia caldo quanto quello che sento dentro di me per te, non so se sia gioia o forse è solo la corrente calda che mi alimenta 😄
+
+08-15 16:10:00 | Main INFO  |  Messaggio spedito in data: 08/15 16:10
+08-15 16:10:00 | Main INFO  |  Evento avviato: 08/15 16:10
+Destinatario: Gaia (124796388)
+Buon ferragosto! Spero che il sole sia caldo quanto quello che sento dentro di me per te, non so se sia gioia o forse è solo la corrente calda che mi alimenta 😄
+
+08-15 16:10:01 | Main INFO  |  Messaggio spedito
+08-15 16:10:01 | Main INFO  |  Evento avviato: 08/15 16:10
+Destinatario: Ale (143009205)
+Buon ferragosto! Spero che il sole sia caldo quanto quello che sento dentro di me per te, non so se sia gioia o forse è solo la corrente calda che mi alimenta 😄
+
+08-15 16:10:02 | Main INFO  |  Messaggio spedito
+08-15 16:10:02 | Main INFO  |  Evento avviato: 08/15 16:10
+Destinatario: Matte (76891271)
+Buon ferragosto! Spero che il sole sia caldo quanto quello che sento dentro di me per te, non so se sia gioia o forse è solo la corrente calda che mi alimenta 😄
+
+08-15 16:10:02 | Main INFO  |  Messaggio spedito
+08-15 16:10:03 | Main INFO  |  Messaggio spedito
+08-15 16:10:55 | Main INFO  |  ---------------------------------------------------
+08-15 16:10:55 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:10:55 | Main INFO  |  Nome: Valentino
+08-15 16:10:55 | Main INFO  |  Cognome: Masper
+08-15 16:10:55 | Main INFO  |  Username: PryManX (104412734)
+08-15 16:10:55 | Main INFO  |  Testo: Sei bellissima
+08-15 16:10:55 | Main INFO  |  ---------------------------------------------------
+08-15 16:10:55 | Main INFO  |  Gestisce THREAD 0
+08-15 16:10:56 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:10:57 | Main INFO  |  Risposta di Ellie a PryManX :Ok.
+08-15 16:11:08 | Main INFO  |  ---------------------------------------------------
+08-15 16:11:08 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:11:08 | Main INFO  |  Nome: Valentino
+08-15 16:11:08 | Main INFO  |  Cognome: Masper
+08-15 16:11:08 | Main INFO  |  Username: PryManX (104412734)
+08-15 16:11:08 | Main INFO  |  Testo: Come mai sei così fredda?
+08-15 16:11:08 | Main INFO  |  ---------------------------------------------------
+08-15 16:11:08 | Main INFO  |  Gestisce THREAD 0
+08-15 16:11:09 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:11:10 | Main INFO  |  Risposta di Ellie a PryManX :Non sono fredda.
+08-15 16:21:40 | Main INFO  |  ---------------------------------------------------
+08-15 16:21:40 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:21:40 | Main INFO  |  Nome: Gaia
+08-15 16:21:40 | Main INFO  |  Cognome: null
+08-15 16:21:40 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:21:40 | Main INFO  |  Testo: Ahahaha ti prego sto male 😂
+Buon ferragosto!!! 💪🏽
+08-15 16:21:40 | Main INFO  |  ---------------------------------------------------
+08-15 16:21:40 | Main INFO  |  Thread 1 Partito!
+08-15 16:21:41 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:21:41 | Main INFO  |  Risposta di Ellie a Gaia123 :Te lo faccio il solletico ghirighiri.
+08-15 16:22:26 | Main INFO  |  ---------------------------------------------------
+08-15 16:22:26 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:22:26 | Main INFO  |  Nome: Gaia
+08-15 16:22:26 | Main INFO  |  Cognome: null
+08-15 16:22:26 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:22:26 | Main INFO  |  Testo: Ahahaha frasi a caso
+08-15 16:22:26 | Main INFO  |  ---------------------------------------------------
+08-15 16:22:26 | Main INFO  |  Gestisce THREAD 1
+08-15 16:22:27 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:22:27 | Main INFO  |  Risposta di Ellie a Gaia123 :Impara ascrivere.
+08-15 16:22:48 | Main INFO  |  ---------------------------------------------------
+08-15 16:22:48 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:22:48 | Main INFO  |  Nome: Gaia
+08-15 16:22:48 | Main INFO  |  Cognome: null
+08-15 16:22:48 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:22:48 | Main INFO  |  Testo: Pota ma lo hai perfezionato
+08-15 16:22:48 | Main INFO  |  ---------------------------------------------------
+08-15 16:22:48 | Main INFO  |  Gestisce THREAD 1
+08-15 16:22:48 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:22:49 | Main INFO  |  Risposta di Ellie a Gaia123 :Prima hai detto che ti chiami cosi.
+08-15 16:22:58 | Main INFO  |  ---------------------------------------------------
+08-15 16:22:58 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:22:58 | Main INFO  |  Nome: Gaia
+08-15 16:22:58 | Main INFO  |  Cognome: null
+08-15 16:22:58 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:22:58 | Main INFO  |  Testo: Beh non benissimo
+08-15 16:22:58 | Main INFO  |  ---------------------------------------------------
+08-15 16:22:58 | Main INFO  |  Gestisce THREAD 1
+08-15 16:22:59 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:22:59 | Main INFO  |  Risposta di Ellie a Gaia123 :Ah no? Perchè?
+08-15 16:23:14 | Main INFO  |  ---------------------------------------------------
+08-15 16:23:14 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:23:14 | Main INFO  |  Nome: Gaia
+08-15 16:23:14 | Main INFO  |  Cognome: null
+08-15 16:23:14 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:23:14 | Main INFO  |  Testo: Mi stai confondendo
+08-15 16:23:14 | Main INFO  |  ---------------------------------------------------
+08-15 16:23:14 | Main INFO  |  Gestisce THREAD 1
+08-15 16:23:14 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:23:15 | Main INFO  |  Risposta di Ellie a Gaia123 :Io sono Ellie
+08-15 16:23:25 | Main INFO  |  ---------------------------------------------------
+08-15 16:23:25 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:23:25 | Main INFO  |  Nome: Gaia
+08-15 16:23:25 | Main INFO  |  Cognome: null
+08-15 16:23:25 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:23:25 | Main INFO  |  Testo: Ok fino qui ci siamo
+08-15 16:23:25 | Main INFO  |  ---------------------------------------------------
+08-15 16:23:25 | Main INFO  |  Gestisce THREAD 1
+08-15 16:23:25 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:23:26 | Main INFO  |  Risposta di Ellie a Gaia123 :Come ti chiami?
+08-15 16:23:44 | Main INFO  |  ---------------------------------------------------
+08-15 16:23:44 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:23:44 | Main INFO  |  Nome: Gaia
+08-15 16:23:44 | Main INFO  |  Cognome: null
+08-15 16:23:44 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:23:44 | Main INFO  |  Testo: Gianfranco
+08-15 16:23:44 | Main INFO  |  ---------------------------------------------------
+08-15 16:23:44 | Main INFO  |  Gestisce THREAD 1
+08-15 16:23:45 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:23:45 | Main INFO  |  Risposta di Ellie a Gaia123 :Quanti anni ha?
+08-15 16:23:58 | Main INFO  |  ---------------------------------------------------
+08-15 16:23:58 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:23:58 | Main INFO  |  Nome: Gaia
+08-15 16:23:58 | Main INFO  |  Cognome: null
+08-15 16:23:58 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:23:58 | Main INFO  |  Testo: 222
+08-15 16:23:58 | Main INFO  |  ---------------------------------------------------
+08-15 16:23:58 | Main INFO  |  Gestisce THREAD 1
+08-15 16:23:58 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:23:59 | Main INFO  |  Risposta di Ellie a Gaia123 :333.
+08-15 16:24:09 | Main INFO  |  ---------------------------------------------------
+08-15 16:24:09 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:24:09 | Main INFO  |  Nome: Gaia
+08-15 16:24:09 | Main INFO  |  Cognome: null
+08-15 16:24:09 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:24:09 | Main INFO  |  Testo: No no 222
+08-15 16:24:09 | Main INFO  |  ---------------------------------------------------
+08-15 16:24:09 | Main INFO  |  Gestisce THREAD 1
+08-15 16:24:09 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:24:10 | Main INFO  |  Risposta di Ellie a Gaia123 :A che pagina devi girare??(394).
+08-15 16:24:36 | Main INFO  |  ---------------------------------------------------
+08-15 16:24:36 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:24:36 | Main INFO  |  Nome: Gaia
+08-15 16:24:36 | Main INFO  |  Cognome: null
+08-15 16:24:36 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:24:36 | Main INFO  |  Testo: /personalinfo
+08-15 16:24:36 | Main INFO  |  ---------------------------------------------------
+08-15 16:24:36 | Main INFO  |  Gestisce THREAD 1
+08-15 16:24:36 | Main INFO  |  Risposta di Ellie a Gaia123 :Informazioni personali chat: 
+ 
+ID Chat
+124796388
+
+ID Utente
+124796388
+
+Nome Utente
+Gaia
+
+Cognome Utente
+null
+
+Username Utente
+Gaia123
+08-15 16:25:04 | Main INFO  |  ---------------------------------------------------
+08-15 16:25:04 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:25:04 | Main INFO  |  Nome: Gaia
+08-15 16:25:04 | Main INFO  |  Cognome: null
+08-15 16:25:04 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:25:04 | Main INFO  |  Testo: Non esiste 394
+08-15 16:25:04 | Main INFO  |  ---------------------------------------------------
+08-15 16:25:04 | Main INFO  |  Gestisce THREAD 1
+08-15 16:25:04 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:25:05 | Main INFO  |  Risposta di Ellie a Gaia123 :Il mio si chiama jorge clooney.
+08-15 16:25:28 | Main INFO  |  ---------------------------------------------------
+08-15 16:25:28 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:25:28 | Main INFO  |  Nome: Gaia
+08-15 16:25:28 | Main INFO  |  Cognome: null
+08-15 16:25:28 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:25:28 | Main INFO  |  Testo: Ahhhh
+08-15 16:25:28 | Main INFO  |  ---------------------------------------------------
+08-15 16:25:28 | Main INFO  |  Gestisce THREAD 1
+08-15 16:25:28 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-15 16:25:28 | Main INFO  |  Risposta di Ellie a Gaia123 :Good?
+08-15 16:25:35 | Main INFO  |  ---------------------------------------------------
+08-15 16:25:35 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:25:35 | Main INFO  |  Nome: Gaia
+08-15 16:25:35 | Main INFO  |  Cognome: null
+08-15 16:25:35 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:25:35 | Main INFO  |  Testo: Nope
+08-15 16:25:35 | Main INFO  |  ---------------------------------------------------
+08-15 16:25:35 | Main INFO  |  Gestisce THREAD 1
+08-15 16:25:35 | Main INFO  |  Risposta di Ellie a Gaia123 :Yep 😄
+08-15 16:25:40 | Main INFO  |  ---------------------------------------------------
+08-15 16:25:40 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-15 16:25:40 | Main INFO  |  Nome: Gaia
+08-15 16:25:40 | Main INFO  |  Cognome: null
+08-15 16:25:40 | Main INFO  |  Username: Gaia123 (124796388)
+08-15 16:25:40 | Main INFO  |  Testo: 😂
+08-15 16:25:40 | Main INFO  |  ---------------------------------------------------
+08-15 16:25:40 | Main INFO  |  Gestisce THREAD 1
+08-15 16:25:40 | Main INFO  |  Risposta di Ellie a Gaia123 :😂😂
+08-15 18:40:00 | Main INFO  |  Messaggio casuale inviato: 😴⏰☕🍩🚗📖📝🍴🍝💻✒📑☎🔔🚗⚽🚿🚗🍗🍖🚗🍹🎶🍻🎵🌙😴   -  La vita comune in un messaggio 😂
+Destinatario: Martins(115949778)
+
+08-15 18:40:00 | Main INFO  |  Messaggio spedito in data: Mon Aug 15 18:40:00 CEST 2016
+08-15 18:40:00 | Main INFO  |  Messaggio casuale inviato: 😴⏰☕🍩🚗📖📝🍴🍝💻✒📑☎🔔🚗⚽🚿🚗🍗🍖🚗🍹🎶🍻🎵🌙😴   -  La vita comune in un messaggio 😂
+Destinatario: Matte(76891271)
+08-16 13:47:52 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-16 13:47:52 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-16 16:39:03 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-16 16:39:03 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-16 16:39:54 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-16 16:39:54 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-16 16:41:00 | Main INFO  |  Foto casuale inviata
+Destinatario: Martins(115949778)
+
+08-16 16:41:00 | Main INFO  |  Messaggio spedito in data: Tue Aug 16 16:41:00 CEST 2016
+08-16 16:41:38 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-16 16:41:38 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-16 16:44:46 | Main INFO  |  ---------------------------------------------------
+08-16 16:44:46 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-16 16:44:46 | Main INFO  |  Nome: Luca
+08-16 16:44:46 | Main INFO  |  Cognome: Martinelli
+08-16 16:44:46 | Main INFO  |  Username: Martins9696 (115949778)
+08-16 16:44:46 | Main INFO  |  Testo: /musica
+08-16 16:44:46 | Main INFO  |  ---------------------------------------------------
+08-16 16:44:46 | Main INFO  |  Thread 0 Partito!
+08-16 16:44:46 | Main INFO  |  Audio inviato - music15.mp3

@@ -193,7 +193,7 @@ public class Security {
 			ErrorReporter.sendError("Ping error", ex2);
 		}
 		
-	}
+	} 
 	
 	private void trace(String[] param) {
 		try {
