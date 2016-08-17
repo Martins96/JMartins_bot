@@ -1025,3 +1025,141 @@ Destinatario: Martins(115949778)
 08-16 16:44:46 | Main INFO  |  ---------------------------------------------------
 08-16 16:44:46 | Main INFO  |  Thread 0 Partito!
 08-16 16:44:46 | Main INFO  |  Audio inviato - music15.mp3
+08-17 10:16:04 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-17 10:16:04 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-17 10:31:36 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-17 10:31:36 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-17 10:31:56 | Main INFO  |  ---------------------------------------------------
+08-17 10:31:56 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:31:56 | Main INFO  |  Nome: Luca
+08-17 10:31:56 | Main INFO  |  Cognome: Martinelli
+08-17 10:31:56 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:31:56 | Main INFO  |  Testo: /admin
+08-17 10:31:56 | Main INFO  |  ---------------------------------------------------
+08-17 10:31:56 | Main INFO  |  Thread 0 Partito!
+08-17 10:32:02 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:02 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:32:02 | Main INFO  |  Nome: Luca
+08-17 10:32:02 | Main INFO  |  Cognome: Martinelli
+08-17 10:32:02 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:32:02 | Main INFO  |  Testo: Password123
+08-17 10:32:02 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:02 | Main INFO  |  Gestisce THREAD 0
+08-17 10:32:02 | Main WARN  |  ACCESSO ADMIN CONSENTITO A: Martins9696 - id(115949778)
+08-17 10:32:02 | Main INFO  |  Risposta di Ellie a Martins9696 :Papà , ti ricordo che la lista dei tuoi comandi è " /adminhelp " 😘
+08-17 10:32:06 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:06 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:32:06 | Main INFO  |  Nome: Luca
+08-17 10:32:06 | Main INFO  |  Cognome: Martinelli
+08-17 10:32:06 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:32:06 | Main INFO  |  Testo: /cloud
+08-17 10:32:06 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:06 | Main INFO  |  Gestisce THREAD 0
+08-17 10:32:07 | Main INFO  |  LucaMartinelliMartins9696(115949778) ENTRA IN MODALITA' CLOUD
+08-17 10:32:10 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:10 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:32:10 | Main INFO  |  Nome: Luca
+08-17 10:32:10 | Main INFO  |  Cognome: Martinelli
+08-17 10:32:10 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:32:10 | Main INFO  |  Testo: ls
+08-17 10:32:10 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:10 | Main INFO  |  Gestisce THREAD 0
+08-17 10:32:16 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:16 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:32:16 | Main INFO  |  Nome: Luca
+08-17 10:32:16 | Main INFO  |  Cognome: Martinelli
+08-17 10:32:16 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:32:16 | Main INFO  |  Testo: cd koala
+08-17 10:32:16 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:16 | Main INFO  |  Gestisce THREAD 0
+08-17 10:32:19 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:19 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:32:19 | Main INFO  |  Nome: Luca
+08-17 10:32:19 | Main INFO  |  Cognome: Martinelli
+08-17 10:32:19 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:32:19 | Main INFO  |  Testo: ls
+08-17 10:32:19 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:19 | Main INFO  |  Gestisce THREAD 0
+08-17 10:32:38 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:38 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:32:38 | Main INFO  |  Nome: Luca
+08-17 10:32:38 | Main INFO  |  Cognome: Martinelli
+08-17 10:32:38 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:32:38 | Main INFO  |  Testo: /exit
+08-17 10:32:38 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:38 | Main INFO  |  Gestisce THREAD 0
+08-17 10:32:42 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:42 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:32:42 | Main INFO  |  Nome: Luca
+08-17 10:32:42 | Main INFO  |  Cognome: Martinelli
+08-17 10:32:42 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:32:42 | Main INFO  |  Testo: exit
+08-17 10:32:42 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:42 | Main INFO  |  Gestisce THREAD 0
+08-17 10:32:42 | Main INFO  |  Risposta di Ellie a Martins9696 :Fine modalità clouding
+08-17 10:32:48 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:48 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:32:48 | Main INFO  |  Nome: Luca
+08-17 10:32:48 | Main INFO  |  Cognome: Martinelli
+08-17 10:32:48 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:32:48 | Main INFO  |  Testo: /shared
+08-17 10:32:48 | Main INFO  |  ---------------------------------------------------
+08-17 10:32:48 | Main INFO  |  Gestisce THREAD 0
+08-17 10:32:49 | Main INFO  |  LucaMartinelliMartins9696(115949778) ENTRA IN MODALITA' CLOUD
+08-17 10:44:22 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-17 10:44:22 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-17 10:45:22 | Main INFO  |  ---------------------------------------------------
+08-17 10:45:22 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:45:22 | Main INFO  |  Nome: Luca
+08-17 10:45:22 | Main INFO  |  Cognome: Martinelli
+08-17 10:45:22 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:45:22 | Main INFO  |  Testo: /admin
+08-17 10:45:22 | Main INFO  |  ---------------------------------------------------
+08-17 10:45:22 | Main INFO  |  Thread 0 Partito!
+08-17 10:45:25 | Main INFO  |  ---------------------------------------------------
+08-17 10:45:25 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:45:25 | Main INFO  |  Nome: Luca
+08-17 10:45:25 | Main INFO  |  Cognome: Martinelli
+08-17 10:45:25 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:45:25 | Main INFO  |  Testo: Password123
+08-17 10:45:25 | Main INFO  |  ---------------------------------------------------
+08-17 10:45:25 | Main INFO  |  Gestisce THREAD 0
+08-17 10:45:26 | Main WARN  |  ACCESSO ADMIN CONSENTITO A: Martins9696 - id(115949778)
+08-17 10:45:26 | Main INFO  |  Risposta di Ellie a Martins9696 :Papà , ti ricordo che la lista dei tuoi comandi è " /adminhelp " 😘
+08-17 10:45:30 | Main INFO  |  ---------------------------------------------------
+08-17 10:45:30 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:45:30 | Main INFO  |  Nome: Luca
+08-17 10:45:30 | Main INFO  |  Cognome: Martinelli
+08-17 10:45:30 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:45:30 | Main INFO  |  Testo: /cloud
+08-17 10:45:30 | Main INFO  |  ---------------------------------------------------
+08-17 10:45:30 | Main INFO  |  Gestisce THREAD 0
+08-17 10:45:30 | Main INFO  |  LucaMartinelliMartins9696(115949778) ENTRA IN MODALITA' CLOUD
+08-17 10:47:59 | Main INFO  |  ---------------------------------------------------
+08-17 10:47:59 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:47:59 | Main INFO  |  Nome: Luca
+08-17 10:47:59 | Main INFO  |  Cognome: Martinelli
+08-17 10:47:59 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:47:59 | Main INFO  |  Testo: cd koala
+08-17 10:47:59 | Main INFO  |  ---------------------------------------------------
+08-17 10:47:59 | Main INFO  |  Gestisce THREAD 0
+08-17 10:48:00 | Main INFO  |  ---------------------------------------------------
+08-17 10:48:00 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-17 10:48:00 | Main INFO  |  Nome: Luca
+08-17 10:48:00 | Main INFO  |  Cognome: Martinelli
+08-17 10:48:00 | Main INFO  |  Username: Martins9696 (115949778)
+08-17 10:48:00 | Main INFO  |  Testo: ls
+08-17 10:48:00 | Main INFO  |  ---------------------------------------------------
+08-17 10:48:00 | Main INFO  |  Gestisce THREAD 0

@@ -14,3 +14,4 @@
 3.1.2.3:Aggiunto parametri nella funzionalità /cloud, sistemato bug in caso di immagine in input troppo grande per console. Aggiunto lancio delle eccezione con ErrorReporter nel main
 3.1.3.0:Aggiunto modalità security, con comandi di ping e di trace di un indirizzo ip o nome web
 3.1.3.1:Aggiunto invio casuale anche di foto oltre a solo testo
+3.1.3.2:Aggiunto  il size dei file in modalità cloud e shared

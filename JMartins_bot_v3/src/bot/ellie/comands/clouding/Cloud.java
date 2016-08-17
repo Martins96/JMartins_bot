@@ -116,7 +116,7 @@ public class Cloud {
 		s = s + " \\                                         .'\n";
 		s = s + "   ~- ._ ,. ,....,.,......, ,....... -~   \n";
 		s = s + "              '               '         \n"
-				+ "_.::CLOUD READY::._\n__build 0.4\n\n Welcome Martins <3";
+				+ "_.::CLOUD READY::._\n__build 0.5\n\n Welcome Martins <3";
 		sendMessage(s);
 	}
 	
@@ -308,11 +308,26 @@ public class Cloud {
 		File folder = new File(PATH);
 		File[] listOfFiles = folder.listFiles();
 		String lista = new String();
-		
-		if(listOfFiles.length > 0){
+
+		if (listOfFiles.length > 0) {
 			for (int i = 0; i < listOfFiles.length; i++) {
 				if (listOfFiles[i].isFile()) {
-					lista = lista + listOfFiles[i].getName() + "\n";
+					// trasformo bytes in KB o MB se sono tanti
+					long size = listOfFiles[i].length();
+					String valuta = " bytes";
+					if (size > 2048) { // KB
+						size = size / 1024;
+						valuta = "KB";
+						if (size > 1024) { // MB
+							size = size / 1024;
+							valuta = "MB";
+							if (size > 1024) { // GB
+								size = size / 1024;
+								valuta = "GB";
+							}
+						}
+					}
+					lista = lista + listOfFiles[i].getName() + "	-	" + size + valuta + "\n";
 				} else if (listOfFiles[i].isDirectory()) {
 					lista = "[Dir]" + listOfFiles[i].getName() + "\\\n" + lista;
 				}
@@ -321,7 +336,7 @@ public class Cloud {
 		} else {
 			sendMessage("!! No files or dirs found !!");
 		}
-		
+
 	}
 	
 	private void mkdir(String[] input) {
