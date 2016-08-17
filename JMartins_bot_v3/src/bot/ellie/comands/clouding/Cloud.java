@@ -27,8 +27,11 @@ public class Cloud {
 	private int idUser;
 	private int idthread;
 	
-	private static String PATH = Main.PATH_INSTALLAZIONE + "/root/";
-	private static final String HELP = 
+	private String username;
+	private boolean userMode;
+	
+	private String PATH;
+	private final String HELP = 
 			new String (Help.CLOUD_HELP);
 	
 	public Cloud(int id, int threadID) {
@@ -37,10 +40,12 @@ public class Cloud {
 	}
 	
 	/**
-	 * inizio la modalità cloud
+	 * inizio la modalità cloud admin
 	 */
-	public void startCloudModality () {
-		startCloud();
+	public void startCloudModalityForAdmin() {
+		startAdminCloud();
+		userMode = false;
+		PATH = Main.PATH_INSTALLAZIONE + "/root/";
 		String[] message = attendiMessaggio();
 		while(!"exit".equalsIgnoreCase(message[0])) {
 			switch(message[0]) {
@@ -99,6 +104,79 @@ public class Cloud {
 		
 	}
 	
+	/**
+	 * cloud for users
+	 */
+	public void startCloudModalityForUser(String username) {
+		this.username = username;
+		startUserCloud();
+		userMode = true;
+		PATH = Main.PATH_INSTALLAZIONE + "/root/usr/" + username + "/";
+		//controllo se la cartella esiste home utente
+		if(!new File(PATH).exists()) {
+			Main.log.warn("Cartella per l'utente " + username + " mancante, ne creo una nuova");
+			new File(PATH).mkdir();
+		}
+		String[] message = attendiMessaggio();
+		while( !("exit".equalsIgnoreCase(message[0]) || "/exit".equalsIgnoreCase(message[0])) ) {
+			switch(message[0]) {
+			case("cd"):
+				cd(message);
+			break;
+			
+			case("cp"):
+				cp(message);
+			break;
+			
+			case("get"):
+				get(message);
+			break;
+			
+			case("getall"):
+				getall();
+			break;
+			
+			case("help"):
+				sendMessage(HELP);
+			break;
+			
+			case("/help"):
+				sendMessage(HELP);
+			break;
+			
+			case("ls"):
+				ls();
+			break;
+			
+			case("mkdir"):
+				mkdir(message);
+			break;
+			
+			case("move"):
+				move(message);
+			break;
+			
+			case("rename"):
+				rename(message);
+			break;
+			
+			case("rm"):
+				rm(message);
+			break;
+			
+			case("send"):
+				send();
+			break;
+			
+			
+			default:
+				sendMessage("!! Invalid comand !!");
+				break;
+			}
+			message = attendiMessaggio();
+		}
+		
+	}
 	
 	
 	// XXX metodi
@@ -107,7 +185,7 @@ public class Cloud {
 	/**
 	 * roba grafica...
 	 */
-	private void startCloud() {
+	private void startAdminCloud() {
 		String s = new String();
 		s = s + ".              .-~~~-.           \n";
 		s = s + "  .- ~ ~-(                )_ _       \n";
@@ -117,6 +195,23 @@ public class Cloud {
 		s = s + "   ~- ._ ,. ,....,.,......, ,....... -~   \n";
 		s = s + "              '               '         \n"
 				+ "_.::CLOUD READY::._\n__build 0.5\n\n Welcome Martins <3";
+		sendMessage(s);
+	}
+	
+	/**
+	 * roba grafica...
+	 */
+	private void startUserCloud() {
+		String s = new String();
+		s = s + ".              .-~~~-.           \n";
+		s = s + "  .- ~ ~-(                )_ _       \n";
+		s = s + " /                                  ~ -.  \n";
+		s = s + "|                                           ',\n";
+		s = s + " \\                                         .'\n";
+		s = s + "   ~- ._ ,. ,....,.,......, ,....... -~   \n";
+		s = s + "              '               '         \n"
+				+ "_.::CLOUD READY::._\n__build 0.5\n\n Welcome " + username + " :-)"
+				+ "\n\nFor help digit help, for exit digit exit";
 		sendMessage(s);
 	}
 	
@@ -246,23 +341,44 @@ public class Cloud {
 	private void cdback1() {
 		String[] splittedPath = PATH.split("/");
 		int indexRoot = 0;
-		for(int i = 0; i<splittedPath.length; i++) {
-			if(splittedPath[i].equalsIgnoreCase("root")) {
-				indexRoot = i;
-				continue;
+		if(userMode){
+			for(int i = 0; i<splittedPath.length; i++) {
+				if(splittedPath[i].equalsIgnoreCase(username)) {
+					indexRoot = i;
+					continue;
+				}
 			}
-		}
-		if(indexRoot == splittedPath.length - 1) {
-			sendMessage("!! You're in root directory !!");
+			if(indexRoot == splittedPath.length - 1) {
+				sendMessage("!! You're in home directory !!");
+			} else {
+				PATH = new String();
+				for(int i = 0; i<splittedPath.length-1; i++) {
+					PATH = PATH + splittedPath[i] + "/";
+				}
+			}
+			
 		} else {
-			PATH = new String();
-			for(int i = 0; i<splittedPath.length-1; i++) {
-				PATH = PATH + splittedPath[i] + "/";
+			for(int i = 0; i<splittedPath.length; i++) {
+				if(splittedPath[i].equalsIgnoreCase("root")) {
+					indexRoot = i;
+					continue;
+				}
+			}
+			if(indexRoot == splittedPath.length - 1) {
+				sendMessage("!! You're in root directory !!");
+			} else {
+				PATH = new String();
+				for(int i = 0; i<splittedPath.length-1; i++) {
+					PATH = PATH + splittedPath[i] + "/";
+				}
 			}
 		}
 	}
 	private void cdbackall() {
-		PATH = Main.PATH_INSTALLAZIONE + "/root/";
+		if(userMode)
+			PATH = Main.PATH_INSTALLAZIONE + "/root/usr/" + username + "/";
+		else
+			PATH = Main.PATH_INSTALLAZIONE + "/root/";
 	}
 	
 	private void rmdir(String[]entries, File file) {
@@ -309,7 +425,7 @@ public class Cloud {
 		File[] listOfFiles = folder.listFiles();
 		String lista = new String();
 
-		if (listOfFiles.length > 0) {
+		if (listOfFiles != null && listOfFiles.length > 0) {
 			for (int i = 0; i < listOfFiles.length; i++) {
 				if (listOfFiles[i].isFile()) {
 					// trasformo bytes in KB o MB se sono tanti
@@ -363,23 +479,27 @@ public class Cloud {
 			fileName = attendiMessaggio(">Enter file to delete...").text();
 		
 		File file = new File(PATH + fileName);
-		if(file.isDirectory()) { // è una cartella
-			String[]entries = file.list();
-			if(entries.length == 0) { // cartella vuota
+		if(file.exists()) {
+			if(file.isDirectory()) { // è una cartella
+				String[]entries = file.list();
+				if(entries.length == 0) { // cartella vuota
+					String check = attendiMessaggio(">Are you sure? Y/N").text();
+					if(check.equalsIgnoreCase("Y"))
+						file.delete();
+				} else { // la cartella contiene dei file
+					String check = attendiMessaggio(">Folder is not empty,\nAre you sure to delete this item? Y/N").text();
+					if(check.equalsIgnoreCase("Y")) {
+						rmdir(entries, file);
+						file.delete();
+					}
+				}
+			} else { // è un file
 				String check = attendiMessaggio(">Are you sure? Y/N").text();
 				if(check.equalsIgnoreCase("Y"))
 					file.delete();
-			} else { // la cartella contiene dei file
-				String check = attendiMessaggio(">Folder is not empty,\nAre you sure to delete this item? Y/N").text();
-				if(check.equalsIgnoreCase("Y")) {
-					rmdir(entries, file);
-					file.delete();
-				}
 			}
-		} else { // è un file
-			String check = attendiMessaggio(">Are you sure? Y/N").text();
-			if(check.equalsIgnoreCase("Y"))
-				file.delete();
+		} else {
+			sendMessage("!! 404 File to delete not found !!");
 		}
 	}
 	
@@ -401,6 +521,8 @@ public class Cloud {
 				out.close();
 			} catch(IOException e) {
 				sendMessage("ERROR\n" + e.getMessage());
+				Main.log.error("ERROR\n" + e.getMessage());
+				e.printStackTrace();
 			}
 		} else {
 			sendMessage("!! Operation canceled !!");
@@ -494,6 +616,12 @@ public class Cloud {
 	private void move(String[] param) {
 		String nameFile = null;
 		String destination = null;
+		String rootPath;
+		
+		if(userMode)
+			rootPath = Main.PATH_INSTALLAZIONE + "/root/usr/" + username + "/";
+		else
+			rootPath = Main.PATH_INSTALLAZIONE + "/root/";
 		
 		if(param.length > 2 && param[1] != null && param[2] != null){
 			nameFile = param[1];
@@ -512,9 +640,10 @@ public class Cloud {
 				destination = attendiMessaggio(">Ok, where I move it?").text();
 			
 			if(destination.length()>0 && !destination.substring(0, 1).equals("/"))
-				destination = "/" + destination;
-			destination = Main.PATH_INSTALLAZIONE + "/root" + destination;
-			if(destination.length()>0 && !destination.substring(destination.length()-2, destination.length()-1).equals("/"))
+				destination = PATH + destination;
+			else
+				destination = rootPath + destination;
+			if(destination.length()>0 && !destination.substring(destination.length()-1, destination.length()).equals("/"))
 				destination = destination + "/";
 			File destinationPath = new File(destination);
 			if(destinationPath.exists() && destinationPath.isDirectory()) {
@@ -560,6 +689,12 @@ public class Cloud {
 	private void cp(String[] param) {
 		String nameFile = null;
 		String destination = null;
+		String rootPath;
+		
+		if(userMode)
+			rootPath = Main.PATH_INSTALLAZIONE + "/root/usr/" + username + "/";
+		else
+			rootPath = Main.PATH_INSTALLAZIONE + "/root/";
 		
 		if(param.length > 2 && param[1] != null && param[2] != null){
 			nameFile = param[1];
@@ -578,9 +713,11 @@ public class Cloud {
 			if(destination == null)
 				destination = attendiMessaggio(">Ok, where I copy it?").text();
 			if(destination.length()>0 && !destination.substring(0, 1).equals("/"))
-				destination = "/" + destination;
-			destination = Main.PATH_INSTALLAZIONE + "/root" + destination;
-			if(destination.length()>0 && !destination.substring(destination.length()-2, destination.length()-1).equals("/"))
+				destination = PATH + destination;
+			else
+				destination = rootPath + destination;
+			
+			if(destination.length()>0 && !destination.substring(destination.length()-1, destination.length()).equals("/"))
 				destination = destination + "/";
 			File destinationPath = new File(destination);
 			if(destinationPath.exists() && destinationPath.isDirectory()) {
@@ -609,7 +746,11 @@ public class Cloud {
 						}
 					}
 					try {
-						Files.copy(Paths.get(file.getPath()), Paths.get(destinationPath + "/" + nameFile));
+						String conferma = attendiMessaggio("I will copy in: " + destinationPath + "/" + nameFile + "\nAre you sure? Y/N").text();
+						if("Y".equalsIgnoreCase(conferma))
+							Files.copy(Paths.get(file.getPath()), Paths.get(destinationPath + "/" + nameFile));
+						else
+							sendMessage("Comand cancelled");
 					} catch (IOException e) {
 						sendMessage("!! I have a problem with this operation !!");
 					}

@@ -35,6 +35,7 @@ public class Help {
 	
 	public static final String USER_HELP = "Lista dei comandi da utente:\n"
 			+ "\n/postino\nInvia un messaggio ad  un utente, sintassi da seguire:\n/postino 'id destinatario' 'testo del messaggio da inviare'\n"
+			+ "\n/cloud\nAccedi al tuo cloud, un'area riservata per i tuoi file gestita da Ellie\n"
 			+ "\n/userexit\nesci dalla lista degli utenti";
 	
 	public static final String CLOUD_HELP = ">.::Help::.\n"

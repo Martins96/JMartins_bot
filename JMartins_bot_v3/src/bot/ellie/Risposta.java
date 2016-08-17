@@ -26,8 +26,8 @@ import bot.ellie.utils.*;
 
 public class Risposta {
 	
+	User user;	
 	boolean adminid = false;
-	String user;
 	private boolean check = true;
 	//user id
 	Random random = new Random();
@@ -41,7 +41,7 @@ public class Risposta {
 	public Risposta(int idthread) 
 	{
 		this.idthread = idthread;
-		user = null;
+		user = new User();
 		
 		
 	}
@@ -286,10 +286,10 @@ public class Risposta {
 				
 				String text = new String("Qualcosa è andato storto...");
 				Message message = null;
-				if(controllaUser() != null)
+				if(user.isLogged())
 				{
 					Main.log.warn(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato nuovamente l'accesso user.");
-					text = "Scusami, ma sei già  nella lista degli user, " + controllaUser();
+					text = "Scusami, ma sei già  nella lista degli user, " + user.getName();
 				}
 				else
 				{
@@ -298,7 +298,7 @@ public class Risposta {
 					Main.botThread[idthread].message = new Message();
 					message = attendiMessaggio();
 					
-					text = aggiungiUser(message.text(), message.from().id());
+					text = user.aggiungiUser(message.text(), message.from().id());
 					if(text.equals("Non credo di conoscerti, scusa"))
 					{
 						Main.log.info("ACCESSO USER NEGATO A: " + message.from().username() + " - id(" + message.from().id() + ")");
@@ -312,9 +312,8 @@ public class Risposta {
 			
 		case("/userhelp"):
 			long id = messaggio.from().id();
-			if(controllaUser()== null)
-			{
-				Main.log.info(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato l'uscita user non facendone parte");
+			if(!user.isLogged()) {
+				Main.log.info(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato un comando da user non facendone parte");
 				return "Scusami, ma non fai parte della lista degli user";
 			}
 			else
@@ -322,18 +321,14 @@ public class Risposta {
 		
 		case("/userexit"):
 			id = messaggio.from().id();
-			if(controllaUser() == null)
-			{
+			if(!user.isLogged()) {
 				Main.log.info(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato l'uscita user non facendone parte");
 				text = "Scusami, ma non fai parte della lista degli user";
 			}
-			else
-			{
-				text = rimuoviUser(id);
+			else {
+				text = user.rimuoviUser(id);
 			}
 			return text;
-				
-				
 				
 		//--------------------------------------------------------------------------------------------------------------
 			//funzioni da ADMIN
@@ -346,24 +341,27 @@ public class Risposta {
 					Main.log.warn(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato nuovamente l'accesso admin.");
 					text = "Scusami, ma sei già  admin";
 				}
-				else
-				{
-					boolean accesso = false;
-					Main.sendMessage(messaggio.from().id(), "Martins? Sei tu?");
-					message = attendiMessaggio();
-					// messaggio ricevuto
-					accesso = autenticazione(message.text());
-					if(accesso)
-					{
-						Main.log.warn("ACCESSO ADMIN CONSENTITO A: " + message.from().username() + " - id(" + message.from().id() + ")");
-						Main.sendMessage(message.from().id(), "Papà ! ❤😍😘❤");
-						text = "Papà , ti ricordo che la lista dei tuoi comandi è \" /adminhelp \" 😘";
-						aggiungiAdmin();	
+				else {
+					if(user.isLogged()) {
+						Main.log.warn(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato l'accesso admin mentre loggato come user.");
+						text = "Scusami, ma sei già un user";
 					}
-					else
-					{
-						Main.log.warn("ACCESSO ADMIN NEGATO A: " + message.from().username() + " - id(" + message.from().id() + ")");
-						text = "No, fa niente";
+					else {
+						boolean accesso = false;
+						Main.sendMessage(messaggio.from().id(), "Martins? Sei tu?");
+						message = attendiMessaggio();
+						// messaggio ricevuto
+						accesso = autenticazione(message.text());
+						if(accesso) {
+							Main.log.warn("ACCESSO ADMIN CONSENTITO A: " + message.from().username() + " - id(" + message.from().id() + ")");
+							Main.sendMessage(message.from().id(), "Papà ! ❤😍😘❤");
+							text = "Papà , ti ricordo che la lista dei tuoi comandi è \" /adminhelp \" 😘";
+							aggiungiAdmin();	
+						}
+						else {
+							Main.log.warn("ACCESSO ADMIN NEGATO A: " + message.from().username() + " - id(" + message.from().id() + ")");
+							text = "No, fa niente";
+						}
 					}
 				}
 				return text;
@@ -437,9 +435,13 @@ public class Risposta {
 						+ "(" + messaggio.from().id() + ") ENTRA IN MODALITA' CLOUD");
 				
 				Cloud cloudModality = new Cloud(messaggio.from().id(), idthread);
-				cloudModality.startCloudModality();
-			} else {
-				return "Non hai i privilegi necessari per questa funzione, accedi tramite /admin";
+				cloudModality.startCloudModalityForAdmin();
+			} else 
+				if(user.isLogged()){
+					Cloud cloudModality = new Cloud(messaggio.from().id(), idthread);
+					cloudModality.startCloudModalityForUser(user.getName());
+				} else {
+					return "Non hai i privilegi necessari per questa funzione, accedi tramite /admin";
 			}
 				return "Fine modalità clouding";
 				
@@ -451,7 +453,7 @@ public class Risposta {
 				Postino postino = new Postino();
 				String destinatario = "", testomex = "", mittente = "";
 				check = false;
-					mittente = controllaUser();
+					mittente = user.getName();
 					if(mittente == null)
 					{
 						check = controllaAdmin();
@@ -959,62 +961,9 @@ public class Risposta {
 	
 	//----------------------------------------------------------------------------------------------------------
 	// user
-	/**aggiunge l'id alla lista utenti in base alla password inserita
-	 * 
-	 * @param password
-	 * @param id
-	 * @return esito
-	 */
-	public String aggiungiUser(String password, long id)
-	{
-		switch(password)
-		{
-		case("Scoiattolo123"): //accesso Gaia
-			user = "Gaia";
-		    return "Hey, ciao Gaia, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
-		case("Alesnap123"): //accesso Ale
-			user = "Ale";
-			return "Hey, ciao Ale, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
-		case("Ciaolol")://accesso Matte
-			user = "Matte";
-			return "Hey, ciao Matte, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
-		case("Tumama69")://accesso Dinu
-			user = "Dinu";
-			return "Hey, ciao Alberto, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
-		
-		case("Jamal")://accesso Vale
-			user = "Vale";
-			return "Hey, ciao Vale, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
-		
-		case("Spongebob32")://accesso Pol
-			user = "Pol";
-			return "Hey, ciao Pol, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
-		case("Ginseng")://Accesso Andrea
-			user = "Andrea";
-			return "Hey, ciao Andrea! sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
-		}
-		return "Non credo di conoscerti, scusa";
-	}
-	/**controlla se l'id inserito è nella lista degli user
-	 * 
-	 * @param  id
-	 * @return nome utente dell'id inserito se trovato, altrimenti ritorna "null"
-	 */
- 	public String controllaUser()
-	{
-		return user;
-	}	
 	
-	public String rimuoviUser(long userdarimuovere)
-	{
-		if(user != null) {
-			String s = user;
-			user = null;
-			return "Privilegio da USER rimosso, buona giornata " + s + " 😊";
-		} else {
-		return "Il tuo ID non è stato trovato nella lista degli user";
-		}
-	}
+	
+	
 	
 	
 	//----------------------------------------------------------------------------------------------------------//
