@@ -579,8 +579,10 @@ public class Cloud {
 		
 		if(newPath.equals("..")){
 			cdback1();
-		} else if(newPath.equalsIgnoreCase("./")) {
+		} else if(newPath.equalsIgnoreCase("/") || newPath.equalsIgnoreCase("/.")) {
 			cdbackall();
+		} else if(newPath.equalsIgnoreCase("./")) {
+			newPath = "";
 		} else {
 			File file = new File(PATH + newPath);
 			if(file.exists() && file.isDirectory()) {
