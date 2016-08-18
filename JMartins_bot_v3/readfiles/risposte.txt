@@ -1,8 +1,8 @@
 []
--Foto
-Mi piacerebbe spedire qualcuna ma ancora non so come fare
-Ho così tante foto qui, ma ancora non posso spedirle
-Quanto vorrei spedirtene qualcuna, ma non posso. Giuro che non è colpa di papà!
+-Ellie?
+Sì? 😊
+Si è il mio nome 😊
+Eccomi, sono qui 😄
 -Ellie
 Si è il mio nome 😊
 Esatto, mi chiamo così 😄
@@ -95,6 +95,34 @@ Provo a intrattenere e far sorridere 😊
 Cerco di alzare il morale 😊
 Papà mi ha creata per molte funzioni, ma in particolare quella di alzare il morale 😄
 Provo a intrattenere e far sorridere 😊
+-In che linguaggio sei scritta?
+Java ♨
+♨♨♨
+♨ Java ♨
+-In che linguaggio sei scritto?
+Java ♨
+♨♨♨
+♨ Java ♨
+-In che linguaggio sei scritta
+Java ♨
+♨♨♨
+♨ Java ♨
+-In che linguaggio sei programmata?
+Java ♨
+♨♨♨
+♨ Java ♨
+-In che linguaggio sei programmato?
+Java ♨
+♨♨♨
+♨ Java ♨
+-In che linguaggio sei fatta?
+Java ♨
+♨♨♨
+♨ Java ♨
+-In che linguaggio sei fatto?
+Java ♨
+♨♨♨
+♨ Java ♨
 -Perché esisti?
 Cerco di alzare il morale 😊
 Papà mi ha creata per molte funzioni, ma in particolare quella di alzare il morale 😄
@@ -106,7 +134,7 @@ Provo a intrattenere e far sorridere 😊
 -Perchè esisti?
 Cerco di alzare il morale 😊
 Papà mi ha creata per molte funzioni, ma in particolare quella di alzare il morale 😄
-Provo a intrattenere e far sorridere 😊help
+Provo a intrattenere e far sorridere 😊
 -Davvero?
 E' come credi, fidati 😊
 Yep 😊

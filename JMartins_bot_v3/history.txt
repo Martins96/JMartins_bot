@@ -16,3 +16,4 @@
 3.1.3.1:Aggiunto invio casuale anche di foto oltre a solo testo
 3.1.3.2:Aggiunto  il size dei file in modalità cloud e shared
 3.1.3.3:Aggiunto un cloud per gli user, l'admin può accedere a tutti gli utenti, sistemato gestione user
+3.1.3.4:Aggiunta funzione per invio stickers casuali, pulito codice per comando /impiccato, aggiunt una frase in invio frasi casuali

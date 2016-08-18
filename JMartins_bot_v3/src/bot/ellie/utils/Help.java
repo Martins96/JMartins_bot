@@ -12,6 +12,7 @@ public class Help {
 			+ "\n/asciiart\ngenero un disegno in ASCII\n"
 			+ "\n/foto\ninvia una foto\n"
 			+ "\n/musica\ninvia una canzone\n"
+			+ "\n/sticker\ninvia uno sticker casuale\n"
 			+ "\n/ora\nti dico che ore sono\n"
 			+ "\n/calc\napre menu di calcolatrice e generazione numeri casuali\n"
 			+ "\n/dado\nlancio un dado(ti dico un valore casuale tra 1 e 6)\n"
