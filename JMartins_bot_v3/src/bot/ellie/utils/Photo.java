@@ -46,9 +46,7 @@ public class Photo {
 				categoria = "mystic";
 				break;
 			default:
-				synchronized (Main.ellie) {
-					Main.ellie.sendMessage(id, "Categoria non riconosciuta, ne scelgo una casuale");	
-				}
+				Main.sendMessage(id, "Categoria non riconosciuta, ne scelgo una casuale");	
 				switch (ran.nextInt(3)) {
 				case 0:
 					categoria = "cute";

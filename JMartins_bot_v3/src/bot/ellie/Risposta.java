@@ -64,7 +64,7 @@ public class Risposta {
 		try
 		{
 			String ioMiChiamo;
-			if(!(ioMiChiamo = ControlliMessaggiRicevuti.ioMiChiamo(messaggio)).equals("")) {
+			if(!(ioMiChiamo = ControlliMessaggiRicevuti.ioMiChiamo(messaggio)).equalsIgnoreCase("")) {
 				return ioMiChiamo;
 			}
 		}
@@ -76,7 +76,7 @@ public class Risposta {
 		//------------------------------------------------------------------
 				{
 					String comandoDaFrase = ControlliMessaggiRicevuti.setComandoDaFrase(messaggio);
-					if(!comandoDaFrase.equals(""))
+					if(!comandoDaFrase.equalsIgnoreCase(""))
 					{
 						testoMessaggio = comandoDaFrase;
 					}
@@ -84,13 +84,13 @@ public class Risposta {
 		
 		
 		if(testoMessaggio.length()>1)
-			if(testoMessaggio.substring(0,1).equals("\\"))
+			if(testoMessaggio.substring(0,1).equalsIgnoreCase("\\"))
 			{
 				testoMessaggio = "/" + testoMessaggio.substring(1, testoMessaggio.length());
 			}
 		
 		// eseguo comando
-		if(testoMessaggio.substring(0,1).equals("/"))
+		if(testoMessaggio.substring(0,1).equalsIgnoreCase("/"))
 		{
 			risposta = eseguiComando(messaggio);
 		}
@@ -152,30 +152,27 @@ public class Risposta {
 	 */
 	public String eseguiComando(Message messaggio)
 	{
-		
-		String comando = new String("");
-		//trovo la substring del comando ignorando il testo dopo lo spazio
-		for (int j=0; messaggio.text().length() > j; j++)
-		{
-			if (messaggio.text().substring(j, j+1).equals(" "))
-				break;
-			comando = comando + messaggio.text().substring(j, j+1);
+		if (messaggio.text() == null) {
+			Main.log.error("Null text in comand");
+			ErrorReporter.sendError("Null text in comand " + messaggio.from().firstName());
+			return "Oh, qualcosa è andato storto nell'esecuzione del comando";
 		}
+		String[] comando = messaggio.text().split(" ");
 		//sistemo maiuscole in minuscole
-		comando = comando.toLowerCase();
+		comando[0] = comando[0].toLowerCase();
 		//sistemo /* per funzione /calc
-		if(comando.equals("/*"))
-			comando = new String("/x");
-		if(comando.equals("//"))
-			comando = new String("/:");
-		if(comando.equals("/dado"))
+		if(comando[0].equalsIgnoreCase("/*"))
+			comando[0] = new String("/x");
+		if(comando[0].equalsIgnoreCase("//"))
+			comando[0] = new String("/:");
+		if(comando[0].equalsIgnoreCase("/dado"))
 		{
 			//come se tirasse un dado
 			int dado = random.nextInt(6) + 1;
 			return "" + dado;
 		}
 		
-		switch(comando)
+		switch(comando[0])
 		{
 		//funzioni standard
 			case("/start"):
@@ -215,7 +212,7 @@ public class Risposta {
 		//-------------------------------------------------------------------------------------------------------
 			case("/battuta"):
 				
-				return Battuta.comandoBattuta(messaggio);
+				return Battuta.comandoBattuta(comando, messaggio.from().id());
 				
 				
 		//--------------------------------------------------------------------------------------------------------
@@ -302,19 +299,24 @@ public class Risposta {
 				}
 				else
 				{
+					String pass;
+					if(comando.length>1 && comando[1] != null)
+						pass = comando[1];
+					else {
+						Main.sendMessage(messaggio.from().id(), "Ciao, chi sei?");
+						Main.botThread[idthread].message = new Message();
+						message = attendiMessaggio();
+						pass = message.text() == null ? "" : message.text();
+					}
 					
-					Main.sendMessage(messaggio.from().id(), "Ciao, chi sei?");
-					Main.botThread[idthread].message = new Message();
-					message = attendiMessaggio();
-					
-					text = user.aggiungiUser(message.text(), message.from().id());
-					if(text.equals("Non credo di conoscerti, scusa"))
+					text = user.aggiungiUser(pass, messaggio.from().id());
+					if(text.equalsIgnoreCase("Non credo di conoscerti, scusa"))
 					{
-						Main.log.info("ACCESSO USER NEGATO A: " + message.from().username() + " - id(" + message.from().id() + ")");
+						Main.log.info("ACCESSO USER NEGATO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
 					}
 					else
 					{
-						Main.log.info("ACCESSO USER CONSENTITO A: " + message.from().username() + " - id(" + message.from().id() + ")");
+						Main.log.info("ACCESSO USER CONSENTITO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
 					}
 				}
 				return text;
@@ -357,18 +359,24 @@ public class Risposta {
 					}
 					else {
 						boolean accesso = false;
-						Main.sendMessage(messaggio.from().id(), "Martins? Sei tu?");
-						message = attendiMessaggio();
-						// messaggio ricevuto
-						accesso = autenticazione(message.text());
+						String pass;
+						if(comando.length>1 && comando[1] != null)
+							pass = comando[1];
+						else {
+							Main.sendMessage(messaggio.from().id(), "Martins? Sei tu?");
+							Main.botThread[idthread].message = new Message();
+							message = attendiMessaggio();
+							pass = message.text() == null ? "" : message.text();
+						}
+						accesso = autenticazione(pass);
 						if(accesso) {
-							Main.log.warn("ACCESSO ADMIN CONSENTITO A: " + message.from().username() + " - id(" + message.from().id() + ")");
-							Main.sendMessage(message.from().id(), "Papà ! ❤😍😘❤");
+							Main.log.warn("ACCESSO ADMIN CONSENTITO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
+							Main.sendMessage(messaggio.from().id(), "Papà ! ❤😍😘❤");
 							text = "Papà , ti ricordo che la lista dei tuoi comandi è \" /adminhelp \" 😘";
 							aggiungiAdmin();	
 						}
 						else {
-							Main.log.warn("ACCESSO ADMIN NEGATO A: " + message.from().username() + " - id(" + message.from().id() + ")");
+							Main.log.warn("ACCESSO ADMIN NEGATO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
 							text = "No, fa niente";
 						}
 					}
@@ -427,7 +435,7 @@ public class Risposta {
 					Main.sendMessage(messaggio.from().id(), "Papà, sei sicuro di volermi spegnere? 😟 \n/Yep \n\n/Nope");
 					Message m = attendiMessaggio();
 					shutdownRisp = "Ok resto attiva 😘";
-					if(m.text().equals("/Yep")) {
+					if(m.text().equalsIgnoreCase("/Yep")) {
 						shutdownRisp = "Vado a nanna 😇 \n Bye Bye";
 						Shutdown.comandoShutdown();
 					}
@@ -472,42 +480,29 @@ public class Risposta {
 					if(check)
 					{
 						//sistemo destinatario e testomex
-						for (int j=0; messaggio.text().length() > j; j++)
+						if (comando.length>2 && comando[1] != null && comando[2] != null)
 						{
-							if (messaggio.text().substring(j, j+1).equals(" "))
-							{
-								j++;
-								while (messaggio.text().length() > j)
-								{
-									if (messaggio.text().substring(j, j+1).equals(" "))
-									{
-										j++;
-										while (messaggio.text().length() > j)
-										{
-											testomex = testomex + messaggio.text().substring(j, j+1);
-											j++;
-										}
-										break;
-									}
-									destinatario = destinatario + messaggio.text().substring(j, j+1);
-									j++;
-								}
-							}
+							testomex = comando[1];
+							destinatario = comando[2];
 						}
-						if (destinatario.equals(""))
+						else if (comando.length>1 && comando[1] != null) {
+							testomex = comando[1];
+						}
+						
+						if (destinatario.equalsIgnoreCase(""))
 						{
 							Main.sendMessage(messaggio.from().id(), "Ok, a chi devo spedire il messaggio?\nDigita /exit per annullare il comando");
 							message = attendiMessaggio();
 							//messaggio in arrivo
 							if(message.text() != null)
 							{
-									System.out.println("destinatario: " + destinatario);
+									Main.log.info("destinatario: " + destinatario);
 									destinatario = message.text().toLowerCase();
 							}
-							if (destinatario.equals("/exit"))
+							if (destinatario.equalsIgnoreCase("/exit") || destinatario.equalsIgnoreCase(""))
 								return "Comando annullato";
 						}
-						else if (destinatario.equals("help"))
+						else if (destinatario.equalsIgnoreCase("help"))
 								if (mittente == null)
 									esitopostino = postino.helpadmin();
 								else
@@ -522,7 +517,7 @@ public class Risposta {
 								testomex = message.text();
 							}
 						}
-						if (testomex.equals("/exit"))
+						if (testomex.equalsIgnoreCase("/exit") || testomex.equalsIgnoreCase(""))
 							return "Comando annullato";
 						//----------------------------------------------------------------------------
 						if (mittente == null)
@@ -547,12 +542,12 @@ public class Risposta {
 					//sistemo destinatario e testomex
 					for (int j=0; messaggio.text().length() > j; j++)
 					{
-						if (messaggio.text().substring(j, j+1).equals(" "))
+						if (messaggio.text().substring(j, j+1).equalsIgnoreCase(" "))
 						{
 							j++;
 							while (messaggio.text().length() > j)
 							{
-								if (messaggio.text().substring(j, j+1).equals(" "))
+								if (messaggio.text().substring(j, j+1).equalsIgnoreCase(" "))
 								{
 									j++;
 									while (messaggio.text().length() > j)
@@ -567,9 +562,9 @@ public class Risposta {
 							}
 						}
 					}
-					if (destinatario.equals(""))
+					if (destinatario.equalsIgnoreCase(""))
 						return "Errore invio messaggio: consultare la guida su come inviare tramite il comando '/postino help'";
-					else if (destinatario.equals("help"))
+					else if (destinatario.equalsIgnoreCase("help"))
 							return postino.syshelp();
 					return postino.sysMessaggio(destinatario, testomex);
 				}
@@ -615,10 +610,10 @@ public class Risposta {
 						+ "\n/exit - comando di uscita dalla funzione");
 				message = attendiMessaggio();
 				String meteo = Meteo.getMeteo(message.text());
-				if (meteo.equals("error")) {
+				if (meteo.equalsIgnoreCase("error")) {
 					return "Città  non riconosciuta esco dalla funzione meteo. Utilizza /meteo per riprovate e seleziona una città  dalla lista";
 				}
-				if (meteo.equals("uscita")) {
+				if (meteo.equalsIgnoreCase("uscita")) {
 					return "Funzione meteo annullata";
 				} // input OK
 				return meteo;
@@ -687,7 +682,7 @@ public class Risposta {
 			igiocatore++;
 
 			message = messaggio;
-			while (!message.text().equals("/exit")) {
+			while (!message.text().equalsIgnoreCase("/exit")) {
 				Main.sendMessage(messaggio.from().id(),
 						"ELLIE:\n" + "punti: " + puntiBlackjack(carteellie, iellie) + "\n"
 								+ stampaCarteBlackjack(carteellie, iellie) + "\n\n\n" + "TU:\n" + "punti: "
@@ -817,7 +812,7 @@ public class Risposta {
 	
 				while ((line = lnr.readLine ()) != null)
 				{
-				    if (line.equals(word))
+				    if (line.equalsIgnoreCase(word))
 				    {
 				    	n = lnr.getLineNumber();
 				    	break;
@@ -856,7 +851,7 @@ public class Risposta {
 			String line;
 	
 			while ((line = lnr.readLine ()) != null) {
-			    if (line.equals(word)) {
+			    if (line.equalsIgnoreCase(word)) {
 			    	n = lnr.getLineNumber();
 			    }
 			}

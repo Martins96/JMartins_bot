@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Sticker {
 
-	private final int N_STICKERS = 79;
+	private final int N_STICKERS = 148;
 	private Random random;
 	private String sticker;
 
@@ -341,7 +341,283 @@ public class Sticker {
 		case 78:
 			s = "BQADAQADKCQAAtpxZgeQOmBPS3HuiQI";
 			break;
-			
+
+		case 79:
+			s = "BQADAQADggEAAs2YnAEMxh7Ipgaq1gI";
+			break;
+
+		case 80:
+			s = "BQADAQADYgADkqHuCe2pMviRqfVfAg";
+			break;
+
+		case 81:
+			s = "BQADAQADbgADkqHuCUb4-bv7l3arAg";
+			break;
+
+		case 82:
+			s = "BQADAQADjgADkqHuCUWdeXusAlusAg";
+			break;
+
+		case 83:
+			s = "BQADAQADBwEAApKh7glfsRgVMu-u9gI";
+			break;
+
+		case 84:
+			s = "BQADBAADEgADgd1pAAE_e-0mZ5V9oAI";
+			break;
+
+		case 85:
+			s = "BQADBAADGgADgd1pAAGvNem4KXjA1AI";
+			break;
+
+		case 86:
+			s = "BQADBAADHgADgd1pAAEvM7KtzKV_QQI";
+			break;
+
+		case 87:
+			s = "BQADBAADMQADgd1pAAHFqtbabvfrQwI";
+			break;
+
+		case 88:
+			s = "BQADAgADaAADCuDjC9c_XAlhj58zAg";
+			break;
+
+		case 89:
+			s = "BQADAgADcgADCuDjC-jcn7dxchEtAg";
+			break;
+
+		case 90:
+			s = "BQADAgADeAADCuDjC6DgKp6jVwABiQI";
+			break;
+
+		case 91:
+			s = "BQADAgADigADCuDjC4jRcVNsfqs7Ag";
+			break;
+
+		case 92:
+			s = "BQADBAADGgADIvv9BfNbjBhDTzY2Ag";
+			break;
+
+		case 93:
+			s = "BQADBAADNAADIvv9BYbYkBLjBMhPAg";
+			break;
+
+		case 94:
+			s = "BQADBAADPgADIvv9BbWQGNybWorlAg";
+			break;
+
+		case 95:
+			s = "BQADBAADagADIvv9BQG_3bDKLYEjAg";
+			break;
+
+		case 96:
+			s = "BQADBAADfwADIvv9BUkE7ax7g_sWAg";
+			break;
+
+		case 97:
+			s = "BQADBAADiQADIvv9BeOvnJ_fdoriAg";
+			break;
+
+		case 98:
+			s = "BQADAQAD4DcAAtpxZgf_DUM0EFZrrQI";
+			break;
+
+		case 99:
+			s = "BQADAQAD5DcAAtpxZgeLWikvH4iZtAI";
+			break;
+
+		case 100:
+			s = "BQADAQADCDgAAtpxZgedM39JoDMxZgI";
+			break;
+
+		case 101:
+			s = "BQADBAAD3QADvHSnAZgyFgvQ2e7aAg";
+			break;
+
+		case 102:
+			s = "BQADBAADKQEAArx0pwGckd2RIR9e2QI";
+			break;
+
+		case 103:
+			s = "BQADBAAD6QADvHSnATXSjHK1QU5ZAg";
+			break;
+
+		case 104:
+			s = "BQADBAAD4QADvHSnAbN4Momc988cAg";
+			break;
+
+		case 105:
+			s = "BQADBAADAgEAArx0pwHxHOUm5q9-CQI";
+			break;
+
+		case 106:
+			s = "BQADBAADSwEAArx0pwETVQKhgLyzGwI";
+			break;
+
+		case 107:
+			s = "BQADBQADTwADd9N_ARt_ESBnxMSdAg";
+			break;
+
+		case 108:
+			s = "BQADBQADUQADd9N_AbtrwvfyZnDGAg";
+			break;
+
+		case 109:
+			s = "BQADBQADXwADd9N_AetBZVIK8GtdAg";
+			break;
+
+		case 110:
+			s = "BQADBQADcAADd9N_AS_NP8kTdEv3Ag";
+			break;
+
+		case 111:
+			s = "BQADBAAD2wADcKvVBMiG8hx-91aKAg";
+			break;
+
+		case 112:
+			s = "BQADBAAD5wADcKvVBIXtW0lbpbz_Ag";
+			break;
+
+		case 113:
+			s = "BQADBAAD8wADcKvVBA02WyF52gABeQI";
+			break;
+
+		case 114:
+			s = "BQADBAADCwEAAnCr1QTdku9acbiUnAI";
+			break;
+
+		case 115:
+			s = "BQADBAADfgEAAnCr1QT9Cc4zlN6d6QI";
+			break;
+
+		case 116:
+			s = "BQADAgADdQADUhThCjDTZAoB9vaZAg";
+			break;
+
+		case 117:
+			s = "BQADAgADkwADUhThCqNvXk4Zm3WnAg";
+			break;
+
+		case 118:
+			s = "BQADAgADrgADUhThCnAuDTW07m6AAg";
+			break;
+
+		case 119:
+			s = "BQADAgADvwADUhThClbGQ4WoILi3Ag";
+			break;
+
+		case 120:
+			s = "BQADBQAD7wADR5XbAUyOwGk4w8NUAg";
+			break;
+
+		case 121:
+			s = "BQADBQAD-gADR5XbAevDB_1lf9XCAg";
+			break;
+
+		case 122:
+			s = "BQADBQAEAQACR5XbAY3a7-LahBlfAg";
+			break;
+
+		case 123:
+			s = "BQADBQADEAEAAkeV2wEG3d6WNiqtRgI";
+			break;
+
+		case 124:
+			s = "BQADBQADGAEAAkeV2wGfLxbeAXiNwAI";
+			break;
+
+		case 125:
+			s = "BQADAgADSgADnNbnCpcZRs41H_lnAg";
+			break;
+
+		case 126:
+			s = "BQADAgADSAADnNbnCrgCanzqbDzvAg";
+			break;
+
+		case 127:
+			s = "BQADAgADTAADnNbnCp9iJzzWsxQmAg";
+			break;
+
+		case 128:
+			s = "BQADAwADPAADpYrrAAEaElCVtq2EPgI";
+			break;
+
+		case 129:
+			s = "BQADAwADJgADpYrrAAFYIol7Hr5YSAI";
+			break;
+
+		case 130:
+			s = "BQADAwADTAADpYrrAAFpuax8zNF88AI";
+			break;
+
+		case 131:
+			s = "BQADAwADSgADpYrrAAHbCv0TLsAb7gI";
+			break;
+
+		case 132:
+			s = "BQADBAAD4wADtUGvBvzoxImSR4ECAg";
+			break;
+
+		case 133:
+			s = "BQADBAAD8wADtUGvBot1Qp_6YmbUAg";
+			break;
+
+		case 134:
+			s = "BQADBAADBAEAArVBrwbFOIgKgFOwsQI";
+			break;
+
+		case 135:
+			s = "BQADAQADUwADByXfDYpUoao-ElysAg";
+			break;
+
+		case 136:
+			s = "BQADAQADXQADByXfDfaUz1aqJPciAg";
+			break;
+
+		case 137:
+			s = "BQADAQADYwADByXfDWPQD3Vb8CyNAg";
+			break;
+
+		case 138:
+			s = "BQADAQADVQADByXfDbWy3s8dspUTAg";
+			break;
+
+		case 139:
+			s = "BQADAQADYQADByXfDbkhf9imOWXMAg";
+			break;
+
+		case 140:
+			s = "BQADAQADjQADByXfDQeeDVGosf6BAg";
+			break;
+
+		case 141:
+			s = "BQADAQADkQADByXfDfi6ystbRieDAg";
+			break;
+
+		case 142:
+			s = "BQADAgADVQEAApb6EgVlavUUeCpBUQI";
+			break;
+
+		case 143:
+			s = "BQADAgADbQEAApb6EgWKBmr2NlmerAI";
+			break;
+
+		case 144:
+			s = "BQADAgADVQEAApb6EgVlavUUeCpBUQI";
+			break;
+
+		case 145:
+			s = "BQADAgADwAEAApb6EgX-lTt2Kk7pxQI";
+			break;
+
+		case 146:
+			s = "BQADAgADxgEAApb6EgXmZiGuKDGElQI";
+			break;
+
+		case 147:
+			s = "BQADAgADZgADCuDjC0vHsWW4mTy7Ag";
+			break;
+
 		default:
 			s = null;
 			break;

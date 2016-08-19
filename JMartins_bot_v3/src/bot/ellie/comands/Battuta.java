@@ -5,8 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
-import com.pengrad.telegrambot.model.Message;
-
 import bot.ellie.Main;
 
 public class Battuta {
@@ -36,7 +34,7 @@ public class Battuta {
 		return t;
 	}
 	
-	public static String comandoBattuta(Message messaggio) {
+	public static String comandoBattuta(String[] messaggio, int id) {
 		String battutastring = new String ("");
 		Random random = new Random();
 		int b = 0;
@@ -45,22 +43,21 @@ public class Battuta {
 		String parametroBattuta = "";
 		if(check)
 		{
+			String s = new String();
 			//sistemo parametro battuta
-			for (int j=0; messaggio.text().length() > j; j++)
+			if (messaggio.length > 1)
 			{
-				if (messaggio.text().substring(j, j+1).equals(" "))
-				{
-					parametroBattuta = messaggio.text().substring(j+1).toLowerCase();
-					break;
-				}
+				for (int i = 1; messaggio.length > i; i++)
+					s = s + messaggio[i];
+				parametroBattuta = s;
 			}
 		}
-		switch (parametroBattuta)
+		switch (parametroBattuta.toLowerCase())
 		{
 		case (""):
 			b = random.nextInt(173) + 1;
 			break;
-		case ("chuck norris"):
+		case ("chucknorris"):
 			b = random.nextInt(54) + 50;
 			break;
 		case ("help"):
@@ -73,7 +70,7 @@ public class Battuta {
 			b = random.nextInt(17) + 110;
 			break;
 		default:
-				Main.sendMessage(messaggio.from().id(), "Parametro non riconosciuto, ti mando una battuta casuale");
+				Main.sendMessage(id, "Parametro non riconosciuto, ti mando una battuta casuale");
 			b = random.nextInt(127) + 1;
 			break;
 		}

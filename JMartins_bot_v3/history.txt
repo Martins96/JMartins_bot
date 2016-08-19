@@ -18,3 +18,4 @@
 3.1.3.3:Aggiunto un cloud per gli user, l'admin può accedere a tutti gli utenti, sistemato gestione user
 3.1.3.4:Aggiunta funzione per invio stickers casuali, pulito codice per comando /impiccato, aggiunt una frase in invio frasi casuali
 3.1.3.5:Sistemato problema nel metodo cd di Cloud.java
+3.1.3.6:Pulito codice nel passaggio di parametri in alcuni comandi, aggiunti nuovi stickers
