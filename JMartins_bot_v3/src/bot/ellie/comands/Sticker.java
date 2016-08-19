@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Sticker {
 
-	private final int N_STICKERS = 148;
+	public static final int N_STICKERS = 148;
 	private Random random;
 	private String sticker;
 
@@ -15,6 +15,12 @@ public class Sticker {
 		random = new Random();
 		sticker = generaSticker();
 	}
+	/**
+	 * crea uno sticker da indice
+	 */
+	public Sticker(int n) {
+		sticker = generaSticker(n);
+	}
 
 	/**
 	 * @return lo sricker casuale che è stato generato
@@ -22,9 +28,11 @@ public class Sticker {
 	public String getSticker() {
 		return sticker;
 	}
-
-	private String generaSticker() {
-		int n = random.nextInt(N_STICKERS);
+	
+	/**
+	 * per manuale
+	 */
+	private String generaSticker(int n) {
 		String s;
 		switch (n) {
 		case 0:
@@ -624,6 +632,17 @@ public class Sticker {
 		}
 
 		return s;
+	}
+	
+	/**
+	 * per random
+	 */
+	private String generaSticker() {
+		if (random == null)
+			random = new Random();
+		int n = random.nextInt(N_STICKERS);
+		return generaSticker(n);
+		
 	}
 
 }

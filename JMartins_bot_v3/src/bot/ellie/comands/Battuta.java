@@ -8,6 +8,8 @@ import java.util.Random;
 import bot.ellie.Main;
 
 public class Battuta {
+	
+	public static final int N_BATTUTE = 173;
 
 	public Battuta() {
 	}

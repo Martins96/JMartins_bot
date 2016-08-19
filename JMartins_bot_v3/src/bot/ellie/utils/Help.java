@@ -6,6 +6,7 @@ public class Help {
 			+ "------------------------------------"
 			+ "\n/admin\nlog in da admin\n"
 			+ "\n/user\nlog in da user\n"
+			+ "\n/manual\nesegue alcune funzionalità in modalità manuale\n"
 			+ "\n/battuta\ncerco di alzarti un po' il morale\nper ulteriori informazioni digita /battuta help\n"
 			+ "\n/perla\nscrivo una perla di saggezza\n"
 			+ "\n/meteo\nprevisioni del meteo di Ellie\n"

@@ -72,4 +72,5 @@ public class Photo {
 		return new InputFile("jpg", foto);
 	}
 	
+	
 }
