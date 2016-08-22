@@ -2,6 +2,7 @@ package bot.ellie;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.TelegramBotAdapter;
+import com.pengrad.telegrambot.request.SendMessage;
 
 public class ErrorReporter {
 	
@@ -15,7 +16,7 @@ public class ErrorReporter {
 	 */
 	public static void sendError(String error) {
 		EmergencyEllie = TelegramBotAdapter.buildDebug(TOKEN);
-			EmergencyEllie.sendMessage(115949778, "EMERGENCY ELLIE\n\nERRORE :'(\n" + error);
+			EmergencyEllie.execute(new SendMessage(115949778, "EMERGENCY ELLIE\n\nERRORE :'(\n" + error));
 	}
 	
 	public static void sendError(String error, Exception e) {

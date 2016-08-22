@@ -421,146 +421,6 @@
 08-08 16:54:33 | Main INFO  |  ---------------------------------------------------
 08-08 16:54:33 | Main INFO  |  Gestisce THREAD 0
 08-08 16:55:14 | Main INFO  |  
-|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
-08-08 16:55:14 | Main INFO  |  
-
-[  Ellie è attiva! :-)  ]
-
-08-08 16:55:17 | Main INFO  |  ---------------------------------------------------
-08-08 16:55:17 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-08-08 16:55:17 | Main INFO  |  Nome: Luca
-08-08 16:55:17 | Main INFO  |  Cognome: Martinelli
-08-08 16:55:17 | Main INFO  |  Username: Martins9696 (115949778)
-08-08 16:55:17 | Main INFO  |  Testo: /security
-08-08 16:55:17 | Main INFO  |  ---------------------------------------------------
-08-08 16:55:17 | Main INFO  |  Thread 0 Partito!
-08-08 16:55:28 | Main INFO  |  ---------------------------------------------------
-08-08 16:55:28 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-08-08 16:55:28 | Main INFO  |  Nome: Luca
-08-08 16:55:28 | Main INFO  |  Cognome: Martinelli
-08-08 16:55:28 | Main INFO  |  Username: Martins9696 (115949778)
-08-08 16:55:28 | Main INFO  |  Testo: ping
-08-08 16:55:28 | Main INFO  |  ---------------------------------------------------
-08-08 16:55:28 | Main INFO  |  Gestisce THREAD 0
-08-08 16:55:33 | Main INFO  |  ---------------------------------------------------
-08-08 16:55:33 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-08-08 16:55:33 | Main INFO  |  Nome: Luca
-08-08 16:55:33 | Main INFO  |  Cognome: Martinelli
-08-08 16:55:33 | Main INFO  |  Username: Martins9696 (115949778)
-08-08 16:55:33 | Main INFO  |  Testo: 127.0.0.1
-08-08 16:55:33 | Main INFO  |  ---------------------------------------------------
-08-08 16:55:33 | Main INFO  |  Gestisce THREAD 0
-08-08 16:55:53 | Main INFO  |  ---------------------------------------------------
-08-08 16:55:53 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-08-08 16:55:53 | Main INFO  |  Nome: Luca
-08-08 16:55:53 | Main INFO  |  Cognome: Martinelli
-08-08 16:55:53 | Main INFO  |  Username: Martins9696 (115949778)
-08-08 16:55:54 | Main INFO  |  Testo: 192.168.1.1
-08-08 16:55:54 | Main INFO  |  ---------------------------------------------------
-08-08 16:55:54 | Main INFO  |  Gestisce THREAD 0
-08-08 16:56:02 | Main INFO  |  ---------------------------------------------------
-08-08 16:56:02 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-08-08 16:56:02 | Main INFO  |  Nome: Luca
-08-08 16:56:02 | Main INFO  |  Cognome: Martinelli
-08-08 16:56:02 | Main INFO  |  Username: Martins9696 (115949778)
-08-08 16:56:02 | Main INFO  |  Testo: ping 192.168.1.1
-08-08 16:56:02 | Main INFO  |  ---------------------------------------------------
-08-08 16:56:02 | Main INFO  |  Gestisce THREAD 0
-08-08 16:56:27 | Main INFO  |  ---------------------------------------------------
-08-08 16:56:27 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-08-08 16:56:27 | Main INFO  |  Nome: Luca
-08-08 16:56:27 | Main INFO  |  Cognome: Martinelli
-08-08 16:56:27 | Main INFO  |  Username: Martins9696 (115949778)
-08-08 16:56:27 | Main INFO  |  Testo: ping 8.8.8.8
-08-08 16:56:27 | Main INFO  |  ---------------------------------------------------
-08-08 16:56:27 | Main INFO  |  Gestisce THREAD 0
-
-|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
-08-10 10:21:46 | Main INFO  |  
-
-[  Ellie è attiva! :-)  ]
-
-08-10 10:22:15 | Main INFO  |  ---------------------------------------------------
-08-10 10:22:15 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-08-10 10:22:15 | Main INFO  |  Nome: Valentino
-08-10 10:22:15 | Main INFO  |  Cognome: Masper
-08-10 10:22:15 | Main INFO  |  Username: PryManX (104412734)
-08-10 10:22:15 | Main INFO  |  Testo: /help
-08-10 10:22:15 | Main INFO  |  ---------------------------------------------------
-08-10 10:22:15 | Main INFO  |  Thread 0 Partito!
-08-10 10:22:15 | Main INFO  |  Risposta di Ellie a PryManX :Lista d'aiuto:
-------------------------------------
-/admin
-log in da admin
-
-/user
-log in da user
-
-/battuta
-cerco di alzarti un po' il morale
-per ulteriori informazioni digita /battuta help
-
-/perla
-scrivo una perla di saggezza
-
-/meteo
-previsioni del meteo di Ellie
-
-/asciiart
-genero un disegno in ASCII
-
-/foto
-invia una foto
-
-/musica
-invia una canzone
-
-/ora
-ti dico che ore sono
-
-/calc
-apre menu di calcolatrice e generazione numeri casuali
-
-/dado
-lancio un dado(ti dico un valore casuale tra 1 e 6)
-
-/moneta
-lancio una moneta(ti dico testa o croce in maniera casuale)
-
-/shared
-accedi ai files condivisi in cloud
-
-/impiccato
-gioca al gioco dell'impiccato
-
-/blackjack
-gioca a blackjack con Ellie
-
-/personalinfo
-visualizza informazioni personali
-
-/botinfo
-visualizza informazioni del bot
-------------------------------------
-08-10 10:23:09 | Main INFO  |  ---------------------------------------------------
-08-10 10:23:09 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-08-10 10:23:09 | Main INFO  |  Nome: Luca
-08-10 10:23:09 | Main INFO  |  Cognome: Martinelli
-08-10 10:23:09 | Main INFO  |  Username: Martins9696 (115949778)
-08-10 10:23:09 | Main INFO  |  Testo: /shared
-08-10 10:23:09 | Main INFO  |  ---------------------------------------------------
-08-10 10:23:09 | Main INFO  |  Thread 1 Partito!
-08-10 10:23:09 | Main INFO  |  LucaMartinelliMartins9696(115949778) ENTRA IN MODALITA' CLOUD
-08-10 10:23:17 | Main INFO  |  ---------------------------------------------------
-08-10 10:23:17 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-08-10 10:23:17 | Main INFO  |  Nome: Luca
-08-10 10:23:17 | Main INFO  |  Cognome: Martinelli
-08-10 10:23:17 | Main INFO  |  Username: Martins9696 (115949778)
-08-10 10:23:17 | Main INFO  |  Testo: :quit
-08-10 10:23:17 | Main INFO  |  ---------------------------------------------------
-08-10 10:23:17 | Main INFO  |  Gestisce THREAD 1
-08-10 10:23:17 | Main INFO  |  Risposta di Ellie a Martins9696 :Uscita dalla repository
-08-10 10:32:40 | Main INFO  |  ---------------------------------------------------
 08-10 10:32:40 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
 08-10 10:32:40 | Main INFO  |  Nome: Luca
 08-10 10:32:40 | Main INFO  |  Cognome: Martinelli
@@ -963,3 +823,122 @@ Destinatario: Martins(115949778)
 08-15 18:40:00 | Main INFO  |  Messaggio spedito in data: Mon Aug 15 18:40:00 CEST 2016
 08-15 18:40:00 | Main INFO  |  Messaggio casuale inviato: 😴⏰☕🍩🚗📖📝🍴🍝💻✒📑☎🔔🚗⚽🚿🚗🍗🍖🚗🍹🎶🍻🎵🌙😴   -  La vita comune in un messaggio 😂
 Destinatario: Matte(76891271)
+08-19 16:59:26 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-19 16:59:26 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+08-19 17:00:20 | Main INFO  |  ---------------------------------------------------
+08-19 17:00:20 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:00:20 | Main INFO  |  Nome: Luca
+08-19 17:00:20 | Main INFO  |  Cognome: Martinelli
+08-19 17:00:20 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:00:20 | Main INFO  |  Testo: come va oggi?
+08-19 17:00:20 | Main INFO  |  ---------------------------------------------------
+08-19 17:00:20 | Main INFO  |  Thread 0 Partito!
+08-19 17:00:20 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-19 17:00:22 | Main INFO  |  Risposta di Ellie a Martins9696 :Bene.
+08-19 17:00:37 | Main INFO  |  ---------------------------------------------------
+08-19 17:00:37 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:00:37 | Main INFO  |  Nome: Luca
+08-19 17:00:37 | Main INFO  |  Cognome: Martinelli
+08-19 17:00:37 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:00:37 | Main INFO  |  Testo: bene, son contento
+08-19 17:00:37 | Main INFO  |  ---------------------------------------------------
+08-19 17:00:37 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-19 17:00:38 | Main INFO  |  Risposta di Ellie a Martins9696 :Anch'io.
+08-19 17:02:18 | Main INFO  |  ---------------------------------------------------
+08-19 17:02:18 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:02:18 | Main INFO  |  Nome: Luca
+08-19 17:02:18 | Main INFO  |  Cognome: Martinelli
+08-19 17:02:18 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:02:18 | Main INFO  |  Testo: cosa ti fa stare bene?
+08-19 17:02:18 | Main INFO  |  ---------------------------------------------------
+08-19 17:02:19 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-19 17:02:19 | Main INFO  |  Risposta di Ellie a Martins9696 :Bo.
+08-19 17:02:27 | Main INFO  |  ---------------------------------------------------
+08-19 17:02:27 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:02:27 | Main INFO  |  Nome: Luca
+08-19 17:02:27 | Main INFO  |  Cognome: Martinelli
+08-19 17:02:27 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:02:27 | Main INFO  |  Testo: non lo sai?
+08-19 17:02:27 | Main INFO  |  ---------------------------------------------------
+08-19 17:02:27 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-19 17:02:28 | Main INFO  |  Risposta di Ellie a Martins9696 :Si che lo so.
+08-19 17:02:38 | Main INFO  |  ---------------------------------------------------
+08-19 17:02:38 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:02:38 | Main INFO  |  Nome: Luca
+08-19 17:02:38 | Main INFO  |  Cognome: Martinelli
+08-19 17:02:38 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:02:38 | Main INFO  |  Testo: e allora perché non me lo dici?
+08-19 17:02:38 | Main INFO  |  ---------------------------------------------------
+08-19 17:02:38 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-19 17:02:38 | Main INFO  |  Risposta di Ellie a Martins9696 :Perchè non lo so.
+08-19 17:02:52 | Main INFO  |  ---------------------------------------------------
+08-19 17:02:52 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:02:52 | Main INFO  |  Nome: Luca
+08-19 17:02:52 | Main INFO  |  Cognome: Martinelli
+08-19 17:02:52 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:02:52 | Main INFO  |  Testo: cerchi di confondermi?
+08-19 17:02:52 | Main INFO  |  ---------------------------------------------------
+08-19 17:02:52 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-19 17:02:53 | Main INFO  |  Risposta di Ellie a Martins9696 :Che nome strano!
+08-19 17:03:05 | Main INFO  |  ---------------------------------------------------
+08-19 17:03:05 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:03:05 | Main INFO  |  Nome: Luca
+08-19 17:03:05 | Main INFO  |  Cognome: Martinelli
+08-19 17:03:05 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:03:05 | Main INFO  |  Testo: quale nome?
+08-19 17:03:05 | Main INFO  |  ---------------------------------------------------
+08-19 17:03:05 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-19 17:03:06 | Main INFO  |  Risposta di Ellie a Martins9696 :Il tuo.
+08-19 17:50:39 | Main INFO  |  ---------------------------------------------------
+08-19 17:50:39 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:50:39 | Main INFO  |  Nome: Luca
+08-19 17:50:39 | Main INFO  |  Cognome: Martinelli
+08-19 17:50:39 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:50:39 | Main INFO  |  Testo: te lo ordino
+08-19 17:50:39 | Main INFO  |  ---------------------------------------------------
+08-19 17:50:39 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+08-19 17:50:40 | Main INFO  |  Risposta di Ellie a Martins9696 :E io ti ordino che non te lo devo dire.
+08-19 17:50:47 | Main INFO  |  ---------------------------------------------------
+08-19 17:50:55 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:50:55 | Main INFO  |  Nome: Luca
+08-19 17:50:55 | Main INFO  |  Cognome: Martinelli
+08-19 17:50:55 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:50:55 | Main INFO  |  Testo: /admin
+08-19 17:50:55 | Main INFO  |  ---------------------------------------------------
+08-19 17:50:59 | Main WARN  |  ACCESSO ADMIN CONSENTITO A: Martins9696 - id(115949778)
+08-19 17:50:59 | Main INFO  |  Risposta di Ellie a Martins9696 :Papà , ti ricordo che la lista dei tuoi comandi è " /adminhelp " 😘
+08-19 17:51:11 | Main INFO  |  ---------------------------------------------------
+08-19 17:51:11 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:51:11 | Main INFO  |  Nome: Luca
+08-19 17:51:11 | Main INFO  |  Cognome: Martinelli
+08-19 17:51:11 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:51:11 | Main INFO  |  Testo: /shutdown
+08-19 17:51:11 | Main INFO  |  ---------------------------------------------------
+08-19 17:51:16 | Main INFO  |  ---------------------------------------------------
+08-19 17:51:16 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-19 17:51:16 | Main INFO  |  Nome: Luca
+08-19 17:51:16 | Main INFO  |  Cognome: Martinelli
+08-19 17:51:16 | Main INFO  |  Username: Martins9696 (115949778)
+08-19 17:51:16 | Main INFO  |  Testo: /Yep
+08-19 17:51:16 | Main INFO  |  ---------------------------------------------------
+08-19 17:51:16 | Main INFO  |  Risposta di Ellie a Martins9696 :Vado a nanna 😇 
+ Bye Bye
+08-19 17:51:16 | Main INFO  |  ELLIE TURNING IN SHUTDOWN MODE
+08-21 18:12:55 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+08-21 18:12:55 | Main INFO  |  Nome: Valentino
+08-21 18:12:55 | Main INFO  |  Cognome: Masper
+08-21 18:12:55 | Main INFO  |  Username: PryManX (104412734)
+08-21 18:12:55 | Main INFO  |  Testo: /battuta
+08-21 18:12:55 | Main INFO  |  ---------------------------------------------------
+08-21 18:12:55 | Main INFO  |  battuta generata n. 48
+08-21 18:12:55 | Main INFO  |  Risposta di Ellie a PryManX :Hanno trovato la befana piena di lividi e percosse, si può dire che l'hanno... conciata per le feste!
+08-22 09:13:30 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+08-22 09:13:30 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
