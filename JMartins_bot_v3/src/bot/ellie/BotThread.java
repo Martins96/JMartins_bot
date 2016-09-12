@@ -1,5 +1,8 @@
 package bot.ellie;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import com.pengrad.telegrambot.model.Message;
 
 
@@ -25,6 +28,18 @@ public class BotThread extends java.lang.Thread {
 	}
 	
 	public void run() {
+		try {
+			startThread();
+		} catch (Exception e) {
+			//try to send the error to my master
+			ErrorReporter.sendError("FATAL ERROR - MAIN\n\n", e);
+			PropertyConfigurator.configure(Main.PATH_INSTALLAZIONE + "/readfiles/config.properties");
+			Logger emergencyLog = Logger.getLogger(Main.class);
+			emergencyLog.fatal("FATAL ERROR - MAIN\n\n", e);
+		}
+	}
+	
+	private void startThread() {
 		try {
 			Main.log.info("Thread " + idThread + " Partito!");
 			Message emptyMsg = new Message();

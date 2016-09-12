@@ -35,6 +35,7 @@ public class Risposta {
 	
 	private final String ANNULLA_SPEDIZIONE_MESSAGGIO = BotThread.ANNULLA_SPEDIZIONE_MESSAGGIO;
 	
+	//change this for admin password
 	String pass = "Password123";
 	
 	//building object
@@ -174,6 +175,9 @@ public class Risposta {
 		
 		switch(comando[0])
 		{
+		case("/test"):
+			return CompleannoEllie.getAuguriDiEllie();
+		
 		//funzioni standard
 			case("/start"):
 				return "Sono sveglia ❤";
@@ -628,8 +632,8 @@ public class Risposta {
 			case("/manual"):
 				Manual manual = new Manual(idthread, messaggio.from().id());
 				return manual.startManualMode(comando);
-			
-			//------------------------------------------------------------------------------------------------------
+				
+			//------------------------------------------------------------------------------------------------------------------
 			
 			case("/impiccato"):
 				
@@ -784,7 +788,7 @@ public class Risposta {
 				securityMode.startSecurityMode();
 				
 			//------------------------------------------------------------------------------------------------------
-			default: return "Comando " + comando + " non riconosciuto, per una lista dei comandi digita /help";	
+			default: return "Comando " + comando[0] + " non riconosciuto, per una lista dei comandi digita /help";
 		}
 	}
 	
