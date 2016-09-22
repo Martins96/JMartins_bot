@@ -32,10 +32,10 @@ public class BotThread extends java.lang.Thread {
 			startThread();
 		} catch (Exception e) {
 			//try to send the error to my master
-			ErrorReporter.sendError("FATAL ERROR - MAIN\n\n", e);
+			ErrorReporter.sendError("FATAL ERROR - Thread\n\n", e);
 			PropertyConfigurator.configure(Main.PATH_INSTALLAZIONE + "/readfiles/config.properties");
 			Logger emergencyLog = Logger.getLogger(Main.class);
-			emergencyLog.fatal("FATAL ERROR - MAIN\n\n", e);
+			emergencyLog.fatal("FATAL ERROR - Thread\n\n", e);
 		}
 	}
 	
@@ -66,9 +66,8 @@ public class BotThread extends java.lang.Thread {
 				}
 			}
 		}	catch (InterruptedException e) {
-			Main.log.fatal("ERRORE FATALE! THREAD " + idThread + "  X-(");
+			Main.log.fatal("ERRORE FATALE! THREAD " + idThread + "  X-(", e);
 			ErrorReporter.sendError("ERRORE FATALE! THREAD " + idThread + "  X-(", e);
-			e.printStackTrace();
 		}
 	}
 		

@@ -22,3 +22,4 @@
 3.1.4.0:Aggiunta funzione manuale
 3.1.4.1:Pulito codice da warning dei deprecation delle librerie di Telegram Bot APi
 3.1.4.2:Aggiunto gestione parametri nei comandi, aggiunto compleanno di Ellie
+3.1.5.0:Sistemato bug di giorni del meteo, aggiunto evento del meteo del weekend

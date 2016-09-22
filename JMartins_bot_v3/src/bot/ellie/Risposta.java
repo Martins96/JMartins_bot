@@ -176,7 +176,8 @@ public class Risposta {
 		switch(comando[0])
 		{
 		case("/test"):
-			return CompleannoEllie.getAuguriDiEllie();
+			String test = Meteo.getWeekendMeteo("/Bergamo");
+			return test;
 		
 		//funzioni standard
 			case("/start"):

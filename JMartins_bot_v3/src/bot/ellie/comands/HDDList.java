@@ -39,7 +39,7 @@ public class HDDList {
 		try {
 			aHDDRisp = generaLista();
 		} catch (IOException e) {
-			e.printStackTrace();
+			Main.log.error("Errore nella generazione lista HHDList" + e);
 			ErrorReporter.sendError("Errore comandoHDDList", e);
 		}
 		return aHDDRisp;

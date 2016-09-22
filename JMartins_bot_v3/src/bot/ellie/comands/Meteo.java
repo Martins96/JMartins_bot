@@ -2,6 +2,7 @@ package bot.ellie.comands;
 
 import com.github.dvdme.ForecastIOLib.FIOCurrently;
 import com.github.dvdme.ForecastIOLib.FIODaily;
+import com.github.dvdme.ForecastIOLib.FIOHourly;
 import com.github.dvdme.ForecastIOLib.ForecastIO;
 
 public class Meteo {
@@ -46,31 +47,57 @@ public class Meteo {
 			result = result + "\nTramonto alle: " + current.get().sunsetTime();
 		if(current.get().humidity() != 0)
 			result = result + "\nUmidità: " + (current.get().humidity()*100) + "%";
-		result = result + "\n\nDOMANI:\nSommario: " + daily.getDay(0).summary();
-		result = result	+ "\nPossibile precipitazione: " + daily.getDay(0).precipProbability();
-		result = result	+ "\nTemperatura massima: " + daily.getDay(0).temperatureMax();
-		result = result	+ "\nTemperatira minima: " + daily.getDay(0).temperatureMin();
-		result = result	+ "\nAlba alle: " + daily.getDay(0).sunriseTime();
-		result = result	+ "\nTramonto alle: " + daily.getDay(0).sunsetTime();
-		result = result	+ "\nUmidità: " + (daily.getDay(0).humidity()*100) + "%";
-		result = result	+ "\n\nDOPO-DOMANI:\nSommario: " + daily.getDay(1).summary();
+		result = result + "\n\nDOMANI:\nSommario: " + daily.getDay(1).summary();
 		result = result	+ "\nPossibile precipitazione: " + daily.getDay(1).precipProbability();
 		result = result	+ "\nTemperatura massima: " + daily.getDay(1).temperatureMax();
 		result = result	+ "\nTemperatira minima: " + daily.getDay(1).temperatureMin();
 		result = result	+ "\nAlba alle: " + daily.getDay(1).sunriseTime();
 		result = result	+ "\nTramonto alle: " + daily.getDay(1).sunsetTime();
 		result = result	+ "\nUmidità: " + (daily.getDay(1).humidity()*100) + "%";
-		result = result	+ "\n\nTRA 3 GIORNI:\nSommario: " + daily.getDay(2).summary();
+		result = result	+ "\n\nDOPO-DOMANI:\nSommario: " + daily.getDay(2).summary();
 		result = result	+ "\nPossibile precipitazione: " + daily.getDay(2).precipProbability();
 		result = result	+ "\nTemperatura massima: " + daily.getDay(2).temperatureMax();
 		result = result	+ "\nTemperatira minima: " + daily.getDay(2).temperatureMin();
 		result = result	+ "\nAlba alle: " + daily.getDay(2).sunriseTime();
 		result = result	+ "\nTramonto alle: " + daily.getDay(2).sunsetTime();
 		result = result	+ "\nUmidità: " + (daily.getDay(2).humidity()*100) + "%";
+		result = result	+ "\n\nTRA 3 GIORNI:\nSommario: " + daily.getDay(3).summary();
+		result = result	+ "\nPossibile precipitazione: " + daily.getDay(3).precipProbability();
+		result = result	+ "\nTemperatura massima: " + daily.getDay(3).temperatureMax();
+		result = result	+ "\nTemperatira minima: " + daily.getDay(3).temperatureMin();
+		result = result	+ "\nAlba alle: " + daily.getDay(3).sunriseTime();
+		result = result	+ "\nTramonto alle: " + daily.getDay(3).sunsetTime();
+		result = result	+ "\nUmidità: " + (daily.getDay(3).humidity()*100) + "%";
 		
 		
 		return result;
 	}
+	
+	public static String getWeekendMeteo(String citta) {
+		String result = "";
+		ForecastIO fio = new ForecastIO(KEY); 						//instantiate the class with the API key. 
+		fio.setUnits(ForecastIO.UNITS_SI);             				//sets the units as SI - optional
+		fio.setLang(ForecastIO.LANG_ITALIAN);
+		String[] coordinate = getCoordinateCitta(citta);
+		fio.getForecast(coordinate[0], coordinate[1]);
+		FIOHourly hourly = new FIOHourly(fio);
+		FIODaily daily = new FIODaily(fio);
+		
+		result = result + "Hey ciao, ecco le previsioni del WeekEnd 😄\n";
+		result = result + "\n" + "Stasera: \n" + hourly.getHour(7).time() + "  " + hourly.getHour(7).summary();
+		result = result + "\n" + hourly.getHour(10).time() + "  " + hourly.getHour(10).summary();
+		result = result + "\n" + hourly.getHour(13).time() + "  " + hourly.getHour(13).summary();
+		result = result + "\n\n" + "Domani: \n" + daily.getDay(2).summary();
+		result = result + "\n\n" + "Sabato sera: \n" + hourly.getHour(31).time() + "  " + hourly.getHour(31).summary();
+		result = result + "\n" + hourly.getHour(34).time() + "  " + hourly.getHour(34).summary();
+		result = result + "\n" + hourly.getHour(34).time() + "  " + hourly.getHour(37).summary();
+		result = result + "\n\n" + "Domenica: \n" + daily.getDay(3).summary();
+		
+		return result;
+	}
+	
+	
+	
 	
 	private static String[] getCoordinateCitta(String citta) {
 		
