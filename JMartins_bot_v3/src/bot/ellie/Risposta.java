@@ -176,8 +176,8 @@ public class Risposta {
 		switch(comando[0])
 		{
 		case("/test"):
-			String test = Meteo.getWeekendMeteo("/Bergamo");
-			return test;
+			
+			return "Nessun test in corso...";
 		
 		//funzioni standard
 			case("/start"):

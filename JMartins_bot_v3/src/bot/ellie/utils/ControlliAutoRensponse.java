@@ -38,6 +38,16 @@ public class ControlliAutoRensponse {
 				return "Io sono Ellie";
 			}
 		}
+		if(autoResponse.length()>21) {
+			if(autoResponse.substring(0, 21).equalsIgnoreCase("non è vero, mi chiamo")) {
+				return "Non è vero, mi chiamo Ellie";
+			}
+		}
+		if(autoResponse.length()>24) {
+			if(autoResponse.substring(0, 24).equalsIgnoreCase("te l'ho detto, mi chiamo")) {
+				return "Te l'ho detto, mi chiamo Ellie";
+			}
+		}
 		
 		// check sesso
 		if(autoResponse.length()>9) {

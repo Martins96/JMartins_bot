@@ -34,7 +34,8 @@ public class Manual {
 		if(param.length > 1 && param[1] != null) {
 			comando = param[1];
 		} else {
-			comando = attendiMessaggio("Ok, che comando devo eseguire in modalità manuale?");
+			comando = attendiMessaggio("Ok, che comando devo eseguire in modalità manuale? \nLista dei comandi eseguibili in modalità manuale:\n"
+					+ "/foto \n/battuta \n/sticker\n\n/exit per annullare");
 		}
 		if(comando != null && comando.length()>0) {
 			if(!comando.substring(0, 1).equals("/"))
