@@ -90,7 +90,7 @@ public class Meteo {
 		result = result + "\n\n" + "Domani: \n" + daily.getDay(2).summary();
 		result = result + "\n\n" + "Sabato sera: \n" + hourly.getHour(31).time() + "  " + hourly.getHour(31).summary();
 		result = result + "\n" + hourly.getHour(34).time() + "  " + hourly.getHour(34).summary();
-		result = result + "\n" + hourly.getHour(34).time() + "  " + hourly.getHour(37).summary();
+		result = result + "\n" + hourly.getHour(37).time() + "  " + hourly.getHour(37).summary();
 		result = result + "\n\n" + "Domenica: \n" + daily.getDay(3).summary();
 		
 		return result;

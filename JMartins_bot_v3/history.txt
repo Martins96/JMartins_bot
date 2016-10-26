@@ -26,3 +26,4 @@
 3.1.5.1:Sistemato bug in caso di messaggio precedente modificato, sistemato sistema dei log, bug minori sistemati
 3.1.5.2:Sistemato il bug su Meteo del weekend
 3.1.5.3:Aggiunto invio di immagini casuali in formato .gif, bug minori sistemati
+3.1.5.4:Fixato bug postino, aggiunto nuovo user. Cambiato gestione log4j.

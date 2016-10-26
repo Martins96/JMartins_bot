@@ -351,7 +351,6 @@ public class Risposta {
 			
 			case("/admin"):
 				text = new String("Qualcosa è andato storto...");
-				text = new String();
 				if(controllaAdmin())
 				{
 					Main.log.warn(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato nuovamente l'accesso admin.");
@@ -381,6 +380,9 @@ public class Risposta {
 							aggiungiAdmin();	
 						}
 						else {
+							if(pass.equals("Password123")) {
+								Main.sendMessage(messaggio.from().id(), "Eh, non sono in debug ora");
+							}
 							Main.log.warn("ACCESSO ADMIN NEGATO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
 							text = "No, fa niente";
 						}
@@ -487,8 +489,8 @@ public class Risposta {
 						//sistemo destinatario e testomex
 						if (comando.length>2 && comando[1] != null && comando[2] != null)
 						{
-							testomex = comando[1];
-							destinatario = comando[2];
+							testomex = comando[2];
+							destinatario = comando[1];
 						}
 						else if (comando.length>1 && comando[1] != null) {
 							testomex = comando[1];
