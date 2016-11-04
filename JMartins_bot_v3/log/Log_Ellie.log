@@ -1,103 +1,27 @@
-10-26 16:01:18 | Main INFO  |  
+11-04 16:00:06 | Main INFO  |  
 |/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
-10-26 16:01:18 | Main INFO  |  
+11-04 16:00:06 | Main INFO  |  
 
 [  Ellie è attiva! :-)  ]
 
-10-26 16:01:36 | Main INFO  |  ---------------------------------------------------
-10-26 16:01:36 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:01:36 | Main INFO  |  Nome: Luca
-10-26 16:01:36 | Main INFO  |  Cognome: Martinelli
-10-26 16:01:36 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:01:36 | Main INFO  |  Testo: /user
-10-26 16:01:36 | Main INFO  |  ---------------------------------------------------
-10-26 16:01:36 | Main INFO  |  Thread 0 Partito!
-10-26 16:01:44 | Main INFO  |  ---------------------------------------------------
-10-26 16:01:44 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:01:44 | Main INFO  |  Nome: Luca
-10-26 16:01:44 | Main INFO  |  Cognome: Martinelli
-10-26 16:01:44 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:01:44 | Main INFO  |  Testo: Scoiattolo123
-10-26 16:01:44 | Main INFO  |  ---------------------------------------------------
-10-26 16:01:44 | Main INFO  |  ACCESSO USER CONSENTITO A: Martins9696 - id(115949778)
-10-26 16:01:44 | Main INFO  |  Risposta di Ellie a Martins9696 :Hey, ciao Gaia, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp
-10-26 16:02:02 | Main INFO  |  ---------------------------------------------------
-10-26 16:02:02 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:02:02 | Main INFO  |  Nome: Luca
-10-26 16:02:02 | Main INFO  |  Cognome: Martinelli
-10-26 16:02:02 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:02:02 | Main INFO  |  Testo: /portino martins prova
-10-26 16:02:02 | Main INFO  |  ---------------------------------------------------
-10-26 16:02:02 | Main INFO  |  Risposta di Ellie a Martins9696 :Comando /portino non riconosciuto, per una lista dei comandi digita /help
-10-26 16:02:25 | Main INFO  |  ---------------------------------------------------
-10-26 16:02:25 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:02:25 | Main INFO  |  Nome: Luca
-10-26 16:02:25 | Main INFO  |  Cognome: Martinelli
-10-26 16:02:25 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:02:25 | Main INFO  |  Testo: /postino martins prova
-10-26 16:02:25 | Main INFO  |  ---------------------------------------------------
-10-26 16:04:15 | Main INFO  |  
-|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
-10-26 16:04:15 | Main INFO  |  
+11-04 16:05:08 | Main INFO  |  Evento avviato (Meteo del WeekEnd): 
+Destinatario: Martins ( 115949778 )
+Hey ciao, ecco le previsioni del WeekEnd 😄
 
-[  Ellie è attiva! :-)  ]
+Stasera: 
+04-11-2016 22:00:00  "Nuvoloso"
+05-11-2016 01:00:00  "Pioggia Molto Leggera"
+05-11-2016 04:00:00  "Pioggia Leggera"
 
-10-26 16:04:58 | Main INFO  |  ---------------------------------------------------
-10-26 16:04:58 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:04:58 | Main INFO  |  Nome: Luca
-10-26 16:04:58 | Main INFO  |  Cognome: Martinelli
-10-26 16:04:58 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:04:58 | Main INFO  |  Testo: /postino martins prova
-10-26 16:04:58 | Main INFO  |  ---------------------------------------------------
-10-26 16:04:58 | Main INFO  |  Thread 0 Partito!
-10-26 16:05:06 | Main INFO  |  Risposta di Ellie a Martins9696 :Scusa, ma non hai il privilegio necessario per questo comando.
-Accedi tramite /user o /admin
-10-26 16:05:15 | Main INFO  |  
-|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
-10-26 16:05:15 | Main INFO  |  
+Domani: 
+"Pioggia durante il giorno."
 
-[  Ellie è attiva! :-)  ]
+Sabato sera: 
+05-11-2016 22:00:00  "Pioggia Leggera"
+06-11-2016 01:00:00  "Pioggia Leggera"
+06-11-2016 04:00:00  "Pioggia Molto Leggera"
 
-10-26 16:05:18 | Main INFO  |  ---------------------------------------------------
-10-26 16:05:18 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:05:18 | Main INFO  |  Nome: Luca
-10-26 16:05:18 | Main INFO  |  Cognome: Martinelli
-10-26 16:05:18 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:05:18 | Main INFO  |  Testo: /user
-10-26 16:05:18 | Main INFO  |  ---------------------------------------------------
-10-26 16:05:18 | Main INFO  |  Thread 0 Partito!
-10-26 16:05:25 | Main INFO  |  ---------------------------------------------------
-10-26 16:05:25 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:05:25 | Main INFO  |  Nome: Luca
-10-26 16:05:25 | Main INFO  |  Cognome: Martinelli
-10-26 16:05:25 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:05:25 | Main INFO  |  Testo: Scoiattolo123
-10-26 16:05:25 | Main INFO  |  ---------------------------------------------------
-10-26 16:05:25 | Main INFO  |  ACCESSO USER CONSENTITO A: Martins9696 - id(115949778)
-10-26 16:05:25 | Main INFO  |  Risposta di Ellie a Martins9696 :Hey, ciao Gaia, sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp
-10-26 16:05:28 | Main INFO  |  ---------------------------------------------------
-10-26 16:05:28 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:05:28 | Main INFO  |  Nome: Luca
-10-26 16:05:28 | Main INFO  |  Cognome: Martinelli
-10-26 16:05:28 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:05:28 | Main INFO  |  Testo: /postino martins prova
-10-26 16:05:28 | Main INFO  |  ---------------------------------------------------
-10-26 16:05:28 | Main INFO  |  Gaia ha inviato messaggio in modalità USER a: 115949778
-10-26 16:05:28 | Main INFO  |  Risposta di Ellie a Martins9696 :Ho inviato il messaggio all'id: 115949778 (martins) 😄
-10-26 16:05:59 | Main INFO  |  ---------------------------------------------------
-10-26 16:05:59 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:05:59 | Main INFO  |  Nome: Luca
-10-26 16:05:59 | Main INFO  |  Cognome: Martinelli
-10-26 16:05:59 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:05:59 | Main INFO  |  Testo: /postino mARtiS prova
-10-26 16:05:59 | Main INFO  |  ---------------------------------------------------
-10-26 16:05:59 | Main INFO  |  Risposta di Ellie a Martins9696 :Errore: perdonami ma non conosco il destinatario, per una lista dei destinatari che conosco digita '/postino help'
-10-26 16:06:11 | Main INFO  |  ---------------------------------------------------
-10-26 16:06:11 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
-10-26 16:06:11 | Main INFO  |  Nome: Luca
-10-26 16:06:11 | Main INFO  |  Cognome: Martinelli
-10-26 16:06:11 | Main INFO  |  Username: Martins9696 (115949778)
-10-26 16:06:11 | Main INFO  |  Testo: /postino mARtiNS prova
-10-26 16:06:11 | Main INFO  |  ---------------------------------------------------
-10-26 16:06:11 | Main INFO  |  Gaia ha inviato messaggio in modalità USER a: 115949778
-10-26 16:06:11 | Main INFO  |  Risposta di Ellie a Martins9696 :Ho inviato il messaggio all'id: 115949778 (martins) 😄
+Domenica: 
+"Sereno durante il giorno."
+
+11-04 16:05:08 | Main INFO  |  Messaggio spedito in data: 11/04 16:05

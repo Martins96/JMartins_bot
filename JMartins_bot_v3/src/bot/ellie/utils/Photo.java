@@ -3,8 +3,6 @@ package bot.ellie.utils;
 import java.io.File;
 import java.util.Random;
 
-import com.pengrad.telegrambot.model.request.InputFile;
-
 import bot.ellie.Main;
 
 public class Photo {
@@ -20,7 +18,7 @@ public class Photo {
 	 * @param categoria della foto
 	 * @return la foto della categoria selezionata
 	 */
-	public static InputFile getImage(Object id, String categoria) {
+	public static File getImage(Object id, String categoria) {
 		Random ran = new Random();
 		if (categoria == null || categoria.equals("/random")) {
 			switch (ran.nextInt(3)) {
@@ -64,12 +62,12 @@ public class Photo {
 
 		File photo = new File(Main.PATH_INSTALLAZIONE + "/readfiles/photo/" + categoria + ran.nextInt(NUM_IMMAGINI) + ".jpg");
 		Main.log.info("Foto generata: " + photo.getPath());
-		return new InputFile("jpg", photo);
+		return photo;
 	}
 	
-	public static InputFile getAdminImage() {
+	public static File getAdminImage() {
 		File foto = new File(Main.PATH_INSTALLAZIONE + "/readfiles/photo/admin/HF" + new Random().nextInt(NUM_ADMIN_IMMAGINI) + ".jpg");
-		return new InputFile("jpg", foto);
+		return foto;
 	}
 	
 	

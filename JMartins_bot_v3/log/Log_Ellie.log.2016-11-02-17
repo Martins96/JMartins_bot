@@ -1,0 +1,40 @@
+11-02 17:28:13 | Main FATAL |  FATAL ERROR - MAIN
+
+
+java.lang.RuntimeException: java.net.SocketTimeoutException: timeout
+	at com.pengrad.telegrambot.impl.TelegramBotClient.send(TelegramBotClient.java:59)
+	at com.pengrad.telegrambot.TelegramBot.execute(TelegramBot.java:30)
+	at bot.ellie.Main.mainProgram(Main.java:152)
+	at bot.ellie.Main.main(Main.java:79)
+Caused by: java.net.SocketTimeoutException: timeout
+	at okio.Okio$3.newTimeoutException(Okio.java:212)
+	at okio.AsyncTimeout.exit(AsyncTimeout.java:288)
+	at okio.AsyncTimeout$2.read(AsyncTimeout.java:242)
+	at okio.RealBufferedSource.indexOf(RealBufferedSource.java:325)
+	at okio.RealBufferedSource.indexOf(RealBufferedSource.java:314)
+	at okio.RealBufferedSource.readUtf8LineStrict(RealBufferedSource.java:210)
+	at okhttp3.internal.http.Http1xStream.readResponse(Http1xStream.java:184)
+	at okhttp3.internal.http.Http1xStream.readResponseHeaders(Http1xStream.java:125)
+	at okhttp3.internal.http.HttpEngine.readNetworkResponse(HttpEngine.java:775)
+	at okhttp3.internal.http.HttpEngine.access$200(HttpEngine.java:86)
+	at okhttp3.internal.http.HttpEngine$NetworkInterceptorChain.proceed(HttpEngine.java:760)
+	at okhttp3.internal.http.HttpEngine.readResponse(HttpEngine.java:613)
+	at okhttp3.RealCall.getResponse(RealCall.java:244)
+	at okhttp3.RealCall$ApplicationInterceptorChain.proceed(RealCall.java:201)
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:163)
+	at okhttp3.RealCall.execute(RealCall.java:57)
+	at com.pengrad.telegrambot.impl.TelegramBotClient.send(TelegramBotClient.java:56)
+	... 3 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
+	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:973)
+	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:930)
+	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
+	at okio.Okio$2.read(Okio.java:140)
+	at okio.AsyncTimeout$2.read(AsyncTimeout.java:238)
+	... 17 more

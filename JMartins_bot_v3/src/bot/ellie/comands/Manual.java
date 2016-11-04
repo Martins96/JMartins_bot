@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import com.pengrad.telegrambot.model.Message;
-import com.pengrad.telegrambot.model.request.InputFile;
 
 import bot.ellie.BotThread;
 import bot.ellie.ErrorReporter;
@@ -103,7 +102,7 @@ public class Manual {
 		File file = new File(Main.PATH_INSTALLAZIONE + "/readfiles/photo/" + pathFoto);
 		if (file.exists()) {
 			Main.log.info("Foto inviata: " + pathFoto);
-			Main.sendPhoto(idUser, new InputFile("jpg", file));
+			Main.sendPhoto(idUser, file);
 		} else {
 			Main.log.info("Foto non trovata");
 			sendMessage("Non ho trovato il file specificato, annullo il comando manuale");
@@ -139,7 +138,7 @@ public class Manual {
 		File file = new File(Main.PATH_INSTALLAZIONE + "/readfiles/music/" + pathMusica);
 		if (file.exists()) {
 			Main.log.info("Foto inviata: " + pathMusica);
-			Main.sendAudio(idUser, new InputFile("mp3", file));
+			Main.sendAudio(idUser, file);
 		} else {
 			Main.log.info("Foto non trovata");
 			sendMessage("Non ho trovato il file specificato, annullo il comando manuale");

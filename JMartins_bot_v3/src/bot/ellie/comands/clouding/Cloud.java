@@ -12,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import com.pengrad.telegrambot.model.Message;
-import com.pengrad.telegrambot.model.request.InputFile;
 import com.pengrad.telegrambot.request.GetFile;
 import com.pengrad.telegrambot.response.GetFileResponse;
 
@@ -538,8 +537,7 @@ public class Cloud {
 		
 		File file = new File(PATH + fileName);
 		if(file.exists() && !file.isDirectory()) {
-			InputFile inputFile = new InputFile("", file);
-			Main.sendDocument(idUser, inputFile);
+			Main.sendDocument(idUser, file);
 		}
 		else {
 			sendMessage("!! 404 File not found !!");
@@ -601,7 +599,7 @@ public class Cloud {
 		if(listOfFiles.length > 0){
 			for (int i = 0; i < listOfFiles.length; i++) {
 				if (listOfFiles[i].isFile()) {
-					InputFile inputFile = new InputFile("", listOfFiles[i]);
+					File inputFile = listOfFiles[i];
 					Main.sendDocument(idUser, inputFile);
 				} else if (listOfFiles[i].isDirectory()) {
 					lista = lista + "[Dir]" + listOfFiles[i].getName() + "\\\n";

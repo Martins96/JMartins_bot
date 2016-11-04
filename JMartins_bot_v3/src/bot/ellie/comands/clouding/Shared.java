@@ -3,7 +3,6 @@ package bot.ellie.comands.clouding;
 import java.io.File;
 
 import com.pengrad.telegrambot.model.Message;
-import com.pengrad.telegrambot.model.request.InputFile;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
@@ -111,7 +110,7 @@ public class Shared {
 	}
 	
 	private void sendDocument(String doc) {
-		Main.sendDocument(idUser, new InputFile("", new File(doc)));
+		Main.sendDocument(idUser, new File(doc));
 	}
 	
 	private Message attendiMessaggio() {

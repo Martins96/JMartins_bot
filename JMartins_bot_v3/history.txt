@@ -27,3 +27,5 @@
 3.1.5.2:Sistemato il bug su Meteo del weekend
 3.1.5.3:Aggiunto invio di immagini casuali in formato .gif, bug minori sistemati
 3.1.5.4:Fixato bug postino, aggiunto nuovo user. Cambiato gestione log4j.
+3.1.5.5:Aumentato tempo per l'update dei messaggi
+3.1.6.0:Aggiornato le librerie di TelegramApi

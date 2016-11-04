@@ -1,5 +1,6 @@
 package bot.ellie;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -10,7 +11,6 @@ import com.google.code.chatterbotapi.ChatterBotFactory;
 import com.google.code.chatterbotapi.ChatterBotSession;
 import com.google.code.chatterbotapi.ChatterBotType;
 import com.pengrad.telegrambot.model.Message;
-import com.pengrad.telegrambot.model.request.InputFile;
 
 import java.util.Date;
 import java.text.DateFormat;
@@ -35,7 +35,7 @@ public class Risposta {
 	
 	private final String ANNULLA_SPEDIZIONE_MESSAGGIO = BotThread.ANNULLA_SPEDIZIONE_MESSAGGIO;
 	
-	//change this for admin password
+	//change this for admin password - Password123 is for debug
 	String pass = "Password123";
 	
 	//building object
@@ -43,8 +43,6 @@ public class Risposta {
 	{
 		this.idthread = idthread;
 		user = new User();
-		
-		
 	}
 	
 	/**
@@ -771,7 +769,7 @@ public class Risposta {
 								+ "/random		un'immagine casuale");
 				// attendo categoria
 				message = attendiMessaggio();
-				InputFile photo = Photo.getImage(message.from().id(), message.text());
+				File photo = Photo.getImage(message.from().id(), message.text());
 				if (photo == null)
 					return "Ops... qualcosa è andato storto, meglio chiamare papà  :'(";
 				else
