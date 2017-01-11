@@ -9,6 +9,9 @@ import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.messages.Errors;
+import bot.ellie.utils.messages.Help;
+import bot.ellie.utils.messages.Messages;
 
 public class Impiccato {
 	
@@ -37,13 +40,7 @@ public class Impiccato {
 		short fail = 0;
 		boolean flag = false;
 		
-		Main.sendMessage(messaggio.from().id(), "ISTRUZIONI:\n\n"
-								 + "Gioca all'impiccato con Ellie!\n"
-								 + "Ellie sceglie casualmente una parola e te devi indovinarla.\n"
-								 + "Puoi provare a dare una lettera, se la lettera è nella parola scelta allora comparirà a schermo, in caso contrario verrà  aumentata la figura dell'impiccato, sbagliando 8 volte il gioco finirà  in Game Over.\n"
-								 + "\nPer uscire dal gioco usa il comando /exit.\n"
-								 + "\nSe pensi di poter indovinare la parola usa il comando /parola 'parola da indovinare'\n\n"
-								 + "INIZIAMO!");
+		Main.sendMessage(messaggio.from().id(), Help.IMPICCATO_HELP);
 		Message message = messaggio;
 		while(!message.text().equals("/exit"))
 		{
@@ -73,7 +70,7 @@ public class Impiccato {
 								bool=false;
 					}
 					if(bool) {
-						return "COMPLIMENTI!!!\n\n Hai vinto!\n❤💐💐😄😄💐💐❤";
+						return Messages.IMPICCATO_WIN;
 					}
 				}
 				else
@@ -85,37 +82,37 @@ public class Impiccato {
 			} else {
 				if(message.text().length() < 7) {
 					if(message.text().equals("/exit"))
-						return "Gioco dell'impicato terminato";
+						return Messages.IMPICCATO_END;
 					else
-						Main.sendMessage(messaggio.from().id(), "Parola inserita non corretta, reinserire");
+						Main.sendMessage(messaggio.from().id(), Errors.IMPICCATO_INPUT_NOT_VALID);
 				}
 				else
 				{
 					if(message.text().substring(0, 7).equals("/parola"))
 					{
 						if(message.text().length() < 9)
-							Main.sendMessage(messaggio.from().id(), "Parola inserita non corretta, reinserire");
+							Main.sendMessage(messaggio.from().id(), Errors.IMPICCATO_INPUT_NOT_VALID);
 						else
 						{
 							String soluzione = new String(message.text().substring(8, message.text().length()));
 							soluzione = soluzione.toUpperCase();
 							if(soluzione.equals(parola))
 							{
-								return "COMPLIMENTI!!!\n\n Hai vinto!\n❤💐💐😄😄💐💐❤";
+								return Messages.IMPICCATO_WIN;
 							}
 							else
 							{
-								Main.sendMessage(messaggio.from().id(), "Mi dispiace, non è la parola corretta 😔, devo aumentare di uno gli errori");
+								Main.sendMessage(messaggio.from().id(), Messages.IMPICCATO_WORD_NOT_CORRECT);
 								fail++;
 							}
 						}
 					}
 					else
-						Main.sendMessage(messaggio.from().id(), "Parola inserita non corretta, reinserire");
+						Main.sendMessage(messaggio.from().id(), Errors.IMPICCATO_INPUT_NOT_VALID);
 				}
 			}
 		}
-		return "Gioco dell'impicato terminato";
+		return Messages.IMPICCATO_END;
 	}
 	
 	
@@ -146,7 +143,7 @@ public class Impiccato {
 		{
 			Main.log.error("\nERRORE: File per il gioco dell'impicato non trovato\n\n");
 			ErrorReporter.sendError("ERRORE: File per il gioco dell'impicato non trovato", e);
-			return "Errore durante il gioco dell'impiccato";
+			return Errors.IMPICCATO_UNKNOW_ERROR;
 		}
 	}
 	//lettura figura dell'impiccato
@@ -178,7 +175,7 @@ public class Impiccato {
 		{
 			Main.log.error("ERRORE: file impiccato1.txt non trovato");
 			ErrorReporter.sendError("ERRORE: file impiccato1.txt non trovato", e);
-			return "Errore nel gioco dell'impiccato";
+			return Errors.IMPICCATO_UNKNOW_ERROR;
 		}
 		return s;
 	}

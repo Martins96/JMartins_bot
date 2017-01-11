@@ -21,13 +21,23 @@ import bot.ellie.comands.clouding.Cloud;
 import bot.ellie.comands.clouding.Shared;
 import bot.ellie.security.Security;
 import bot.ellie.utils.*;
+import bot.ellie.utils.controlli.ControlliAutoRensponse;
+import bot.ellie.utils.controlli.ControlliMessaggiRicevuti;
+import bot.ellie.utils.messages.Errors;
+import bot.ellie.utils.messages.Help;
+import bot.ellie.utils.messages.Messages;
+import bot.ellie.utils.sendTypes.Music;
+import bot.ellie.utils.sendTypes.Photo;
+import bot.ellie.utils.users.MyLady;
+import bot.ellie.utils.users.User;
 
 
 
 public class Risposta {
 	
 	User user;	
-	boolean adminid = false;
+	public boolean admin = false;
+	public boolean mylady = false;
 	private boolean check = true;
 	//user id
 	Random random = new Random();
@@ -35,8 +45,7 @@ public class Risposta {
 	
 	private final String ANNULLA_SPEDIZIONE_MESSAGGIO = BotThread.ANNULLA_SPEDIZIONE_MESSAGGIO;
 	
-	//change this for admin password - Password123 is for debug
-	String pass = "Password123";
+	String pass = Costants.ADMIN_PASSWORD;
 	
 	//building object
 	public Risposta(int idthread) 
@@ -120,15 +129,15 @@ public class Risposta {
 				// in caso non trovo una risposta in locale mando a bot host
 					try {
 						ChatterBotFactory factory = new ChatterBotFactory();
-						ChatterBot bot1 = factory.create(ChatterBotType.CLEVERBOT);
-						ChatterBotSession bot1session = bot1.createSession();
+						ChatterBot cb = factory.create(ChatterBotType.CLEVERBOT);
+						ChatterBotSession cbs = cb.createSession();
 						Main.log.info("Risposta non trovata, mando richiesta a bot host");
-						risposta = bot1session.think(testoMessaggio);
+						risposta = cbs.think(testoMessaggio);
 						risposta = ControlliAutoRensponse.checkAutobotNome(risposta);
 					} catch (Exception e) {
 						Main.log.error("Errore Cleverbot - ", e);
 						ErrorReporter.sendError("Errore Cleverbot - " + e.getMessage());
-						risposta = "Scusami, il mio dizionario di risposte è limitato. Sono stata sviluppata per eseguire diverse e specifiche funzioni, dai un'occhiata a /help per vedere quali puoi usare. Per comodità  evita le faccine per favore";
+						risposta = Errors.RESPONSE_NOT_FOUND;
 					}
 				}
 			}
@@ -139,7 +148,7 @@ public class Risposta {
 					risposta = rispondiFileRisposta(n);
 				} catch (IOException ex) {
 					ex.printStackTrace();
-					risposta = "Scusami, il mio dizionario di risposte è limitato. Sono stata sviluppata per eseguire diverse e specifiche funzioni, dai un'occhiata a /help per vedere quali puoi usare. Per comodità  evita le faccine per favore";
+					risposta = Errors.RESPONSE_NOT_FOUND;
 				}
 			}
 		}
@@ -154,7 +163,7 @@ public class Risposta {
 		if (messaggio.text() == null) {
 			Main.log.error("Null text in comand");
 			ErrorReporter.sendError("Null text in comand " + messaggio.from().firstName());
-			return "Oh, qualcosa è andato storto nell'esecuzione del comando";
+			return Errors.EXEC_COMAND;
 		}
 		String[] comando = messaggio.text().split(" ");
 		//sistemo maiuscole in minuscole
@@ -179,7 +188,7 @@ public class Risposta {
 		
 		//funzioni standard
 			case("/start"):
-				return "Sono sveglia ❤";
+				return Messages.START;
 		//------------------------------------------------------------------------------------------------------
 			case("/personalinfo"):
 				return "Informazioni personali chat: \n "
@@ -193,12 +202,7 @@ public class Risposta {
 				return Help.HELP;
 		//------------------------------------------------------------------------------------------------------
 			case("/botinfo"):
-				return "/-----------------------------\\"
-						+ "\n| Ellie  - The Telegram Bot |\n"
-						+ "\\-----------------------------/"
-						+ "\n\nVersion : " + Main.BUILD_VERSION + "\n"
-						+ "Create by Martins\n"
-						+ "\nEllie is a Telegram Bot programmed in Java for fun, the goal is to make you smile, have a nice day :)";
+				return Messages.BOT_INFO;
 				
 		//------------------------------------------------------------------------------------------------------
 			case("/asciiart"):
@@ -293,7 +297,7 @@ public class Risposta {
 			//funzioni da USER
 			case("/user"):
 				
-				String text = new String("Qualcosa è andato storto...");
+				String text = new String(Errors.GENERAL_ERROR);
 				Message message = null;
 				if(user.isLogged())
 				{
@@ -313,7 +317,7 @@ public class Risposta {
 					}
 					
 					text = user.aggiungiUser(pass, messaggio.from().id());
-					if(text.equalsIgnoreCase("Non credo di conoscerti, scusa"))
+					if(text.equalsIgnoreCase(Errors.USER_NOT_FOUND))
 					{
 						Main.log.info("ACCESSO USER NEGATO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
 					}
@@ -328,7 +332,7 @@ public class Risposta {
 			long id = messaggio.from().id();
 			if(!user.isLogged()) {
 				Main.log.info(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato un comando da user non facendone parte");
-				return "Scusami, ma non fai parte della lista degli user";
+				return Errors.USER_NOT_LOGGED;
 			}
 			else
 				return Help.USER_HELP;
@@ -337,7 +341,7 @@ public class Risposta {
 			id = messaggio.from().id();
 			if(!user.isLogged()) {
 				Main.log.info(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato l'uscita user non facendone parte");
-				text = "Scusami, ma non fai parte della lista degli user";
+				text = Errors.USER_NOT_LOGGED;
 			}
 			else {
 				text = user.rimuoviUser(id);
@@ -345,19 +349,64 @@ public class Risposta {
 			return text;
 				
 		//--------------------------------------------------------------------------------------------------------------
+			//funzioni da MYLADY
+			
+			case("/mylady"):
+				
+				if(mylady == true) {
+					Main.log.info(messaggio.from().firstName() + " " + messaggio.from().lastName() + " ha tentato nuovamente di effettuare l'accesso da mylady");
+					return Errors.MYLADY_ALREADY_LOGGED;
+				} else {
+					Main.sendMessage(messaggio.from().id(), "Mamma, sei tu?");
+					message = attendiMessaggio();
+					mylady = MyLady.autenticaMylady(message.text());
+					
+					if (mylady)
+						return Messages.MYLADY_WELCOME;
+					else
+						return Errors.MYLADY_ERROR_LOGIN;
+				}
+			//----------------------------------------------------------------------------------------------------------
+			case("/myladyhelp"):
+				if(mylady)
+					return Help.MYLADY_HELP;
+				else
+					return Errors.MYLADY_NOT_LOGGED;
+			
+			//---------------------------------------------------------------------------------------------------------
+			
+			case("/myladyimage"):
+				if(mylady) {
+					Main.sendPhoto(messaggio.from().id(), MyLady.getImageRandom());
+					return ANNULLA_SPEDIZIONE_MESSAGGIO;
+				}
+				else
+					return Errors.MYLADY_NOT_LOGGED_4_IMAGES;
+			
+			//----------------------------------------------------------------------------------------------------------
+			case("/myladyexit"):
+				if(mylady) {
+					mylady = false;
+					return Messages.MYLADY_DISCONNECTION;
+				}
+				else
+					return Errors.MYLADY_NOT_LOGGED;
+				
+			
+		//--------------------------------------------------------------------------------------------------------------
 			//funzioni da ADMIN
 			
 			case("/admin"):
-				text = new String("Qualcosa è andato storto...");
+				text = new String(Errors.GENERAL_ERROR);
 				if(controllaAdmin())
 				{
 					Main.log.warn(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato nuovamente l'accesso admin.");
-					text = "Scusami, ma sei già  admin";
+					text = Errors.ADMIN_ALREADY_LOGGED;
 				}
 				else {
 					if(user.isLogged()) {
 						Main.log.warn(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato l'accesso admin mentre loggato come user.");
-						text = "Scusami, ma sei già un user";
+						text = Errors.ADMIN_ALREADY_LOGGED;
 					}
 					else {
 						boolean accesso = false;
@@ -374,7 +423,7 @@ public class Risposta {
 						if(accesso) {
 							Main.log.warn("ACCESSO ADMIN CONSENTITO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
 							Main.sendMessage(messaggio.from().id(), "Papà ! ❤😍😘❤");
-							text = "Papà , ti ricordo che la lista dei tuoi comandi è \" /adminhelp \" 😘";
+							text = Messages.ADMIN_WELCOME;
 							aggiungiAdmin();	
 						}
 						else {
@@ -382,14 +431,14 @@ public class Risposta {
 								Main.sendMessage(messaggio.from().id(), "Eh, non sono in debug ora");
 							}
 							Main.log.warn("ACCESSO ADMIN NEGATO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
-							text = "No, fa niente";
+							text = Errors.ADMIN_NOT_LOGGED;
 						}
 					}
 				}
 				return text;
 		//----------------------------------------------------------------------------------------------------------
 			case("/adminhelp"):
-				String lista = new String("Perdonami, ma non posso accontentarti. Non hai i privilegio da admin per questo comando");
+				String lista = new String(Errors.ADMIN_NOT_LOGGED);
 				if (controllaAdmin())
 				{
 					lista = Help.ADMIN_HELP;
@@ -397,7 +446,7 @@ public class Risposta {
 				return lista;
 		//---------------------------------------------------------------------------------------------------------------
 			case("/hddlist"):
-			String aHDDRisp = new String("Perdonami, ma non posso accontentarti. Non hai i privilegio da admin per questo comando");
+			String aHDDRisp = new String(Errors.ADMIN_NOT_LOGGED);
 			if (controllaAdmin())
 			{
 				aHDDRisp = HDDList.comandoHDDList();
@@ -405,7 +454,7 @@ public class Risposta {
 			return aHDDRisp;
 		//---------------------------------------------------------------------------------------------------------------
 			case("/adminimage"): {
-				String s = new String("Perdonami, ma non posso accontentarti. Non hai i privilegio da admin per questo comando");
+				String s = new String();
 					if(controllaAdmin()) {
 						switch(new Random().nextInt(5)) { //risposta random
 						case(0):
@@ -432,16 +481,16 @@ public class Risposta {
 		//---------------------------------------------------------------------------------------------------------------
 			case("/adminexit"):
 				rimuoviAdmin();
-				return "Privilegio da ADMIN rimosso, buona giornata papà  😘❤";
+				return Messages.ADMIN_DISCONNECTION;
 		//---------------------------------------------------------------------------------------------------------------
 			case("/shutdown"):
-				String shutdownRisp = "Scusami, ma non hai i privilegi necessari per questo comando";
+				String shutdownRisp = Errors.ADMIN_NOT_LOGGED;
 				if(controllaAdmin()) {
-					Main.sendMessage(messaggio.from().id(), "Papà, sei sicuro di volermi spegnere? 😟 \n/Yep \n\n/Nope");
+					Main.sendMessage(messaggio.from().id(), Messages.ADMIN_SHUTDOWN_QUESTION);
 					Message m = attendiMessaggio();
-					shutdownRisp = "Ok resto attiva 😘";
+					shutdownRisp = Messages.SHUTDOWN_NOPE;
 					if(m.text().equalsIgnoreCase("/Yep")) {
-						shutdownRisp = "Vado a nanna 😇 \n Bye Bye";
+						shutdownRisp = Messages.SHUTDOWN_YEP;
 						Shutdown.comandoShutdown();
 					}
 					
@@ -463,7 +512,7 @@ public class Risposta {
 					Cloud cloudModality = new Cloud(messaggio.from().id(), idthread);
 					cloudModality.startCloudModalityForUser(user.getName());
 				} else {
-					return "Non hai i privilegi necessari per questa funzione, accedi tramite /admin";
+					return Errors.ADMIN_NOT_LOGGED;
 			}
 				return "Fine modalità clouding";
 				
@@ -471,7 +520,7 @@ public class Risposta {
 			case("/postino"):
 			
 				message = new Message();
-				String esitopostino = new String("Errore invio messaggio: consultare la guida su come inviare tramite il comando '/postino help'");
+				String esitopostino = new String(Errors.POSTINO_SYNTAX_ERROR);
 				Postino postino = new Postino();
 				String destinatario = "", testomex = "", mittente = "";
 				check = false;
@@ -479,8 +528,10 @@ public class Risposta {
 					if(mittente == null)
 					{
 						check = controllaAdmin();
+						if(!check)
+							check = mylady;
 					}
-					else
+					else 
 						check = true;
 					if(check)
 					{
@@ -496,7 +547,7 @@ public class Risposta {
 						
 						if (destinatario.equalsIgnoreCase(""))
 						{
-							Main.sendMessage(messaggio.from().id(), "Ok, a chi devo spedire il messaggio?\nDigita /exit per annullare il comando");
+							Main.sendMessage(messaggio.from().id(), Messages.POSTINO_NEED_DESTINATARIO);
 							message = attendiMessaggio();
 							//messaggio in arrivo
 							if(message.text() != null)
@@ -514,7 +565,7 @@ public class Risposta {
 									esitopostino = postino.helpuser(); 
 						if (testomex == "")
 						{	
-							Main.sendMessage(messaggio.from().id(), "Ok, cosa devo inviare?\nDigita /exit per annullare");
+							Main.sendMessage(messaggio.from().id(), Messages.POSTINO_NEED_MESSAGE);
 							message = attendiMessaggio();
 							//messaggio in arrivo
 							if(message.text() != null)
@@ -523,21 +574,24 @@ public class Risposta {
 							}
 						}
 						if (testomex.equalsIgnoreCase("/exit") || testomex.equalsIgnoreCase(""))
-							return "Comando annullato";
+							return Messages.ABORT_COMAND;
 						//----------------------------------------------------------------------------
 						if (mittente == null)
-							esitopostino = postino.consegnaMessaggioMartins(destinatario, testomex);
+							if(mylady)
+								esitopostino = postino.consegnaMessaggioMylady(destinatario, testomex);
+							else
+								esitopostino = postino.consegnaMessaggioMartins(destinatario, testomex);
 						else
 							esitopostino = postino.consegnaMessaggio(destinatario, testomex, mittente);
 					}
 					else
 					{
-						return "Scusa, ma non hai il privilegio necessario per questo comando.\nAccedi tramite /user o /admin";
+						return Errors.USER_NOT_LOGGED;
 					}
 				return esitopostino;
 			//------------------------------------------------------------------------------------------------------
 			case("/system"):
-				esitopostino = new String("Errore invio messaggio: consultare la guida su come inviare tramite il comando '/postino help'");
+				esitopostino = new String(Errors.POSTINO_SYNTAX_ERROR);
 				postino = new Postino();
 				destinatario = "";
 				testomex = "";
@@ -568,17 +622,28 @@ public class Risposta {
 						}
 					}
 					if (destinatario.equalsIgnoreCase(""))
-						return "Errore invio messaggio: consultare la guida su come inviare tramite il comando '/postino help'";
+						return Errors.POSTINO_SYNTAX_ERROR;
 					else if (destinatario.equalsIgnoreCase("help"))
 							return postino.syshelp();
 					return postino.sysMessaggio(destinatario, testomex);
 				}
 				else
 				{
-					return "Scusa, ma non hai il privilegio necessario per questo comando.\nAccedi tramite /user o /admin";
+					return Errors.USER_NOT_LOGGED;
 				}
 			//------------------------------------------------------------------------------------------------------
 			
+			case("/upgrade"):
+				if(!controllaAdmin())
+					return Errors.ADMIN_NOT_LOGGED;
+				//else
+				Upgrade upgrade = new Upgrade(messaggio, idthread);
+				upgrade.startUpgrade();
+				
+				return Messages.ABORT_COMAND;
+				
+			//------------------------------------------------------------------------------------------------------
+				
 			case("/threadattivi"):
 				if(controllaAdmin())
 				{
@@ -589,7 +654,7 @@ public class Risposta {
 							+ s;
 				}
 				else
-					return "Non hai i privilegi necessari per questo comando";
+					return Errors.ADMIN_NOT_LOGGED;
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/shared"):
@@ -604,22 +669,14 @@ public class Risposta {
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/meteo"):
-				Main.sendMessage(messaggio.from().id(), "Seleziona una città  dalla lista:\n"
-						+ "/Bergamo\n"
-						+ "/Verona\n"
-						+ "/Milano\n"
-						+ "/Torino\n"
-						+ "/Roma\n"
-						+ "/Bari\n"
-						+ "/Palermo\n"
-						+ "\n/exit - comando di uscita dalla funzione");
+				Main.sendMessage(messaggio.from().id(), Messages.METEO_GET_CITY);
 				message = attendiMessaggio();
 				String meteo = Meteo.getMeteo(message.text());
 				if (meteo.equalsIgnoreCase("error")) {
-					return "Città  non riconosciuta esco dalla funzione meteo. Utilizza /meteo per riprovate e seleziona una città  dalla lista";
+					return Errors.METEO_CITY_NOT_FOUND;
 				}
 				if (meteo.equalsIgnoreCase("uscita")) {
-					return "Funzione meteo annullata";
+					return Messages.METEO_ABORT;
 				} // input OK
 				return meteo;
 			
@@ -638,140 +695,25 @@ public class Risposta {
 			
 			case("/impiccato"):
 				
-				Impiccato impiccato = new Impiccato(idthread);
-				return impiccato.startGame(messaggio);
+				return new Impiccato(idthread).startGame(messaggio);
 				
 			//------------------------------------------------------------------------------------------------------
 				
-		case ("/blackjack"):
-			Main.log.info("Avvio gioco Blackjack per " + messaggio.from().firstName());
-			boolean[][] mazzo = new boolean[13][4];
-			for (int m1 = 0; m1 < 13; m1++)
-				for (int m2 = 0; m2 < 4; m2++)
-					mazzo[m1][m2] = false;
-			int iellie = 0, igiocatore = 0;
-			String[] carteellie = new String[20], cartegiocatore = new String[20];
-			message = null;
-			int temp;
-			int numero, seme;
-			numero = random.nextInt(13);
-			seme = random.nextInt(4);
-			// ---------------------------------------------------
-			Main.sendMessage(messaggio.from().id(),
-					"BLACKJACK DI ELLIE\n\n" + "Istruzioni:\n"
-							+ "Il blackjack di Ellie è un blackjack semplice, si gioca con le 52 carte francesi, i giocatori sono 2, te e il banco(Ellie), lo scopo del gioco è cercare di ottenere il punteggio più alto dell'avversario senza superare 21 punti.\n"
-							+ "I punti si calcolano in base al valore della carta: il 2 vale 2 punti, il 3 vale 3 punti, ecc... le figure K, Q, J valgono 10 punti, l'asso può valere o 11 punti o 1 in base alle esigenze."
-							+ "All'inizio Ellie darà  due carte a se stessa (una visibile e una coperta) e due carte al giocatore, le iterazioni possibili sono:\n\n"
-							+ "/carta per ottenere una carta\n" + "/stop per fermarsi e passare il turno al banco\n"
-							+ "/exit per uscire dal gioco\n\n" + "INIZIAMO!");
-			while (mazzo[numero][seme]) {
-				numero = random.nextInt(13);
-				seme = random.nextInt(4);
-			}
-			mazzo[numero][seme] = true;
-			carteellie[iellie] = setCartaBlackjack(numero, seme, messaggio.from().id());
-			iellie++;
-			numero = random.nextInt(13);
-			seme = random.nextInt(4);
-			while (mazzo[numero][seme]) {
-				numero = random.nextInt(13);
-				seme = random.nextInt(4);
-			}
-			mazzo[numero][seme] = true;
-			mazzo[numero][seme] = true;
-			cartegiocatore[igiocatore] = setCartaBlackjack(numero, seme, messaggio.from().id());
-			igiocatore++;
-			numero = random.nextInt(13);
-			seme = random.nextInt(4);
-			while (mazzo[numero][seme]) {
-				numero = random.nextInt(13);
-				seme = random.nextInt(4);
-			}
-			mazzo[numero][seme] = true;
-			mazzo[numero][seme] = true;
-			cartegiocatore[igiocatore] = setCartaBlackjack(numero, seme, messaggio.from().id());
-			igiocatore++;
-
-			message = messaggio;
-			while (!message.text().equalsIgnoreCase("/exit")) {
-				Main.sendMessage(messaggio.from().id(),
-						"ELLIE:\n" + "punti: " + puntiBlackjack(carteellie, iellie) + "\n"
-								+ stampaCarteBlackjack(carteellie, iellie) + "\n\n\n" + "TU:\n" + "punti: "
-								+ puntiBlackjack(cartegiocatore, igiocatore) + "\n"
-								+ stampaCarteBlackjack(cartegiocatore, igiocatore));
-				check = true;
-				while (check) {
-					message = attendiMessaggio();
-					switch (message.text()) {
-					case ("/carta"):
-						numero = random.nextInt(13);
-						seme = random.nextInt(4);
-						while (mazzo[numero][seme]) {
-							numero = random.nextInt(13);
-							seme = random.nextInt(4);
-						}
-						mazzo[numero][seme] = true;
-						mazzo[numero][seme] = true;
-						cartegiocatore[igiocatore] = setCartaBlackjack(numero, seme, messaggio.from().id());
-						igiocatore++;
-						if ((temp = puntiBlackjack(cartegiocatore, igiocatore)) > 21)
-							return "I tuoi punti sono: " + temp
-									+ "\nHai superato i 21 punti, Ellie ha vinto\n\nBlackjack terminato";
-						check = false;
-						break;
-					case ("/stop"):
-						temp = puntiBlackjack(carteellie, iellie);
-						while (temp < 17) {
-							numero = random.nextInt(13);
-							seme = random.nextInt(4);
-							while (mazzo[numero][seme]) {
-								numero = random.nextInt(13);
-								seme = random.nextInt(4);
-							}
-							mazzo[numero][seme] = true;
-							mazzo[numero][seme] = true;
-							carteellie[iellie] = setCartaBlackjack(numero, seme, messaggio.from().id());
-							iellie++;
-							temp = puntiBlackjack(carteellie, iellie);
-						}
-						if (temp > 21)
-							return "Ellie ha superato i 21 punti, hai vinto!!!\n❤💐♦😄♣💐♠";
-						else {
-							if (temp > puntiBlackjack(cartegiocatore, igiocatore))
-								return "Ellie ha vinto con " + temp + " punti\n i tuoi punti sono: "
-										+ puntiBlackjack(cartegiocatore, igiocatore);
-							else if (temp < puntiBlackjack(cartegiocatore, igiocatore))
-								return "Hai superato i " + temp
-										+ " di Ellie, hai vinto!!!\n❤♦♣♠";
-							else
-								return "Pareggio, avete totalizzato entrambi " + temp + " punti";
-						}
-					case ("/exit"):
-
-					default:
-						Main.sendMessage(messaggio.from().id(),
-								"Iterazione inserita non riconosciuta, reinserire\n"
-										+ "/carta\nper richiedere una carta\n" + "/stop\nper fermarsi\n"
-										+ "/exit\nper uscire dal gioco");
-						break;
-					}
-				}
-			}
-			return "Uscita eseguita, blackjack terminato";
+			case ("/blackjack"):
+			
+				return new Blackjack(idthread).startBlackjack(messaggio);
 			
 			//------------------------------------------------------------------------------------------------------
 					
 			case("/foto"):
 
 				Main.sendMessage(messaggio.from().id(),
-						"Che categoria di foto preferisci?\n" + "/cute		un'immagine cucciolosa\n"
-								+ "/funny		un'immagine divertente\n" + "/nature		un'immagine di paesaggi\n"
-								+ "/random		un'immagine casuale");
+						Messages.PHOTO_NEED_TYPE);
 				// attendo categoria
 				message = attendiMessaggio();
 				File photo = Photo.getImage(message.from().id(), message.text());
 				if (photo == null)
-					return "Ops... qualcosa è andato storto, meglio chiamare papà  :'(";
+					return Errors.GENERAL_ERROR2;
 				else
 					Main.sendPhoto(messaggio.from().id(), photo);
 				return ANNULLA_SPEDIZIONE_MESSAGGIO;
@@ -923,7 +865,7 @@ public class Risposta {
 	 */
 	public boolean controllaAdmin()
 	{
-		return adminid;
+		return admin;
 	}
 	/**Aggiunge l'id alla lista degli admin
 	 * 
@@ -931,131 +873,11 @@ public class Risposta {
 	 */
 	public void aggiungiAdmin()
 	{
-		adminid = true;
+		admin = true;
 	}
 	public void rimuoviAdmin()
 	{
-		adminid = false;
-	}
-	
-	
-	//------------------------------------------------------------------------------------------------------------
-	//IMPICCATO
-	
-	
-	//-----------------------------------------------------------------------------------------------------------
-	//BLACKJACK
-	
-	private String setCartaBlackjack(int numero, int seme, Object chatid)
-	{
-		String s, s2;
-		numero++;
-		switch(numero)
-		{
-		case(11):
-			s = "J";
-			break;
-		case(12):
-			s = "Q";
-			break;
-		case(13):
-			s = "K";
-			break;
-		default:
-			s = "" + numero;
-		}
-		switch(seme)
-		{
-		case(0):
-			s2 = "cuori";
-			break;
-		case(1):
-			s2 = "quadri";
-			break;
-		case(2):
-			s2 = "fiori";
-			break;
-		case(3):
-			s2 = "picche";
-			break;
-		default :
-			s2 = "cuori";
-			break;
-		}
-		Main.sendMessage(chatid, "Ho pescato: " + s + " di " + s2);
-		return s;
-	}
-	private String stampaCarteBlackjack(String[] carte, int icarte)
-	{
-		String s = new String("-  ");
-		for(int i = 0; i<icarte; i++)
-			s = s + carte[i] + "  -  ";
-		return s;
-	}
-	private int puntiBlackjack(String[] carte, int icarte)
-	{
-		int punti = 0;
-		int assi = 0;
-		
-		for(int i = 0; i<icarte; i++)
-		{
-			switch(carte[i])
-			{
-			case("1"):
-				assi++;
-				break;
-			case("2"):
-				punti = punti + 2;
-				break;
-			case("3"):
-				punti = punti + 3;
-				break;
-			case("4"):
-				punti = punti + 4;
-				break;
-			case("5"):
-				punti = punti + 5;
-				break;
-			case("6"):
-				punti = punti + 6;
-				break;
-			case("7"):
-				punti = punti + 7;
-				break;
-			case("8"):
-				punti = punti + 8;
-				break;
-			case("9"):
-				punti = punti + 9;
-				break;
-			case("10"):
-				punti = punti + 10;
-				break;
-			case("J"):
-				punti = punti + 10;
-				break;
-			case("Q"):
-				punti = punti + 10;
-				break;
-			case("K"):
-				punti = punti + 10;
-				break;
-			}
-		}
-			if(assi>1)
-			{
-				punti++;
-				assi--;
-			}
-			if(assi==1)
-			{
-				if(punti+11<=21)
-					punti = punti+11;
-				else
-					punti++;
-			}
-		
-		return punti;
+		admin = false;
 	}
 	//------------------------------------------------------------------------------
 	private Message attendiMessaggio() {

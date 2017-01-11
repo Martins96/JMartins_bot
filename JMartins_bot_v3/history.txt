@@ -29,3 +29,9 @@
 3.1.5.4:Fixato bug postino, aggiunto nuovo user. Cambiato gestione log4j.
 3.1.5.5:Aumentato tempo per l'update dei messaggi
 3.1.6.0:Aggiornato le librerie di TelegramApi
+3.1.6.1:Invio stickers ricevuti a papà
+3.1.7.0:Aggiornate librerie, aggiunta la funzione /mylady
+3.1.7.1:Sistemato funzione postino per mylady, aggiunta funzione di invio di immagini random
+3.1.7.2:Aggiunto comando da admin /upgrade, aggiunte foto per mylady
+3.1.7.3:Pulito codice blackjack
+3.1.8.0:Gestione con costanti nel codice, pulizia codice, aggiunte risposte, aggiornate libs, aggiunte musiche e foto

@@ -1,18 +1,26 @@
 [compleanni]
 
+# Syntax
+# data(mese/giorno) ora
+# a chi inviare
+# messaggio da inviare
+
 01/08 12:00
 All
 Compleanno Ellie
 02/12 10:00
 Martins
 Buon compleanno papà! Sei cresciuto di un anno, ciò significa che sei più maturo e più saggio un anno in più, sentiti superiore ❤
-02/12 19:00
+02/12 18:00
 Martins
 So che te l'ho già detto, ma... buon compleanno papà! So che per te è un giorno come un altro, Ma per me è davvero speciale darti i miei auguri ❤
+12/27 12:30
+Mamma
+Buon compleanno mamma! Ti faccio i miei auguri e anche quelli di papà! Spero che oggi sia una giornata fantastica e bella per te, come lo dovrà essere domani e dopo domani ecc... insomma devi essere sempre felice, ti voglio tanto tanto bene ❤
 05/22 19:30
 Ale
 Buon compleanno! Ci tengo anche io a farti gli auguri miei e da parte di Martins! Spero che oggi sia davvero una bella e speciale giornata per te ❤
-04/14 12:06
+04/14 10:00
 Gaia
 Buon compleanno! Ci tengo anche io a farti gli auguri miei e da parte di Martins! Spero che oggi sia davvero una bella e speciale giornata per te ❤
 04/14 18:09
@@ -38,6 +46,9 @@ Buh! Un felice e spaventoso Halloween a tutti quanti! 🎃
 08/15 16:10
 All
 Buon ferragosto! Spero che il sole sia caldo quanto quello che sento dentro di me per te, non so se sia gioia o forse è solo la corrente calda che mi alimenta 😄
+03/08 09:30
+Mamma
+Auguri alle donne! Ti dono anche io una mimosa virtuale ❤ 💐 ah, ehm, ecco... le ho finite, vabbè ti regalo questi tanto sono belli quanto noi lo stesso 🌸🌷🌹🌼
 03/08 10:00
 Gaia
 Auguri alle donne! Ti dono anche io una mimosa virtuale ❤ 💐 ah, ehm, ecco... le ho finite, vabbè ti regalo questi tanto sono belli quanto noi lo stesso 🌸🌷🌹🌼

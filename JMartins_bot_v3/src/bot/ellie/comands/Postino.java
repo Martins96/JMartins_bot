@@ -22,6 +22,12 @@ public Postino() {
 			case("martins"):
 				id = 115949778;
 				break;
+			case("papà"):
+				id = 115949778;
+				break;
+			case("mamma"):
+				id = 240650708;
+				break;
 			case("gaia"):
 				id = 124796388;
 				break;
@@ -76,6 +82,82 @@ public Postino() {
 		return risultato;
 	}
 	
+	/**Spedisce un messaggio in modalità admin
+	 * 
+	 * @param id del destinatario, messaggio da spedire
+	 * @return stringa di risultato se il messaggio è stato spedito
+	 */
+	public String consegnaMessaggioMylady(String destinatario, String testo)
+	{
+		String risultato = new String("Messaggio non consegnato!");
+		destinatario = destinatario.toLowerCase();
+		long id = 0;
+		
+		switch(destinatario)
+		{
+			case("martins"):
+				id = 115949778;
+				break;
+			case("papà"):
+				id = 115949778;
+				break;
+			case("mamma"):
+				id=240650708;
+				break;
+			case("gaia"):
+				id = 124796388;
+				break;
+			case("ale"):
+				id = 143009205;
+				break;
+			case("calvi"):
+				id = 180117484;
+				break;
+			case("matteo"):
+				id = 76891271;
+				break;
+			case("francesco"):
+				id = 170595365;
+				break;
+			case("dinu"):
+				id = 148278619;
+				break;
+			case("pol"):
+				id = 196422609;
+				break;
+			case("vale"):
+				id = 104412734;
+				break;
+			case("bruno"):
+				id = 75443863;
+				break;
+			case("manara"):
+				id = 125212616;
+				break;
+			case("andrea"):
+				id = 27585212;
+			break;
+			case("parmraj"):
+				id = 164741728;
+			break;
+			default:
+				id = -1;
+				break; 
+		}
+		if (id == -1)
+		{
+			risultato = "Errore: destinatario non conosciuto";
+		}
+		else
+		{
+			Main.sendMessage(id, "La mamma mi ha chiesto di scriverti questo 😊: \n" + testo);
+			Main.log.info("Inviato messaggio in modalità MYLADY a: " + id);
+			risultato = "Ho inviato il messaggio all'id: " + id + " (" + destinatario + ") 😄";
+		}
+		
+		return risultato;
+	}
+	
 	/**Spedisce un messaggio in modalità user
 	 * 
 	 * @param id del destinatario, messaggio da spedire
@@ -90,6 +172,12 @@ public Postino() {
 		{
 			case("martins"):
 				id = 115949778;
+				break;
+			case("papà"):
+				id = 115949778;
+				break;
+			case("mamma"):
+				id=240650708;
 				break;
 			case("gaia"):
 				id = 124796388;
@@ -139,6 +227,7 @@ public Postino() {
 				+ "/postino Gigi Hey andiamo alla sagra del coniglio domani sera?\n"
 				+ "\nID contatti conosciuti:\n"
 				+ "'Martins' - 115949778\n"
+				+ "'Mamma' - 240650708\n"
 				+ "'Gaia'    - 124796388\n"
 				+ "'Ale'     - 143009205\n"
 				+ "'Calvi'   - 180117484\n"
@@ -162,6 +251,7 @@ public Postino() {
 				+ "/postino Gianni Hey andiamo alla sagra del coniglio domani sera?\n"
 				+ "\nID contatti conosciuti:\n"
 				+ "'Martins' - 115949778\n"
+				+ "'Mamma' - 240650708\n"
 				+ "'Gaia'    - 124796388\n"
 				+ "'Ale'     - 143009205\n"
 				+ "'Calvi'   - 180117484\n"
@@ -180,6 +270,7 @@ public Postino() {
 				+ "/system 'nome del destinatario' 'messaggio da inviare'"
 				+ "\nID contatti conosciuti:\n"
 				+ "'Martins' - 115949778\n"
+				+ "'Mamma' - 240650708\n"
 				+ "'Gaia'    - 124796388\n"
 				+ "'Ale'     - 143009205\n"
 				+ "'Calvi'   - 180117484\n"
@@ -203,6 +294,12 @@ public Postino() {
 		{
 			case("martins"):
 				id = 115949778;
+				break;
+			case("papà"):
+				id = 115949778;
+				break;
+			case("mamma"):
+				id=240650708;
 				break;
 			case("gaia"):
 				id = 124796388;
@@ -269,6 +366,7 @@ public Postino() {
  * Bruno 				- 75443863
  * Andrea 	        	- 27585212
  * Parmraj Singh        - 164741728
+ * Mamma (Ale)			- 240650708
  * 
  */
 

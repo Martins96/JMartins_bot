@@ -4,9 +4,11 @@ import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.TelegramBotAdapter;
 import com.pengrad.telegrambot.request.SendMessage;
 
+import bot.ellie.utils.Costants;
+
 public class ErrorReporter {
 	
-	private final static String TOKEN = "142988631:AAHPmCwgega6a3X9lv5DCdfpcGdCk293F_E";
+	private final static String TOKEN = Costants.TOKEN;
 	//creazione bot Ellie
 	private static TelegramBot EmergencyEllie = null; //   
 	

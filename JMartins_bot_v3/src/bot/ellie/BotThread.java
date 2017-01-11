@@ -27,6 +27,14 @@ public class BotThread extends java.lang.Thread {
 		risposta = new Risposta(idThread);
 	}
 	
+	public BotThread(short idthread, String firstName, String lastName, String username, int id) {
+		idThread = idthread;
+		idUserThread = id;
+		nameUserThread = firstName + " " + lastName + "(" + username + ")";
+		this.message = new Message();
+		risposta = new Risposta(idThread);
+	}
+	
 	public void run() {
 		try {
 			startThread();
@@ -69,6 +77,14 @@ public class BotThread extends java.lang.Thread {
 			Main.log.fatal("ERRORE FATALE! THREAD " + idThread + "  X-(", e);
 			ErrorReporter.sendError("ERRORE FATALE! THREAD " + idThread + "  X-(", e);
 		}
+	}
+	
+	public void setAdminMode(boolean b) {
+		risposta.admin = b;
+	}
+	
+	public void setMyladyMode(boolean b) {
+		risposta.mylady = b;
 	}
 		
 }

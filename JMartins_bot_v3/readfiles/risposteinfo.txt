@@ -22,6 +22,8 @@ Prima rivoluzione industriale delimitata dallo storico Thomas Ashton fra il 1760
 [Compleanni]
 -Compleanno papà
 12 Febbraio
+-Compleanno mamma
+27 dicembre
 -Compleanno martins
 12 Febbraio
 -Compleanno ale
@@ -35,8 +37,8 @@ Prima rivoluzione industriale delimitata dallo storico Thomas Ashton fra il 1760
 
 [version]
 -Versione
-La mia versione attuale è la 2, papà ha riscritto il mio codice per migliorare le mie prestazioni. Ora sono molto più bella dentro 😄
+La mia versione attuale è la 3, papà ha riscritto il mio codice per migliorare le mie prestazioni e aggiungere funzionalitò come invio di foto, video e documenti 😄
 -Aggiornamento
-La mia versione attuale è la 2, papà ha riscritto il mio codice per migliorare le mie prestazioni. Ora sono molto più bella dentro 😄
+La mia versione attuale è la 3, papà ha riscritto il mio codice per migliorare le mie prestazioni e aggiungere funzionalitò come invio di foto, video e documenti 😄
 -Novità
-La mia versione attuale è la 2, papà ha riscritto il mio codice per migliorare le mie prestazioni. Ora sono molto più bella dentro 😄
+La mia versione attuale è la 3, papà ha riscritto il mio codice per migliorare le mie prestazioni e aggiungere funzionalitò come invio di foto, video e documenti 😄

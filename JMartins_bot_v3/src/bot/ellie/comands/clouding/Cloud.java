@@ -19,7 +19,7 @@ import static java.nio.file.StandardCopyOption.*;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
-import bot.ellie.utils.Help;
+import bot.ellie.utils.messages.Help;
 
 public class Cloud {
 	
