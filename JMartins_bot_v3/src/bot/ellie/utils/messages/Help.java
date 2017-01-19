@@ -24,6 +24,7 @@ public class Help {
 			+ "\n/shared\naccedi ai files condivisi in cloud\n"
 			+ "\n/impiccato\ngioca al gioco dell'impiccato\n"
 			+ "\n/blackjack\ngioca a blackjack con Ellie\n"
+			+ "\n/battaglianavale\ngioca a battaglia navale con Ellie\n"
 			+ "\n/personalinfo\nvisualizza informazioni personali\n"
 			+ "\n/botinfo\nvisualizza informazioni del bot\n"
 			+ "------------------------------------";
@@ -69,5 +70,18 @@ public class Help {
 			+ "All'inizio Ellie darà  due carte a se stessa (una visibile e una coperta) e due carte al giocatore, le iterazioni possibili sono:\n\n"
 			+ "/carta per ottenere una carta\n" + "/stop per fermarsi e passare il turno al banco\n"
 			+ "/exit per uscire dal gioco\n\n" + "INIZIAMO!";
+	public static final String BATTAGLIA_NAVALE_HELP = "AVVIO BATTAGLIA NAVALE DI ELLIE:\n"
+			+ 	"Le regole sono le stesse di una classica battaglia navale, ma in più c'è un pesce fortunato.\n"
+			+ 	"Colpendo il pesce fortunato si vince il gioco all'istante.\n"
+			+ 	"Ogni giocatore ha 3 navi da 3 caselle più il pesce fortunato piazzati in ordine casuale.\n"
+			+ 	":Legenda:\n"
+			+ 	"❔ 		=	sconosciuto (casella giocabile)\n"
+			+ 	"💦 	= 	acqua (colpo mancato per Ellie)\n"
+			+ 	"🌊 	= 	acqua (colpo mancato)\n"
+			+ 	"💥		=	nave colpita\n"
+			+ 	"🚢		=	nave del giocatore\n"
+			+ 	"🐬		=	pesce fortunato\n"
+			+ 	"🎣		= 	pesce fortunato colpito\n\n"
+			+ 	"Inserisci le coordinate della cella da colpire oppure /exit per uscire dal gioco";
 
 }

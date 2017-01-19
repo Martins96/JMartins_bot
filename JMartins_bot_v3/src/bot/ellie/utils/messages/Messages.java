@@ -61,6 +61,13 @@ public class Messages {
 													   + "/exit\nper uscire dal gioco";
 	//BLACKJACK Section end
 	
+	//BATTAGLIANAVALE Section start
+	public static final String BATTAGLIANAVALE_WIN_LUCKY_FISH = "Pesce fortunato colpito, hai vinto";
+	public static final String BATTAGLIANAVALE_WIN_BOATS = "Tutte le navi di Ellie abbattute, hai vinto";
+	public static final String BATTAGLIANAVALE_LOSE_LUCKY_FISH =  "Ellie ha colpito il tuo pesce fortunato colpito,\n"
+																+ "Ellie ha vinto";
+	public static final String BATTAGLIANAVALE_LOSE_BOATS = "Ellie ha abbattuto tutte le tue navi,\nEllie ha vinto";
+	
 	
 	
 	

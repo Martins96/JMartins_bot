@@ -19,6 +19,9 @@ import java.text.SimpleDateFormat;
 import bot.ellie.comands.*;
 import bot.ellie.comands.clouding.Cloud;
 import bot.ellie.comands.clouding.Shared;
+import bot.ellie.comands.games.BattagliaNavale;
+import bot.ellie.comands.games.Blackjack;
+import bot.ellie.comands.games.Impiccato;
 import bot.ellie.security.Security;
 import bot.ellie.utils.*;
 import bot.ellie.utils.controlli.ControlliAutoRensponse;
@@ -702,6 +705,12 @@ public class Risposta {
 			case ("/blackjack"):
 			
 				return new Blackjack(idthread).startBlackjack(messaggio);
+			
+			//------------------------------------------------------------------------------------------------------
+			
+			case("/battaglianavale"):
+				
+				return new BattagliaNavale(idthread, messaggio).startGame();
 			
 			//------------------------------------------------------------------------------------------------------
 					

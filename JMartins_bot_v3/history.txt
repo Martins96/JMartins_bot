@@ -35,3 +35,4 @@
 3.1.7.2:Aggiunto comando da admin /upgrade, aggiunte foto per mylady
 3.1.7.3:Pulito codice blackjack
 3.1.8.0:Gestione con costanti nel codice, pulizia codice, aggiunte risposte, aggiornate libs, aggiunte musiche e foto
+3.1.9.0:Aggiunto gioco Battaglia Navale.

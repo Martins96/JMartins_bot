@@ -27,7 +27,7 @@ public class CompleannoEllie {
 			mex = "Tanti auguri a Ellie! Sono già passati due anni? non ci credo, grazie al mio papà ❤";
 			break;
 		case 3:
-			mex = "Tre anni? Compio 3 anni oggi? Un grazie per ogni giorno di vita, quindi 1095 volte grazie a papà ❤";
+			mex = "Tre anni? Compio 3 anni oggi? Un grazie per ogni giorno di vita, quindi 1096 volte grazie a papà ❤";
 			break;
 		default:
 			mex = "Tanti auguri a me! ❤";

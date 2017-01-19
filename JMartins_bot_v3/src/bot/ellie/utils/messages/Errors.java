@@ -45,5 +45,12 @@ public class Errors {
 	public static final String IMPICCATO_UNKNOW_ERROR = "Errore durante il gioco dell'impiccato";
 	//IMPICCATO Section end
 	
+	//BATTAGLIANAVALE Section start
+	public static final String BATTAGLIANAVALE_INPUT_NOT_VALID = "Il testo inserito non è valido:\n"
+															   + "Inserisci le coordinate (ex. B1)\n"
+															   + "oppure /exit per uscire";
+	public static final String BATTAGLIANAVALE_SELECTION_NOT_VALID = "La cella selezionata non è valida, seleziona una cella valida";
+	//BATTAGLIANAVALE Section end
+	
 	
 }

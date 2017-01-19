@@ -5,7 +5,7 @@ public final class Costants {
 	//change this for admin password - Password123 is for debug
 	public final static String ADMIN_PASSWORD = "Password123";
 	public final static String MYLADY_PASSWORD = "Miaomiao";
-	public final static String BUILD_VERSION = "3.1.8.0";
+	public final static String BUILD_VERSION = "3.1.9.0";
 	public final static short MAX_THREADS_NUMBER = 50;
 	public final static String TOKEN = "142988631:AAHDC0G-ekAClZBEohj88CIynuIBZ4z8TWg";
 	public final static String COMPLEANNO_ELLIE_MEX = "Compleanno Ellie";
