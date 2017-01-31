@@ -36,3 +36,5 @@
 3.1.7.3:Pulito codice blackjack
 3.1.8.0:Gestione con costanti nel codice, pulizia codice, aggiunte risposte, aggiornate libs, aggiunte musiche e foto
 3.1.9.0:Aggiunto gioco Battaglia Navale.
+3.1.9.1:Aggiunta mylady in meteo del weekend
+3.1.9.2:Aggiunto gioco 'Sasso Carta Forbice', aggiunte mediia per randomsend e immagini per mylady

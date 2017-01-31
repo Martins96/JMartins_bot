@@ -22,6 +22,7 @@ import bot.ellie.comands.clouding.Shared;
 import bot.ellie.comands.games.BattagliaNavale;
 import bot.ellie.comands.games.Blackjack;
 import bot.ellie.comands.games.Impiccato;
+import bot.ellie.comands.games.SassoCartaForbice;
 import bot.ellie.security.Security;
 import bot.ellie.utils.*;
 import bot.ellie.utils.controlli.ControlliAutoRensponse;
@@ -112,20 +113,20 @@ public class Risposta {
 			try {
 				n = leggiFileRisposta(testoMessaggio);
 			} catch (IOException ex) {
-				ex.printStackTrace();
+				Main.log.error(ex);
 			}
 			if (n==-1) { //testo messaggio non trovato
 				try {
 					n = leggiFileRispostaInfo(testoMessaggio);
 				} catch (IOException ex) {
-					ex.printStackTrace();
+					Main.log.error(ex);;
 				}
 				if(n != -1)
 				{
 					try {
 						risposta = rispondiFileRispostaInfo(n+1);
 					} catch (IOException ex) {
-						ex.printStackTrace();
+						Main.log.error(ex);
 					}
 				}
 				else {
@@ -150,7 +151,7 @@ public class Risposta {
 				try {
 					risposta = rispondiFileRisposta(n);
 				} catch (IOException ex) {
-					ex.printStackTrace();
+					Main.log.error(ex);
 					risposta = Errors.RESPONSE_NOT_FOUND;
 				}
 			}
@@ -711,6 +712,12 @@ public class Risposta {
 			case("/battaglianavale"):
 				
 				return new BattagliaNavale(idthread, messaggio).startGame();
+			
+			//------------------------------------------------------------------------------------------------------
+			
+			case("/sassocartaforbice"):
+				
+				return new SassoCartaForbice(idthread, messaggio).startGame();
 			
 			//------------------------------------------------------------------------------------------------------
 					

@@ -67,8 +67,16 @@ public class Messages {
 	public static final String BATTAGLIANAVALE_LOSE_LUCKY_FISH =  "Ellie ha colpito il tuo pesce fortunato colpito,\n"
 																+ "Ellie ha vinto";
 	public static final String BATTAGLIANAVALE_LOSE_BOATS = "Ellie ha abbattuto tutte le tue navi,\nEllie ha vinto";
+	//BATTAGLIANAVALE Section end
 	
-	
+	//SCF Section start
+	public static final String SCF_RESTART_CHECK = "Vuoi uscire dal gioco? \n/si \n/no";
+	public static final String SCF_END = "Gioco 'Carta Sasso Forbice' terminato";
+	public static final String SCF_EXIT_DONE = "Uscita dal gioco eseguita";
+	public static final String SCF_WIN = "HAI VINTO";
+	public static final String SCF_LOSE = "HAI PERSO";
+	public static final String SCF_PARI = "PAREGGIO";
+	//SCF Section end
 	
 	
 	

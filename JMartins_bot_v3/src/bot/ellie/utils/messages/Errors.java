@@ -52,5 +52,9 @@ public class Errors {
 	public static final String BATTAGLIANAVALE_SELECTION_NOT_VALID = "La cella selezionata non è valida, seleziona una cella valida";
 	//BATTAGLIANAVALE Section end
 	
+	//SASSOCARTAFORBICE Section start
+	public static final String SCF_INPUT_NOT_VALID = "Input non valido";
+	//SASSOCARTAFORBICE Section end
+	
 	
 }

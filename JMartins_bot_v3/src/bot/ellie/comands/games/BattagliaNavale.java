@@ -69,6 +69,7 @@ public class BattagliaNavale extends UtilBattagliaNavale{
 						
 						//TURNO DI ELLIE
 						String cell = thinkEllie();
+						//gestisco la cella selezionata da ellie
 						if(cell.equals(BOAT)) {
 							naviRimanentiPlayer--;
 						}
@@ -167,7 +168,7 @@ public class BattagliaNavale extends UtilBattagliaNavale{
 	}
 	
 	private String stampField(String m[][]) {
-		String s = new String("\\   A   B   C   D   E   F\n");
+		String s = new String("\\ A : B : C : D : E : F\n");
 		
 		for(int i = 0; i < FIELD_SIZE; i++) {
 			s = s + (i + 1);

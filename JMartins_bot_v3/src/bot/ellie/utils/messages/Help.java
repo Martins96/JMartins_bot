@@ -83,5 +83,6 @@ public class Help {
 			+ 	"🐬		=	pesce fortunato\n"
 			+ 	"🎣		= 	pesce fortunato colpito\n\n"
 			+ 	"Inserisci le coordinate della cella da colpire oppure /exit per uscire dal gioco";
+	public static final String SCF_HELP = "Avvio classico gioco di carta sasso forbice: \nINVIA\n\n✊🏻 o ✋🏻 o ✌🏻, oppure invia /exit per uscire";
 
 }
