@@ -50,7 +50,7 @@ public class User {
 		case("Ginseng")://Accesso Andrea
 			nomeUtente = "Andrea";
 			return "Hey, ciao Andrea! sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
-		case("Cat.exe"):
+		case("Cat.exe")://accesso Steven
 			nomeUtente = "Steven";
 			return "Hey, ciao Steven! sono contenta di sentirti 😊 - ricorda che per informazioni sulle tue funzioni da utente devi digitare il comando /userhelp";
 		}

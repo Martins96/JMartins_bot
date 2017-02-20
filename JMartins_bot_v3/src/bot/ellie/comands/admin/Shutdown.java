@@ -1,4 +1,4 @@
-package bot.ellie.comands;
+package bot.ellie.comands.admin;
 
 import bot.ellie.Main;
 

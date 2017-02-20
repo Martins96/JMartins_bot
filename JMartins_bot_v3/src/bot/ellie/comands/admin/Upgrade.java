@@ -1,4 +1,4 @@
-package bot.ellie.comands;
+package bot.ellie.comands.admin;
 
 import com.pengrad.telegrambot.model.Message;
 

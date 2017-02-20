@@ -8,7 +8,7 @@ import bot.ellie.utils.Costants;
 
 public class ErrorReporter {
 	
-	private final static String TOKEN = Costants.TOKEN;
+	private final static String TOKEN = Costants.TELEGRAM_TOKEN;
 	//creazione bot Ellie
 	private static TelegramBot EmergencyEllie = null; //   
 	

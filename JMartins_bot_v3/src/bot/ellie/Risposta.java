@@ -6,10 +6,6 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.Random;
 
-import com.google.code.chatterbotapi.ChatterBot;
-import com.google.code.chatterbotapi.ChatterBotFactory;
-import com.google.code.chatterbotapi.ChatterBotSession;
-import com.google.code.chatterbotapi.ChatterBotType;
 import com.pengrad.telegrambot.model.Message;
 
 import java.util.Date;
@@ -17,6 +13,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import bot.ellie.comands.*;
+import bot.ellie.comands.admin.Shutdown;
+import bot.ellie.comands.admin.StartRandomEvent;
+import bot.ellie.comands.admin.Upgrade;
 import bot.ellie.comands.clouding.Cloud;
 import bot.ellie.comands.clouding.Shared;
 import bot.ellie.comands.games.BattagliaNavale;
@@ -132,11 +131,8 @@ public class Risposta {
 				else {
 				// in caso non trovo una risposta in locale mando a bot host
 					try {
-						ChatterBotFactory factory = new ChatterBotFactory();
-						ChatterBot cb = factory.create(ChatterBotType.CLEVERBOT);
-						ChatterBotSession cbs = cb.createSession();
 						Main.log.info("Risposta non trovata, mando richiesta a bot host");
-						risposta = cbs.think(testoMessaggio);
+						risposta = ChatterBot.cleverBotResponse(testoMessaggio);
 						risposta = ControlliAutoRensponse.checkAutobotNome(risposta);
 					} catch (Exception e) {
 						Main.log.error("Errore Cleverbot - ", e);
@@ -216,7 +212,7 @@ public class Risposta {
 				try {
 					asciiart = asciiobject.generaArt(i);
 				} catch (IOException e) {
-					e.printStackTrace();
+					Main.log.error(e);
 				}
 				Main.log.info("art generata n. " + i);
 				return asciiart;
@@ -659,6 +655,20 @@ public class Risposta {
 				}
 				else
 					return Errors.ADMIN_NOT_LOGGED;
+			
+			//------------------------------------------------------------------------------------------------------
+			
+			case("/startrandomevent"):
+				if(controllaAdmin()) {
+					return new StartRandomEvent(messaggio, idthread).startMethod();
+				}
+				return Errors.ADMIN_NOT_LOGGED;
+			
+			//------------------------------------------------------------------------------------------------------
+			
+			//FINE FUNZIONI DA ADMIN
+			
+			
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/shared"):

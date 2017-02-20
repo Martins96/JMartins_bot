@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="bot/ellie/readfiles/" kind="src" path="src"/>
-	<classpathentry kind="src" path="ChatterBot"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Meteo"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Log4J"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Security"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/TelegramApi"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/CleverBot"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

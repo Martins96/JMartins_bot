@@ -43,7 +43,9 @@ public class BotThread extends java.lang.Thread {
 			ErrorReporter.sendError("FATAL ERROR - Thread\n\n", e);
 			PropertyConfigurator.configure(Main.PATH_INSTALLAZIONE + "/readfiles/config.properties");
 			Logger emergencyLog = Logger.getLogger(Main.class);
-			emergencyLog.fatal("FATAL ERROR - Thread\n\n", e);
+			emergencyLog.fatal("FATAL ERROR - Thread " + idThread
+					+ "\nLegato all'Utente: " + nameUserThread + "(" + idUserThread + ")"
+					+ "\n", e);
 		}
 	}
 	

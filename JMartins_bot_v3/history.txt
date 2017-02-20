@@ -38,3 +38,4 @@
 3.1.9.0:Aggiunto gioco Battaglia Navale.
 3.1.9.1:Aggiunta mylady in meteo del weekend
 3.1.9.2:Aggiunto gioco 'Sasso Carta Forbice', aggiunte mediia per randomsend e immagini per mylady
+3.1.9.3:Miglioramenti a livello di codice, cambio delle API per CleverBot

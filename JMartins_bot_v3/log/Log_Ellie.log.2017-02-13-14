@@ -1,0 +1,90 @@
+02-13 14:17:51 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+02-13 14:17:51 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
+02-13 14:23:13 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:13 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+02-13 14:23:13 | Main INFO  |  Nome: Luca
+02-13 14:23:13 | Main INFO  |  Cognome: Martinelli
+02-13 14:23:13 | Main INFO  |  Username: Martins9696 (115949778)
+02-13 14:23:13 | Main INFO  |  Testo: Ciao cara
+02-13 14:23:13 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:13 | Main INFO  |  Thread 0 Partito!
+02-13 14:23:13 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+02-13 14:23:14 | Main INFO  |  Risposta di Ellie a Martins9696 :Ciao.
+02-13 14:23:14 | Main INFO  |  Messaggio inviato a 115949778
+02-13 14:23:20 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:20 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+02-13 14:23:20 | Main INFO  |  Nome: Luca
+02-13 14:23:20 | Main INFO  |  Cognome: Martinelli
+02-13 14:23:20 | Main INFO  |  Username: Martins9696 (115949778)
+02-13 14:23:20 | Main INFO  |  Testo: Stai bene?
+02-13 14:23:20 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:20 | Main INFO  |  Risposta non trovata, mando richiesta a bot host
+02-13 14:23:20 | Main INFO  |  Risposta di Ellie a Martins9696 :Si grazie e tu?
+02-13 14:23:21 | Main INFO  |  Messaggio inviato a 115949778
+02-13 14:23:40 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:40 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+02-13 14:23:40 | Main INFO  |  Nome: Luca
+02-13 14:23:40 | Main INFO  |  Cognome: Martinelli
+02-13 14:23:40 | Main INFO  |  Username: Martins9696 (115949778)
+02-13 14:23:40 | Main INFO  |  Testo: /admin
+02-13 14:23:40 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:40 | Main INFO  |  Messaggio inviato a 115949778
+02-13 14:23:46 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:46 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+02-13 14:23:46 | Main INFO  |  Nome: Luca
+02-13 14:23:46 | Main INFO  |  Cognome: Martinelli
+02-13 14:23:46 | Main INFO  |  Username: Martins9696 (115949778)
+02-13 14:23:46 | Main INFO  |  Testo: Password123
+02-13 14:23:46 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:46 | Main WARN  |  ACCESSO ADMIN CONSENTITO A: Martins9696 - id(115949778)
+02-13 14:23:46 | Main INFO  |  Messaggio inviato a 115949778
+02-13 14:23:46 | Main INFO  |  Risposta di Ellie a Martins9696 :Papà , ti ricordo che la lista dei tuoi comandi è " /adminhelp " 😘
+02-13 14:23:46 | Main INFO  |  Messaggio inviato a 115949778
+02-13 14:23:52 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:52 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+02-13 14:23:52 | Main INFO  |  Nome: Luca
+02-13 14:23:52 | Main INFO  |  Cognome: Martinelli
+02-13 14:23:52 | Main INFO  |  Username: Martins9696 (115949778)
+02-13 14:23:52 | Main INFO  |  Testo: /adminhelp
+02-13 14:23:52 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:52 | Main INFO  |  Risposta di Ellie a Martins9696 :Lista:
+/hddlist
+visualizza lista degli HDD /postino
+invio un messaggio ad un utente, sintassi da seguire:
+/postino 'id destinatario' 'testo del messaggio da inviare'
+/system
+invio un messaggio pulito a un utente
+/adminimage
+invio un'immagine delle tue...
+/threadattivi
+visualizzo i thread attivi
+/cloud
+modalità di clouding
+/shutdown
+spegnimento di Ellie
+/adminexit
+esci dalla lista degli admin 
+02-13 14:23:52 | Main INFO  |  Messaggio inviato a 115949778
+02-13 14:23:58 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:58 | Main INFO  |  -----------NUOVO---MESSAGGIO---RICEVUTO------------
+02-13 14:23:58 | Main INFO  |  Nome: Luca
+02-13 14:23:58 | Main INFO  |  Cognome: Martinelli
+02-13 14:23:58 | Main INFO  |  Username: Martins9696 (115949778)
+02-13 14:23:58 | Main INFO  |  Testo: /threadattivi
+02-13 14:23:58 | Main INFO  |  ---------------------------------------------------
+02-13 14:23:58 | Main INFO  |  Risposta di Ellie a Martins9696 :I thread attivi sono: 1
+Gli ID legati ai thread sono: 
+Thread 0: 115949778
+Luca Martinelli(Martins9696)
+
+02-13 14:23:58 | Main INFO  |  Messaggio inviato a 115949778
+02-13 14:53:09 | Main INFO  |  
+|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|
+02-13 14:53:09 | Main INFO  |  
+
+[  Ellie è attiva! :-)  ]
+
