@@ -35,6 +35,7 @@ public class Help {
 			+ "/system\ninvio un messaggio pulito a un utente\n"
 			+ "/adminimage\ninvio un'immagine delle tue...\n"
 			+ "/threadattivi\nvisualizzo i thread attivi\n"
+			+ "/startrandomevent\navvio un nuovo evento casuale\n"
 			+ "/cloud\nmodalità di clouding\n"
 			+ "/shutdown\nspegnimento di Ellie\n"
 			+ "/adminexit\nesci dalla lista degli admin ";
@@ -42,6 +43,7 @@ public class Help {
 	public static final String MYLADY_HELP = "Lista:\n"
 			+ "/postino\ninvio un messaggio ad un utente, sintassi da seguire:\n/postino 'id destinatario' 'testo del messaggio da inviare'\n"
 			+ "/myladyimage\ninvia un'immagine delce quanto la mamma\n"
+			+ "/shutdown\nMi mandi a nanna\n"
 			+ "/myladyexit\nesci dalla modalità mamma\n";
 	
 	public static final String USER_HELP = "Lista dei comandi da utente:\n"

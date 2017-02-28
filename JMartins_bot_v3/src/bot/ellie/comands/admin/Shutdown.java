@@ -6,6 +6,7 @@ public class Shutdown {
 	
 	public static void comandoShutdown() {
 		Main.flagLongpolling = false;
+		Main.running = false;
 	}
 	
 	

@@ -36,14 +36,15 @@ public class Messages {
 	public static final String MYLADY_WELCOME = "Ciao mamma 😄  sono felicissima di sentirti, "
 											  + "ti ricordo che la tua lista dei comandi è /myladyhelp ❤️❤️";
 	public static final String MYLADY_DISCONNECTION = "Disconnessione eseguita, ciao ciao mamma 😘❤";
+	public static final String MYLADY_SHUTDOWN_QUESTION = "Mamma, vuoi davvero spegnermi? 😟 \n/Yep \n\n/Nope";
 	// MYLADY Section end
 	//ADMIN Section
 	public static final String ADMIN_WELCOME = "Papà , ti ricordo che la lista dei tuoi comandi è \" /adminhelp \" 😘";
 	public static final String ADMIN_DISCONNECTION = "Privilegio da ADMIN rimosso, buona giornata papà  😘❤";
 	public static final String ADMIN_SHUTDOWN_QUESTION = "Papà, sei sicuro di volermi spegnere? 😟 \n/Yep \n\n/Nope";
 	
-	public static final String SHUTDOWN_YEP = "Ok resto attiva 😘";
-	public static final String SHUTDOWN_NOPE = "Vado a nanna 😇 \n Bye Bye";
+	public static final String SHUTDOWN_YEP = "Vado a nanna 😇 \n Bye Bye";
+	public static final String SHUTDOWN_NOPE = "Ok resto attiva 😘";
 	//ADMIN Section end
 	//IMPICCATO Section
 	public static final String IMPICCATO_INPUT_NOT_VALID = "Parola inserita non corretta, reinserire";

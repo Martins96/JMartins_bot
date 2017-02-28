@@ -22,7 +22,7 @@ public class Security {
 		this.idthread = idthread;
 	}
 	
-	public void startSecurityMode() {
+	public String startSecurityMode() {
 		startSecurity();
 		String[] message = attendiMessaggio();
 		while(!"exit".equalsIgnoreCase(message[0])) {
@@ -42,6 +42,7 @@ public class Security {
 			}
 			message = attendiMessaggio();
 		}
+		return "Exit from security mode";
 	}
 
 	private void startSecurity() {

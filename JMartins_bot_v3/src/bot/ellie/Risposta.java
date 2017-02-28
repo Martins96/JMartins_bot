@@ -1,9 +1,7 @@
 package bot.ellie;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.LineNumberReader;
 import java.util.Random;
 
 import com.pengrad.telegrambot.model.Message;
@@ -15,6 +13,7 @@ import java.text.SimpleDateFormat;
 import bot.ellie.comands.*;
 import bot.ellie.comands.admin.Shutdown;
 import bot.ellie.comands.admin.StartRandomEvent;
+import bot.ellie.comands.admin.ThreadAttivi;
 import bot.ellie.comands.admin.Upgrade;
 import bot.ellie.comands.clouding.Cloud;
 import bot.ellie.comands.clouding.Shared;
@@ -110,20 +109,20 @@ public class Risposta {
 			//cerco nel file risposte.txt
 			int n = -1;
 			try {
-				n = leggiFileRisposta(testoMessaggio);
+				n = FileUtils.leggiFileRisposta(testoMessaggio);
 			} catch (IOException ex) {
 				Main.log.error(ex);
 			}
 			if (n==-1) { //testo messaggio non trovato
 				try {
-					n = leggiFileRispostaInfo(testoMessaggio);
+					n = FileUtils.leggiFileRispostaInfo(testoMessaggio);
 				} catch (IOException ex) {
 					Main.log.error(ex);;
 				}
 				if(n != -1)
 				{
 					try {
-						risposta = rispondiFileRispostaInfo(n+1);
+						risposta = FileUtils.rispondiFileRispostaInfo(n+1);
 					} catch (IOException ex) {
 						Main.log.error(ex);
 					}
@@ -145,7 +144,7 @@ public class Risposta {
 				int ran = random.nextInt(3);
 				n = ran + n +1;
 				try {
-					risposta = rispondiFileRisposta(n);
+					risposta = FileUtils.rispondiFileRisposta(n);
 				} catch (IOException ex) {
 					Main.log.error(ex);
 					risposta = Errors.RESPONSE_NOT_FOUND;
@@ -494,6 +493,14 @@ public class Risposta {
 						Shutdown.comandoShutdown();
 					}
 					
+				} else if(mylady) {
+					Main.sendMessage(messaggio.from().id(), Messages.MYLADY_SHUTDOWN_QUESTION);
+					Message m = attendiMessaggio();
+					shutdownRisp = Messages.SHUTDOWN_NOPE;
+					if(m.text().equalsIgnoreCase("/Yep")) {
+						shutdownRisp = Messages.SHUTDOWN_YEP;
+						Shutdown.comandoShutdown();
+					}
 				}
 				return shutdownRisp;
 				
@@ -646,22 +653,15 @@ public class Risposta {
 				
 			case("/threadattivi"):
 				if(controllaAdmin())
-				{
-					String s = new String("Gli ID legati ai thread sono: \n");
-					for (i = 0; i<Main.nThread; i++)
-						s = s + "Thread " + i + ": " + Main.botThread[i].idUserThread + "\n" + Main.botThread[i].nameUserThread + "\n";
-					return "I thread attivi sono: " + Main.nThread + "\n"
-							+ s;
-				}
+					ThreadAttivi.visualizzaThreadAttivi();
 				else
 					return Errors.ADMIN_NOT_LOGGED;
 			
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/startrandomevent"):
-				if(controllaAdmin()) {
+				if(controllaAdmin())
 					return new StartRandomEvent(messaggio, idthread).startMethod();
-				}
 				return Errors.ADMIN_NOT_LOGGED;
 			
 			//------------------------------------------------------------------------------------------------------
@@ -708,25 +708,21 @@ public class Risposta {
 			//------------------------------------------------------------------------------------------------------------------
 			
 			case("/impiccato"):
-				
 				return new Impiccato(idthread).startGame(messaggio);
 				
 			//------------------------------------------------------------------------------------------------------
 				
 			case ("/blackjack"):
-			
 				return new Blackjack(idthread).startBlackjack(messaggio);
 			
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/battaglianavale"):
-				
 				return new BattagliaNavale(idthread, messaggio).startGame();
 			
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/sassocartaforbice"):
-				
 				return new SassoCartaForbice(idthread, messaggio).startGame();
 			
 			//------------------------------------------------------------------------------------------------------
@@ -754,116 +750,18 @@ public class Risposta {
 			//------------------------------------------------------------------------------------------------------
 			case("/security"):
 				Security securityMode = new Security(messaggio.from().id(), idthread);
-				securityMode.startSecurityMode();
-				
+				return securityMode.startSecurityMode();
 			//------------------------------------------------------------------------------------------------------
-			default: return "Comando " + comando[0] + " non riconosciuto, per una lista dei comandi digita /help";
+			default: 
+				return "Comando " + comando[0] + " non riconosciuto, per una lista dei comandi digita /help";
 		}
 	}
-	
-	
 	
 	
 	
 	
 	//XXX inizio funzioni
 	
-	
-	
-	
-	//----------------------------------------------------------------------------------------------------------------
-	/**Controlla se nel file risposte.txt c'è il testo del messaggio in arrivo
-	 * 
-	 * @param messaggio in arrivo
-	 * @return numero riga del testo del messaggio in arrivo, oppure -1 in caso non ci sia
-	 * @throws IOException
-	 */
-	public int leggiFileRisposta(String s) throws IOException
-	{
-		//converto prima lettera in maiuscola
-		
-		String word = "-" + s;
-		int n = -1;
-	    	FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/risposte.txt");
-				LineNumberReader lnr = new LineNumberReader (fr);
-	
-				String line;
-	
-				while ((line = lnr.readLine ()) != null)
-				{
-				    if (line.equalsIgnoreCase(word))
-				    {
-				    	n = lnr.getLineNumber();
-				    	break;
-				    }
-				}
-			lnr.close();
-			fr.close();
-			return n;
-	}
-	public String rispondiFileRisposta(int riga) throws IOException
-	{
-		FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/risposte.txt");
-		LineNumberReader lnr = new LineNumberReader (fr);
-
-		String line;
-
-		while ((line = lnr.readLine ()) != null)
-		{
-		    if (lnr.getLineNumber () == riga)
-		    {
-		    	break;
-		    }
-		}
-		lnr.close();
-		return line;
-	}
-	public int leggiFileRispostaInfo(String s) throws IOException
-	{
-		//converto prima lettera in maiuscola
-		
-		String word = "-" + s;
-		int n = -1;
-	    	FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/risposteinfo.txt");
-			LineNumberReader lnr = new LineNumberReader (fr);
-	
-			String line;
-	
-			while ((line = lnr.readLine ()) != null) {
-			    if (line.equalsIgnoreCase(word)) {
-			    	n = lnr.getLineNumber();
-			    }
-			}
-			lnr.close();
-			fr.close();
-			return n;
-	}
-	private String rispondiFileRispostaInfo(int riga) throws IOException 
-	{
-		
-		FileReader fr = new FileReader (Main.PATH_INSTALLAZIONE + "/readfiles/risposteinfo.txt");
-		LineNumberReader lnr = new LineNumberReader (fr);
-
-		String line;
-
-		while ((line = lnr.readLine ()) != null) {
-		    if (lnr.getLineNumber () == riga) {
-		    	break;
-		    }
-		}
-		lnr.close();
-		fr.close();
-		return line;
-	}
-	
-	//----------------------------------------------------------------------------------------------------------
-	// user
-	
-	
-	
-	
-	
-	//----------------------------------------------------------------------------------------------------------//
 	//admin//
 	
 	/** ritorna true se la password inserita corrisponde a quella settata, in caso contrario false

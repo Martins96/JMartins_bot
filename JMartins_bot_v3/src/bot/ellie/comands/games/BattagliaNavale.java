@@ -4,7 +4,7 @@ import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
-import bot.ellie.utils.UtilBattagliaNavale;
+import bot.ellie.utils.games.UtilBattagliaNavale;
 import bot.ellie.utils.messages.Errors;
 import bot.ellie.utils.messages.Help;
 import bot.ellie.utils.messages.Messages;
