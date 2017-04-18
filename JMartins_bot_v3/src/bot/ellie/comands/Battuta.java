@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Random;
 
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 
 public class Battuta {
 	
@@ -72,7 +73,7 @@ public class Battuta {
 			b = random.nextInt(17) + 110;
 			break;
 		default:
-				Main.sendMessage(id, "Parametro non riconosciuto, ti mando una battuta casuale");
+				Sender.sendMessage(id, "Parametro non riconosciuto, ti mando una battuta casuale");
 			b = random.nextInt(127) + 1;
 			break;
 		}

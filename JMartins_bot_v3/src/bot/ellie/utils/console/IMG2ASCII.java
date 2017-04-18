@@ -1,4 +1,4 @@
-package bot.ellie.utils;
+package bot.ellie.utils.console;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

@@ -4,6 +4,7 @@ import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 import bot.ellie.utils.games.UtilBattagliaNavale;
 import bot.ellie.utils.messages.Errors;
 import bot.ellie.utils.messages.Help;
@@ -184,7 +185,7 @@ public class BattagliaNavale extends UtilBattagliaNavale{
 	//------------------------------------------------------------------------------
 	
 	private void sendMessage(String text) {
-		Main.sendMessage(iduser, text);
+		Sender.sendMessage(iduser, text);
 	}
 	
 	private String attendiMessaggio() {

@@ -1,33 +1,34 @@
 package bot.ellie.utils;
 
-import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import com.michaelwflaherty.cleverbotapi.CleverBotQuery;
 
 import bot.ellie.ErrorReporter;
+import bot.ellie.Main;
 import bot.ellie.utils.messages.Errors;
 
 public class ChatterBot {
 	
 	public static String cleverBotResponse(String request) {
 		
-		CleverBotQuery bot = new CleverBotQuery(Costants.CLEVER_BOT_TOKEN, request);
+		String response = null;
+		List<String> keyClever = Arrays.asList(Costants.CLEVER_BOT_TOKEN);
 		
-		String response;
-
-		try
-		{
-		    bot.sendRequest();
-		    response = bot.getResponse();
+		for(String key : keyClever) {
+			CleverBotQuery bot = new CleverBotQuery(key, request);
+			try {
+			    bot.sendRequest();
+			    response = bot.getResponse();
+			}
+			catch (Exception e) {
+			    Main.log.error("Key not work: " + bot.getAPIKey());
+			    ErrorReporter.sendError("Errore Cleverbot API ");
+			}
 		}
-		catch (IOException e)
-		{
-		    response = Errors.RESPONSE_NOT_FOUND;
-		    ErrorReporter.sendError("Errore Cleverbot API ", e);
-		}
-		return response;
+		return response != null ? response : Errors.RESPONSE_NOT_FOUND;
 	}
-	
 	
 	
 }

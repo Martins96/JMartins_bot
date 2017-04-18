@@ -1,6 +1,7 @@
 package bot.ellie.comands;
 
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 
 public class Postino {
 
@@ -74,7 +75,7 @@ public Postino() {
 		}
 		else
 		{
-			Main.sendMessage(id, "Martins mi ha chiesto di scriverti questo 😊: \n" + testo);
+			Sender.sendMessage(id, "Martins mi ha chiesto di scriverti questo 😊: \n" + testo);
 			Main.log.info("Inviato messaggio in modalità ADMIN a: " + id);
 			risultato = "Ho inviato il messaggio all'id: " + id + " (" + destinatario + ") 😄";
 		}
@@ -150,7 +151,7 @@ public Postino() {
 		}
 		else
 		{
-			Main.sendMessage(id, "La mamma mi ha chiesto di scriverti questo 😊: \n" + testo);
+			Sender.sendMessage(id, "La mamma mi ha chiesto di scriverti questo 😊: \n" + testo);
 			Main.log.info("Inviato messaggio in modalità MYLADY a: " + id);
 			risultato = "Ho inviato il messaggio all'id: " + id + " (" + destinatario + ") 😄";
 		}
@@ -210,7 +211,7 @@ public Postino() {
 		}
 		else
 		{
-			Main.sendMessage(id, mittente +" mi ha chiesto di scriverti questo 😊: \n" + testo);
+			Sender.sendMessage(id, mittente +" mi ha chiesto di scriverti questo 😊: \n" + testo);
 			Main.log.info(mittente + " ha inviato messaggio in modalità USER a: " + id);
 			risultato = "Ho inviato il messaggio all'id: " + id + " (" + destinatario + ") 😄";
 		}
@@ -284,7 +285,7 @@ public Postino() {
 				+ "'Parmraj'    - 164741728\n";
 	}
 	
-	public String sysMessaggio(String destinatario, String testomex)
+	public String sysMessaggio(String destinatario, String testomex, boolean isAdmin)
 	{
 		String risultato = new String("Messaggio non consegnato!");
 		destinatario = destinatario.toLowerCase();
@@ -343,9 +344,11 @@ public Postino() {
 		}
 		else
 		{
-			Main.sendMessage(id, testomex);
+			Sender.sendMessage(id, testomex);
 			Main.log.info("Inviato messaggio in modalità SYSTEM a: " + id);
-			risultato = "Ok papà! Ho inviato il messaggio pulito all'id: " + id + " (" + destinatario + ") 😄";
+			risultato = isAdmin ? 
+					  "Ok papà! Ho inviato il messaggio pulito all'id: " + id + " (" + destinatario + ") 😄" 
+					: "Ok mamma! Ho inviato il messaggio pulito all'id: " + id + " (" + destinatario + ") 😄";
 		}
 		
 		return risultato;

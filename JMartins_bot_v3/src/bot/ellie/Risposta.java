@@ -11,6 +11,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import bot.ellie.comands.*;
+import bot.ellie.comands.admin.Love;
 import bot.ellie.comands.admin.Shutdown;
 import bot.ellie.comands.admin.StartRandomEvent;
 import bot.ellie.comands.admin.ThreadAttivi;
@@ -56,103 +57,7 @@ public class Risposta {
 		user = new User();
 	}
 	
-	/**
-	 * Genero una risposta per il messaggio in ingresso
-	 * @param messaggio
-	 * @return
-	 */
-	public String generaRisposta(Message messaggio)
-	{
-		//se il messaggio in arrivo è un messaggio non di testo
-		if(messaggio.text() == null) {
-			return ANNULLA_SPEDIZIONE_MESSAGGIO;
-		}
-		String risposta = new String();
-		String testoMessaggio = new String(messaggio.text());
-		testoMessaggio = testoMessaggio.substring(0,1).toUpperCase() + testoMessaggio.substring(1,testoMessaggio.length()).toLowerCase();
-		//cerco risposta in base al testo inserito
-		try
-		{
-			String ioMiChiamo;
-			if(!(ioMiChiamo = ControlliMessaggiRicevuti.ioMiChiamo(messaggio)).equalsIgnoreCase("")) {
-				return ioMiChiamo;
-			}
-		}
-		catch(IndexOutOfBoundsException e)
-		{
-			Main.log.error("Index out of Bound: " + e.getStackTrace());
-			ErrorReporter.sendError("Index out of Bound: " + e.getMessage());
-		}
-		//------------------------------------------------------------------
-				{
-					String comandoDaFrase = ControlliMessaggiRicevuti.setComandoDaFrase(messaggio);
-					if(!comandoDaFrase.equalsIgnoreCase(""))
-					{
-						testoMessaggio = comandoDaFrase;
-					}
-				}
-		
-		
-		if(testoMessaggio.length()>1)
-			if(testoMessaggio.substring(0,1).equalsIgnoreCase("\\"))
-			{
-				testoMessaggio = "/" + testoMessaggio.substring(1, testoMessaggio.length());
-			}
-		
-		// eseguo comando
-		if(testoMessaggio.substring(0,1).equalsIgnoreCase("/"))
-		{
-			risposta = eseguiComando(messaggio);
-		}
-		else
-		{
-			//cerco nel file risposte.txt
-			int n = -1;
-			try {
-				n = FileUtils.leggiFileRisposta(testoMessaggio);
-			} catch (IOException ex) {
-				Main.log.error(ex);
-			}
-			if (n==-1) { //testo messaggio non trovato
-				try {
-					n = FileUtils.leggiFileRispostaInfo(testoMessaggio);
-				} catch (IOException ex) {
-					Main.log.error(ex);;
-				}
-				if(n != -1)
-				{
-					try {
-						risposta = FileUtils.rispondiFileRispostaInfo(n+1);
-					} catch (IOException ex) {
-						Main.log.error(ex);
-					}
-				}
-				else {
-				// in caso non trovo una risposta in locale mando a bot host
-					try {
-						Main.log.info("Risposta non trovata, mando richiesta a bot host");
-						risposta = ChatterBot.cleverBotResponse(testoMessaggio);
-						risposta = ControlliAutoRensponse.checkAutobotNome(risposta);
-					} catch (Exception e) {
-						Main.log.error("Errore Cleverbot - ", e);
-						ErrorReporter.sendError("Errore Cleverbot - " + e.getMessage());
-						risposta = Errors.RESPONSE_NOT_FOUND;
-					}
-				}
-			}
-			else { // testo trovato
-				int ran = random.nextInt(3);
-				n = ran + n +1;
-				try {
-					risposta = FileUtils.rispondiFileRisposta(n);
-				} catch (IOException ex) {
-					Main.log.error(ex);
-					risposta = Errors.RESPONSE_NOT_FOUND;
-				}
-			}
-		}
-		return risposta;
-	}
+	
 	
 	/**
 	 * Esegue un comando, per essere un comando deve essere preposto il carattere / al comando
@@ -217,85 +122,62 @@ public class Risposta {
 				return asciiart;
 		//-------------------------------------------------------------------------------------------------------
 			case("/battuta"):
-				
 				return Battuta.comandoBattuta(comando, messaggio.from().id());
-				
 				
 		//--------------------------------------------------------------------------------------------------------
 			case("/perla"):
-				
 				return Perla.comandoPerla();
 				
 		//------------------------------------------------------------------------------------------------------------------
 			case("/sticker"):
-				
 				Sticker sticker = new Sticker();
-				Main.sendSticker(messaggio.from().id(), sticker.getSticker());
+				Sender.sendSticker(messaggio.from().id(), sticker.getSticker());
 				Main.log.info("Sticker spedito a " + messaggio.from().firstName());
-				
-			return ANNULLA_SPEDIZIONE_MESSAGGIO;
+				return ANNULLA_SPEDIZIONE_MESSAGGIO;
 			
 		//------------------------------------------------------------------------------------------------------------------
 			case("/ora"):
 				DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 				Date date = new Date();
-				Main.log.info(dateFormat.format(date)); //15:59:48
+				Main.log.info(dateFormat.format(date)); //ex. 15:59:48
 				return "Sono le:  " + dateFormat.format(date);
 				
 		//----------------------------------------------------------------------------------------------------------------
 			//funzione CALC
 			case("/calc"):
 				return Calc.help();
-			
 			//------------------------------------------------------------------------------//
-			
 			case("/+"):
 				return Calc.comandoSomma(messaggio);
-				
-			//----------------------------------------------------------------------------------//
 			
 			case("/-"):
-				return Calc.comandoDifferenza(messaggio);		
-		
-			
-			//----------------------------------------------------------------------------------//
+				return Calc.comandoDifferenza(messaggio);
 			
 			case("/x"):
 				return Calc.comandoProdotto(messaggio);
-				
-			//----------------------------------------------------------------------------------//
 			
 			case("/:"):
 				return Calc.comandoQuoziente(messaggio);
-				
-			//-------------------------------------------------------------------------------------//
-				
+			
 			case("/sqrt"):
 				return Calc.comandoRadice(messaggio);
-					
-				
-			//-------------------------------------------------------------------------------------//
 			
-				case("/rand"):
-					return Calc.comandoRandom(messaggio);
-					
-				
-			//-------------------------------------------------------------------------------------//
-				
-				case("/media"):
-					return Calc.comandoMedia(messaggio);
-			//-------------------------------------------------------------------------------------//
-				
-				case("/letterarand"):
-					return Calc.letterarand();
-			//-------------------------------------------------------------------------------------//
-				case("/moneta"):
-					return Calc.moneta();
-			//-------------------------------------------------------------------------------------//
+			case("/rand"):
+				return Calc.comandoRandom(messaggio);
+			
+			case("/media"):
+				return Calc.comandoMedia(messaggio);
+			
+			case("/letterarand"):
+				return Calc.letterarand();
+			
+			case("/moneta"):
+				return Calc.moneta();
+			
 		//------------------------------------------------------------------------------------------------------------------
 			//funzioni da USER
 			case("/user"):
-				
+			{
 				String text = new String(Errors.GENERAL_ERROR);
 				Message message = null;
 				if(user.isLogged())
@@ -309,7 +191,7 @@ public class Risposta {
 					if(comando.length>1 && comando[1] != null)
 						pass = comando[1];
 					else {
-						Main.sendMessage(messaggio.from().id(), "Ciao, chi sei?");
+						Sender.sendMessage(messaggio.from().id(), "Ciao, chi sei?");
 						Main.botThread[idthread].message = new Message();
 						message = attendiMessaggio();
 						pass = message.text() == null ? "" : message.text();
@@ -326,7 +208,7 @@ public class Risposta {
 					}
 				}
 				return text;
-			
+			}
 		case("/userhelp"):
 			long id = messaggio.from().id();
 			if(!user.isLogged()) {
@@ -337,6 +219,7 @@ public class Risposta {
 				return Help.USER_HELP;
 		
 		case("/userexit"):
+			String text = new String(Errors.GENERAL_ERROR);
 			id = messaggio.from().id();
 			if(!user.isLogged()) {
 				Main.log.info(messaggio.from().username() + "(" + messaggio.from().id() + ") ha tentato l'uscita user non facendone parte");
@@ -351,12 +234,13 @@ public class Risposta {
 			//funzioni da MYLADY
 			
 			case("/mylady"):
-				
+			{
+				Message message = null;
 				if(mylady == true) {
 					Main.log.info(messaggio.from().firstName() + " " + messaggio.from().lastName() + " ha tentato nuovamente di effettuare l'accesso da mylady");
 					return Errors.MYLADY_ALREADY_LOGGED;
 				} else {
-					Main.sendMessage(messaggio.from().id(), "Mamma, sei tu?");
+					Sender.sendMessage(messaggio.from().id(), "Mamma, sei tu?");
 					message = attendiMessaggio();
 					mylady = MyLady.autenticaMylady(message.text());
 					
@@ -365,6 +249,7 @@ public class Risposta {
 					else
 						return Errors.MYLADY_ERROR_LOGIN;
 				}
+			}
 			//----------------------------------------------------------------------------------------------------------
 			case("/myladyhelp"):
 				if(mylady)
@@ -376,7 +261,7 @@ public class Risposta {
 			
 			case("/myladyimage"):
 				if(mylady) {
-					Main.sendPhoto(messaggio.from().id(), MyLady.getImageRandom());
+					Sender.sendPhoto(messaggio.from().id(), MyLady.getImageRandom());
 					return ANNULLA_SPEDIZIONE_MESSAGGIO;
 				}
 				else
@@ -390,12 +275,28 @@ public class Risposta {
 				}
 				else
 					return Errors.MYLADY_NOT_LOGGED;
-				
+			
+			//----------------------------------------------------------------------------------------------------------
+			case("/love"):
+				if(mylady || controllaAdmin()) {
+					try {
+						return Love.execute(Integer.toString(messaggio.from().id()));
+					} catch (IOException e) {
+						Main.log.error("Errore durante l'esecuzione di /love per l'utente " 
+								+ messaggio.from().username(), e);
+						ErrorReporter.sendError("Errore in /love ", e);
+						return Errors.GENERAL_ERROR2;
+					}
+				}
+				else
+					return Errors.L_NOT_LOGGED_ERROR;
 			
 		//--------------------------------------------------------------------------------------------------------------
 			//funzioni da ADMIN
 			
 			case("/admin"):
+			{
+				Message message = null;
 				text = new String(Errors.GENERAL_ERROR);
 				if(controllaAdmin())
 				{
@@ -413,7 +314,7 @@ public class Risposta {
 						if(comando.length>1 && comando[1] != null)
 							pass = comando[1];
 						else {
-							Main.sendMessage(messaggio.from().id(), "Martins? Sei tu?");
+							Sender.sendMessage(messaggio.from().id(), "Martins? Sei tu?");
 							Main.botThread[idthread].message = new Message();
 							message = attendiMessaggio();
 							pass = message.text() == null ? "" : message.text();
@@ -421,13 +322,13 @@ public class Risposta {
 						accesso = autenticazione(pass);
 						if(accesso) {
 							Main.log.warn("ACCESSO ADMIN CONSENTITO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
-							Main.sendMessage(messaggio.from().id(), "Papà ! ❤😍😘❤");
+							Sender.sendMessage(messaggio.from().id(), "Papà ! ❤😍😘❤");
 							text = Messages.ADMIN_WELCOME;
 							aggiungiAdmin();	
 						}
 						else {
 							if(pass.equals("Password123")) {
-								Main.sendMessage(messaggio.from().id(), "Eh, non sono in debug ora");
+								Sender.sendMessage(messaggio.from().id(), "Eh, non sono in debug ora");
 							}
 							Main.log.warn("ACCESSO ADMIN NEGATO A: " + messaggio.from().username() + " - id(" + messaggio.from().id() + ")");
 							text = Errors.ADMIN_NOT_LOGGED;
@@ -435,6 +336,7 @@ public class Risposta {
 					}
 				}
 				return text;
+			}
 		//----------------------------------------------------------------------------------------------------------
 			case("/adminhelp"):
 				String lista = new String(Errors.ADMIN_NOT_LOGGED);
@@ -472,7 +374,7 @@ public class Risposta {
 							s = "Mmm... questa è carina. No, stavo scherzando, papà, cambierai mai? 😑";
 							break;
 						}
-						Main.sendPhoto(messaggio.from().id(), Photo.getAdminImage());
+						Sender.sendPhoto(messaggio.from().id(), Photo.getAdminImage());
 					}
 					return s;
 				}
@@ -485,7 +387,7 @@ public class Risposta {
 			case("/shutdown"):
 				String shutdownRisp = Errors.ADMIN_NOT_LOGGED;
 				if(controllaAdmin()) {
-					Main.sendMessage(messaggio.from().id(), Messages.ADMIN_SHUTDOWN_QUESTION);
+					Sender.sendMessage(messaggio.from().id(), Messages.ADMIN_SHUTDOWN_QUESTION);
 					Message m = attendiMessaggio();
 					shutdownRisp = Messages.SHUTDOWN_NOPE;
 					if(m.text().equalsIgnoreCase("/Yep")) {
@@ -494,7 +396,7 @@ public class Risposta {
 					}
 					
 				} else if(mylady) {
-					Main.sendMessage(messaggio.from().id(), Messages.MYLADY_SHUTDOWN_QUESTION);
+					Sender.sendMessage(messaggio.from().id(), Messages.MYLADY_SHUTDOWN_QUESTION);
 					Message m = attendiMessaggio();
 					shutdownRisp = Messages.SHUTDOWN_NOPE;
 					if(m.text().equalsIgnoreCase("/Yep")) {
@@ -508,7 +410,7 @@ public class Risposta {
 				
 			case("/cloud"):
 			if(controllaAdmin()){
-				Main.sendMessage(messaggio.from().id(), "Avvio modalità clouding...");
+				Sender.sendMessage(messaggio.from().id(), "Avvio modalità clouding...");
 				Main.log.info(messaggio.from().firstName() + messaggio.from().lastName() + messaggio.from().username() + ""
 						+ "(" + messaggio.from().id() + ") ENTRA IN MODALITA' CLOUD");
 				
@@ -525,8 +427,8 @@ public class Risposta {
 				
 		//---------------------------------------------------------------------------------------------------------------
 			case("/postino"):
-			
-				message = new Message();
+			{
+				Message message = new Message();
 				String esitopostino = new String(Errors.POSTINO_SYNTAX_ERROR);
 				Postino postino = new Postino();
 				String destinatario = "", testomex = "", mittente = "";
@@ -540,11 +442,9 @@ public class Risposta {
 					}
 					else 
 						check = true;
-					if(check)
-					{
+					if(check) {
 						//sistemo destinatario e testomex
-						if (comando.length>2 && comando[1] != null && comando[2] != null)
-						{
+						if (comando.length>2 && comando[1] != null && comando[2] != null) {
 							testomex = comando[2];
 							destinatario = comando[1];
 						}
@@ -554,11 +454,10 @@ public class Risposta {
 						
 						if (destinatario.equalsIgnoreCase(""))
 						{
-							Main.sendMessage(messaggio.from().id(), Messages.POSTINO_NEED_DESTINATARIO);
+							Sender.sendMessage(messaggio.from().id(), Messages.POSTINO_NEED_DESTINATARIO);
 							message = attendiMessaggio();
 							//messaggio in arrivo
-							if(message.text() != null)
-							{
+							if(message.text() != null) {
 									Main.log.info("destinatario: " + destinatario);
 									destinatario = message.text().toLowerCase();
 							}
@@ -570,13 +469,11 @@ public class Risposta {
 									esitopostino = postino.helpadmin();
 								else
 									esitopostino = postino.helpuser(); 
-						if (testomex == "")
-						{	
-							Main.sendMessage(messaggio.from().id(), Messages.POSTINO_NEED_MESSAGE);
+						if (testomex == "") {	
+							Sender.sendMessage(messaggio.from().id(), Messages.POSTINO_NEED_MESSAGE);
 							message = attendiMessaggio();
 							//messaggio in arrivo
-							if(message.text() != null)
-							{
+							if(message.text() != null) {
 								testomex = message.text();
 							}
 						}
@@ -591,33 +488,27 @@ public class Risposta {
 						else
 							esitopostino = postino.consegnaMessaggio(destinatario, testomex, mittente);
 					}
-					else
-					{
+					else {
 						return Errors.USER_NOT_LOGGED;
 					}
 				return esitopostino;
+			}
 			//------------------------------------------------------------------------------------------------------
 			case("/system"):
-				esitopostino = new String(Errors.POSTINO_SYNTAX_ERROR);
-				postino = new Postino();
-				destinatario = "";
-				testomex = "";
+			{
+				Postino postino = new Postino();
+				String destinatario = new String();
+				String testomex = new String();
 				check = controllaAdmin();
-				if(check)
-				{
+				if(check || mylady) {
 					//sistemo destinatario e testomex
-					for (int j=0; messaggio.text().length() > j; j++)
-					{
-						if (messaggio.text().substring(j, j+1).equalsIgnoreCase(" "))
-						{
+					for (int j=0; messaggio.text().length() > j; j++) {
+						if (messaggio.text().substring(j, j+1).equalsIgnoreCase(" ")) {
 							j++;
-							while (messaggio.text().length() > j)
-							{
-								if (messaggio.text().substring(j, j+1).equalsIgnoreCase(" "))
-								{
+							while (messaggio.text().length() > j) {
+								if (messaggio.text().substring(j, j+1).equalsIgnoreCase(" ")) {
 									j++;
-									while (messaggio.text().length() > j)
-									{
+									while (messaggio.text().length() > j) {
 										testomex = testomex + messaggio.text().substring(j, j+1);
 										j++;
 									}
@@ -632,12 +523,12 @@ public class Risposta {
 						return Errors.POSTINO_SYNTAX_ERROR;
 					else if (destinatario.equalsIgnoreCase("help"))
 							return postino.syshelp();
-					return postino.sysMessaggio(destinatario, testomex);
+					return postino.sysMessaggio(destinatario, testomex, check);
 				}
-				else
-				{
+				else {
 					return Errors.USER_NOT_LOGGED;
 				}
+			}
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/upgrade"):
@@ -651,11 +542,28 @@ public class Risposta {
 				
 			//------------------------------------------------------------------------------------------------------
 				
+			case("/getlog"):
+				if(!controllaAdmin())
+					return Errors.ADMIN_NOT_LOGGED;
+			//else
+			Sender.sendDocument(messaggio.from().id(), new File(Main.PATH_INSTALLAZIONE + "/log/Log_Ellie.log"));
+			return "Ecco il Log papà 🎉";
+				
+			//------------------------------------------------------------------------------------------------------
+			
+			case("/getellieinfo"):
+				if(controllaAdmin()) 
+					return Main.botInfos.toString();
+				return Errors.ADMIN_NOT_LOGGED;
+				
+			
+			//------------------------------------------------------------------------------------------------------
+			
 			case("/threadattivi"):
 				if(controllaAdmin())
-					ThreadAttivi.visualizzaThreadAttivi();
-				else
-					return Errors.ADMIN_NOT_LOGGED;
+					return ThreadAttivi.visualizzaThreadAttivi();
+				//else
+				return Errors.ADMIN_NOT_LOGGED;
 			
 			//------------------------------------------------------------------------------------------------------
 			
@@ -672,7 +580,7 @@ public class Risposta {
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/shared"):
-				Main.sendMessage(messaggio.from().id(), "Avvio modalità clouding...");
+				Sender.sendMessage(messaggio.from().id(), "Avvio modalità clouding...");
 				Main.log.info(messaggio.from().firstName() + messaggio.from().lastName() + messaggio.from().username() + ""
 						+ "(" + messaggio.from().id() + ") ENTRA IN MODALITA' CLOUD");
 				
@@ -683,7 +591,9 @@ public class Risposta {
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/meteo"):
-				Main.sendMessage(messaggio.from().id(), Messages.METEO_GET_CITY);
+			{
+				Message message = null;
+				Sender.sendMessage(messaggio.from().id(), Messages.METEO_GET_CITY);
 				message = attendiMessaggio();
 				String meteo = Meteo.getMeteo(message.text());
 				if (meteo.equalsIgnoreCase("error")) {
@@ -693,6 +603,7 @@ public class Risposta {
 					return Messages.METEO_ABORT;
 				} // input OK
 				return meteo;
+			}
 			
 			//------------------------------------------------------------------------------------------------------
 			
@@ -728,8 +639,9 @@ public class Risposta {
 			//------------------------------------------------------------------------------------------------------
 					
 			case("/foto"):
-
-				Main.sendMessage(messaggio.from().id(),
+			{
+				Message message = null;
+				Sender.sendMessage(messaggio.from().id(),
 						Messages.PHOTO_NEED_TYPE);
 				// attendo categoria
 				message = attendiMessaggio();
@@ -737,14 +649,15 @@ public class Risposta {
 				if (photo == null)
 					return Errors.GENERAL_ERROR2;
 				else
-					Main.sendPhoto(messaggio.from().id(), photo);
+					Sender.sendPhoto(messaggio.from().id(), photo);
 				return ANNULLA_SPEDIZIONE_MESSAGGIO;
+			}
 				
 			//------------------------------------------------------------------------------------------------------
 			
 			case("/musica"):
 			synchronized (Main.ellie) {
-				Main.sendAudio(messaggio.from().id(), Music.getAudio());	
+				Sender.sendAudio(messaggio.from().id(), Music.getAudio());	
 			}
 				return ANNULLA_SPEDIZIONE_MESSAGGIO;
 			//------------------------------------------------------------------------------------------------------
@@ -758,6 +671,101 @@ public class Risposta {
 	}
 	
 	
+	// XXX
+	
+	/**
+	 * Genero una risposta per il messaggio in ingresso
+	 * @param messaggio
+	 * @return
+	 */
+	public String generaRisposta(Message messaggio) {
+		//se il messaggio in arrivo è un messaggio non di testo
+		if(messaggio.text() == null) {
+			return ANNULLA_SPEDIZIONE_MESSAGGIO;
+		}
+		String risposta = new String();
+		String testoMessaggio = new String(messaggio.text());
+		testoMessaggio = testoMessaggio.substring(0,1).toUpperCase() 
+					     + testoMessaggio.substring(1,testoMessaggio.length()).toLowerCase();
+		//cerco risposta in base al testo inserito
+		try {
+			String ioMiChiamo;
+			if(!(ioMiChiamo = ControlliMessaggiRicevuti.ioMiChiamo(messaggio)).equalsIgnoreCase("")) {
+				return ioMiChiamo;
+			}
+		}
+		catch(IndexOutOfBoundsException e) {
+			Main.log.error("Index out of Bound: " + e.getStackTrace());
+			ErrorReporter.sendError("Index out of Bound: " + e.getMessage());
+		}
+		//------------------------------------------------------------------
+		{
+			String comandoDaFrase = ControlliMessaggiRicevuti.setComandoDaFrase(messaggio);
+			if(!comandoDaFrase.equalsIgnoreCase("")) {
+				testoMessaggio = comandoDaFrase;
+			}
+		}
+		
+		
+		if(testoMessaggio.length()>1)
+			if(testoMessaggio.substring(0,1).equalsIgnoreCase("\\")) {
+				testoMessaggio = "/" + testoMessaggio.substring(1, testoMessaggio.length());
+			}
+		
+		// eseguo comando
+		if(testoMessaggio.substring(0,1).equalsIgnoreCase("/")) {
+			risposta = eseguiComando(messaggio);
+		}
+		else {
+			//cerco nel file risposte.txt
+			int n = -1;
+			try {
+				n = FileUtils.leggiFileRisposta(testoMessaggio);
+			} catch (IOException ex) {
+				Main.log.error(ex);
+			}
+			if (n==-1) { //testo messaggio non trovato
+				try {
+					n = FileUtils.leggiFileRispostaInfo(testoMessaggio);
+				} catch (IOException ex) {
+					Main.log.error(ex);;
+				}
+				if(n != -1) {
+					try {
+						risposta = FileUtils.rispondiFileRispostaInfo(n+1);
+					} catch (IOException ex) {
+						Main.log.error(ex);
+					}
+				}
+				else {
+				// in caso non trovo una risposta in locale mando a bot host
+					try {
+						if(!Costants.ENABLE_BOT_RESPONSE)
+							return ANNULLA_SPEDIZIONE_MESSAGGIO;
+						Main.log.info("Risposta non trovata, mando richiesta a bot host");
+						risposta = ChatterBot.cleverBotResponse(testoMessaggio);
+						risposta = ControlliAutoRensponse.checkAutobotNome(risposta);
+					} catch (Exception e) {
+						Main.log.error("Errore Cleverbot - ", e);
+						ErrorReporter.sendError("Errore Cleverbot - " + e.getMessage());
+						risposta = Errors.RESPONSE_NOT_FOUND;
+					}
+				}
+			}
+			else { // testo trovato
+				int ran = random.nextInt(3);
+				n = ran + n +1;
+				try {
+					risposta = FileUtils.rispondiFileRisposta(n);
+				} catch (IOException ex) {
+					Main.log.error(ex);
+					risposta = Errors.RESPONSE_NOT_FOUND;
+				}
+			}
+		}
+		return risposta;
+	}
+	
 	
 	
 	//XXX inizio funzioni
@@ -768,16 +776,13 @@ public class Risposta {
 	 * 
 	 * @param password
 	 */
-	public final boolean autenticazione(String pw)
-	{
+	public final boolean autenticazione(String pw) {
 		boolean accesso;
 		
-		if (pw.equals(pass))
-		{
+		if (pw.equals(pass)) {
 			accesso = true;
 		}
-		else
-		{
+		else {
 			accesso = false;
 		}
 		return accesso;
@@ -787,22 +792,22 @@ public class Risposta {
 	 * 
 	 * @return
 	 */
-	public boolean controllaAdmin()
-	{
+	public boolean controllaAdmin() {
 		return admin;
 	}
+	
 	/**Aggiunge l'id alla lista degli admin
 	 * 
 	 * @param ID Admin Da Aggiungere
 	 */
-	public void aggiungiAdmin()
-	{
+	public void aggiungiAdmin() {
 		admin = true;
 	}
-	public void rimuoviAdmin()
-	{
+	
+	public void rimuoviAdmin() {
 		admin = false;
 	}
+	
 	//------------------------------------------------------------------------------
 	private Message attendiMessaggio() {
 		Message emptyMessage = new Message();

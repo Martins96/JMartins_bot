@@ -5,6 +5,8 @@ import org.apache.log4j.PropertyConfigurator;
 
 import com.pengrad.telegrambot.model.Message;
 
+import bot.ellie.utils.Sender;
+
 
 
 public class BotThread extends java.lang.Thread {
@@ -41,7 +43,7 @@ public class BotThread extends java.lang.Thread {
 		} catch (Exception e) {
 			//try to send the error to my master
 			ErrorReporter.sendError("FATAL ERROR - Thread\n\n", e);
-			PropertyConfigurator.configure(Main.PATH_INSTALLAZIONE + "/readfiles/config.properties");
+			PropertyConfigurator.configure(Main.PATH_INSTALLAZIONE + "/conf/log4j.properties");
 			Logger emergencyLog = Logger.getLogger(Main.class);
 			emergencyLog.fatal("FATAL ERROR - Thread " + idThread
 					+ "\nLegato all'Utente: " + nameUserThread + "(" + idUserThread + ")"
@@ -67,7 +69,7 @@ public class BotThread extends java.lang.Thread {
 						
 					} else {
 						Main.log.info("Risposta di Ellie a " + msg.from().username() + " :" + testoRisposta);
-						Main.sendMessage(msg.from().id(), testoRisposta);
+						Sender.sendMessage(msg.from().id(), testoRisposta);
 					}
 					
 					

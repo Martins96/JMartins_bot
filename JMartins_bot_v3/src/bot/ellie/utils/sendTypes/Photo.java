@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Random;
 
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 
 public class Photo {
 	
@@ -44,7 +45,7 @@ public class Photo {
 				categoria = "mystic";
 				break;
 			default:
-				Main.sendMessage(id, "Categoria non riconosciuta, ne scelgo una casuale");	
+				Sender.sendMessage(id, "Categoria non riconosciuta, ne scelgo una casuale");	
 				switch (ran.nextInt(3)) {
 				case 0:
 					categoria = "cute";
@@ -66,7 +67,9 @@ public class Photo {
 	}
 	
 	public static File getAdminImage() {
-		File foto = new File(Main.PATH_INSTALLAZIONE + "/readfiles/photo/admin/HF" + new Random().nextInt(NUM_ADMIN_IMMAGINI) + ".jpg");
+		int nFoto = new Random().nextInt(NUM_ADMIN_IMMAGINI);
+		File foto = new File(Main.PATH_INSTALLAZIONE + "/readfiles/photo/admin/HF" + nFoto + ".jpg");
+		Main.log.info("Foto per admin generata numero " + nFoto);
 		return foto;
 	}
 	

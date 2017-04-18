@@ -11,6 +11,7 @@ import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 
 public class Security {
 	
@@ -152,7 +153,7 @@ public class Security {
 	}
 	
 	private void sendMessage(String text) {
-		Main.sendMessage(idUser, text);
+		Sender.sendMessage(idUser, text);
 	}
 	
 	

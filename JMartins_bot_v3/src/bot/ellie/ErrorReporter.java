@@ -6,33 +6,50 @@ import com.pengrad.telegrambot.request.SendMessage;
 
 import bot.ellie.utils.Costants;
 
-public class ErrorReporter implements Runnable{
+public class ErrorReporter {
 	
 	private final static String TOKEN = Costants.TELEGRAM_TOKEN;
 	//creazione bot Ellie
 	private static TelegramBot EmergencyEllie = null; //   
 	
-	private String error;
-	private Exception e;
+	protected String error;
+	protected Exception e;
 	
-	public ErrorReporter() {
-		
+	private ErrorReporter() {
 	}
 	
-	private ErrorReporter(String error, Exception e) {
-		this.error = error;
-		this.e = e;
+	public class EllieThreadError implements Runnable {
+		
+		public EllieThreadError(String error, Exception e) {
+			ErrorReporter.this.error = error;
+			ErrorReporter.this.e = e;
+		}
+		
+		@Override
+		public void run() {
+			
+			String errore = error;
+			if(e != null)
+				errore = errore + " \n " + e.getMessage()
+							+ "\nCAUSE:\n" + e.getCause()
+							+ "\nSTACK:\n" + e.getStackTrace();
+			
+			EmergencyEllie = TelegramBotAdapter.build(TOKEN);
+			EmergencyEllie.execute(new SendMessage(115949778, "EMERGENCY ELLIE\n\nERRORE :'(\n" + error));
+		}
 	}
-
-	@Override
-	public void run() {
+	
+	public class EllieThreadWarn implements Runnable {
 		
-		String errore = error;
-		if(e != null)
-			errore = errore + " \n " + e.getMessage();
+		private EllieThreadWarn(String error) {
+			ErrorReporter.this.e = e;
+		}
 		
-		EmergencyEllie = TelegramBotAdapter.buildDebug(TOKEN);
-		EmergencyEllie.execute(new SendMessage(115949778, "EMERGENCY ELLIE\n\nERRORE :'(\n" + error));
+		@Override
+		public void run() {
+			EmergencyEllie = TelegramBotAdapter.build(TOKEN);
+			EmergencyEllie.execute(new SendMessage(115949778, "WARNING: " + error));
+		}
 	}
 	
 	
@@ -43,15 +60,18 @@ public class ErrorReporter implements Runnable{
 	 * @param error
 	 */
 	public static void sendError(String error) {
-		(new Thread(new ErrorReporter(error, null))).start();
+		(new Thread(new ErrorReporter().new EllieThreadError(error, null))).start();
 	}
 	
 	public static void sendError(String error, Exception e) {
-		(new Thread(new ErrorReporter(error, e))).start();
+		(new Thread(new ErrorReporter().new EllieThreadError(error, e))).start();
 	}
 	
+	//-----------------------------------------------------------------------------------------------------
 	
-	
+	public static void sendWarn(String s) {
+		(new Thread(new ErrorReporter().new EllieThreadWarn(s))).start();
+	}
 	
 	
 	

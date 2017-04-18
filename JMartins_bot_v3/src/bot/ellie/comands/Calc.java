@@ -5,6 +5,7 @@ import java.util.Random;
 import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 
 public class Calc {
 	
@@ -52,7 +53,7 @@ public class Calc {
 					} else
 						somma = n1 + somma;
 				} catch (NumberFormatException e) {
-					Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+					Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 				}
 				n1string = new String("");
 			} else {
@@ -66,7 +67,7 @@ public class Calc {
 			n1 = Double.parseDouble(n1string);
 			somma = n1 + somma;
 		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+			Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 		}
 
 		if (firsttime)
@@ -91,7 +92,7 @@ public class Calc {
 						} else
 							dif = dif - n1;
 					} catch (NumberFormatException e) {
-						Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+						Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 					}
 					n1string = new String("");
 				} else {
@@ -105,7 +106,7 @@ public class Calc {
 				n1 = Double.parseDouble(n1string);
 				dif = dif - n1;
 			} catch (NumberFormatException e) {
-				Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+				Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 			}
 			break;
 		}
@@ -132,7 +133,7 @@ public class Calc {
 						} else
 							prod = prod * n1;
 					} catch (NumberFormatException e) {
-						Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+						Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 					}
 					n1string = new String("");
 				} else {
@@ -146,7 +147,7 @@ public class Calc {
 				n1 = Double.parseDouble(n1string);
 				prod = prod * n1;
 			} catch (NumberFormatException e) {
-				Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+				Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 			}
 			break;
 		}
@@ -190,12 +191,12 @@ public class Calc {
 		try {
 			n1 = Double.parseDouble(n1string);
 		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+			Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 		}
 		try {
 			n2 = Double.parseDouble(n2string);
 		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+			Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 		}
 		div = n1 / n2;
 		return "Quoziente: " + div;
@@ -223,7 +224,7 @@ public class Calc {
 			n1 = Math.sqrt(n1);
 			firsttime = false;
 		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+			Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 		}
 
 		if (firsttime)
@@ -248,7 +249,7 @@ public class Calc {
 				{
 					if (messaggio.text().substring(j, j+1).equals(",") || messaggio.text().substring(j, j+1).equals("."))
 					{
-						Main.sendMessage(messaggio.from().id(), "Richiesto un numero senza decimali, userò il numero: " + n1string);
+						Sender.sendMessage(messaggio.from().id(), "Richiesto un numero senza decimali, userò il numero: " + n1string);
 						break;
 					}
 					else
@@ -283,7 +284,7 @@ public class Calc {
 					i++;
 					somma = n1 + somma;
 				} catch (NumberFormatException e) {
-					Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+					Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 				}
 				n1string = new String("");
 			} else {
@@ -298,7 +299,7 @@ public class Calc {
 			i++;
 			somma = n1 + somma;
 		} catch (NumberFormatException e) {
-			Main.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
+			Sender.sendMessage(messaggio.from().id(), "Non riseco a capire il numero: " + n1string);
 		}
 
 		if (i == 0)

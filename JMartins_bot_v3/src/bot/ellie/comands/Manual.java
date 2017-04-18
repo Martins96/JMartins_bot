@@ -11,6 +11,7 @@ import com.pengrad.telegrambot.model.Message;
 import bot.ellie.BotThread;
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 
 public class Manual {
 	
@@ -102,7 +103,7 @@ public class Manual {
 		File file = new File(Main.PATH_INSTALLAZIONE + "/readfiles/photo/" + pathFoto);
 		if (file.exists()) {
 			Main.log.info("Foto inviata: " + pathFoto);
-			Main.sendPhoto(idUser, file);
+			Sender.sendPhoto(idUser, file);
 		} else {
 			Main.log.info("Foto non trovata");
 			sendMessage("Non ho trovato il file specificato, annullo il comando manuale");
@@ -138,7 +139,7 @@ public class Manual {
 		File file = new File(Main.PATH_INSTALLAZIONE + "/readfiles/music/" + pathMusica);
 		if (file.exists()) {
 			Main.log.info("Foto inviata: " + pathMusica);
-			Main.sendAudio(idUser, file);
+			Sender.sendAudio(idUser, file);
 		} else {
 			Main.log.info("Foto non trovata");
 			sendMessage("Non ho trovato il file specificato, annullo il comando manuale");
@@ -151,7 +152,7 @@ public class Manual {
 			if(i>Sticker.N_STICKERS || i<0)
 				sendMessage("Valore inserito non ammesso");
 			else 
-				Main.sendSticker(idUser, new Sticker(i).getSticker());
+				Sender.sendSticker(idUser, new Sticker(i).getSticker());
 		} catch (NumberFormatException e) {
 			sendMessage("Valore inserito non corretto");
 		}
@@ -193,7 +194,7 @@ public class Manual {
 	
 	//-----------------------------------------------------------------------------
 	private void sendMessage(String text) {
-		Main.sendMessage(idUser, text);
+		Sender.sendMessage(idUser, text);
 	}
 	
 	private String attendiMessaggio(String text) {

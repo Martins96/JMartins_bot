@@ -11,7 +11,8 @@ import com.pengrad.telegrambot.model.Message;
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
 import bot.ellie.utils.Costants;
-import bot.ellie.utils.Events;
+import bot.ellie.utils.Sender;
+import bot.ellie.utils.events.MessaggiCasualiEvent;
 
 public class StartRandomEvent {
 	
@@ -38,7 +39,7 @@ public class StartRandomEvent {
 					n = getNumber4Text(); //prendo indice della riga da inviare come evento casuale testo
 					if(n==0)
 						return "Comando annullato";
-					Events.startTextRandomEvent(n); //avvio evento casuale in modo manuale
+					MessaggiCasualiEvent.startTextRandomEvent(n); //avvio evento casuale in modo manuale
 				} catch (IOException e) {
 					Main.log.error(e);
 					ErrorReporter.sendError("Errore avvio evento casuale manuale", e);
@@ -49,19 +50,19 @@ public class StartRandomEvent {
 				n = getNumber4Image(); //prendo numero dell'immagine del inviare come evento casuale testo
 				if(n==0)
 					return "Comando annullato";
-				Events.startImageRandomEvent(n);; //avvio evento casuale in modo manuale
+				MessaggiCasualiEvent.startImageRandomEvent(n);; //avvio evento casuale in modo manuale
 				return "Avviato evento casuale per foto";
 			case "/video":
 				n = getNumber4Video(); //prendo numero del video da inviare come evento casuale testo
 				if(n==0)
 					return "Comando annullato";
-				Events.startVideoRandomEvent(n); //avvio evento casuale in modo manuale
+				MessaggiCasualiEvent.startVideoRandomEvent(n); //avvio evento casuale in modo manuale
 				return "Avviato evento casuale per video";
 			case "/gif":
 				n = getNumber4Gif(); //prendo numero della gif da inviare come evento casuale testo
 				if(n==0)
 					return "Comando annullato";
-				Events.startGifRandomEvent(n); //avvio evento casuale in modo manuale
+				MessaggiCasualiEvent.startGifRandomEvent(n); //avvio evento casuale in modo manuale
 				return "Avviato evento casuale per gif";
 			case "/exit":
 				return "Uscita dalla funzione eseguita";
@@ -165,7 +166,7 @@ public class StartRandomEvent {
 				if(n <= Costants.N_RANDOM_GIF) {
 					if(n==0)
 						return n;
-					sendImage(Main.PATH_INSTALLAZIONE + "/readfiles/photo/randomSend/gif/image" + n + ".gif");
+					sendGif(Main.PATH_INSTALLAZIONE + "/readfiles/photo/randomSend/gif/image" + n + ".gif");
 					String ok = attendiMessaggio("\n\nOk?\n/si\n/no");
 					if(ok.equals("/si"))
 						return n;
@@ -211,7 +212,7 @@ public class StartRandomEvent {
 	
 	private String attendiMessaggio(String stringa) {
 		if(stringa != null)
-			Main.sendMessage(message.from().id(), stringa);
+			Sender.sendMessage(message.from().id(), stringa);
 		Message emptyMessage = new Message();
 		synchronized (Main.botThread[idthread].message) {
 			Main.botThread[idthread].message = emptyMessage;
@@ -232,18 +233,18 @@ public class StartRandomEvent {
 	}
 	
 	private void sendMessage(String text) {
-		Main.sendMessage(message.from().id(), text);
+		Sender.sendMessage(message.from().id(), text);
 	}
 	
 	private void sendImage(String text) {
-		Main.sendPhoto(message.from().id(), new File(text));
+		Sender.sendPhoto(message.from().id(), new File(text));
 	}
 	
 	private void sendVideo(String text) {
-		Main.sendVideo(message.from().id(), new File(text));
+		Sender.sendVideo(message.from().id(), new File(text));
 	}
 	
 	private void sendGif(String text) {
-		Main.sendDocument(message.from().id(), new File(text));
+		Sender.sendDocument(message.from().id(), new File(text));
 	}
 }

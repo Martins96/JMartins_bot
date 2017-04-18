@@ -1,4 +1,4 @@
-package bot.ellie.utils;
+package bot.ellie.utils.console;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,6 +10,8 @@ import com.pengrad.telegrambot.response.GetFileResponse;
 import bot.ellie.Main;
 
 import bot.ellie.comands.Sticker;
+import bot.ellie.utils.Costants;
+import bot.ellie.utils.Sender;
 
 public class ConsoleUtilities {
 	
@@ -81,12 +83,12 @@ public class ConsoleUtilities {
 					if(message.sticker() != null) {
 						Main.log.info("Sticker : " + message.sticker().fileId());
 						//invio sticker a papà
-						Main.sendMessage(115949778, "Sticker ricevuto da: " + message.from().firstName() 
+						Sender.sendMessage(115949778, "Sticker ricevuto da: " + message.from().firstName() 
 								+ " " + message.from().lastName()
 								+ " " + message.from().username());
-						Main.sendSticker(115949778, message.sticker().fileId());
+						Sender.sendSticker(115949778, message.sticker().fileId());
 						Main.log.info("Sticker casuale inviato a: " + message.from().firstName());
-						Main.sendSticker(message.from().id(), new Sticker().getSticker());
+						Sender.sendSticker(message.from().id(), new Sticker().getSticker());
 					}
 				}
 				Main.log.info("---------------------------------------------------");

@@ -6,6 +6,7 @@ import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 
 public class Shared {
 	
@@ -106,11 +107,11 @@ public class Shared {
 	}
 
 	private void sendMessage(String text) {
-		Main.sendMessage(idUser, text);
+		Sender.sendMessage(idUser, text);
 	}
 	
 	private void sendDocument(String doc) {
-		Main.sendDocument(idUser, new File(doc));
+		Sender.sendDocument(idUser, new File(doc));
 	}
 	
 	private Message attendiMessaggio() {

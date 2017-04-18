@@ -19,6 +19,7 @@ import static java.nio.file.StandardCopyOption.*;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 import bot.ellie.utils.messages.Help;
 
 public class Cloud {
@@ -334,7 +335,7 @@ public class Cloud {
 	}
 	
 	private void sendMessage(String text) {
-		Main.sendMessage(idUser, text);
+		Sender.sendMessage(idUser, text);
 	}
 	
 	private void cdback1() {
@@ -537,7 +538,7 @@ public class Cloud {
 		
 		File file = new File(PATH + fileName);
 		if(file.exists() && !file.isDirectory()) {
-			Main.sendDocument(idUser, file);
+			Sender.sendDocument(idUser, file);
 		}
 		else {
 			sendMessage("!! 404 File not found !!");
@@ -600,7 +601,7 @@ public class Cloud {
 			for (int i = 0; i < listOfFiles.length; i++) {
 				if (listOfFiles[i].isFile()) {
 					File inputFile = listOfFiles[i];
-					Main.sendDocument(idUser, inputFile);
+					Sender.sendDocument(idUser, inputFile);
 				} else if (listOfFiles[i].isDirectory()) {
 					lista = lista + "[Dir]" + listOfFiles[i].getName() + "\\\n";
 				}

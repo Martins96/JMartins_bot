@@ -6,6 +6,7 @@ import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 import bot.ellie.utils.messages.Help;
 import bot.ellie.utils.messages.Messages;
 
@@ -34,7 +35,7 @@ public class Blackjack {
 		numero = random.nextInt(13);
 		seme = random.nextInt(4);
 		// ---------------------------------------------------
-		Main.sendMessage(messaggio.from().id(), Help.BLACKJACK_HELP);
+		Sender.sendMessage(messaggio.from().id(), Help.BLACKJACK_HELP);
 		while (mazzo[numero][seme]) {
 			numero = random.nextInt(13);
 			seme = random.nextInt(4);
@@ -65,7 +66,7 @@ public class Blackjack {
 
 		message = messaggio;
 		while (!message.text().equalsIgnoreCase("/exit")) {
-			Main.sendMessage(messaggio.from().id(),
+			Sender.sendMessage(messaggio.from().id(),
 					"ELLIE:\n" + "punti: " + puntiBlackjack(carteellie, iellie) + "\n"
 							+ stampaCarteBlackjack(carteellie, iellie) + "\n\n\n" + "TU:\n" + "punti: "
 							+ puntiBlackjack(cartegiocatore, igiocatore) + "\n"
@@ -122,7 +123,7 @@ public class Blackjack {
 					return Messages.BLACKJACK_END;
 
 				default:
-					Main.sendMessage(messaggio.from().id(), Messages.BLACKJACK_INVALID_INPUT);
+					Sender.sendMessage(messaggio.from().id(), Messages.BLACKJACK_INVALID_INPUT);
 					break;
 				}
 			}
@@ -170,7 +171,7 @@ public class Blackjack {
 			s2 = "cuori";
 			break;
 		}
-		Main.sendMessage(chatid, "Ho pescato: " + s + " di " + s2);
+		Sender.sendMessage(chatid, "Ho pescato: " + s + " di " + s2);
 		return s;
 	}
 	

@@ -4,6 +4,7 @@ import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Sender;
 
 public class Upgrade {
 
@@ -100,7 +101,7 @@ public class Upgrade {
 	
 	
 	private String attendiMessaggio(String stringa) {
-		Main.sendMessage(message.from().id(), stringa);
+		Sender.sendMessage(message.from().id(), stringa);
 		Message emptyMessage = new Message();
 		synchronized (Main.botThread[idthread].message) {
 			Main.botThread[idthread].message = emptyMessage;
@@ -121,7 +122,7 @@ public class Upgrade {
 	}
 	
 	private void sendMessage(String text) {
-		Main.sendMessage(message.from().id(), text);
+		Sender.sendMessage(message.from().id(), text);
 	}
 	
 }

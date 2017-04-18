@@ -22,6 +22,8 @@ public class Errors {
 	public static final String POSTINO_UNKNOW_TARGET = "Errore: perdonami ma non conosco il destinatario, "
 													 + "per una lista dei destinatari "
 													 + "che conosco digita '/postino help'";
+	public static final String L_NOT_LOGGED_ERROR = "Scusami, ma questo è un comando consentito solo a papà e mamma\n"
+													 + "accedi a /admin oppure a /mylady";
 	//USER Section
 	public static final String USER_NOT_FOUND = "Non credo di conoscerti, scusa";
 	public static final String USER_NOT_LOGGED = "Scusami, ma non fai parte della lista degli user, "
