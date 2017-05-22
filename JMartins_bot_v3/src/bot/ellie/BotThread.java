@@ -9,32 +9,45 @@ import bot.ellie.utils.Sender;
 
 
 
-public class BotThread extends java.lang.Thread {
+public class BotThread extends Thread {
 	
 	public Message message;
 	private Message msg;
 	public boolean flagThreadLife = true;
-	public short idThread;
+	public final short idThread;
 	public long idUserThread; // id dell'utente legato a questo thread
 	public String nameUserThread;
 	private Risposta risposta;
 	
+	//Variabili outer events//
+	public boolean inGame = false;
+	//////////////////////////
+	
 	public static final String ANNULLA_SPEDIZIONE_MESSAGGIO = "qwerty";
 	
 	public BotThread(short idthread, Message message) {
-		idThread = idthread;
-		idUserThread = message.from().id();
-		nameUserThread = message.from().firstName() + " " + message.from().lastName() + "(" + message.from().username() + ")";
+		this.idThread = idthread;
+		this.idUserThread = message.from().id();
+		this.nameUserThread = message.from().firstName() + " " + message.from().lastName() + "(" + message.from().username() + ")";
 		this.message = message;
 		risposta = new Risposta(idThread);
 	}
 	
 	public BotThread(short idthread, String firstName, String lastName, String username, int id) {
-		idThread = idthread;
-		idUserThread = id;
-		nameUserThread = firstName + " " + lastName + "(" + username + ")";
+		this.idThread = idthread;
+		this.idUserThread = id;
+		this.nameUserThread = firstName + " " + lastName + "(" + username + ")";
 		this.message = new Message();
 		risposta = new Risposta(idThread);
+	}
+	
+	public void recreateInfoThread(Message message) {
+		if(message == null ||
+				message.from() == null)
+			return;
+		this.idUserThread = message.from().id();
+		this.nameUserThread = message.from().firstName() + " " + message.from().lastName() + "(" + message.from().username() + ")";
+		
 	}
 	
 	public void run() {
@@ -83,6 +96,7 @@ public class BotThread extends java.lang.Thread {
 		}
 	}
 	
+	
 	public void setAdminMode(boolean b) {
 		risposta.admin = b;
 	}
@@ -90,5 +104,4 @@ public class BotThread extends java.lang.Thread {
 	public void setMyladyMode(boolean b) {
 		risposta.mylady = b;
 	}
-		
 }

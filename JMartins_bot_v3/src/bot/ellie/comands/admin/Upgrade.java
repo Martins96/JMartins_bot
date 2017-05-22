@@ -2,8 +2,8 @@ package bot.ellie.comands.admin;
 
 import com.pengrad.telegrambot.model.Message;
 
-import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Getter;
 import bot.ellie.utils.Sender;
 
 public class Upgrade {
@@ -74,15 +74,15 @@ public class Upgrade {
 			
 			//controllo nei thread attivi se è presente
 			for (int i = 0; i<Main.nThread; i++) {
-				if(("" + Main.botThread[i].idUserThread).equals(targetId)) {
+				if(("" + Main.botThread.get(i).idUserThread).equals(targetId)) {
 					
 					if(admin) {
-						Main.botThread[i].setAdminMode(true);
+						Main.botThread.get(i).setAdminMode(true);
 						sendMessage(targetId + " aggiunto in modalità admin");
 						return;
 					}
 					if(mylady) {
-						Main.botThread[i].setMyladyMode(true);
+						Main.botThread.get(i).setMyladyMode(true);
 						sendMessage(targetId + " aggiunto in modalità mylady");
 						return;
 					}
@@ -101,24 +101,8 @@ public class Upgrade {
 	
 	
 	private String attendiMessaggio(String stringa) {
-		Sender.sendMessage(message.from().id(), stringa);
-		Message emptyMessage = new Message();
-		synchronized (Main.botThread[idthread].message) {
-			Main.botThread[idthread].message = emptyMessage;
-		}
-		do {
-			while (Main.botThread[idthread].message.equals(emptyMessage) 
-					|| Main.botThread[idthread].message == null) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					Main.log.error("Errore sync del Thread");
-					ErrorReporter.sendError("Errore sync del Thread", e);
-					e.printStackTrace();
-				}
-			}
-		} while (Main.botThread[idthread].message.text() == null);
-		return Main.botThread[idthread].message.text().toLowerCase();
+		sendMessage(stringa);
+		return Getter.attendiMessaggio(idthread);
 	}
 	
 	private void sendMessage(String text) {

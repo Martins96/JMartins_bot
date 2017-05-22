@@ -2,8 +2,7 @@ package bot.ellie.comands.games;
 
 import com.pengrad.telegrambot.model.Message;
 
-import bot.ellie.ErrorReporter;
-import bot.ellie.Main;
+import bot.ellie.utils.Getter;
 import bot.ellie.utils.Sender;
 import bot.ellie.utils.games.UtilBattagliaNavale;
 import bot.ellie.utils.messages.Errors;
@@ -48,7 +47,7 @@ public class BattagliaNavale extends UtilBattagliaNavale{
 		do {
 			stampInfoField();
 			sendMessage("Inserisci le coordinate da colpire:");
-			String input = attendiMessaggio();
+			String input = Getter.attendiMessaggio(idthread);
 			if(isInputValid(input)) {
 				if(input.equalsIgnoreCase("/exit"))
 					return "Uscita dal gioco";
@@ -186,25 +185,6 @@ public class BattagliaNavale extends UtilBattagliaNavale{
 	
 	private void sendMessage(String text) {
 		Sender.sendMessage(iduser, text);
-	}
-	
-	private String attendiMessaggio() {
-		Message emptyMessage = new Message();
-		do {
-			synchronized (Main.botThread[idthread].message) {
-				Main.botThread[idthread].message = emptyMessage;
-			}
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					Main.log.error("Errore sync del Thread");
-					ErrorReporter.sendError("Errore sync del Thread", e);
-					e.printStackTrace();
-				}
-			}
-		} while(Main.botThread[idthread].message.text() == null);
-		return Main.botThread[idthread].message.text();
 	}
 	
 }

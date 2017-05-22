@@ -156,7 +156,7 @@ public class MessaggiCasualiEvent extends Events {
 			list.add("148278619");
 			Main.log.info("Dinu (148278619)");
 		}
-		return null;
+		return list;
 	}
 	
 }

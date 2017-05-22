@@ -192,7 +192,7 @@ public class Risposta {
 						pass = comando[1];
 					else {
 						Sender.sendMessage(messaggio.from().id(), "Ciao, chi sei?");
-						Main.botThread[idthread].message = new Message();
+						Main.botThread.get(idthread).message = new Message();
 						message = attendiMessaggio();
 						pass = message.text() == null ? "" : message.text();
 					}
@@ -315,7 +315,7 @@ public class Risposta {
 							pass = comando[1];
 						else {
 							Sender.sendMessage(messaggio.from().id(), "Martins? Sei tu?");
-							Main.botThread[idthread].message = new Message();
+							Main.botThread.get(idthread).message = new Message();
 							message = attendiMessaggio();
 							pass = message.text() == null ? "" : message.text();
 						}
@@ -637,6 +637,11 @@ public class Risposta {
 				return new SassoCartaForbice(idthread, messaggio).startGame();
 			
 			//------------------------------------------------------------------------------------------------------
+			
+			case("/storygame"):
+				return "Work in progress...";
+			
+			//------------------------------------------------------------------------------------------------------
 					
 			case("/foto"):
 			{
@@ -811,10 +816,10 @@ public class Risposta {
 	//------------------------------------------------------------------------------
 	private Message attendiMessaggio() {
 		Message emptyMessage = new Message();
-		synchronized (Main.botThread[idthread].message) {
-			Main.botThread[idthread].message = emptyMessage;
+		synchronized (Main.botThread.get(idthread).message) {
+			Main.botThread.get(idthread).message = emptyMessage;
 		}
-		while (Main.botThread[idthread].message.equals(emptyMessage)) {
+		while (Main.botThread.get(idthread).message.equals(emptyMessage)) {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
@@ -823,7 +828,7 @@ public class Risposta {
 				e.printStackTrace();
 			}
 		}
-		return Main.botThread[idthread].message;
+		return Main.botThread.get(idthread).message;
 	}
 }
 

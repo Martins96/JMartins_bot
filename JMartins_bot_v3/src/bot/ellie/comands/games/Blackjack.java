@@ -4,8 +4,8 @@ import java.util.Random;
 
 import com.pengrad.telegrambot.model.Message;
 
-import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Getter;
 import bot.ellie.utils.Sender;
 import bot.ellie.utils.messages.Help;
 import bot.ellie.utils.messages.Messages;
@@ -29,7 +29,7 @@ public class Blackjack {
 				mazzo[m1][m2] = false;
 		int iellie = 0, igiocatore = 0;
 		String[] carteellie = new String[20], cartegiocatore = new String[20];
-		Message message = null;
+		String message = null;
 		int temp;
 		int numero, seme;
 		numero = random.nextInt(13);
@@ -64,8 +64,8 @@ public class Blackjack {
 		cartegiocatore[igiocatore] = setCartaBlackjack(numero, seme, messaggio.from().id());
 		igiocatore++;
 
-		message = messaggio;
-		while (!message.text().equalsIgnoreCase("/exit")) {
+		message = messaggio.text() != null ? messaggio.text() : "";
+		while (!message.equalsIgnoreCase("/exit")) {
 			Sender.sendMessage(messaggio.from().id(),
 					"ELLIE:\n" + "punti: " + puntiBlackjack(carteellie, iellie) + "\n"
 							+ stampaCarteBlackjack(carteellie, iellie) + "\n\n\n" + "TU:\n" + "punti: "
@@ -73,8 +73,8 @@ public class Blackjack {
 							+ stampaCarteBlackjack(cartegiocatore, igiocatore));
 			boolean check = true;
 			while (check) {
-				message = attendiMessaggio();
-				switch (message.text()) {
+				message = Getter.attendiMessaggio(idthread);
+				switch (message) {
 				case ("/carta"):
 					numero = random.nextInt(13);
 					seme = random.nextInt(4);
@@ -249,28 +249,6 @@ public class Blackjack {
 			}
 		
 		return punti;
-	}
-	
-	
-	
-	
-	private Message attendiMessaggio() {
-		Message emptyMessage = new Message();
-		do {
-			synchronized (Main.botThread[idthread].message) {
-				Main.botThread[idthread].message = emptyMessage;
-			}
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					Main.log.error("Errore sync del Thread");
-					ErrorReporter.sendError("Errore sync del Thread", e);
-					e.printStackTrace();
-				}
-			}
-		} while(Main.botThread[idthread].message.text() == null);
-		return Main.botThread[idthread].message;
 	}
 	
 	

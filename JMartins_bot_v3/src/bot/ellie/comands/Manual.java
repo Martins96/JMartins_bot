@@ -6,11 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.pengrad.telegrambot.model.Message;
-
 import bot.ellie.BotThread;
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Getter;
 import bot.ellie.utils.Sender;
 
 public class Manual {
@@ -199,21 +198,6 @@ public class Manual {
 	
 	private String attendiMessaggio(String text) {
 		sendMessage(text);
-		do {
-			Message emptyMessage = new Message();
-			synchronized (Main.botThread[idthread].message) {
-				Main.botThread[idthread].message = emptyMessage;
-			}
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					Main.log.error("Errore sync del Thread");
-					ErrorReporter.sendError("Errore sync del Thread", e);
-					e.printStackTrace();
-				}
-			}
-		} while (Main.botThread[idthread].message.text() == null); //continuo finché non ricevo un mex di testo
-		return Main.botThread[idthread].message.text();
+		return Getter.attendiMessaggio(idthread);
 	}
 }

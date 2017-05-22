@@ -4,8 +4,8 @@ import java.util.Random;
 
 import com.pengrad.telegrambot.model.Message;
 
-import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Getter;
 import bot.ellie.utils.Sender;
 import bot.ellie.utils.messages.Errors;
 import bot.ellie.utils.messages.Help;
@@ -28,9 +28,9 @@ public class SassoCartaForbice {
 	private static final short CARTA = 1;
 	private static final short FORBICI = 2;
 	
-	private static final String SASSO_ICON = "✊🏻";
-	private static final String CARTA_ICON = "✋🏻";
-	private static final String FORBICI_ICON = "✌🏻️";
+	private static final String SASSO_ICON = "/sasso";
+	private static final String CARTA_ICON = "/carta";
+	private static final String FORBICI_ICON = "/forbice";
 	
 	private static final short EXIT = 88;
 	
@@ -48,7 +48,7 @@ public class SassoCartaForbice {
 			
 			do {
 			sendMessage("Fai la tua mossa");
-			playerAction = attendiMessaggio();
+			playerAction = Getter.attendiMessaggio(idthread);
 			} while(checkInputAndSetValue(playerAction) != true);
 			
 			if(playerValue == EXIT)
@@ -71,7 +71,7 @@ public class SassoCartaForbice {
 				
 			
 			sendMessage(Messages.SCF_RESTART_CHECK);
-			exit = attendiMessaggio();
+			exit = Getter.attendiMessaggio(idthread);
 		}
 		return Messages.SCF_END;
 	}
@@ -158,24 +158,5 @@ public class SassoCartaForbice {
 	
 	private void sendMessage(String text) {
 		Sender.sendMessage(iduser, text);
-	}
-	
-	private String attendiMessaggio() {
-		Message emptyMessage = new Message();
-		do {
-			synchronized (Main.botThread[idthread].message) {
-				Main.botThread[idthread].message = emptyMessage;
-			}
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					Main.log.error("Errore sync del Thread");
-					ErrorReporter.sendError("Errore sync del Thread", e);
-					e.printStackTrace();
-				}
-			}
-		} while(Main.botThread[idthread].message.text() == null);
-		return Main.botThread[idthread].message.text();
 	}
 }

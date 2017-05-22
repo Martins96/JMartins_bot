@@ -19,6 +19,7 @@ import static java.nio.file.StandardCopyOption.*;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Getter;
 import bot.ellie.utils.Sender;
 import bot.ellie.utils.messages.Help;
 
@@ -48,7 +49,7 @@ public class Cloud {
 		PATH = Main.PATH_INSTALLAZIONE + "/root/";
 		String[] message = attendiMessaggio();
 		while(!"exit".equalsIgnoreCase(message[0])) {
-			switch(message[0]) {
+			switch(message[0].toLowerCase()) {
 			case("cd"):
 				cd(message);
 			break;
@@ -220,11 +221,11 @@ public class Cloud {
 		String[] s = null;
 		sendMessage(">" + PATH + "$ Enter comand...");
 		Message emptyMessage = new Message();
-		synchronized (Main.botThread[idthread].message) {
-			Main.botThread[idthread].message = emptyMessage;
+		synchronized (Main.botThread.get(idthread).message) {
+			Main.botThread.get(idthread).message = emptyMessage;
 		}
 		while(flag) {
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
+			while (Main.botThread.get(idthread).message.equals(emptyMessage)) {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
@@ -233,12 +234,12 @@ public class Cloud {
 					e.printStackTrace();
 				}
 			}
-			if(Main.botThread[idthread].message.text() == null) {
-				Main.botThread[idthread].message = null;
+			if(Main.botThread.get(idthread).message.text() == null) {
+				Main.botThread.get(idthread).message = null;
 				sendMessage( "!! INVALID INPUT !!\nMessage was ignored");
 			} else {
 				flag = false;
-				s = Main.botThread[idthread].message.text().split(" ");
+				s = Main.botThread.get(idthread).message.text().split(" ");
 				if( !(s != null && s.length > 0 && (s[0] != null || !s[0].equals("")) ) ) {
 					sendMessage( "!! INVALID INPUT !!\nMessage was ignored");
 					flag = true;
@@ -252,11 +253,11 @@ public class Cloud {
 		boolean flag = true;
 		sendMessage(mex);
 		Message emptyMessage = new Message();
-		synchronized (Main.botThread[idthread].message) {
-			Main.botThread[idthread].message = emptyMessage;
+		synchronized (Main.botThread.get(idthread).message) {
+			Main.botThread.get(idthread).message = emptyMessage;
 		}
 		while(flag) {
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
+			while (Main.botThread.get(idthread).message.equals(emptyMessage)) {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
@@ -265,73 +266,18 @@ public class Cloud {
 					e.printStackTrace();
 				}
 			}
-			if(Main.botThread[idthread].message.text() == null) {
-				Main.botThread[idthread].message = null;
+			if(Main.botThread.get(idthread).message.text() == null) {
+				Main.botThread.get(idthread).message = null;
 				sendMessage("!! INVALID INPUT !!\nMessage was ignored");
 			} else {
 				flag = false;
 			}
 		}
-		return Main.botThread[idthread].message;
+		return Main.botThread.get(idthread).message;
 	}
 	
 	private String attendiDocumento() {
-		boolean flag = true;
-		sendMessage(">Ok, I'm ready to recive your document");
-		Message emptyMessage = new Message();
-		synchronized (Main.botThread[idthread].message) {
-			Main.botThread[idthread].message = emptyMessage;
-		}
-		while(flag) {
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					Main.log.error("Errore sync del Thread");
-					ErrorReporter.sendError("Errore sync del Thread", e);
-					e.printStackTrace();
-				}
-			}
-			
-			if(Main.botThread[idthread].message.text() != null) {
-				if(Main.botThread[idthread].message.text().equalsIgnoreCase("quit"))
-					flag = false;
-				else {
-					Main.botThread[idthread].message = null;
-					sendMessage("!! INVALID INPUT !!\nMessage was ignored, send 'quit' to cancel the operation");
-				}
-			} else {
-				GetFileResponse response = null;
-				flag = false;
-				Message mex = Main.botThread[idthread].message;
-				if(mex.audio() != null) {
-					response = Main.ellie.execute(new GetFile(mex.audio().fileId()));
-				}
-				if(mex.photo() != null) {
-					response = Main.ellie.execute(new GetFile(mex.photo()[mex.photo().length-1].fileId()));
-				}
-				if(mex.document() != null) {
-					response = Main.ellie.execute(new GetFile(mex.document().fileId()));
-					
-				}
-				if(mex.video() != null) {
-					response = Main.ellie.execute(new GetFile(mex.video().fileId()));
-				}
-				if(mex.voice() != null) {
-					response = Main.ellie.execute(new GetFile(mex.voice().fileId()));
-				}
-				if(mex.sticker() != null) {
-					sendMessage("!! INVALID INPUT !!");
-					return null;
-				}
-				
-				if(isResponseCorrect(response))
-					return Main.ellie.getFullFilePath(response.file());
-				else
-					return null;
-			}
-		}
-		return null;
+		return Getter.attendiDocumento(idthread, idUser);
 	}
 	
 	private void sendMessage(String text) {
@@ -388,24 +334,6 @@ public class Cloud {
 		    	if(currentFile.list().length != 0)
 		    		rmdir(currentFile.list(), currentFile);
 		    currentFile.delete();
-		}
-	}
-	
-	public boolean isResponseCorrect(GetFileResponse response) {
-		if(response == null)
-			return false;
-		switch(response.errorCode()) {
-		case (400):
-			Main.log.info("File sended is too big");
-			sendMessage("!! File is too big! [MAX 20 MB] !!");
-			return false;
-
-		case(404):
-			sendMessage("!! File not found, I have same problem !!");
-			return false;
-
-		default:
-			return true;
 		}
 	}
 	

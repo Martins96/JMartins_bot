@@ -9,6 +9,7 @@ import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.Getter;
 import bot.ellie.utils.Sender;
 import bot.ellie.utils.messages.Errors;
 import bot.ellie.utils.messages.Help;
@@ -42,18 +43,18 @@ public class Impiccato {
 		boolean flag = false;
 		
 		Sender.sendMessage(messaggio.from().id(), Help.IMPICCATO_HELP);
-		Message message = messaggio;
-		while(!message.text().equals("/exit"))
+		String message = messaggio.text() != null ? messaggio.text() : "";
+		while(!message.equalsIgnoreCase("/exit"))
 		{
 			Sender.sendMessage(messaggio.from().id(), generaFiguraImpiccato(fail) + "\n\n\nerrori commessi:" + fail);
 			Sender.sendMessage(messaggio.from().id(), "Parola da indovinare:\n" + stampaParola(parolaavideo));
 			if(fail >= 8)
 				return "GAME OVER\n\nLa parola da indovinare era: " + parola + "\nGioco dell'impiccato terminato";
-			message = attendiMessaggio();
+			message = Getter.attendiMessaggio(idthread);
 			//AVVIO GIOCO
-			if(message.text().length() == 1)
+			if(message.length() == 1)
 			{
-				char lettera = message.text().toUpperCase().charAt(0);
+				char lettera = message.toUpperCase().charAt(0);
 				for(int j = 0; j<lunghezzaparola;j++)
 				{
 					if(lettera == parola.charAt(j))
@@ -81,21 +82,21 @@ public class Impiccato {
 				}
 					flag = false;
 			} else {
-				if(message.text().length() < 7) {
-					if(message.text().equals("/exit"))
+				if(message.length() < 7) {
+					if(message.equals("/exit"))
 						return Messages.IMPICCATO_END;
 					else
 						Sender.sendMessage(messaggio.from().id(), Errors.IMPICCATO_INPUT_NOT_VALID);
 				}
 				else
 				{
-					if(message.text().substring(0, 7).equals("/parola"))
+					if(message.substring(0, 7).equals("/parola"))
 					{
-						if(message.text().length() < 9)
+						if(message.length() < 9)
 							Sender.sendMessage(messaggio.from().id(), Errors.IMPICCATO_INPUT_NOT_VALID);
 						else
 						{
-							String soluzione = new String(message.text().substring(8, message.text().length()));
+							String soluzione = new String(message.substring(8, message.length()));
 							soluzione = soluzione.toUpperCase();
 							if(soluzione.equals(parola))
 							{
@@ -186,24 +187,5 @@ public class Impiccato {
 		for(int i = 0; i < parola.length; i++)
 			s = s + parola[i] + "  ";
 		return s;
-	}
-	
-	private Message attendiMessaggio() {
-		Message emptyMessage = new Message();
-		do {
-			synchronized (Main.botThread[idthread].message) {
-				Main.botThread[idthread].message = emptyMessage;
-			}
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					Main.log.error("Errore sync del Thread");
-					ErrorReporter.sendError("Errore sync del Thread", e);
-					e.printStackTrace();
-				}
-			}
-		} while(Main.botThread[idthread].message.text() == null);
-		return Main.botThread[idthread].message;
 	}
 }

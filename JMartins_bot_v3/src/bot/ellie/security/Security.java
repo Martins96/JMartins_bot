@@ -97,11 +97,11 @@ public class Security {
 		String[] s = null;
 		sendMessage(">Enter comand...");
 		Message emptyMessage = new Message();
-		synchronized (Main.botThread[idthread].message) {
-			Main.botThread[idthread].message = emptyMessage;
+		synchronized (Main.botThread.get(idthread).message) {
+			Main.botThread.get(idthread).message = emptyMessage;
 		}
 		while(flag) {
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
+			while (Main.botThread.get(idthread).message.equals(emptyMessage)) {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
@@ -110,12 +110,12 @@ public class Security {
 					e.printStackTrace();
 				}
 			}
-			if(Main.botThread[idthread].message.text() == null) {
-				Main.botThread[idthread].message = null;
+			if(Main.botThread.get(idthread).message.text() == null) {
+				Main.botThread.get(idthread).message = null;
 				sendMessage( "!! INVALID INPUT !!\nMessage was ignored");
 			} else {
 				flag = false;
-				s = Main.botThread[idthread].message.text().split(" ");
+				s = Main.botThread.get(idthread).message.text().split(" ");
 				if( !(s != null && s.length > 0 && (s[0] != null || !s[0].equals("")) ) ) {
 					sendMessage( "!! INVALID INPUT !!\nMessage was ignored");
 					flag = true;
@@ -129,11 +129,11 @@ public class Security {
 		boolean flag = true;
 		sendMessage(mex);
 		Message emptyMessage = new Message();
-		synchronized (Main.botThread[idthread].message) {
-			Main.botThread[idthread].message = emptyMessage;
+		synchronized (Main.botThread.get(idthread).message) {
+			Main.botThread.get(idthread).message = emptyMessage;
 		}
 		while(flag) {
-			while (Main.botThread[idthread].message.equals(emptyMessage)) {
+			while (Main.botThread.get(idthread).message.equals(emptyMessage)) {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
@@ -142,14 +142,14 @@ public class Security {
 					e.printStackTrace();
 				}
 			}
-			if(Main.botThread[idthread].message.text() == null) {
-				Main.botThread[idthread].message = null;
+			if(Main.botThread.get(idthread).message.text() == null) {
+				Main.botThread.get(idthread).message = null;
 				sendMessage("!! INVALID INPUT !!\nMessage was ignored");
 			} else {
 				flag = false;
 			}
 		}
-		return Main.botThread[idthread].message;
+		return Main.botThread.get(idthread).message;
 	}
 	
 	private void sendMessage(String text) {

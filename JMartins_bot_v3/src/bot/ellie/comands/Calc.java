@@ -4,7 +4,6 @@ import java.util.Random;
 
 import com.pengrad.telegrambot.model.Message;
 
-import bot.ellie.Main;
 import bot.ellie.utils.Sender;
 
 public class Calc {

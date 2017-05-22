@@ -27,8 +27,15 @@ public class Sender extends Main{
 	 */
 	public static void sendMessage(Object id, String text) {
 		if(ellie != null) {
-			ellie.execute(new SendMessage(id, text));
-			log.info("Messaggio inviato a " + id);
+			for(int retry = 3; retry > 0; retry--) {
+				try {
+					ellie.execute(new SendMessage(id, text));
+					log.info("Messaggio inviato a " + id);
+					return;
+				} catch (RuntimeException e) {
+					Main.log.error("Error send photo to " + id);
+				}
+			}
 		} else {
 			log.error("Ellie non è stata inizializzata!");
 		}
@@ -39,8 +46,15 @@ public class Sender extends Main{
 	 */
 	public static void sendDocument(Object id, File doc) {
 		if(ellie != null) {
-			ellie.execute(new SendDocument(id, doc));
-			log.info("Documento inviato a " + id);
+			for(int retry = 2; retry > 0; retry--) {
+				try {
+					ellie.execute(new SendDocument(id, doc));
+					log.info("Documento inviato a " + id);
+					return;
+				} catch (RuntimeException e) {
+					Main.log.error("Error send Document to " + id);
+				}
+			}
 		} else {
 			log.error("Ellie non è stata inizializzata!");
 		}
@@ -51,8 +65,15 @@ public class Sender extends Main{
 	 */
 	public static void sendPhoto(Object id, File photo) {
 		if(ellie != null) {
-			ellie.execute(new SendPhoto(id, photo));
-			log.info("Foto inviato a " + id);
+			for(int retry = 3; retry > 0; retry--) {
+				try {
+					ellie.execute(new SendPhoto(id, photo));
+					log.info("Foto inviato a " + id);
+					return;
+				} catch (RuntimeException e) {
+					Main.log.error("Error send photo to " + id);
+				}
+			}
 		} else {
 			log.error("Ellie non è stata inizializzata!");
 		}
@@ -63,8 +84,15 @@ public class Sender extends Main{
 	 */
 	public static void sendAudio(Object id, File music) {
 		if(ellie != null) {
-			ellie.execute(new SendAudio(id, music));
-			log.info("Musica inviato a " + id);
+			for(int retry = 2; retry > 0; retry--) {
+				try {
+					ellie.execute(new SendAudio(id, music));
+					log.info("Musica inviato a " + id);
+					return;
+				} catch (RuntimeException e) {
+					Main.log.error("Error send audio to " + id);
+				}
+			}
 		} else {
 			log.error("Ellie non è stata inizializzata!");
 		}
@@ -75,8 +103,15 @@ public class Sender extends Main{
 	 */
 	public static void sendVideo(Object id, File video) {
 		if(ellie != null) {
-			ellie.execute(new SendVideo(id, video));
-			log.info("Video inviato a " + id);
+			for(int retry = 3; retry > 0; retry--) {
+				try {
+					ellie.execute(new SendVideo(id, video));
+					log.info("Video inviato a " + id);
+					return;
+				} catch (RuntimeException e) {
+					Main.log.error("Error send video to " + id);
+				}
+			}
 		} else {
 			log.error("Ellie non è stata inizializzata!");
 		}
@@ -87,8 +122,15 @@ public class Sender extends Main{
 	 */
 	public static void sendSticker(Object id, String sticker) {
 		if(ellie != null) {
-			ellie.execute(new SendSticker(id, sticker));
-			log.info("Sticker inviato a " + id);
+			for(int retry = 2; retry > 0; retry--) {
+				try {
+					ellie.execute(new SendSticker(id, sticker));
+					log.info("Sticker inviato a " + id);
+					return;
+				} catch (RuntimeException e) {
+					Main.log.error("Error send Sticker to " + id);
+				}
+			}
 		} else {
 			log.error("Ellie non è stata inizializzata!");
 		}

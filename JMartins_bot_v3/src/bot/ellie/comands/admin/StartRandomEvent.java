@@ -11,6 +11,7 @@ import com.pengrad.telegrambot.model.Message;
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
 import bot.ellie.utils.Costants;
+import bot.ellie.utils.Getter;
 import bot.ellie.utils.Sender;
 import bot.ellie.utils.events.MessaggiCasualiEvent;
 
@@ -212,24 +213,8 @@ public class StartRandomEvent {
 	
 	private String attendiMessaggio(String stringa) {
 		if(stringa != null)
-			Sender.sendMessage(message.from().id(), stringa);
-		Message emptyMessage = new Message();
-		synchronized (Main.botThread[idthread].message) {
-			Main.botThread[idthread].message = emptyMessage;
-		}
-		do {
-			while (Main.botThread[idthread].message.equals(emptyMessage) 
-					|| Main.botThread[idthread].message == null) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					Main.log.error("Errore sync del Thread");
-					ErrorReporter.sendError("Errore sync del Thread", e);
-					e.printStackTrace();
-				}
-			}
-		} while (Main.botThread[idthread].message.text() == null);
-		return Main.botThread[idthread].message.text().toLowerCase();
+			sendMessage(stringa);
+		return Getter.attendiMessaggio(idthread);
 	}
 	
 	private void sendMessage(String text) {
