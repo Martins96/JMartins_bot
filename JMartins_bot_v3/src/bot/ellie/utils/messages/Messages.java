@@ -79,6 +79,11 @@ public class Messages {
 	public static final String SCF_PARI = "PAREGGIO";
 	//SCF Section end
 	
+	//MultiGame start
+	public static final String REQUEST_ID_TARGET = "A chi vuoi mandare la richiesta?\n"
+													+ "";
+	//MultiGame end
+	
 	
 	
 }

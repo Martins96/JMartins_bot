@@ -74,12 +74,15 @@ public class BotThread extends Thread {
 					while (message.equals(emptyMsg)) {
 						sleep(100);
 					}
+					if(inGame) {
+						sleep(5000);
+						continue;
+					}
 					msg = message; // salvo messaggio in una variabile privata
 					//messaggio acqusito - pronti per elaborare
 					String testoRisposta = risposta.generaRisposta(msg);
 					if(testoRisposta.equals(ANNULLA_SPEDIZIONE_MESSAGGIO)) {
 						//la richiesta del messaggio ha generato un tipo di risposta diverso da TESTO
-						
 					} else {
 						Main.log.info("Risposta di Ellie a " + msg.from().username() + " :" + testoRisposta);
 						Sender.sendMessage(msg.from().id(), testoRisposta);

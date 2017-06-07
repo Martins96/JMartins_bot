@@ -6,6 +6,7 @@ import com.pengrad.telegrambot.response.GetFileResponse;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
+import bot.ellie.utils.tracing.TraceChat;
 
 public class Getter {
 	

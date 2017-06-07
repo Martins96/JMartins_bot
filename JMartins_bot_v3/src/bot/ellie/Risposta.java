@@ -22,10 +22,13 @@ import bot.ellie.comands.games.BattagliaNavale;
 import bot.ellie.comands.games.Blackjack;
 import bot.ellie.comands.games.Impiccato;
 import bot.ellie.comands.games.SassoCartaForbice;
+import bot.ellie.comands.games.StoryGame;
 import bot.ellie.security.Security;
 import bot.ellie.utils.*;
 import bot.ellie.utils.controlli.ControlliAutoRensponse;
 import bot.ellie.utils.controlli.ControlliMessaggiRicevuti;
+import bot.ellie.utils.events.outereventsbean.MultiplayerGameBean;
+import bot.ellie.utils.games.multi.InvitoRifiutatoException;
 import bot.ellie.utils.messages.Errors;
 import bot.ellie.utils.messages.Help;
 import bot.ellie.utils.messages.Messages;
@@ -51,8 +54,7 @@ public class Risposta {
 	String pass = Costants.ADMIN_PASSWORD;
 	
 	//building object
-	public Risposta(int idthread) 
-	{
+	public Risposta(int idthread) {
 		this.idthread = idthread;
 		user = new User();
 	}
@@ -638,7 +640,26 @@ public class Risposta {
 			
 			//------------------------------------------------------------------------------------------------------
 			
-			case("/storygame"):
+			case("/sg"):
+				MultiplayerGameBean multiBean = null;
+				try {
+					Sender.sendMessage(messaggio.from().id(), 
+							Messages.REQUEST_ID_TARGET);
+					String idTarget = Getter.attendiMessaggio(idthread);
+					if(idTarget != null && !idTarget.isEmpty() &&
+							idTarget.startsWith("/")) {
+						idTarget = idTarget.replaceAll("/", "");
+					}
+					multiBean = InvitaGame.invitaPlayer("StoryGame", Integer.parseInt(idTarget), messaggio.from());
+					StoryGame sg = new StoryGame(multiBean);
+					sg.startGame();
+				} catch (InvitoRifiutatoException ex) {
+					Sender.sendMessage(messaggio.from().id(), 
+							"L'utente ha rifiutato il tuo invito");
+				} catch (NumberFormatException ex2) {
+					Sender.sendMessage(messaggio.from().id(), 
+							"ID inserito non valido");
+				}
 				return "Work in progress...";
 			
 			//------------------------------------------------------------------------------------------------------
@@ -688,14 +709,14 @@ public class Risposta {
 		if(messaggio.text() == null) {
 			return ANNULLA_SPEDIZIONE_MESSAGGIO;
 		}
-		String risposta = new String();
+		String risposta = null;
 		String testoMessaggio = new String(messaggio.text());
 		testoMessaggio = testoMessaggio.substring(0,1).toUpperCase() 
 					     + testoMessaggio.substring(1,testoMessaggio.length()).toLowerCase();
 		//cerco risposta in base al testo inserito
 		try {
 			String ioMiChiamo;
-			if(!(ioMiChiamo = ControlliMessaggiRicevuti.ioMiChiamo(messaggio)).equalsIgnoreCase("")) {
+			if((ioMiChiamo = ControlliMessaggiRicevuti.ioMiChiamo(messaggio)) != null) {
 				return ioMiChiamo;
 			}
 		}
@@ -704,11 +725,9 @@ public class Risposta {
 			ErrorReporter.sendError("Index out of Bound: " + e.getMessage());
 		}
 		//------------------------------------------------------------------
-		{
-			String comandoDaFrase = ControlliMessaggiRicevuti.setComandoDaFrase(messaggio);
-			if(!comandoDaFrase.equalsIgnoreCase("")) {
-				testoMessaggio = comandoDaFrase;
-			}
+		String comandoDaFrase = ControlliMessaggiRicevuti.setComandoDaFrase(messaggio);
+		if(!comandoDaFrase.equals("")) {
+			testoMessaggio = comandoDaFrase;
 		}
 		
 		
@@ -717,11 +736,14 @@ public class Risposta {
 				testoMessaggio = "/" + testoMessaggio.substring(1, testoMessaggio.length());
 			}
 		
+		risposta = ControlliMessaggiRicevuti.risposteVeloci(messaggio);
+		
 		// eseguo comando
-		if(testoMessaggio.substring(0,1).equalsIgnoreCase("/")) {
+		if(testoMessaggio.substring(0,1).equalsIgnoreCase("/") && risposta == null) {
 			risposta = eseguiComando(messaggio);
 		}
-		else {
+		
+		if(risposta == null) {
 			//cerco nel file risposte.txt
 			int n = -1;
 			try {

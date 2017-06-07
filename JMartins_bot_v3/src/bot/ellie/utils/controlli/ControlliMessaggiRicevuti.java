@@ -1,5 +1,8 @@
 package bot.ellie.utils.controlli;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.pengrad.telegrambot.model.Message;
 
 public class ControlliMessaggiRicevuti {
@@ -78,7 +81,7 @@ public class ControlliMessaggiRicevuti {
 			}
 		}
 		
-		return "";
+		return null;
 	
 	}
 	
@@ -88,6 +91,9 @@ public class ControlliMessaggiRicevuti {
 	 * @return comando
 	 */
 	public static String setComandoDaFrase(Message messaggio) {
+		if(messaggio.text() == null)
+			return "";
+		
 		if(messaggio.text().equals("Sono triste"))
 		{
 			return "/battuta";
@@ -129,6 +135,34 @@ public class ControlliMessaggiRicevuti {
 			return "/blackjack";
 		}
 		return "";
+	}
+	
+	/**Genero risposta per domande casuali
+	 * 
+	 * @param messaggio
+	 * @return risposta se trovata, altrimenti <code>null</code>
+	 */
+	public static String risposteVeloci(Message msg) {
+		String result = null;
+		
+		if(msg == null || msg.text() == null)
+			return null;
+		
+		if("/cute".equalsIgnoreCase(msg.text()) ||
+				"/nature".equalsIgnoreCase(msg.text()) ||
+				"/funny".equalsIgnoreCase(msg.text()))
+			return "comando non riconosciuto, ridigita '/foto' e poi scegli la categoria";
+		
+		if("Quanti anni hai?".equalsIgnoreCase(msg.text())) {
+			SimpleDateFormat format = new SimpleDateFormat("YYYY");
+			Date data = new Date();
+			int anniEllie = Integer.parseInt(format.format(data)) - 2016;
+			
+			result = "Ho " + anniEllie;
+			result = result + (anniEllie == 1 ? " anno" : " anni");
+		}
+		
+		return result;
 	}
 	
 	

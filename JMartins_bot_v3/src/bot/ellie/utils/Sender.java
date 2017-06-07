@@ -13,6 +13,7 @@ import com.pengrad.telegrambot.request.SendSticker;
 import com.pengrad.telegrambot.request.SendVideo;
 
 import bot.ellie.Main;
+import bot.ellie.utils.tracing.TraceChat;
 
 public class Sender extends Main{
 	
@@ -29,6 +30,7 @@ public class Sender extends Main{
 		if(ellie != null) {
 			for(int retry = 3; retry > 0; retry--) {
 				try {
+					TraceChat.trace(id, text, null);
 					ellie.execute(new SendMessage(id, text));
 					log.info("Messaggio inviato a " + id);
 					return;

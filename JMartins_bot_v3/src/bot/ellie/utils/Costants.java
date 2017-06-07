@@ -10,10 +10,8 @@ public final class Costants {
 	public final static String TELEGRAM_TOKEN = "142988631:AAHDC0G-ekAClZBEohj88CIynuIBZ4z8TWg";
 	public final static String TELEGRAM_TOKEN_4_ERROR = "276329087:AAGQrbeijJ6k6rWJjUmQ7XJJDm1ACrRvp54";
 	public final static String[] CLEVER_BOT_TOKEN = 
-			{"CC1w6R9_5oRdrL1wIpZ43d2Qxww",
-			 "CC1s7vicTZ95PVSwKoa79QIgqsw"};
+			{"CC1w6R9_5oRdrL1wIpZ43d2Qxww"};
 	//bdcievci232134@gmail.com  -  pass: asdasd321
-	//rxj27797@kyois.com
 	
 	public final static String REBOOT_CMD = "/bluelake bluesky";
 	

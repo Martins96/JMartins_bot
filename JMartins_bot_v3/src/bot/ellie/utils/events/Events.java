@@ -32,11 +32,7 @@ public abstract class Events {
 
 		// meteo di fine settimana
 		DateFormat dateFormatWeekendMeteo = new SimpleDateFormat("u HH:mm");
-		String weekendmeteo = new String(dateFormatWeekendMeteo.format(date)); // 5
-																				// 15:00
-																				// 5
-																				// =
-																				// Friday
+		String weekendmeteo = new String(dateFormatWeekendMeteo.format(date)); // 5 15:00 5 = Friday
 		if (weekendmeteo.equalsIgnoreCase(Costants.ORA_DEL_WEEKEND_METEO)) {
 			String meteo = Meteo.getWeekendMeteo("/Bergamo");
 			Main.log.info("Evento avviato (Meteo del WeekEnd): " + "\nDestinatario: " + "Martins" + " ( 115949778 )\n"
