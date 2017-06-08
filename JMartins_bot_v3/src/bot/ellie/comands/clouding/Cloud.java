@@ -12,8 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import com.pengrad.telegrambot.model.Message;
-import com.pengrad.telegrambot.request.GetFile;
-import com.pengrad.telegrambot.response.GetFileResponse;
 
 import static java.nio.file.StandardCopyOption.*;
 

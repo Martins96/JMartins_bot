@@ -23,10 +23,26 @@ public class InvitaGame {
 		sb.append("\nAccetti? \n/si\n/no");
 		Sender.sendMessage(idTarget, sb.toString());
 		
-		short idThread = Main.nThread;
-		Main.nThread++;
-		Main.botThread.add(new BotThread(idThread, null, null, null, idTarget));
-		Main.botThread.get(idThread).start();
+		boolean isTargetInThread = false;
+		short idThread = 0;
+		for(BotThread bt : Main.botThread) {
+			if(bt.idUserThread == idTarget) {
+				isTargetInThread = true;
+				if(bt.inGame) {
+					Sender.sendMessage(userMittente.id(), "Utente già in game");
+					throw new InvitoRifiutatoException();
+				}
+				idTarget = bt.idThread;
+				break;
+			}
+		}
+		
+		if(!isTargetInThread) {
+			idThread = Main.nThread;
+			Main.nThread++;
+			Main.botThread.add(new BotThread(idThread, null, null, null, idTarget));
+			Main.botThread.get(idThread).start();
+		}
 		Main.botThread.get(idThread).inGame = true;
 		
 		Message risposta = Getter.attendiMessaggioObject((int)idTarget);

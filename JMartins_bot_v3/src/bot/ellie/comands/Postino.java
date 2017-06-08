@@ -282,7 +282,8 @@ public Postino() {
 				+ "'Vale'       - 104412734\n"
 				+ "'Pol'        - 196422609\n"
 				+ "'Andrea'		- 27585212\n"
-				+ "'Parmraj'    - 164741728\n";
+				+ "'Parmraj'    - 164741728\n"
+				+ "'Ricky       - 171591210'";
 	}
 	
 	public String sysMessaggio(String destinatario, String testomex, boolean isAdmin)
@@ -334,6 +335,9 @@ public Postino() {
 			case("parmraj"):
 				id = 164741728;
 			break;
+			case("ricky"):
+				id = 171591210;
+			break;
 			default:
 				id = -1;
 				break; 
@@ -371,6 +375,7 @@ public Postino() {
  * Parmraj Singh        - 164741728
  * Mamma (Ale)			- 240650708
  * Ele					- 113583130
+ * Ricky 				- 171591210
  * 
  */
 

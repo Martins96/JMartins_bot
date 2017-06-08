@@ -225,6 +225,7 @@ public class StartRandomEvent {
 		Sender.sendPhoto(message.from().id(), new File(text));
 	}
 	
+	@SuppressWarnings("unused")
 	private void sendVideo(String text) {
 		Sender.sendVideo(message.from().id(), new File(text));
 	}

@@ -119,7 +119,7 @@ public class MessaggiCasualiEvent extends Events {
 		Main.log.info("Video casuale inviato numero : " + n);
 		List<String> l = decidiDestinatari();
 		for(String s : l) {
-			Sender.sendVideo(115949778, new File(Main.PATH_INSTALLAZIONE
+			Sender.sendVideo(s, new File(Main.PATH_INSTALLAZIONE
 					+ "/readfiles/video/randomSend/video" + n + ".mp4"));
 		}
 	}
