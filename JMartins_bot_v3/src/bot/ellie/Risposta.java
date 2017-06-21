@@ -640,7 +640,7 @@ public class Risposta {
 			
 			//------------------------------------------------------------------------------------------------------
 			
-			case("/sg"):
+			case("/storygame"):
 				MultiplayerGameBean multiBean = null;
 				try {
 					Sender.sendMessage(messaggio.from().id(), 
