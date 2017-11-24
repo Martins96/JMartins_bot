@@ -24,7 +24,8 @@ public class InvitaGame {
 		Sender.sendMessage(idTarget, sb.toString());
 		
 		boolean isTargetInThread = false;
-		short idThread = 0;
+		short idThreadMittente = 0;
+		short idThreadTarget = 0;
 		for(BotThread bt : Main.botThread) {
 			if(bt.idUserThread == idTarget) {
 				isTargetInThread = true;
@@ -32,32 +33,39 @@ public class InvitaGame {
 					Sender.sendMessage(userMittente.id(), "Utente già in game");
 					throw new InvitoRifiutatoException();
 				}
-				idTarget = bt.idThread;
+				idThreadTarget = bt.idThread;
+				break;
+			}
+		}
+		for(BotThread bt : Main.botThread) {
+			if(bt.idUserThread == userMittente.id()) {
+				idThreadMittente = bt.idThread;
 				break;
 			}
 		}
 		
-		if(!isTargetInThread) {
-			idThread = Main.nThread;
-			Main.nThread++;
-			Main.botThread.add(new BotThread(idThread, null, null, null, idTarget));
-			Main.botThread.get(idThread).start();
-		}
-		Main.botThread.get(idThread).inGame = true;
 		
-		Message risposta = Getter.attendiMessaggioObject((int)idTarget);
+		if(!isTargetInThread) {
+			idThreadTarget = Main.nThread;
+			Main.nThread++;
+			Main.botThread.add(new BotThread(idThreadTarget, null, null, null, idTarget));
+			Main.botThread.get(idThreadTarget).start();
+		}
+		Main.botThread.get(idThreadTarget).inGame = true;
+		
+		Message risposta = Getter.attendiMessaggioObject((int)idThreadTarget);
 		if(risposta != null && risposta.text() != null 
 				&& risposta.text().equalsIgnoreCase("/si")) {
-			Main.botThread.get(idThread).inGame = true;
+			Main.botThread.get(idThreadTarget).inGame = true;
 			Sender.sendMessage(userMittente.id(), "L'utente ha accettato l'invito");
 		}
 		else {
 			Sender.sendMessage(userMittente.id(), "L'utente ha rifiutato l'invito");
-			Main.botThread.get(idThread).inGame = false;
+			Main.botThread.get(idThreadTarget).inGame = false;
 			throw new InvitoRifiutatoException();
 		}
 		
-		MultiplayerGameBean bean = new MultiplayerGameBean(idThread, (short) 0, risposta.from(), userMittente);
+		MultiplayerGameBean bean = new MultiplayerGameBean(idThreadTarget, idThreadMittente, risposta.from(), userMittente);
 		
 		return bean;
 	}

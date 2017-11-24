@@ -650,17 +650,22 @@ public class Risposta {
 							idTarget.startsWith("/")) {
 						idTarget = idTarget.replaceAll("/", "");
 					}
+					//Creo bean con info dei giocatori
 					multiBean = InvitaGame.invitaPlayer("StoryGame", Integer.parseInt(idTarget), messaggio.from());
 					StoryGame sg = new StoryGame(multiBean);
-					sg.startGame();
+					sg.startGame(); //Avvio gioco
 				} catch (InvitoRifiutatoException ex) {
 					Sender.sendMessage(messaggio.from().id(), 
 							"L'utente ha rifiutato il tuo invito");
 				} catch (NumberFormatException ex2) {
 					Sender.sendMessage(messaggio.from().id(), 
 							"ID inserito non valido");
+				} finally {
+				  	//fine del gioco, rimuovo gameMode dai thread
+					Main.botThread.get(multiBean.getIdThreadHost()).inGame = false;
+					Main.botThread.get(multiBean.getIdThreadTarget()).inGame = false;
 				}
-				return "Work in progress...";
+				return "Gioco StoryGame terminato";
 			
 			//------------------------------------------------------------------------------------------------------
 					

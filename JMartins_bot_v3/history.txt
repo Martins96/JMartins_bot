@@ -43,3 +43,6 @@
 3.2.0.1:Sistemato bug sulla funzione /threadattivi, miglioramenti a livello di codice, sistemato bug per invio di nuove immagini /myladyimage
 3.2.0.2:Aggiunto privilegio da /system a mylady, sistemato problema sul meteo del weekend
 3.2.1.0:Aggiunto comando segreto per il riavvio forzato da remoto di Ellie, aggiunto comando /love. Miglioramenti a livello di codice
+3.2.1.1:Rilascata alpha per /storygame implementata funzione multiplayer tra thread
+3.2.1.2:Fix nello storygame. Aggiornate libs
+3.2.2.0:Rilascio beta storygame

@@ -5,7 +5,7 @@ public final class Costants {
 	//change this for admin password - Password123 is for debug
 	public final static String ADMIN_PASSWORD = "Password123";
 	public final static String MYLADY_PASSWORD = "Miaomiao";
-	public final static String BUILD_VERSION = "3.2.1.2";
+	public final static String BUILD_VERSION = "3.3.0.0";
 	public final static short MAX_THREADS_NUMBER = 20;
 	public final static String TELEGRAM_TOKEN = "142988631:AAHDC0G-ekAClZBEohj88CIynuIBZ4z8TWg";
 	public final static String TELEGRAM_TOKEN_4_ERROR = "276329087:AAGQrbeijJ6k6rWJjUmQ7XJJDm1ACrRvp54";
@@ -26,9 +26,9 @@ public final class Costants {
 	//INSERIRE QUI IL NUMERO DELLE RIGHE DEL FILE messaggicasuali.txt
 	public static final short N_RANDOM_TEXT = 31;
 	//Numero di musiche disponibili
-	public static final short N_MUSIC = 18;
+	public static final short N_MUSIC = 36;
 	
 	public static final int N_L_IMAGE = 42;
-	public static final int N_L_MSG = 54;
+	public static final int N_L_MSG = 67;
 	
 }

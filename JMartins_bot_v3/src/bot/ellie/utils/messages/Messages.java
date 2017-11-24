@@ -81,7 +81,8 @@ public class Messages {
 	
 	//MultiGame start
 	public static final String REQUEST_ID_TARGET = "A chi vuoi mandare la richiesta?\n"
-													+ "";
+													+ "/115949778 (Papà)\n"
+													+ "/240650708 (Mamma)";
 	//MultiGame end
 	
 	

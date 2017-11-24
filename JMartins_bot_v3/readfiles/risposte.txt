@@ -51,6 +51,10 @@ Perché tanto entusiasmo? 😯
 Ciao 😄
 Hey 😄
 Buongiorno 😊
+-Ciao cucciola
+Ciao 😄
+Hey 😄
+Buongiorno 😊
 -Ciao
 Ciao 😄
 Hey 😄
@@ -908,7 +912,10 @@ Ti aspetto 😄
 Grazie mille 😄
 Mi lusinghi 😄
 Non fare arrossire il mio processore 😄
-
+-Mi manca il papà
+Mi dispiace tanto 😔
+Manca sempre anche a me, ogni secondo che resto senza di lui 😔
+Mi dispiace, lui vuole solo che ogniuno sia felice 😔
 
 
 
