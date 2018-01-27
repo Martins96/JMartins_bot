@@ -1,8 +1,5 @@
 package bot.ellie.utils;
 
-import java.util.Arrays;
-import java.util.List;
-
 import com.michaelwflaherty.cleverbotapi.CleverBotQuery;
 
 import bot.ellie.ErrorReporter;
@@ -14,20 +11,20 @@ public class ChatterBot {
 	public static String cleverBotResponse(String request) {
 		
 		String response = null;
-		List<String> keyClever = Arrays.asList(Costants.CLEVER_BOT_TOKEN);
 		
-		for(String key : keyClever) {
+		for(String key : Costants.CLEVER_BOT_TOKEN) {
 			CleverBotQuery bot = new CleverBotQuery(key, request);
 			try {
 			    bot.sendRequest();
-			    response = bot.getResponse();
+			    return bot.getResponse();
 			}
 			catch (Exception e) {
 			    Main.log.error("Key not work: " + bot.getAPIKey());
+			    Main.log.error("Errore Cleverbot API ", e);
 			    ErrorReporter.sendError("Errore Cleverbot API ");
 			}
 		}
-		return response != null ? response : Errors.RESPONSE_NOT_FOUND;
+		return Errors.RESPONSE_NOT_FOUND;
 	}
 	
 	

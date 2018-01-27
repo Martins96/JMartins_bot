@@ -132,7 +132,7 @@ public class MessaggiCasualiEvent extends Events {
 		list.add("115949778"); //100%
 		Main.log.info("Martins (115949778)");
 		
-		if(random.nextInt(100)>5) { // 95% possibilità di spedizione
+		if(random.nextInt(100)>2) { // 98% possibilità di spedizione
 			list.add("240650708");
 			Main.log.info("Mamma (240650708)");
 		}
@@ -142,14 +142,14 @@ public class MessaggiCasualiEvent extends Events {
 			Main.log.info("Matte (76891271)");
 		}
 		
-		if(random.nextInt(100) > 50) { //50% 
-			list.add("104412734");
-			Main.log.info("Valentino (104412734)");
-		}
-		
 		if(random.nextInt(100) > 75) { //25% 
 			list.add("124796388");
 			Main.log.info("Gaia (124796388)");
+		}
+		
+		if(random.nextInt(100) > 80) { //20% 
+			list.add("104412734");
+			Main.log.info("Valentino (104412734)");
 		}
 		
 		if(random.nextInt(100) > 99) { //1% 

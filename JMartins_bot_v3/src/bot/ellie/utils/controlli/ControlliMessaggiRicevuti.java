@@ -16,7 +16,7 @@ public class ControlliMessaggiRicevuti {
 	public static String ioMiChiamo(Message messaggio) throws ArrayIndexOutOfBoundsException {
 
 
-		if(messaggio.text().length() > 9)
+		if(messaggio.text().length() >= 9)
 		{
 			if(messaggio.text().substring(0, 9).equals("Mi chiamo"))
 			{
@@ -26,14 +26,14 @@ public class ControlliMessaggiRicevuti {
 					if(messaggio.text().substring(i, i+1).equals(" "))
 					{
 						if(!nome.equals(""))
-							return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie ðŸ˜„";
+							return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie 😄";
 						else
 							return "Beh, è una cosa strana chiamarsi da soli, comunque io sono Ellie 😄";
 					}
 					nome = nome + messaggio.text().substring(i, i+1);
 				}
 				if(!nome.equals(""))
-					return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie ðŸ˜„";
+					return "Ciao " + nome.substring(0, 1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase() + ", io sono Ellie 😄";
 				else
 					return "Beh, è una cosa strana chiamarsi da soli, comunque io sono Ellie 😄";
 			}

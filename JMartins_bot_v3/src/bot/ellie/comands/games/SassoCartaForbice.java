@@ -44,12 +44,12 @@ public class SassoCartaForbice {
 		//inizializzo gioco
 		sendInfoGame();
 		while(!exit.equals("/si")) {
-			String playerAction;
+			String inputPlayer;
 			
 			do {
 			sendMessage("Fai la tua mossa");
-			playerAction = Getter.attendiMessaggio(idthread);
-			} while(checkInputAndSetValue(playerAction) != true);
+			inputPlayer = Getter.attendiMessaggio(idthread);
+			} while(checkInputAndSetValue(inputPlayer) != true);
 			
 			if(playerValue == EXIT)
 				return Messages.SCF_EXIT_DONE;

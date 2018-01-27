@@ -35,6 +35,10 @@ public class TraceChat {
 		if(id == null) return;
 		boolean isNewFile = false;
 		BufferedWriter out = null;
+		File dir = new File(Main.PATH_INSTALLAZIONE + "/chats/");
+		if(!dir.exists() || !dir.isDirectory()) {
+		  dir.mkdir();
+		}
 		File output = new File(Main.PATH_INSTALLAZIONE + "/chats/" + id.toString() + ".txt");
 		
 		try {
