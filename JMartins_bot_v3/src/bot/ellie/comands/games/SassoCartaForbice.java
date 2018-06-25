@@ -5,20 +5,12 @@ import java.util.Random;
 import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.Main;
-import bot.ellie.utils.Getter;
-import bot.ellie.utils.Sender;
 import bot.ellie.utils.messages.Errors;
 import bot.ellie.utils.messages.Help;
 import bot.ellie.utils.messages.Messages;
 
-public class SassoCartaForbice {
-	
-	//	sasso	✊🏻
-	//  carta	✋🏻
-	//	forbice	✌🏻
-	
-	private int idthread;
-	private int iduser;
+public class SassoCartaForbice extends GameBase{
+		
 	private static final Random RANDOM = new Random();
 	
 	private short playerValue;//mossa del giocatore
@@ -36,7 +28,7 @@ public class SassoCartaForbice {
 	
 	public SassoCartaForbice(int idthread, Message messaggio) {
 		this.idthread = idthread;
-		this.iduser = messaggio.from().id();
+		this.messaggio = messaggio;
 	}
 	
 	public String startGame() {
@@ -48,7 +40,7 @@ public class SassoCartaForbice {
 			
 			do {
 			sendMessage("Fai la tua mossa");
-			inputPlayer = Getter.attendiMessaggio(idthread);
+			inputPlayer = getMessage();
 			} while(checkInputAndSetValue(inputPlayer) != true);
 			
 			if(playerValue == EXIT)
@@ -71,7 +63,7 @@ public class SassoCartaForbice {
 				
 			
 			sendMessage(Messages.SCF_RESTART_CHECK);
-			exit = Getter.attendiMessaggio(idthread);
+			exit = getMessage();
 		}
 		return Messages.SCF_END;
 	}
@@ -154,9 +146,5 @@ public class SassoCartaForbice {
 	}
 	
 	
-	
-	
-	private void sendMessage(String text) {
-		Sender.sendMessage(iduser, text);
-	}
+
 }

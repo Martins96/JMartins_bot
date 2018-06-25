@@ -7,7 +7,8 @@ public final class Costants {
 	public final static String MYLADY_PASSWORD = "Miaomiao";
 	public final static String BUILD_VERSION = "3.3.1.0";
 	public final static short MAX_THREADS_NUMBER = 20;
-	public final static String TELEGRAM_TOKEN = "142988631:AAHDC0G-ekAClZBEohj88CIynuIBZ4z8TWg";
+//	public final static String TELEGRAM_TOKEN = "142988631:AAHDC0G-ekAClZBEohj88CIynuIBZ4z8TWg";
+	public final static String TELEGRAM_TOKEN = "276329087:AAGQrbeijJ6k6rWJjUmQ7XJJDm1ACrRvp54";
 	public final static String TELEGRAM_TOKEN_4_ERROR = "276329087:AAGQrbeijJ6k6rWJjUmQ7XJJDm1ACrRvp54";
 	public final static String[] CLEVER_BOT_TOKEN = 
 	  {"CC5qw2uN991Ok_JIxcZ_m_MHLJQ", 
@@ -45,5 +46,7 @@ public final class Costants {
 	
 	public static final int N_L_IMAGE = 59;
 	public static final int N_L_MSG = 141;
+	
+	public static final int N_ID_CAT = 1;
 	
 }

@@ -10,18 +10,18 @@ import bot.ellie.utils.Sender;
 import bot.ellie.utils.messages.Help;
 import bot.ellie.utils.messages.Messages;
 
-public class Blackjack {
+public class Blackjack extends GameBase {
 	
 	private Random random;
-	private int idthread;
 	
-	public Blackjack(int idthread) {
+	public Blackjack(int idthread, Message messaggio) {
 		random = new Random();
 		this.idthread = idthread;
+		this.messaggio = messaggio;
 	}
 	
-	
-	public String startBlackjack(Message messaggio) {
+	@Override
+	public String startGame() {
 		Main.log.info("Avvio gioco Blackjack per " + messaggio.from().firstName());
 		boolean[][] mazzo = new boolean[13][4];
 		for (int m1 = 0; m1 < 13; m1++)
@@ -185,15 +185,12 @@ public class Blackjack {
 	}
 	
 	
-	private int puntiBlackjack(String[] carte, int icarte)
-	{
+	private int puntiBlackjack(String[] carte, int icarte) {
 		int punti = 0;
 		int assi = 0;
 		
-		for(int i = 0; i<icarte; i++)
-		{
-			switch(carte[i])
-			{
+		for(int i = 0; i<icarte; i++) {
+			switch(carte[i]) {
 			case("1"):
 				assi++;
 				break;
@@ -235,13 +232,11 @@ public class Blackjack {
 				break;
 			}
 		}
-			if(assi>1)
-			{
+			while(assi>1) {
 				punti++;
 				assi--;
 			}
-			if(assi==1)
-			{
+			if(assi==1) {
 				if(punti+11<=21)
 					punti = punti+11;
 				else

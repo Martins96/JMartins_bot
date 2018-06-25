@@ -9,20 +9,18 @@ import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
-import bot.ellie.utils.Getter;
-import bot.ellie.utils.Sender;
 import bot.ellie.utils.messages.Errors;
 import bot.ellie.utils.messages.Help;
 import bot.ellie.utils.messages.Messages;
 
-public class Impiccato {
+public class Impiccato extends GameBase{
 	
 	private Random random;
-	private int idthread;
 	
-	public Impiccato(int idthread) {
+	public Impiccato(int idthread, Message messaggio) {
 		random = new Random();
 		this.idthread = idthread;
+		this.messaggio = messaggio;
 	}
 	
 	/**
@@ -30,7 +28,8 @@ public class Impiccato {
 	 * @param messaggio
 	 * @return messaggio di fine gioco
 	 */
-	public String startGame(Message messaggio) {
+	@Override
+	public String startGame() {
 		Main.log.info("Avvio gioco dell'impiccato per: " + messaggio.from().firstName());
 		//Carico variabili di gioco
 		String parola = generaParolaImpiccato();
@@ -42,15 +41,15 @@ public class Impiccato {
 		short fail = 0;
 		boolean flag = false;
 		
-		Sender.sendMessage(messaggio.from().id(), Help.IMPICCATO_HELP);
+		sendMessage(Help.IMPICCATO_HELP);
 		String message = messaggio.text() != null ? messaggio.text() : "";
 		while(!message.equalsIgnoreCase("/exit"))
 		{
-			Sender.sendMessage(messaggio.from().id(), generaFiguraImpiccato(fail) + "\n\n\nerrori commessi:" + fail);
-			Sender.sendMessage(messaggio.from().id(), "Parola da indovinare:\n" + stampaParola(parolaavideo));
+			sendMessage(generaFiguraImpiccato(fail) + "\n\n\nerrori commessi:" + fail);
+			sendMessage("Parola da indovinare:\n" + stampaParola(parolaavideo));
 			if(fail >= 8)
 				return "GAME OVER\n\nLa parola da indovinare era: " + parola + "\nGioco dell'impiccato terminato";
-			message = Getter.attendiMessaggio(idthread);
+			message = getMessage();
 			//AVVIO GIOCO
 			if(message.length() == 1)
 			{
@@ -64,7 +63,7 @@ public class Impiccato {
 					}
 				}
 				if(flag) {
-					Sender.sendMessage(messaggio.from().id(), "La lettera " + lettera + " è presente nella parola 😊");
+					sendMessage("La lettera " + lettera + " è presente nella parola 😊");
 					// Controllo se la parola da indovinare ha ancora "_"
 					boolean bool = true;
 					for(int j = 0; j<lunghezzaparola;j++) {
@@ -77,7 +76,7 @@ public class Impiccato {
 				}
 				else
 				{
-					Sender.sendMessage(messaggio.from().id(), "La lettera " + lettera + " non è presente nella parola 😔 Il numero di errori è aumentato di uno");
+					sendMessage("La lettera " + lettera + " non è presente nella parola 😔 Il numero di errori è aumentato di uno");
 					fail++;
 				}
 					flag = false;
@@ -86,14 +85,14 @@ public class Impiccato {
 					if(message.equals("/exit"))
 						return Messages.IMPICCATO_END;
 					else
-						Sender.sendMessage(messaggio.from().id(), Errors.IMPICCATO_INPUT_NOT_VALID);
+						sendMessage(Errors.IMPICCATO_INPUT_NOT_VALID);
 				}
 				else
 				{
 					if(message.substring(0, 7).equals("/parola"))
 					{
 						if(message.length() < 9)
-							Sender.sendMessage(messaggio.from().id(), Errors.IMPICCATO_INPUT_NOT_VALID);
+							sendMessage(Errors.IMPICCATO_INPUT_NOT_VALID);
 						else
 						{
 							String soluzione = new String(message.substring(8, message.length()));
@@ -104,13 +103,13 @@ public class Impiccato {
 							}
 							else
 							{
-								Sender.sendMessage(messaggio.from().id(), Messages.IMPICCATO_WORD_NOT_CORRECT);
+								sendMessage(Messages.IMPICCATO_WORD_NOT_CORRECT);
 								fail++;
 							}
 						}
 					}
 					else
-						Sender.sendMessage(messaggio.from().id(), Errors.IMPICCATO_INPUT_NOT_VALID);
+						sendMessage(Errors.IMPICCATO_INPUT_NOT_VALID);
 				}
 			}
 		}

@@ -23,6 +23,7 @@ import bot.ellie.comands.games.Blackjack;
 import bot.ellie.comands.games.Impiccato;
 import bot.ellie.comands.games.SassoCartaForbice;
 import bot.ellie.comands.games.StoryGame;
+import bot.ellie.comands.games.catsimulator.CatGameMain;
 import bot.ellie.security.Security;
 import bot.ellie.utils.*;
 import bot.ellie.utils.controlli.ControlliAutoRensponse;
@@ -606,12 +607,12 @@ public class Risposta {
         	// ------------------------------------------------------------------------------------------------------------------
         
         	case ("/impiccato"):
-        	  return new Impiccato(idthread).startGame(messaggio);
+        	  return new Impiccato(idthread, messaggio).startGame();
         
         	// ------------------------------------------------------------------------------------------------------
         
         	case ("/blackjack"):
-        	  return new Blackjack(idthread).startBlackjack(messaggio);
+        	  return new Blackjack(idthread, messaggio).startGame();
         
         	// ------------------------------------------------------------------------------------------------------
         
@@ -622,7 +623,12 @@ public class Risposta {
         
         	case ("/sassocartaforbice"):
         	  return new SassoCartaForbice(idthread, messaggio).startGame();
-        
+
+        	// ------------------------------------------------------------------------------------------------------
+
+        	case("/catsimulator"):
+        		return new CatGameMain(idthread, messaggio).startGame();
+        	
         	// ------------------------------------------------------------------------------------------------------
         
         	case ("/storygame"):
