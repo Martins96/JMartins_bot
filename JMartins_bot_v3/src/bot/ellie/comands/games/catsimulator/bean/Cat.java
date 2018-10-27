@@ -13,6 +13,7 @@ public class Cat extends CatBase {
 		sonno = 80;
 		condizione = 95;
 		umore = 80;
+		malattia = null;
 		
 		obbedienza = 50;
 	}

@@ -8,13 +8,13 @@ import bot.ellie.utils.Sender;
 public class Smarrito extends EventoUtil {
 	
 	@Override
-	public PartitaBean startEvent(PartitaBean pb, int idthread) {
+	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) {
 		Cat cat = pb.getCat();
 		if (pb.getLastAction().equals(UserActionImg.A_SPASSO)) {
 			String command = getUserInput(idthread, "\"Il tuo gattino si è perso mentre tornavate a casa dal giretto,"
 					+ "magari torna da solo e si sarà fermato a giocare da qualche parte\\nCosa fai?\"\n"
 					+ "\n/Torna_a_cercarlo\n"
-					+ "\n/Aspetta_il_ritorno", new String[]{"/Torna_a_cercarlo", "/Aspetta_il_ritorno"});
+					+ "\n/Aspetta_il_ritorno", new String[]{"/Torna_a_cercarlo", "/Aspetta_il_ritorno"}, idUser);
 			
 			if("/Aspetta_il_ritorno".equalsIgnoreCase(command))  {
 				pb.addTimeTempoUltimaAzione(1);
@@ -27,7 +27,7 @@ public class Smarrito extends EventoUtil {
 				cat.setCondizione(cat.getCondizione() - 2);
 				command = getUserInput(idthread, "\"Non vedi il gattino in lontanaza e inizia a fare buio\\nCosa fai?\"\n"
 						+ "\n/Torna_a_cercarlo\n"
-						+ "\n/Aspetta_il_ritorno", new String[]{"/Torna_a_cercarlo", "/Aspetta_il_ritorno"});
+						+ "\n/Aspetta_il_ritorno", new String[]{"/Torna_a_cercarlo", "/Aspetta_il_ritorno"}, idUser);
 				if("/Aspetta_il_ritorno".equalsIgnoreCase(command)) {
 					pb.addTimeTempoUltimaAzione(1);
 					if(cat.getObbedienza() > 80) {

@@ -8,12 +8,12 @@ import bot.ellie.utils.Sender;
 public class PozzaAcquaGiardino extends EventoUtil {
 	
 	@Override
-	public PartitaBean startEvent(PartitaBean pb, int idthread) {
+	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) {
 		Cat cat = pb.getCat();
 		String command;
 		command = getUserInput(idthread, "Il tuo gattino vuole uscire a giocare in giardino, ha piovuto da poco, "
-				+ "ma c'è un bel sole ora. C'è un po' di vento, lo lasci?\n/Sì\n/No", 
-				new String[]{"/Sì","/No"});
+				+ "ma c'è un bel sole ora. C'è un po' di vento, lo lasci?\n /Sì\n /No", 
+				new String[]{"/Sì","/No"}, idUser);
 		
 		if("/No".equals(command)) {
 			return pb;
@@ -35,8 +35,8 @@ public class PozzaAcquaGiardino extends EventoUtil {
 		if(getPercentuale() > 60 && cat.getObbedienza() < 75) {
 			//Sporca casa
 			command = getUserInput(idthread, "Il tuo gattino dopo aver giocato ha tutte le zampe sporche di fango,"
-					+ " è entrato in casa e ha sporcato tutto cosa fai?\n/Sgridalo\n/Pulisci_senza_sgridarlo",
-					new String[] {"/Sgridalo","/Pulisci_senza_sgridarlo"});
+					+ " è entrato in casa e ha sporcato tutto cosa fai?\n /Sgridalo\n /Pulisci_senza_sgridarlo",
+					new String[] {"/Sgridalo","/Pulisci_senza_sgridarlo"}, idUser);
 			if("/Sgridalo".equals(command)) {
 				cat.setUmore(cat.getUmore() - 10);
 				cat.setObbedienza(cat.getObbedienza() + 5);

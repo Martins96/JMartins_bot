@@ -137,22 +137,22 @@ public class MessaggiCasualiEvent extends Events {
 			Main.log.info("Mamma (240650708)");
 		}
 		
-		if(random.nextInt(100)>15) { // 85%
+		if(random.nextInt(100) > 25) { // 75%
 			list.add("76891271");
 			Main.log.info("Matte (76891271)");
 		}
 		
-		if(random.nextInt(100) > 75) { //25% 
+		if(random.nextInt(100) > 90) { //10% 
 			list.add("124796388");
 			Main.log.info("Gaia (124796388)");
 		}
 		
-		if(random.nextInt(100) > 80) { //20% 
+		if(random.nextInt(100) > 90) { //10% 
 			list.add("104412734");
 			Main.log.info("Valentino (104412734)");
 		}
 		
-		if(random.nextInt(100) > 99) { //1% 
+		if(random.nextInt(100) > 90) { //10% 
 			list.add("148278619");
 			Main.log.info("Dinu (148278619)");
 		}

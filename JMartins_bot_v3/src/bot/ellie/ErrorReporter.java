@@ -1,7 +1,6 @@
 package bot.ellie;
 
 import com.pengrad.telegrambot.TelegramBot;
-import com.pengrad.telegrambot.TelegramBotAdapter;
 import com.pengrad.telegrambot.request.SendMessage;
 
 import bot.ellie.utils.Costants;
@@ -34,7 +33,7 @@ public class ErrorReporter {
 							+ "\nCAUSE:\n" + e.getCause()
 							+ "\nSTACK:\n" + e.getStackTrace();
 			
-			EmergencyEllie = TelegramBotAdapter.build(TOKEN);
+			EmergencyEllie = new TelegramBot(TOKEN);
 			EmergencyEllie.execute(new SendMessage(115949778, "EMERGENCY ELLIE\n\nERRORE :'(\n" + error));
 		}
 	}
@@ -47,7 +46,7 @@ public class ErrorReporter {
 		
 		@Override
 		public void run() {
-			EmergencyEllie = TelegramBotAdapter.build(TOKEN);
+			EmergencyEllie = new TelegramBot(TOKEN);
 			EmergencyEllie.execute(new SendMessage(115949778, "WARNING: " + error));
 		}
 	}

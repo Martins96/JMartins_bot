@@ -7,7 +7,7 @@ import bot.ellie.utils.Sender;
 public class SorpresaSalotto extends EventoUtil {
 
 	@Override
-	public PartitaBean startEvent(PartitaBean pb, int idthread) {
+	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) {
 		Cat cat = pb.getCat();
 		if(cat.getObbedienza() > 80) {
 			//il gatto è molto obbediente
@@ -15,7 +15,7 @@ public class SorpresaSalotto extends EventoUtil {
 		}
 		String command = getUserInput(idthread, "Il tuo bel gattino ha fatto... la pipì sul tappeto in salotto. Che cosa fai? Lo sgridi?\n"
 				+ "/Sì\n"
-				+ "/No", new String[] {"/Sì", "No"});
+				+ "/No", new String[] {"/Sì", "No"}, idUser);
 		
 		if("/Sì".equalsIgnoreCase(command)) {
 			cat.setUmore(cat.getUmore() - 5);

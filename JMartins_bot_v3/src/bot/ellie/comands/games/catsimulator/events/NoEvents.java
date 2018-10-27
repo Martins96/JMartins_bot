@@ -5,7 +5,7 @@ import bot.ellie.comands.games.catsimulator.bean.PartitaBean;
 public class NoEvents implements EventoCasuale {
 
 	@Override
-	public PartitaBean startEvent(PartitaBean pb, int idthread) {
+	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) {
 		return pb;
 	}
 

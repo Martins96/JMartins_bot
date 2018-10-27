@@ -1,5 +1,7 @@
 package bot.ellie.utils;
 
+import org.apache.log4j.Logger;
+
 import com.michaelwflaherty.cleverbotapi.CleverBotQuery;
 
 import bot.ellie.ErrorReporter;
@@ -8,10 +10,10 @@ import bot.ellie.utils.messages.Errors;
 
 public class ChatterBot {
 	
+	private static Logger log = Logger.getLogger(ChatterBot.class);
+	
 	public static String cleverBotResponse(String request) {
-		
-		String response = null;
-		
+				
 		for(String key : Costants.CLEVER_BOT_TOKEN) {
 			CleverBotQuery bot = new CleverBotQuery(key, request);
 			try {
@@ -19,9 +21,14 @@ public class ChatterBot {
 			    return bot.getResponse();
 			}
 			catch (Exception e) {
-			    Main.log.error("Key not work: " + bot.getAPIKey());
-			    Main.log.error("Errore Cleverbot API ", e);
-			    ErrorReporter.sendError("Errore Cleverbot API ");
+			    log.error("Key not work: " + key);
+			    log.error("Errore Cleverbot API ", e);
+			    ErrorReporter.sendError("Errore Cleverbot API Key not work: " + key);
+			    try {
+					Thread.currentThread().sleep(500);
+				} catch (InterruptedException e1) {
+					Main.log.error(e1);
+				}
 			}
 		}
 		return Errors.RESPONSE_NOT_FOUND;

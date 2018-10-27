@@ -9,6 +9,11 @@ import bot.ellie.comands.games.catsimulator.bean.PartitaBean;
 import bot.ellie.comands.games.catsimulator.bean.UserActionImg;
 import bot.ellie.comands.games.catsimulator.events.EventoCasuale;
 import bot.ellie.comands.games.catsimulator.events.NoEvents;
+import bot.ellie.comands.games.catsimulator.events.PozzaAcquaGiardino;
+import bot.ellie.comands.games.catsimulator.events.RovistareSpazzatura;
+import bot.ellie.comands.games.catsimulator.events.Scappato;
+import bot.ellie.comands.games.catsimulator.events.Smarrito;
+import bot.ellie.comands.games.catsimulator.events.SorpresaSalotto;
 import bot.ellie.comands.games.catsimulator.messages.CauseMorte;
 
 public class CatGameUtils {
@@ -41,15 +46,31 @@ public class CatGameUtils {
 				"/" + action + ".jpg");
 	}
 	
-	public static PartitaBean eventiCasuali(PartitaBean pb, int idthread) {
+	public static PartitaBean eventiCasuali(PartitaBean pb, int idthread, int idUser) {
 		int percentuale = rand.nextInt(100) + 1;
 		EventoCasuale event = new NoEvents();
-		if(percentuale == 1) {
-			
+		
+		System.out.println("Percentuale = " + percentuale);
+		
+		if(percentuale < 10 ) {
+			event = new PozzaAcquaGiardino();
+		} else if (percentuale < 20) {
+			event = new RovistareSpazzatura();
+		} else if (percentuale < 25) {
+			event = new SorpresaSalotto();
+		} else if (percentuale < 30) {
+			event = new Scappato();
+		} else if (percentuale < 35) {
+			event = new Smarrito();
 		} else {
 			event = new NoEvents();
 		}
-		pb = event.startEvent(pb, idthread);
+		System.out.println("EVENT: " + event.getClass());
+		
+		pb = event.startEvent(pb, idthread, idUser);
+		
+		System.out.println("PartitaBean: " + pb.getLastAction());
+		
 		return pb;
 	}
 	

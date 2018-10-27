@@ -43,7 +43,7 @@ public class CatGameMain extends GameBase{
 		}
 		
 		ingame:
-		while (!exitGame) {			
+		while (!exitGame) {
 			sendMessage(CatMessages.WAIT_ACTION);
 			boolean commandNotCorrect;
 			
@@ -108,7 +108,7 @@ public class CatGameMain extends GameBase{
 
 			//EVENTI E CONTROLLI
 			partitaBean = CatGameUtils.normalizeCat(partitaBean);
-			partitaBean = CatGameUtils.eventiCasuali(partitaBean, idthread);
+			partitaBean = CatGameUtils.eventiCasuali(partitaBean, idthread, messaggio.from().id());
 			partitaBean = CatGameUtils.executePassaggioTempo(partitaBean);
 			partitaBean = CatGameUtils.checkCat(partitaBean);
 			

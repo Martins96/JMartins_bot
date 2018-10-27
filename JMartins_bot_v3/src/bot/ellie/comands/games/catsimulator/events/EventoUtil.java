@@ -8,10 +8,10 @@ import bot.ellie.utils.Sender;
 
 public abstract class EventoUtil implements EventoCasuale {
 	
-	protected static String getUserInput(int idthread, String message, String[] allowedCommands) {
+	protected static String getUserInput(int idthread, String message, String[] allowedCommands, int idUser) {
 		String mex = new String();
 		do {
-			Sender.sendMessage(idthread, message);
+			Sender.sendMessage(idUser, message);
 			mex = Getter.attendiMessaggio(idthread);
 		} while(inputAllowed(mex, allowedCommands));
 		
@@ -32,5 +32,5 @@ public abstract class EventoUtil implements EventoCasuale {
 	}
 	
 	@Override
-	public abstract PartitaBean startEvent(PartitaBean pb, int idthread);
+	public abstract PartitaBean startEvent(PartitaBean pb, int idthread, int idUser);
 }

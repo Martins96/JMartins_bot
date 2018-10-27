@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.Random;
 
-import bot.ellie.ErrorReporter;
 import bot.ellie.Main;
-import bot.ellie.utils.controlli.ControlliAutoRensponse;
 import bot.ellie.utils.messages.Errors;
 
 public class FileUtils {

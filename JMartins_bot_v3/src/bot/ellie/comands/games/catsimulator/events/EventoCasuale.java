@@ -4,6 +4,6 @@ import bot.ellie.comands.games.catsimulator.bean.PartitaBean;
 
 public interface EventoCasuale {
 	
-	public PartitaBean startEvent(PartitaBean pb, int idthread);
+	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser);
 	
 }

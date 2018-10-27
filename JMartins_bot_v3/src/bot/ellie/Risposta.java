@@ -26,7 +26,7 @@ import bot.ellie.comands.games.StoryGame;
 import bot.ellie.comands.games.catsimulator.CatGameMain;
 import bot.ellie.security.Security;
 import bot.ellie.utils.*;
-import bot.ellie.utils.controlli.ControlliAutoRensponse;
+import bot.ellie.utils.controlli.ControlliAutoResponse;
 import bot.ellie.utils.controlli.ControlliMessaggiRicevuti;
 import bot.ellie.utils.events.outereventsbean.MultiplayerGameBean;
 import bot.ellie.utils.games.multi.InvitoRifiutatoException;
@@ -748,7 +748,7 @@ public class Risposta {
 				} else {
 					Main.log.info("Risposta non trovata, mando richiesta a bot host");
 					risposta = ChatterBot.cleverBotResponse(testoMessaggio);
-					risposta = ControlliAutoRensponse.checkAutobotNome(risposta);
+					risposta = ControlliAutoResponse.checkAutobotNome(risposta);
 				}
 			} catch (Exception e) {
 				Main.log.error("Errore Cleverbot - ", e);

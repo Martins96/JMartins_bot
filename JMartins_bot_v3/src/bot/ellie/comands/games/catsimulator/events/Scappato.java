@@ -3,16 +3,16 @@ package bot.ellie.comands.games.catsimulator.events;
 import bot.ellie.comands.games.catsimulator.bean.Cat;
 import bot.ellie.comands.games.catsimulator.bean.PartitaBean;
 import bot.ellie.utils.Sender;
-import bot.ellie.comands.games.catsimulator.events.EventoCasuale;
 
 public class Scappato extends EventoUtil {
 
 	@Override
-	public PartitaBean startEvent(PartitaBean pb, int idthread) {
+	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) {
 		Cat cat = pb.getCat();
 		String command;
 		command = getUserInput(idthread, "Il tuo gattino è uscito dalla finestra ed è scappato cosa fai?\n"
-				+ "/Aspetta_il_suo_ritorno\n/Vai_a_cercarlo", new String[] {"/Aspetta_il_suo_ritorno","/Vai_a_cercarlo"});
+				+ "/Aspetta_il_suo_ritorno\n/Vai_a_cercarlo", new String[] {"/Aspetta_il_suo_ritorno","/Vai_a_cercarlo"},
+				idUser);
 		if("/Aspetta_il_suo_ritorno".equalsIgnoreCase(command)) {
 			pb.addTimeTempoUltimaAzione(1);
 			if(cat.getObbedienza() > 60 && cat.getUmore() > 50) {
