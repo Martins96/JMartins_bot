@@ -13,7 +13,7 @@ public abstract class EventoUtil implements EventoCasuale {
 		do {
 			Sender.sendMessage(idUser, message);
 			mex = Getter.attendiMessaggio(idthread);
-		} while(inputAllowed(mex, allowedCommands));
+		} while(!inputAllowed(mex, allowedCommands));
 		
 		return mex;
 	}

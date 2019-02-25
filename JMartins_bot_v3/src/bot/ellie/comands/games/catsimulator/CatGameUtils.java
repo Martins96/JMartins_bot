@@ -41,9 +41,13 @@ public class CatGameUtils {
 	}
 	
 	public static File generateFileImg(Cat cat, UserActionImg action) {
-		return new File(Main.PATH_INSTALLAZIONE + 
+		File file = new File(Main.PATH_INSTALLAZIONE + 
 				"/readfiles/photo/catsimulator/" + cat.getId() + 
 				"/" + action + ".jpg");
+		if (!file.exists())
+			return null;
+		
+		return file;
 	}
 	
 	public static PartitaBean eventiCasuali(PartitaBean pb, int idthread, int idUser) {
@@ -139,13 +143,19 @@ public class CatGameUtils {
 	public static PartitaBean executePassaggioTempo(PartitaBean pb) {
 		short t = pb.getAndResetTempoUltimaAzione();
 		Cat cat = pb.getCat();
-		cat.setFame(
-				cat.getFame() - (t * 3));
-		cat.setSete(
-				cat.getSete() - (t * 3));
+		
 		if(!pb.getLastAction().equals(UserActionImg.DORME)) {
 			cat.setSonno(
 					cat.getSonno() - (t * 4));
+			cat.setFame(
+					cat.getFame() - (t * 3));
+			cat.setSete(
+					cat.getSete() - (t * 3));
+		} else {
+			cat.setFame(
+					cat.getFame() - (t * 6));
+			cat.setSete(
+					cat.getSete() - (t * 6));
 		}
 		
 		//Malattia

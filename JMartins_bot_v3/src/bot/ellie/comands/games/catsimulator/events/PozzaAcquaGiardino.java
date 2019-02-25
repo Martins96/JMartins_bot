@@ -12,8 +12,8 @@ public class PozzaAcquaGiardino extends EventoUtil {
 		Cat cat = pb.getCat();
 		String command;
 		command = getUserInput(idthread, "Il tuo gattino vuole uscire a giocare in giardino, ha piovuto da poco, "
-				+ "ma c'è un bel sole ora. C'è un po' di vento, lo lasci?\n /Sì\n /No", 
-				new String[]{"/Sì","/No"}, idUser);
+				+ "ma c'è un bel sole ora. C'è un po' di vento, lo lasci?\n /Si\n /No", 
+				new String[]{"/Si","/No"}, idUser);
 		
 		if("/No".equals(command)) {
 			return pb;
@@ -27,7 +27,7 @@ public class PozzaAcquaGiardino extends EventoUtil {
 		
 		if(getPercentuale() > 75) {
 			//fine rapida
-			Sender.sendMessage(idthread, "Il tuo gattino si diverte tanto a giocare all'aria aperta");
+			Sender.sendMessage(idUser, "Il tuo gattino si diverte tanto a giocare all'aria aperta");
 			pb.setCat(cat);
 			return pb;
 		}
@@ -40,20 +40,20 @@ public class PozzaAcquaGiardino extends EventoUtil {
 			if("/Sgridalo".equals(command)) {
 				cat.setUmore(cat.getUmore() - 10);
 				cat.setObbedienza(cat.getObbedienza() + 5);
-				Sender.sendMessage(idthread, "Sgridi il tuo gattino, no può sporcare tutto così. Sembra un po' triste, ma si capisce che è dispiaciuto e ha compreso la situazione");
+				Sender.sendMessage(idUser, "Sgridi il tuo gattino, no può sporcare tutto così. Sembra un po' triste, ma si capisce che è dispiaciuto e ha compreso la situazione");
 				pb.setCat(cat);
 				return pb;
 			} else {
 				cat.setUmore(cat.getUmore() + 5);
 				cat.setObbedienza(cat.getObbedienza() - 2);
-				Sender.sendMessage(idthread, "Pulisci dove ha sporcato senza dirgli niente, il gattino è spensierato e felice, ma non ha capito che ha fatto danno");
+				Sender.sendMessage(idUser, "Pulisci dove ha sporcato senza dirgli niente, il gattino è spensierato e felice, ma non ha capito che ha fatto danno");
 				pb.setCat(cat);
 				return pb;
 			}
 		}
 		
 		//else cade nella pozza
-		Sender.sendMessage(idthread, "Mentre gioca il gattino cade in una pozza d'acqua lui è molto divertito da tutto ciò, ma c'è un po' di vento fresco e potrebbe ammalarsi.\n"
+		Sender.sendMessage(idUser, "Mentre gioca il gattino cade in una pozza d'acqua lui è molto divertito da tutto ciò, ma c'è un po' di vento fresco e potrebbe ammalarsi.\n"
 				+ "Lo prendi subito e lo asciughi per bene, speriamo che non abbia preso troppo freddo, comunque il gattino si è molto divertito");
 		cat.setUmore(cat.getUmore() + 5);
 		cat.setFame(cat.getFame() - 1);

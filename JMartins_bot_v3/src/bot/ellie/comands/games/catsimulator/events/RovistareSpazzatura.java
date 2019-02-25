@@ -6,6 +6,11 @@ public class RovistareSpazzatura extends EventoUtil{
 	
 	@Override
 	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) {
+		
+		
+		
+		
+		
 		return pb;
 	}
 	

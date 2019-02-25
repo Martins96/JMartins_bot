@@ -14,18 +14,18 @@ public class SorpresaSalotto extends EventoUtil {
 			return pb;
 		}
 		String command = getUserInput(idthread, "Il tuo bel gattino ha fatto... la pipì sul tappeto in salotto. Che cosa fai? Lo sgridi?\n"
-				+ "/Sì\n"
-				+ "/No", new String[] {"/Sì", "No"}, idUser);
+				+ "/Si \n"
+				+ "/No", new String[] {"/Si", "/No"}, idUser);
 		
-		if("/Sì".equalsIgnoreCase(command)) {
+		if("/Si".equalsIgnoreCase(command)) {
 			cat.setUmore(cat.getUmore() - 5);
 			cat.setObbedienza(cat.getObbedienza() + 5);
-			Sender.sendMessage(idthread, "Decidi di sgridarlo, ha combinato un guaio e la sua cucciolosità non può fargliela passare liscia.\n"
+			Sender.sendMessage(idUser, "Decidi di sgridarlo, ha combinato un guaio e la sua cucciolosità non può fargliela passare liscia.\n"
 					+ "Il tuo gattino impara la lezione, speriamo non lo rifaccia più.");
 		} else { //"/No"
 			cat.setUmore(cat.getUmore() + 5);
 			cat.setObbedienza(cat.getObbedienza() -10);
-			Sender.sendMessage(idthread, "Non vuoi renderlo triste sgridandolo, pulisci dove ha sporcato e lasci passare."
+			Sender.sendMessage(idUser, "Non vuoi renderlo triste sgridandolo, pulisci dove ha sporcato e lasci passare."
 					+ "\nIl micio è tranquillo, mi sa che non ha capito di aver fatto danno.");
 		}
 		

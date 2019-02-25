@@ -19,8 +19,8 @@ public class SeteMessages {
 	private static class Messages {
 		
 		private static final String ID100 = "Pieno zeppo di liquidi";
-		private static final String ID80 = "Molto ben idratato";
-		private static final String ID60 = "Dissetato";
+		private static final String ID80 = "Dissetato";
+		private static final String ID60 = "Leggermente assetato";
 		private static final String ID40 = "Assetato";
 		private static final String ID20 = "Molto disidratato";
 		private static final String ID0 = "Morto di sete";

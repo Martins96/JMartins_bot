@@ -36,7 +36,7 @@ public class UserCommands {
 			cat.setCondizione(
 					(cat.getCondizione() + 2));
 			cat.setFame(
-					cat.getFame() + 25);
+					cat.getFame() + 40);
 			partitaBean.setCat(cat);
 			partitaBean.addTimeTempoUltimaAzione(1);
 			return partitaBean;
@@ -49,7 +49,9 @@ public class UserCommands {
 			cat.setCondizione(
 					(cat.getCondizione() + 2));
 			cat.setSete(
-					cat.getSete() + 25);
+					cat.getSete() + 40);
+			cat.setFame(
+					cat.getFame() + 10);
 			partitaBean.setCat(cat);
 			partitaBean.addTimeTempoUltimaAzione(1);
 			return partitaBean;
@@ -73,7 +75,7 @@ public class UserCommands {
 			cat.setCondizione(
 					(cat.getCondizione() + 1));
 			cat.setSonno(
-					cat.getSonno() + 10);
+					cat.getSonno() + 50);
 			partitaBean.setCat(cat);
 			partitaBean.addTimeTempoUltimaAzione(6);
 			return partitaBean;

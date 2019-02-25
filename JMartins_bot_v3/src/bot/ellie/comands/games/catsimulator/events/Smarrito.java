@@ -46,15 +46,15 @@ public class Smarrito extends EventoUtil {
 			//Torna_a_cercarlo command
 			int perc = getPercentuale();
 			if(perc < 25) {
-				return gattoTrovatoNormale(pb, cat, idthread);
+				return gattoTrovatoNormale(pb, cat, idUser);
 			} else if(perc < 50) {
-				return gattoTrovatoGiocare(pb, cat, idthread);
+				return gattoTrovatoGiocare(pb, cat, idUser);
 			} else if(perc < 75) {
-				return gattoIntrappolato(pb, cat, idthread);
+				return gattoIntrappolato(pb, cat, idUser);
 			} else if(perc <= 99) {
-				return gattoInLotta(pb, cat, idthread);
+				return gattoInLotta(pb, cat, idUser);
 			} else {
-				return gattoMorto(pb, cat, idthread);
+				return gattoMorto(pb, cat, idUser);
 			}
 		}
 		pb.setCat(cat);
@@ -62,51 +62,51 @@ public class Smarrito extends EventoUtil {
 	}
 	
 	
-	private PartitaBean gattoSmarritoTornatoDaSolo(PartitaBean pb, Cat cat, int idthread) {
+	private PartitaBean gattoSmarritoTornatoDaSolo(PartitaBean pb, Cat cat, int idUser) {
 		cat.setCondizione(cat.getCondizione() - 1);
 		cat.setSonno(cat.getSonno() - 5);
-		Sender.sendMessage(idthread, "Il micino è tornato da solo, ma che bravo! Tante coccole");
+		Sender.sendMessage(idUser, "Il micino è tornato da solo, ma che bravo! Tante coccole");
 		pb.setCat(cat);
 		return pb;
 	}
 	
-	private PartitaBean gattoTrovatoGiocare(PartitaBean pb, Cat cat, int idthread) {
+	private PartitaBean gattoTrovatoGiocare(PartitaBean pb, Cat cat, int idUser) {
 		cat.setSonno(cat.getSonno() - 5);
 		cat.setUmore(cat.getUmore() + 2);
-		Sender.sendMessage(idthread, "Il micino ha trovato un amico e sta giocando, sta bene, ma è ora di andare\n"
+		Sender.sendMessage(idUser, "Il micino ha trovato un amico e sta giocando, sta bene, ma è ora di andare\n"
 				+ "Saluta il suo 'amicietto' e tornate a casa");
 		pb.setCat(cat);
 		return pb;
 	}
 	
-	private PartitaBean gattoTrovatoNormale(PartitaBean pb, Cat cat, int idthread) {
-		Sender.sendMessage(idthread, "Hai trovato il tuo micino sano e salvo, lo prendi in braccio e tornate a casa");
+	private PartitaBean gattoTrovatoNormale(PartitaBean pb, Cat cat, int idUser) {
+		Sender.sendMessage(idUser, "Hai trovato il tuo micino sano e salvo, lo prendi in braccio e tornate a casa");
 		pb.setCat(cat);
 		return pb;
 	}
 	
-	private PartitaBean gattoIntrappolato(PartitaBean pb, Cat cat, int idthread) {
+	private PartitaBean gattoIntrappolato(PartitaBean pb, Cat cat, int idUser) {
 		cat.setCondizione(cat.getCondizione() - 10);
 		cat.setFame(cat.getFame() + 1);
-		Sender.sendMessage(idthread, "Hai trovato il tuo micino intrappolato in una scatola di latta, stava cercando di leccare il fondo, povero cucciolo.\n"
+		Sender.sendMessage(idUser, "Hai trovato il tuo micino intrappolato in una scatola di latta, stava cercando di leccare il fondo, povero cucciolo.\n"
 				+ "La lattina è tagliente e gli fa male, con attenzione lo liberi cercando di fargli meno male possibile.\n"
 				+ "Una volta liberato lo porti a casa");
 		pb.setCat(cat);
 		return pb;
 	}
 	
-	private PartitaBean gattoInLotta(PartitaBean pb, Cat cat, int idthread) {
+	private PartitaBean gattoInLotta(PartitaBean pb, Cat cat, int idUser) {
 		cat.setCondizione(cat.getCondizione() - 25);
 		cat.setUmore(cat.getUmore() - 5);
 		cat.setSonno(cat.getSonno() - 10);
-		Sender.sendMessage(idthread, "Vedi il tuo gattino fare la lotta con un cagnaccio randagio, i due si stanno mordendo.\n"
+		Sender.sendMessage(idUser, "Vedi il tuo gattino fare la lotta con un cagnaccio randagio, i due si stanno mordendo.\n"
 				+ "Rapidamente tiri un calcio al cane e recuperi il tuo povero gattino e tornate a casa");
 		pb.setCat(cat);
 		return pb;
 	}
 	
-	private PartitaBean gattoMorto(PartitaBean pb, Cat cat, int idthread) {
-		Sender.sendMessage(idthread, "Il tuo gattino... è stato investito... povero cucciolo... è stato davvero un bel micio.");
+	private PartitaBean gattoMorto(PartitaBean pb, Cat cat, int idUser) {
+		Sender.sendMessage(idUser, "Il tuo gattino... è stato investito... povero cucciolo... è stato davvero un bel micio.");
 		pb.setGameFinished(true);
 		pb.setDescrizioneMorte("Investito da una macchina");
 		pb.setCat(cat);

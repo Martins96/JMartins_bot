@@ -1,5 +1,7 @@
 package bot.ellie.comands.games.catsimulator;
 
+import java.io.File;
+
 import com.pengrad.telegrambot.model.Message;
 
 import bot.ellie.comands.games.GameBase;
@@ -120,6 +122,13 @@ public class CatGameMain extends GameBase{
 						partitaBean.getCat(), UserActionImg.MORTO, partitaBean.getDescrizioneMorte());
 				break ingame;
 			}
+			System.out.println("Condizione" + partitaBean.getCat().getCondizione());
+			System.out.println("Fame" + partitaBean.getCat().getFame());
+			System.out.println("Obbedienza" + partitaBean.getCat().getObbedienza());
+			System.out.println("Sete" + partitaBean.getCat().getSete());
+			System.out.println("Sonno" + partitaBean.getCat().getSonno());
+			System.out.println("Umore" + partitaBean.getCat().getUmore());
+			System.out.println("Malattia" + partitaBean.getCat().getMalattia());
 			
 		}
 		
@@ -130,10 +139,12 @@ public class CatGameMain extends GameBase{
 	
 	
 	private void sendInfoCat(Cat cat, UserActionImg action, String description) {
-		Sender.sendDocument(
-				messaggio.from().id(), CatGameUtils.generateFileImg(cat, action));
-		Sender.sendMessage(
-				messaggio.from().id(), description);
+		File catImage = CatGameUtils.generateFileImg(cat, action);
+		
+//		if (catImage != null)
+//			Sender.sendDocument(messaggio.from().id(), catImage);
+		
+		Sender.sendMessage(messaggio.from().id(), description);
 	}
 
 }

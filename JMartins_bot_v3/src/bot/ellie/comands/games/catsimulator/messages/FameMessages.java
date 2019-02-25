@@ -19,8 +19,8 @@ public class FameMessages {
 	private static class Messages {
 		
 		private static final String ID100 = "Pienissimo e ciccionissimo";
-		private static final String ID80 = "Pieno";
-		private static final String ID60 = "Sazio";
+		private static final String ID80 = "Sazio";
+		private static final String ID60 = "Leggermente Affamato";
 		private static final String ID40 = "Affamato";
 		private static final String ID20 = "Veramente malnutrito";
 		private static final String ID0 = "Morto di fame";
