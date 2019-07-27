@@ -3,12 +3,13 @@ package bot.ellie.comands.games.catsimulator.events;
 import java.util.Random;
 
 import bot.ellie.comands.games.catsimulator.bean.PartitaBean;
+import bot.ellie.comands.games.catsimulator.bean.exceptions.EndGameRequestException;
 import bot.ellie.utils.Getter;
 import bot.ellie.utils.Sender;
 
 public abstract class EventoUtil implements EventoCasuale {
 	
-	protected static String getUserInput(int idthread, String message, String[] allowedCommands, int idUser) {
+	protected static String getUserInput(int idthread, String message, String[] allowedCommands, int idUser) throws EndGameRequestException {
 		String mex = new String();
 		do {
 			Sender.sendMessage(idUser, message);
@@ -32,5 +33,5 @@ public abstract class EventoUtil implements EventoCasuale {
 	}
 	
 	@Override
-	public abstract PartitaBean startEvent(PartitaBean pb, int idthread, int idUser);
+	public abstract PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) throws EndGameRequestException;
 }

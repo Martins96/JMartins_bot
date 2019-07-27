@@ -7,6 +7,7 @@ import bot.ellie.Main;
 import bot.ellie.comands.games.catsimulator.bean.Cat;
 import bot.ellie.comands.games.catsimulator.bean.PartitaBean;
 import bot.ellie.comands.games.catsimulator.bean.UserActionImg;
+import bot.ellie.comands.games.catsimulator.bean.exceptions.EndGameRequestException;
 import bot.ellie.comands.games.catsimulator.events.EventoCasuale;
 import bot.ellie.comands.games.catsimulator.events.NoEvents;
 import bot.ellie.comands.games.catsimulator.events.PozzaAcquaGiardino;
@@ -50,7 +51,7 @@ public class CatGameUtils {
 		return file;
 	}
 	
-	public static PartitaBean eventiCasuali(PartitaBean pb, int idthread, int idUser) {
+	public static PartitaBean eventiCasuali(PartitaBean pb, int idthread, int idUser) throws EndGameRequestException {
 		int percentuale = rand.nextInt(100) + 1;
 		EventoCasuale event = new NoEvents();
 		

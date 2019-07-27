@@ -2,12 +2,13 @@ package bot.ellie.comands.games.catsimulator.events;
 
 import bot.ellie.comands.games.catsimulator.bean.Cat;
 import bot.ellie.comands.games.catsimulator.bean.PartitaBean;
+import bot.ellie.comands.games.catsimulator.bean.exceptions.EndGameRequestException;
 import bot.ellie.utils.Sender;
 
 public class Scappato extends EventoUtil {
 
 	@Override
-	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) {
+	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) throws EndGameRequestException {
 		Cat cat = pb.getCat();
 		String command;
 		command = getUserInput(idthread, "Il tuo gattino è uscito dalla finestra ed è scappato cosa fai?\n"

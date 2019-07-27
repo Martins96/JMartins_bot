@@ -51,3 +51,4 @@
 3.3.0.2:Fix cleverbot, add new profiles
 3.3.1.0:Aggiunta key cleverbot, aggiunti controlli su insulti, aggiornate librerie
 3.3.1.1:Inizio di cat Simulator - aggiornato maven project
+3.3.1.2:Continuazione di catsimulation

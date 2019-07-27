@@ -3,12 +3,13 @@ package bot.ellie.comands.games.catsimulator.events;
 import bot.ellie.comands.games.catsimulator.bean.Cat;
 import bot.ellie.comands.games.catsimulator.bean.PartitaBean;
 import bot.ellie.comands.games.catsimulator.bean.UserActionImg;
+import bot.ellie.comands.games.catsimulator.bean.exceptions.EndGameRequestException;
 import bot.ellie.utils.Sender;
 
 public class Smarrito extends EventoUtil {
 	
 	@Override
-	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) {
+	public PartitaBean startEvent(PartitaBean pb, int idthread, int idUser) throws EndGameRequestException {
 		Cat cat = pb.getCat();
 		if (pb.getLastAction().equals(UserActionImg.A_SPASSO)) {
 			String command = getUserInput(idthread, "\"Il tuo gattino si è perso mentre tornavate a casa dal giretto,"
